@@ -1,0 +1,111 @@
+:root {
+  --gray-100: #111;
+  --gray-300: #444;
+  --gray-500: #777;
+  --gray-700: #aaa;
+  --gray-900: #ddd;
+
+  --background: var(--gray-100);
+  --foreground: var(--gray-900);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Raleway', sans-serif;
+}
+
+h1 { padding-bottom: 3rem; }
+
+a { color: var(--gray-700); }
+a:hover { color: white; }
+
+footer .logo {
+  height: 2rem;
+  margin-bottom: 1rem;
+  width: 2rem;
+}
+
+.background {
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  transition: transform 1s ease-in-out;
+  width: 100%;
+}
+
+.opaque { background-color: var(--background); }
+.navbar-brand { color: white; }
+
+#navbar { transition: background-color 0.5s; }
+.navbar-nav a {
+  text-align: center;
+  width: 10rem;
+}
+.navbar-brand {
+  background-image: url('img/title.svg');
+}
+
+#loclathon {
+  font-size: 14pt;
+  height: 100vh;
+  min-height: 50rem;
+  overflow: hidden;
+}
+
+#loclathon > .background {
+  background-image: url('img/photo.jpg');
+  opacity: 0.3;
+}
+
+#loclathon ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#loclathon li {
+  animation: fadein 1s ease-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+#loclathon li:nth-child(1) { animation-delay: 1s; }
+#loclathon li:nth-child(2) { animation-delay: 2s; }
+#loclathon li:nth-child(3) { animation-delay: 3s; }
+#loclathon li:nth-child(4) { animation-delay: 4s; }
+
+#bottle {
+  height: 40rem;
+  overflow: hidden;
+  padding: 0;
+}
+#bottle .background {
+  background-image: url('img/locloise.jpg');
+}
+
+#a-propos {
+  height: 50rem;
+  overflow: hidden;
+}
+#a-propos .background {
+  background-image: url('img/loclathon.jpg');
+  opacity: 0.2;
+}
+
+div:hover > .background {
+  transform: scale(1.1);
+}
+
+.image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.logo {
+  background-image: url('img/logo-outline.svg');
+}
+
+@keyframes fadein {
+    from { opacity: 0; transform: scale(3); }
+    to   { opacity: 1; transform: scale(1); }
+}
