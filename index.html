@@ -138,6 +138,12 @@
             </button>
           </div>
           <div class="modal-body">
+            <div class="alert border-dark alert-dismissible fade show" role="alert">
+              <b>Attention !</b> L'article sera envoyé à l'adresse définie sur Paypal.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
             <form>
               <div class="form-group">
                 <label for="formAmount">Nombre de bouteilles *</label>
@@ -148,16 +154,16 @@
               </div>
               <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="formAgeCheck">
-                <label class="form-check-label" for="formAgeCheck">Je certifie être majeur (+18 ans).</label>
+                <label class="form-check-label" for="formAgeCheck">Je certifie être majeur·e (+18 ans).</label>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
             <div id="paypal-button"></div>
+          </div>
         </div>
       </div>
-    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
