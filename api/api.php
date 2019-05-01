@@ -61,6 +61,13 @@ function buy($data)
     });
 }
 
+function price($data)
+{
+    return query(function($db) {
+        return $db->querySingle('SELECT price FROM bottles');
+    });
+}
+
 function units($data)
 {
     return query(function($db) {
