@@ -1,0 +1,8 @@
+RewriteEngine On
+
+RewriteRule ^buy?$ api.php
+RewriteRule ^units?$ api.php
+
+# Redirect everything else.
+RewriteCond $1 !^(api.php)
+RewriteRule ^(.*)$ https://loclathon.ch [L]
