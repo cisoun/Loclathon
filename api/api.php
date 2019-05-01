@@ -64,7 +64,7 @@ function buy($data)
 function units($data)
 {
     return query(function($db) {
-        return $db->querySingle('SELECT b.units - SUM(o.units) as units FROM bottles b, orders o');
+        return $db->querySingle('SELECT b.units - (SELECT coalesce(SUM(units), 0) FROM orders) as units FROM bottles b');
     });
 }
 
