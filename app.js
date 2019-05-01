@@ -3,6 +3,8 @@ const App = {
   $units: 50,
 
   amountElement: null,
+  buyModalElement: null,
+  finishModalElement: null,
   formAgeElement: null,
   formAmountElement: null,
   navbarElement: null,
@@ -18,6 +20,8 @@ const App = {
 
   initialize () {
     this.amountElement = $('#amount');
+    this.buyModalElement = $('#buyModal');
+    this.finishModalElement = $('#finishModal')
     this.formAgeElement = $('#formAgeCheck');
     this.formAmountElement = $('#formAmount');
     this.navbarElement = $('.navbar');
@@ -43,7 +47,7 @@ const App = {
   },
 
   initializePaypal () {
-    var app = this;
+    const app = this;
     paypal.Buttons({
       locale: 'fr_CH',
       style: {
@@ -87,8 +91,9 @@ const App = {
       onApprove: function(data, actions) {
         return actions.order.capture().then((details) => {
           $.post('/api/buy', JSON.stringify(details)).done((response) => {
-            console.log(response);
             app.loadUnits();
+            app.buyModalElement.modal('hide');
+            app.finishModalElement.modal('show');
           });
         });
       }
