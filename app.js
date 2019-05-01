@@ -1,31 +1,42 @@
 const App = {
+  $price: 35,
   $units: 50,
 
-  ageElement: null,
+  amountElement: null,
+  formAgeElement: null,
+  formAmountElement: null,
   navbarElement: null,
   paypalElement: null,
-  unitsElements: null,
+  unitsElement: null,
 
-  get isAgeConfirmed () { return this.ageElement.checked; },
+  get isAgeConfirmed () { return this.formAgeElement.checked; },
   get navbarLimit () { return 80; },
+  get price () { return this.$price; },
+  set price (price) { this.setPrice(price); },
   get units () { return this.$units; },
   set units (units) { this.setUnits(units); },
 
   initialize () {
-    this.ageElement = $('#formAgeCheck');
+    this.amountElement = $('#amount');
+    this.formAgeElement = $('#formAgeCheck');
+    this.formAmountElement = $('#formAmount');
     this.navbarElement = $('.navbar');
     this.paypalElement = $('#paypal-button');
-    this.unitsElements = $('#units');
+    this.unitsElement = $('#units');
 
     this.initializePaypal();
     this.initializeModal();
+    this.loadPrice();
     this.loadUnits();
 
     window.onscroll = () => this.onWindowScrolled();
+    this.formAmountElement[0].onchange = () => this.onAmountChanged();
+
+    this.onAmountChanged();
   },
 
   initializeModal () {
-    const element = this.ageElement[0];
+    const element = this.formAgeElement[0];
     element.onchange = () => this.onAgeChanged();
     element.checked = false;
     this.onAgeChanged();
@@ -84,12 +95,20 @@ const App = {
     }).render('#' + this.paypalElement.attr('id'));
   },
 
+  loadPrice () {
+    $.get('/api/price', (response) => this.price = response);
+  },
+
   loadUnits () {
     $.get('/api/units', (response) => this.units = response);
   },
 
   onAgeChanged () {
     this.paypalElement.toggle(this.isAgeConfirmed);
+  },
+
+  onAmountChanged () {
+    this.amountElement.html(this.formAmountElement.val() * this.price);
   },
 
   onWindowScrolled () {
@@ -100,9 +119,14 @@ const App = {
     }
   },
 
+  setPrice (price) {
+    this.$price = price;
+    this.amountElement.html(price);
+  },
+
   setUnits (units) {
     this.$units = units;
-    this.unitsElements.html(units);
+    this.unitsElement.html(units);
   },
 };
 

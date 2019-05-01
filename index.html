@@ -58,7 +58,8 @@
         </div>
         <div class="col-md-6 d-flex flex-column justify-content-center p-5">
           <div>
-            <h1>La Locloise</h1>
+            <div class="h1">La Locloise</div>
+            <div class="h3 pb-5">35 CHF</div>
             <p>
               La Locloise est une absinthe conçue spécialement à l'occasion du Loclathon.<br/>
               Son goût mentholée et doux procure une sensation rafraîchissante qui ne déplaîra pas au randonneur motivé à l'emporter avec lui lors de sa marche.
@@ -69,7 +70,8 @@
                 Volume : 0.5 L | Alcool : 54 %
               </strong>
             </p>
-            <a class="btn btn-outline-light my-5" href="#" data-toggle="modal" data-target="#buyModal">Acheter</a>
+            <p class="mt-5">Il reste actuellement <span id="units" class="font-weight-bold">0</span> bouteilles.</p>
+            <a class="btn btn-outline-light" href="#" data-toggle="modal" data-target="#buyModal">Acheter</a>
           </div>
         </div>
       </div>
@@ -139,12 +141,10 @@
             <form>
               <div class="form-group">
                 <label for="formAmount">Nombre de bouteilles *</label>
-                <input type="number" class="form-control" id="formAmount" min="1" max="6" value="1" required>
-              </div>
-              <div class="form-group">
-                <label>
-                  Il reste actuellement <span id="units" class="font-weight-bold">0</span> bouteilles.
-                </label>
+                <div class="form-inline form-row">
+                  <input type="number" class="form-control col-12 col-md-6" id="formAmount" min="1" max="6" value="1" required>
+                  <span class="col-12 col-md-6 pl-md-3 font-weight-bold"><span id="amount">0</span> CHF</span>
+                </div>
               </div>
               <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="formAgeCheck">
