@@ -5,7 +5,7 @@ RewriteRule ^buy?$ api.php
 RewriteRule ^units?$ api.php
 
 # Exceptions
-RewriteRule ^confirm.html$ confirm.html
+RewriteRule ^email.html$ email.html
 
 # Redirect everything else.
 RewriteCond $1 !^(api.php)
