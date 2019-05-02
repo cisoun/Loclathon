@@ -4,6 +4,7 @@ const App = {
 
   amountElement: null,
   buyModalElement: null,
+  emailElement: null,
   finishModalElement: null,
   formAgeElement: null,
   formAmountElement: null,
@@ -21,9 +22,10 @@ const App = {
   initialize () {
     this.amountElement = $('#amount');
     this.buyModalElement = $('#buyModal');
+    this.emailElement = $('#email');
     this.finishModalElement = $('#finishModal')
-    this.formAgeElement = $('#formAgeCheck');
-    this.formAmountElement = $('#formAmount');
+    this.formAgeElement = $('#formAgeCheck')[0];
+    this.formAmountElement = $('#formAmount')[0];
     this.navbarElement = $('.navbar');
     this.paypalElement = $('#paypal-button');
     this.unitsElement = $('#units');
@@ -34,16 +36,17 @@ const App = {
     this.loadUnits();
 
     window.onscroll = () => this.onWindowScrolled();
-    this.formAmountElement[0].onchange = () => this.onAmountChanged();
+    this.formAmountElement.onchange = () => this.onAmountChanged();
 
     this.onAmountChanged();
   },
 
   initializeModal () {
-    const element = this.formAgeElement[0];
-    element.onchange = () => this.onAgeChanged();
-    element.checked = false;
+    this.formAgeElement.onchange = () => this.onAgeChanged();
+    this.formAgeElement.value = false;
     this.onAgeChanged();
+
+    this.buyModalElement.on('show.bs.modal', () => this.loadUnits());
   },
 
   initializePaypal () {
@@ -93,7 +96,12 @@ const App = {
           $.post('/api/buy', JSON.stringify(details)).done((response) => {
             app.loadUnits();
             app.buyModalElement.modal('hide');
-            app.finishModalElement.modal('show');
+            if (response.success) {
+              app.buyModalElement.on('hidden.bs.modal', () => {
+                app.finishModalElement.modal('show');
+                app.emailElement.html(response.email);
+              });
+            }
           });
         });
       }
@@ -113,7 +121,8 @@ const App = {
   },
 
   onAmountChanged () {
-    this.amountElement.html(this.formAmountElement.val() * this.price);
+    const units = this.formAmountElement.val();
+    this.amountElement.html(units * this.price);
   },
 
   onWindowScrolled () {
@@ -132,6 +141,7 @@ const App = {
   setUnits (units) {
     this.$units = units;
     this.unitsElement.html(units);
+    this.formAmountElement.max = units;
   },
 };
 

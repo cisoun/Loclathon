@@ -54,11 +54,11 @@ function buy($data)
 
     return query(function($db) use ($array) {
         $query = sql_build_insert($db, 'orders', $array);
-        $query->execute()->finalize();
-        //$id = $db->lastInsertRowID();
-        //$array['id'] = $id;
+        $result = $query->execute();
+        $query->finalize();
+
         return array(
-            'success' => true,
+            'success' => $result !== false,
             'email' => $array['email']
         );
     });
