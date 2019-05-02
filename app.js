@@ -95,11 +95,14 @@ const App = {
         return actions.order.capture().then((details) => {
           $.post('/api/buy', JSON.stringify(details)).done((response) => {
             app.loadUnits();
-            app.buyModalElement.modal('hide');
             if (response.success) {
+              app.buyModalElement.modal('hide');
               app.buyModalElement.on('hidden.bs.modal', () => {
                 app.finishModalElement.modal('show');
                 app.emailElement.html(response.email);
+                // Remove listener so we don't show the confirmation modal if
+                // buyModal is shown and cancelled.
+                app.buyModalElement.off('hidden.bs.modal');
               });
             }
           });
