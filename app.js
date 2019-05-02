@@ -121,7 +121,8 @@ const App = {
   },
 
   onAmountChanged () {
-    const units = this.formAmountElement.val();
+    const units = Math.min(Math.max(this.formAmountElement.value, 0), this.units);
+    this.formAmountElement.value = units;
     this.amountElement.html(units * this.price);
   },
 
