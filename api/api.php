@@ -95,6 +95,7 @@ function sendConfirmation($data)
     $message = str_replace('[CUSTOMER]', $customer, $message);
     $message = str_replace('[AMOUNT]', $data['amount'], $message);
     $message = str_replace('[UNITS]', $data['units'], $message);
+    $message = str_replace('[LOGO]', $CONFIG['logo'], $message);
 
     $headers[] = 'MIME-Version: 1.0';
     $headers[] = 'Content-type: text/html; charset=utf-8';
