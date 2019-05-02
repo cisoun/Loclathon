@@ -2,6 +2,8 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+require_once 'config.php';
+
 function sql_build_insert($db, $table, $array)
 {
     $keys = array_keys($array);
@@ -52,16 +54,20 @@ function buy($data)
         'date'          => $data['create_time']
     );
 
-    return query(function($db) use ($array) {
+    $result = query(function($db) use ($array) {
         $query = sql_build_insert($db, 'orders', $array);
         $result = $query->execute();
-        $query->finalize();
-
-        return array(
-            'success' => $result !== false,
-            'email' => $array['email']
-        );
+        if ($result)
+            $result->finalize();
+        return $result;
     });
+
+    sendConfirmation($array);
+
+    return array(
+        'success' => $result !== false,
+        'email' => $array['email']
+    );
 }
 
 function price($data)
@@ -69,6 +75,38 @@ function price($data)
     return query(function($db) {
         return $db->querySingle('SELECT price FROM bottles');
     });
+}
+
+function sendConfirmation($data)
+{
+    global $CONFIG;
+
+    $subject = 'Merci pour votre achat !';
+
+    $message = file_get_contents('confirm.html');
+
+    $customer = array(
+        $data['first_name'] . ' ' . $data['last_name'],
+        $data['address'],
+        $data['postal_code'] . ' ' . $data['city'],
+        $data['country']
+    );
+
+    $customer = implode('<br/>', $customer);
+
+    $message = str_replace('[CUSTOMER]', $customer, $message);
+    $message = str_replace('[AMOUNT]', $data['amount'], $message);
+    $message = str_replace('[UNITS]', $data['units'], $message);
+
+    $headers[] = 'MIME-Version: 1.0';
+    $headers[] = 'Content-type: text/html; charset=utf-8';
+
+    $to = $data['email'];
+    $headers[] = "To: <$to>";
+    $headers[] = 'From: Le Loclathon <' . $CONFIG['email'] . '>';
+
+    // Envoi
+    mail($to, $subject, $message, implode("\r\n", $headers));
 }
 
 function units($data)
