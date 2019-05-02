@@ -83,7 +83,7 @@ function sendConfirmation($data)
 
     $subject = 'Merci pour votre achat !';
 
-    $message = file_get_contents('confirm.html');
+    $message = file_get_contents('email.html');
 
     $customer = array(
         $data['first_name'] . ' ' . $data['last_name'],
