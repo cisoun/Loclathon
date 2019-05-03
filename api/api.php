@@ -47,7 +47,7 @@ function buy($data)
         'postal_code'   => $payer['address']['postal_code'],
         'country'       => $payer['address']['country_code'],
         'units'         => $items['quantity'],
-        'amount'        => $data['purchase_units'][0]['amount']['value'],
+        'amount'        => $items['quantity'] * price($data),
         'status'        => '1',
         'date'          => $data['create_time']
     );
@@ -79,8 +79,8 @@ function sendConfirmation($data)
 {
     global $CONFIG;
 
+    $to = $data['email'];
     $subject = 'Merci pour votre achat !';
-
     $message = file_get_contents('email.html');
 
     $customer = array(
@@ -89,7 +89,6 @@ function sendConfirmation($data)
         $data['postal_code'] . ' ' . $data['city'],
         $data['country']
     );
-
     $customer = implode('<br/>', $customer);
 
     $message = str_replace('[CUSTOMER]', $customer, $message);
@@ -99,12 +98,9 @@ function sendConfirmation($data)
 
     $headers[] = 'MIME-Version: 1.0';
     $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-
-    $to = $data['email'];
     $headers[] = "To: <$to>";
     $headers[] = 'From: Le Loclathon <' . $CONFIG['email'] . '>';
 
-    // Envoi
     mail($to, $subject, $message, implode("\r\n", $headers));
 }
 
