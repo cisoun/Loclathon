@@ -100,6 +100,7 @@ function sendConfirmation($data)
     $headers[] = 'Content-type: text/html; charset=iso-8859-1';
     $headers[] = "To: <$to>";
     $headers[] = 'From: Le Loclathon <' . $CONFIG['email'] . '>';
+    $headers[] = 'Bcc: ' .  implode(',', $CONFIG['agents']);
 
     mail($to, $subject, $message, implode("\r\n", $headers));
 }
