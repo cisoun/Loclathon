@@ -118,6 +118,7 @@ const App = {
           $.post('/api/buy', JSON.stringify(details)).done((response) => {
             if (response.success) {
               app.setModalStep(2);
+              app.emailElement.html(response.email);
             } else {
               app.setModalStep(3);
             }
@@ -181,7 +182,7 @@ const App = {
 
     if (step == 0) {
       this.finishButtonElement.html(this.messages.modal.finishButton[0]);
-    } else if (step == 3) {
+    } else if (step > 1) {
       this.finishButtonElement.html(this.messages.modal.finishButton[1]);
     }
   },
