@@ -1,8 +1,9 @@
 RewriteEngine On
 
 # Api
-RewriteRule ^buy?$ api.php
-RewriteRule ^units?$ api.php
+RewriteRule ^buy$ api.php
+RewriteRule ^price$ api.php
+RewriteRule ^units$ api.php
 
 # Exceptions
 RewriteRule ^email.html$ email.html
