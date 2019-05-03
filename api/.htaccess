@@ -9,4 +9,4 @@ RewriteRule ^email.html$ email.html
 
 # Redirect everything else.
 RewriteCond $1 !^(api.php)
-RewriteRule ^(.*)$ https://loclathon.ch [L]
+RewriteRule ^(.*)$ / [R=302,NC,L]
