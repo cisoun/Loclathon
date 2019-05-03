@@ -119,6 +119,7 @@ const App = {
             if (response.success) {
               app.setModalStep(2);
               app.emailElement.html(response.email);
+              app.loadUnits();
             } else {
               app.setModalStep(3);
             }

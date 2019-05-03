@@ -97,10 +97,14 @@ function sendConfirmation($data)
     $message = str_replace('[LOGO]', $CONFIG['logo'], $message);
 
     $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+    $headers[] = 'Content-type: text/html; charset=utf-8';
     $headers[] = "To: <$to>";
     $headers[] = 'From: Le Loclathon <' . $CONFIG['email'] . '>';
     $headers[] = 'Bcc: ' .  implode(',', $CONFIG['agents']);
+    $headers[] = 'Reply-To: ' . $CONFIG['email'];
+    $headers[] = 'Return-Path: ' . $CONFIG['email'];
+    $headers[] = 'X-Mailer: PHP/' . phpversion();
+    $headers[] = 'X-MSMail-Priority: High';
 
     mail($to, $subject, $message, implode("\r\n", $headers));
 }
