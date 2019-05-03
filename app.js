@@ -11,6 +11,7 @@ const App = {
   formElement: null,
   navbarElement: null,
   paypalElement: null,
+  priceElement: null,
   spinnerElement: null,
   unitsElement: null,
 
@@ -31,6 +32,7 @@ const App = {
     this.formElement = $('#form');
     this.navbarElement = $('.navbar');
     this.paypalElement = $('#paypal-button');
+    this.priceElement = $('#price');
     this.spinnerElement = $('#spinner');
     this.unitsElement = $('#units');
 
@@ -68,8 +70,7 @@ const App = {
       createOrder: function(data, actions) {
         const currency = 'CHF';
         const items = app.formAmountElement.value;
-        const price = 35;
-        const total = items * price;
+        const total = items * app.price;
 
         app.showSpinner();
 
@@ -77,7 +78,7 @@ const App = {
         return actions.order.create({
           purchase_units: [{
             amount: {
-              currency_code: 'CHF',
+              currency_code: currency,
               value: total,
               breakdown: {
                 item_total: {
@@ -148,6 +149,7 @@ const App = {
   setPrice (price) {
     this.$price = price;
     this.amountElement.html(price);
+    this.priceElement.html(price);
   },
 
   setUnits (units) {
