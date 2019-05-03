@@ -98,7 +98,7 @@ function sendConfirmation($data)
     $message = str_replace('[LOGO]', $CONFIG['logo'], $message);
 
     $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=utf-8';
+    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
 
     $to = $data['email'];
     $headers[] = "To: <$to>";

@@ -8,8 +8,10 @@ const App = {
   finishModalElement: null,
   formAgeElement: null,
   formAmountElement: null,
+  formElement: null,
   navbarElement: null,
   paypalElement: null,
+  spinnerElement: null,
   unitsElement: null,
 
   get isAgeConfirmed () { return this.formAgeElement.checked; },
@@ -26,8 +28,10 @@ const App = {
     this.finishModalElement = $('#finishModal')
     this.formAgeElement = $('#formAgeCheck')[0];
     this.formAmountElement = $('#formAmount')[0];
+    this.formElement = $('#form');
     this.navbarElement = $('.navbar');
     this.paypalElement = $('#paypal-button');
+    this.spinnerElement = $('#spinner');
     this.unitsElement = $('#units');
 
     this.initializePaypal();
@@ -42,6 +46,7 @@ const App = {
   },
 
   initializeModal () {
+    this.spinnerElement.toggle(false);
     this.formAgeElement.onchange = () => this.onAgeChanged();
     this.formAgeElement.value = false;
     this.onAgeChanged();
@@ -62,9 +67,11 @@ const App = {
 
       createOrder: function(data, actions) {
         const currency = 'CHF';
-        const items = $('#formAmount').val();
+        const items = app.formAmountElement.value;
         const price = 35;
         const total = items * price;
+
+        app.showSpinner();
 
         // Set up the transaction
         return actions.order.create({
@@ -96,6 +103,7 @@ const App = {
           $.post('/api/buy', JSON.stringify(details)).done((response) => {
             app.loadUnits();
             if (response.success) {
+              app.showSpinner(false);
               app.buyModalElement.modal('hide');
               app.buyModalElement.on('hidden.bs.modal', () => {
                 app.finishModalElement.modal('show');
@@ -146,6 +154,11 @@ const App = {
     this.$units = units;
     this.unitsElement.html(units);
     this.formAmountElement.max = units;
+  },
+
+  showSpinner (show=true) {
+    this.formElement.toggle(!show);
+    this.spinnerElement.toggle(show);
   },
 };
 
