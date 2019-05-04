@@ -79,9 +79,12 @@ footer .logo {
   overflow: hidden;
   padding: 0;
 }
+
 #bottle .background {
   background-image: url('img/locloise.jpg');
 }
+
+#paypal-button { padding-top: 0.4rem; }
 
 #a-propos {
   height: 50rem;

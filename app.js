@@ -75,10 +75,12 @@ const App = {
     paypal.Buttons({
       locale: 'fr_CH',
       style: {
-        size: 'small',
         color: 'black',
-        shape: 'pill',
+        //shape: 'pill',
         label: 'checkout',
+        layout: 'horizontal',
+        tagline: false,
+        height: 38,
       },
 
       createOrder: function(data, actions) {
