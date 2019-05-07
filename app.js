@@ -116,19 +116,25 @@ const App = {
       },
       onApprove: function(data, actions) {
         return actions.order.capture().then((details) => {
+          const success = 'status' in details && details['status'] == 'COMPLETED';
+
+          if (!success) {
+            app.setModalStep(3);
+            return;
+          }
+
           $.post('/api/buy', JSON.stringify(details)).done((response) => {
-            if (response.success) {
-              app.setModalStep(2);
-              app.emailElement.html(response.email);
-              app.loadUnits();
-            } else {
-              app.setModalStep(3);
-            }
+            app.setModalStep(2);
+            app.emailElement.html(response.email);
+            app.loadUnits();
           });
         });
       },
       onCancel: function (data) {
         app.setModalStep(3);
+      },
+      onError: function (err) {
+        app.setModalSetp(3);
       }
     }).render('#' + this.paypalButtonElement.attr('id'));
   },
