@@ -76,7 +76,6 @@ const App = {
       locale: 'fr_CH',
       style: {
         color: 'black',
-        //shape: 'pill',
         label: 'checkout',
         layout: 'horizontal',
         tagline: false,

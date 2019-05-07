@@ -34,7 +34,6 @@ footer .logo {
   width: 100%;
 }
 
-.opaque { background-color: var(--background); }
 .navbar-brand { color: white; }
 
 #navbar { transition: background-color 0.5s; }
@@ -90,6 +89,7 @@ footer .logo {
   height: 50rem;
   overflow: hidden;
 }
+
 #a-propos .background {
   background-image: url('img/loclathon.jpg');
   opacity: 0.2;
@@ -104,9 +104,9 @@ div:hover > .background {
   background-repeat: no-repeat;
   background-size: contain;
 }
-.logo {
-  background-image: url('img/logo-outline.svg');
-}
+
+.logo { background-image: url('img/logo-outline.svg'); }
+.opaque { background-color: var(--background); }
 
 @keyframes fadein {
     from { opacity: 0; transform: scale(3); }
