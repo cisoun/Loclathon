@@ -9,10 +9,10 @@ function sql_build_insert($db, $table, $array)
     $keys = array_keys($array);
 
     $query = 'INSERT INTO %s ( %s ) VALUES ( %s )';
-    $insert = implode(',', $keys);
-    $values = ':' . implode(',:', $keys);
+    $query_keys = implode(',', $keys);
+    $query_values = ':' . implode(',:', $keys);
 
-    $query = sprintf($query, $table, $insert, $values);
+    $query = sprintf($query, $table, $query_keys, $query_values);
     $stmt = $db->prepare($query);
 
     foreach ($array as $key => $value)
