@@ -38,7 +38,7 @@ function buy($data)
 
     $address = $shipping['address']['address_line_1'];
     if (array_key_exists('address_line_2', $shipping['address']))
-        $address .= '\r\n' . $shipping['address']['address_line_2'];
+        $address .= chr(10) . $shipping['address']['address_line_2'];
 
     $array = array(
         'order_id'      => $data['id'],
@@ -58,7 +58,7 @@ function buy($data)
 
     // At this point, send the confirmation to the customer and try to register
     // the order into the database. If it fails, it should be visible in the
-    // dashboard of Paypal.
+    // dashboard of Paypal anyway.
 
     sendConfirmation($array);
 
@@ -93,7 +93,7 @@ function sendConfirmation($data)
 
     $customer = array(
         $data['full_name'],
-        str_replace('\r\n', '<br/>', $data['address']),
+        str_replace(chr(10), '<br/>', $data['address']),
         $data['postal_code'] . ' ' . $data['city'],
         $data['country']
     );
