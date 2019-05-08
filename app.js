@@ -184,6 +184,8 @@ const App = {
       $(this.stepElements[i]).toggle(step == i);
     }
 
+    // Toggle elements visibility and content according to current step.
+
     this.modalTitleElement.html(this.messages.modal.title[step]);
     this.retryButtonElement.toggle(step == 3);
     this.paypalButtonElement.toggle(step == 0 && this.isAgeConfirmed);
