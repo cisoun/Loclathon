@@ -3,6 +3,7 @@ const App = {
   $units: 50,
 
   messages: {
+    outOfStock: 'Stock épuisé',
     modal: {
       finishButton: ['Annuler', 'Fermer'],
       title: ['Acheter', 'Vérification...', 'Merci pour votre achat !', 'Oups...'],
@@ -10,6 +11,7 @@ const App = {
   },
 
   amountElement: null,
+  buyElement: null,
   emailElement: null,
   finishButtonElement: null,
   formAgeElement: null,
@@ -22,6 +24,7 @@ const App = {
   priceElement: null,
   retryButtonElement: null,
   stepElements: null,
+  statusElement: null,
   unitsElement: null,
 
   get isAgeConfirmed () { return this.formAgeElement.checked; },
@@ -33,6 +36,7 @@ const App = {
 
   initialize () {
     this.amountElement = $('#amount');
+    this.buyElement = $('#buy');
     this.emailElement = $('#email');
     this.finishButtonElement = $('#finish-button');
     this.formAgeElement = $('#formAgeCheck')[0];
@@ -44,6 +48,7 @@ const App = {
     this.paypalButtonElement = $('#paypal-button');
     this.priceElement = $('#price');
     this.retryButtonElement = $('#retry-button');
+    this.statusElement = $('#status');
     this.stepElements = $('.buy-step');
     this.unitsElement = $('#units');
 
@@ -207,6 +212,11 @@ const App = {
     this.$units = units;
     this.unitsElement.html(units);
     this.formAmountElement.max = units;
+
+    if (units <= 0) {
+      this.buyElement.remove();
+      this.statusElement.html(this.outOfStock);
+    }
   },
 };
 
