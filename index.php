@@ -60,7 +60,7 @@
       <div class="col-md-6 d-flex flex-column justify-content-center p-5">
         <div>
           <div class="h1">La Locloise</div>
-          <div id="status" class="h3 pb-5"><span id="price">35</span> CHF</div>
+          <div id="status" class="h3 pb-5"><span id="price">-</span> CHF</div>
           <p>
             La Locloise est une absinthe conçue spécialement à l'occasion du Loclathon.<br/>
             Son goût mentholée et doux procure une sensation rafraîchissante qui ne déplaîra pas au randonneur motivé à l'emporter avec lui lors de sa marche.
@@ -71,7 +71,7 @@
               Volume : 0.5 L | Alcool : 54 %
             </strong>
           </p>
-          <div id="buy">
+          <div id="buy" class="d-none">
             <p class="mt-5">Il reste actuellement <span id="units" class="font-weight-bold">0</span> bouteilles.</p>
             <a class="btn btn-outline-light" href="#" data-toggle="modal" data-target="#modal">Acheter</a>
           </div>

@@ -54,8 +54,8 @@ const App = {
 
     this.initializePaypal();
     this.initializeModal();
-    this.loadPrice();
     this.loadUnits();
+    this.loadPrice();
 
     window.onscroll = () => this.onWindowScrolled();
     this.formAmountElement.onchange = () => this.onAmountChanged();
@@ -212,10 +212,10 @@ const App = {
     this.$units = units;
     this.unitsElement.html(units);
     this.formAmountElement.max = units;
+    this.buyElement.toggleClass('d-none', units < 1);
 
     if (units <= 0) {
-      this.buyElement.remove();
-      this.statusElement.html(this.outOfStock);
+      this.statusElement.html(this.messages.outOfStock);
     }
   },
 };
