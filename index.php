@@ -63,7 +63,7 @@
           <div id="status" class="h3 pb-5"><span id="price">-</span> CHF</div>
           <p>
             La Locloise est une absinthe conçue spécialement à l'occasion du Loclathon.<br/>
-            Son goût mentholée et doux procure une sensation rafraîchissante qui ne déplaîra pas au randonneur motivé à l'emporter avec lui lors de sa marche.
+            Son goût mentholé et doux procure une sensation rafraîchissante qui ne déplaîra pas au randonneur motivé à l'emporter avec lui lors de sa marche.
           </p>
           <p>
             Distillée à Môtiers dans le Val-de-Travers.<br>
