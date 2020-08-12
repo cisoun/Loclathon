@@ -1,5 +1,5 @@
 <?php
-$CONFIG = array(
+$CONFIG = [
     # Persons email to notify when an order is made.
     'agents' => [],
 
@@ -11,5 +11,5 @@ $CONFIG = array(
 
     # Logo URL that will be included in the confirmation.
     'logo' => ''
-);
+];
 ?>
