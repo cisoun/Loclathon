@@ -1,5 +1,5 @@
 img/
 ._*
 *.db
-api/config.php
+config.php
 .DS_Store
