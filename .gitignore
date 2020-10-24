@@ -1,5 +1,8 @@
-img/
+cache/*
+static/fonts/
+static/img/
+static/photos/
+vendor
 ._*
-*.db
-config.php
 .DS_Store
+config.php
