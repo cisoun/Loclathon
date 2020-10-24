@@ -1,0 +1,386 @@
+:root {
+  --gray-100: #111;
+  --gray-300: #444;
+  --gray-500: #777;
+  --gray-700: #aaa;
+  --gray-800: #ccc;
+  --gray-850: #ddd;
+  --gray-900: #eee;
+
+
+  --red-900: #fff1f0;
+  --red-800: #ffccc7;
+  --red-700: #ffa39e;
+  --red-600: #ff7875;
+  --red-500: #ff4d4f;
+  --red-400: #f5222d;
+  --red-300: #cf1322;
+  --red-200: #a8071a;
+  --red-100: #820014;
+  --red-050: #5c0011;
+
+  --lime-900: #fcffe6;
+  --lime-800: #f4ffb8;
+  --lime-700: #eaff8f;
+  --lime-600: #d3f261;
+  --lime-500: #bae637;
+  --lime-400: #a0d911;
+  --lime-300: #7cb305;
+  --lime-200: #5b8c00;
+  --lime-100: #3f6600;
+  --lime-050: #254000;
+
+  --green-900: #f6ffed;
+  --green-800: #d9f7be;
+  --green-700: #b7eb8f;
+  --green-600: #95de64;
+  --green-500: #73d13d;
+  --green-400: #52c41a;
+  --green-300: #389e0d;
+  --green-200: #237804;
+  --green-100: #135200;
+  --green-050: #092b00;
+
+  --primary-dark: #1d463d;
+  --primary: #25b07c;
+  --secondary: #e54a4a;
+
+  --background: var(--gray-100);
+  --foreground: var(--gray-900);
+
+  --border-radius: 0.3rem;
+  --input-shadow-size: 0.2rem;
+
+  --transition: 0.3s;
+
+  --view-desktop: 992px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: var(--background);
+  border: 0;
+  color: var(--foreground);
+  /* font-family: 'Raleway', sans-serif; */
+  margin: 0;
+  padding: 0;
+}
+
+section { clear: both; }
+h1 { font-size: 3rem; font-weight: normal; margin-top: 10rem; }
+a { color: var(--gray-700); text-decoration: none; }
+a:hover { color: var(--gray-900); }
+
+.container { padding-bottom: 5rem; }
+
+.btn {
+  background-color: transparent;
+  border: 1px solid var(--gray-900);
+  border-radius: 0.3rem;
+  color: var(--foreground);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.5rem 2rem;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.btn:hover {
+  background-color: var(--foreground);
+}
+.btn-dark {
+  border-color: var(--background);
+  color: var(--background);
+}
+.btn-dark:hover {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.alert {
+  background-color: var(--gray-850);
+  border-radius: var(--border-radius);
+  color: var(--gray-300);
+  display: block;
+  padding: 1rem;
+  transition: all 0.3s;
+}
+.alert.hidden {
+  height: 0;
+  margin: 0;
+  opacity: 0;
+  padding-bottom: 0;
+  padding-top:0;
+}
+.alert.error { background-color: var(--red-800); color: var(--red-200); }
+
+.card {
+  border: 1px solid var(--gray-800);
+  border-radius: var(--border-radius);
+  margin: 1rem 0;
+  padding: 1.6rem;
+}
+
+nav {
+  background-color: var(--background);
+  font-weight: bold;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  transition: background-color var(--transition);
+  width: 100%;
+  z-index: 1;
+}
+nav.transparent { background-color: transparent; }
+nav > ul { list-style-type: none; margin: 0; padding: 0; }
+
+footer .logo {
+  height: 2rem;
+  margin-bottom: 1rem;
+  width: 2rem;
+}
+
+#loclathon {
+  background-attachment: fixed;
+  background-image: url('../img/photo.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 30rem;
+  overflow: hidden;
+  padding-bottom: 12rem;
+  padding-top: 12rem;
+  text-align: center;
+}
+
+#loclathon .fade {
+  background: linear-gradient(#000, transparent);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20rem;
+}
+#loclathon .container {
+  font-family: 'Bebas Neue', sans-serif;
+  text-align: left;
+}
+#loclathon .btn { margin-top: 10rem; }
+#loclathon .btn:hover .outline { transition: all var(--transition); }
+#loclathon .btn:hover .outline { stroke: var(--background); }
+
+#loclathon h1,
+#loclathon h3,
+#loclathon h5 {
+  margin: 0;
+}
+
+#loclathon h1 { text-shadow: 0.5rem 1rem var(--gray-100); }
+#loclathon h3,
+#loclathon h5 { text-shadow: 0.2rem 0.5rem var(--gray-100); }
+
+#loclathon h1 { font-size: 8rem; }
+#loclathon h3 { font-size: 3rem; }
+#loclathon h5 { font-size: 2rem; margin-bottom: 3rem; }
+
+#loclathon .highlight {
+  background-color: var(--gray-100);
+  display: inline-block;
+  font-size: 2rem;
+  margin: 1rem auto 0 auto;
+  padding: 1rem 2rem;
+}
+
+#loclathon .container * { transform: skewY(-3deg); }
+#loclathon .logo {
+  display: block;
+  height: 6rem;
+  width: 6rem;
+}
+#loclathon .btn {
+  background-color: var(--secondary);
+  border-radius: unset;
+  border: 0;
+  box-shadow: 0 1rem 3rem var(--gray-100);
+  color: var(--gray-900);
+  display: inline-block;
+  font-weight: bold;
+  line-height: 2rem;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+#loclathon .btn:hover {
+    background-color: var(--gray-900);
+    color: var(--gray-100);
+    transform: scale(1.1) skewY(-3deg);
+}
+#loclathon .btn .gg { margin-left: 0.5rem; }
+
+
+#locloise > div { height: 50rem; }
+
+#locloise #bottle {
+  background-image: url('../img/locloise.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#locloise #buy { margin-top: 3rem; }
+#locloise #units { font-weight: bold; }
+
+#locloise #status {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  margin-top: -2rem;
+}
+
+#info { padding-bottom: 10rem; }
+#faq {
+  float: unset;
+  margin-left: auto;
+  margin-right: auto;
+}
+#faq div span { vertical-align: middle; }
+#faq > .right { text-align: right; }
+#faq .logo { display: inline-block; }
+
+footer {
+  border-top: 1px dotted var(--gray-300);
+  font-size: 0.8rem;
+  padding: 3rem 0;
+}
+footer h3 .outline {
+  height: 1.4rem;
+  margin-left: -2rem;
+  margin-top: -0.125rem;
+  position: absolute;
+  width: 1.4rem;
+}
+footer a {
+  display: block;
+  padding: 0.3rem 0;
+  margin-right: 2rem;
+  transition: padding var(--transition);
+}
+footer a:hover { padding-left: 0.3rem; }
+footer div a:last-of-type { border-bottom: none; }
+footer .outline { stroke-width: 1.4; }
+
+.logo {
+  background-image: url('../img/logo-outline.svg');
+  background-size: cover;
+}
+
+.bubble {
+  border-radius: 0.2rem;
+	position: relative;
+  display: inline-block;
+  margin: 0.5rem;
+  max-width: calc(100% - 4rem);
+  padding: 1rem 2rem;
+}
+.left > .bubble { background: var(--primary); font-weight: bold; }
+.left > .bubble:after {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: tranparent;
+	border-right-color: var(--primary);
+	border-width: 10px;
+	margin-top: -10px;
+}
+.right > .bubble { background: var(--primary-dark); }
+.right > .bubble:after {
+	left: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: transparent;
+	border-left-color: var(--primary-dark);
+	border-width: 10px;
+	margin-top: -10px;
+}
+
+.right > .logo {
+  margin-left: 1rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Phones */
+@media screen and (max-width: 600px) {
+  .uni > div, .dual > div, .tria > div, .quad > div { width: 100%; }
+
+  .modal .dialog {
+    height: 100%;
+    left: 0;
+    margin-left: unset;
+    top: 0;
+    width: 100%;
+  }
+
+  nav { background-color: var(--background); }
+  nav .separator { display: none; }
+  nav .trigger { display: block; vertical-align: middle; }
+  nav .menu { display: none; overflow: hidden; text-align: left; }
+  nav .menu a { display: block; padding: 1rem 0rem 1rem 5rem; }
+  nav .menu a:last-child { margin-bottom: 2rem; }
+  nav:hover div.menu { display: block; }
+
+  #locloise .highlight { display: block; }
+
+  footer { padding-left: 3rem; }
+}
+
+/* Tablets */
+@media screen and (min-width: 600px) and (max-width: 992px) {
+  .uni > div, .dual > div, .tria > div { width: 100%; }
+  .quad > div { width: 25%; }
+}
+
+/* Phones and tablets */
+@media screen and (max-width: 992px) {
+  .container { width: 100%; }
+
+  #loclathon { padding: 10rem auto; }
+  #loclathon h1 { font-size: 14vw !important; }
+  #loclathon h3 { font-size: 8vw !important; }
+  #loclathon h5 { font-size: 6vw !important; }
+  #loclathon .highlight { font-size: 6vw; }
+
+  #loclathon h1 { text-shadow: 1vw 2vw var(--gray-100); }
+  #loclathon h3,
+  #loclathon h5 { text-shadow: 0.5vw 1vw var(--gray-100); }
+}
+
+/* Desktop */
+@media screen and (min-width: 992px) {
+  .container { width: 992px; }
+
+  .uni > div { width: 100%; }
+  .dual > div { width: 50%; }
+  .tria > div { width: 33.33%; }
+  .quad > div { width: 25%; }
+
+  .padded { padding: 3rem; }
+
+  form .dual > div,
+  form .tria > div { padding-left: 0.5rem; padding-right: 0.5rem; }
+  form .dual > div:first-child,
+  form .tria > div:first-child { padding-left: 0; }
+  form .dual > div:last-child,
+  form .tria > div:last-child { padding-right: 0; }
+
+  #faq { width: 80%; }
+}

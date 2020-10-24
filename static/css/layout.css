@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,400,600');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap'); */
+/* @import url('/static/fonts/inter/inter.css'); */
+
+:root {
+  /* Link: https://www.colorbox.io/#steps=9#hue_start=315#hue_end=293#hue_curve=easeInQuad#sat_start=0#sat_end=0#sat_curve=easeOutQuad#sat_rate=130#lum_start=7#lum_end=93#lum_curve=linear#lock_hex=111111#minor_steps_map=0,10,none */
+  --gray-100: #111111;
+  --gray-150: #1F1F1F;
+  --gray-200: #2d2d2d;
+  --gray-300: #484848;
+  --gray-400: #646464;
+  --gray-500: #7f7f7f;
+  --gray-600: #9b9b9b;
+  --gray-700: #b6b6b6;
+  --gray-800: #d2d2d2;
+  --gray-850: #dfdfdf;
+  --gray-900: #ededed;
+
+  --red-900: #fff1f0;
+  --red-800: #ffccc7;
+  --red-700: #ffa39e;
+  --red-600: #ff7875;
+  --red-500: #ff4d4f;
+  --red-400: #f5222d;
+  --red-300: #cf1322;
+  --red-200: #a8071a;
+  --red-100: #820014;
+  --red-050: #5c0011;
+
+  --green-900: #f6ffed;
+  --green-800: #d9f7be;
+  --green-700: #b7eb8f;
+  --green-600: #95de64;
+  --green-500: #73d13d;
+  --green-400: #52c41a;
+  --green-300: #389e0d;
+  --green-200: #237804;
+  --green-100: #135200;
+  --green-050: #092b00;
+
+  --dark: var(--gray-100);
+  --light: white;
+
+  --primary-dark: #1d463d;
+  --primary: #25b07c;
+  --secondary: #e54a4a;
+
+  --background: white;
+  --foreground: var(--gray-100);
+
+  --alert-shadow: 0 0.5rem 2rem;
+  --border-radius: 0.3rem;
+
+  --input-background: var(--background);
+  --input-background-invalid: var(--background);
+  --input-border: 1px solid var(--gray-800);
+  --input-shadow-size: 0.2rem;
+  --input-shadow-focus: 0 0 0 var(--input-shadow-size) var(--gray-850);
+  --input-shadow-invalid: 0 0 0 var(--input-shadow-size) var(--red-700);
+
+  --separator: var(--gray-800);
+
+  --transition: 0.3s;
+
+  --view-desktop: 992px;
+
+}
+
+.dark {
+  --background: var(--gray-100);
+  --foreground: var(--light);
+  /* --input-border: 1px solid var(--gray-500); */
+  --input-background: var(--gray-150);
+  --input-background-invalid: var(--red-050);
+  --input-border: 0;
+  --input-color: var(--gray-700);
+  --input-shadow-focus: 0 0 0 var(--input-shadow-size) var(--gray-300);
+  --input-shadow-invalid: 0 0 0 var(--input-shadow-size) var(--red-300);
+
+  --separator: var(--gray-500);
+}
+
+* { box-sizing: border-box; }
+
+html,
+body {
+  border: 0;
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+}
+
+body, button, input, textarea {
+  font-family: 'Raleway', 'Josefin Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+section { clear: both; }
+
+h1 { font-size: 3rem; font-weight: normal; }
+a { color: var(--foreground); font-weight: 600; text-decoration: none; }
+a:hover { color: var(--gray-300);  }
+
+.container { margin-left: auto; margin-right: auto; }
+.uni > * { width: 100%; }
+.dual, .tria, .quad { white-space: nowrap; }
+.dual > *, .tria > *, .quad > * { float: left; white-space: normal; }
+.uni:after, .dual:after, .tria:after, .quad:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.center { margin-left: auto; margin-right: auto; }
+.hidden { display: none; }
+/*.left { float: left; }*/
+.padded { padding: 2rem; }
+/*.right { float: right; }*/
+.text-center { text-align: center; }
+.w-50 { display: inline-block; width: 50% !important; }
+
+button,
+input[type="submit"] {
+  background-color: var(--gray-100);
+  border: 0;
+  border-radius: var(--border-radius);
+  color: var(--light);
+  cursor: pointer;
+  font-weight: 700;
+  padding: 1rem;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+button:hover,
+input[type="submit"]:hover {
+  background-color: var(--gray-300);
+}
+
+svg.outline {
+  --outline-fill: var(--foreground);
+  fill: none;
+  height: 1.4rem;
+  margin-top: -0.15rem;
+  stroke-width: 2;
+  stroke: var(--foreground);
+  vertical-align: middle;
+  width: 1.4rem;
+}
+svg.outline.dark {
+  --outline-fill: var(--background);
+  stroke: var(--background);
+}
+
+
+/*
+ * Forms
+ */
+
+form div.group { padding: 0.5rem 0; }
+form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+form textarea,
+form div.group.dropdown > input + ul,
+form input[type="email"],
+form input[type="number"],
+form input[type="tel"],
+form input[type="text"],
+form div.group.number > div {
+  background: var(--input-background);
+  border: var(--input-border);
+  border-radius: var(--border-radius);
+  color: var(--input-color);
+  padding: 0.5rem 1rem;
+  transition: all var(--transition);
+  width: 100%;
+}
+
+/* Focused/active input */
+form textarea:active,
+form textarea:focus,
+form input:active,
+form input:focus,
+form div.group.radio:active {
+  border-color: var(--gray-800);
+  box-shadow: var(--input-shadow-focus);
+  color: var(--foreground);
+  outline: none;
+}
+/* Invalid inputs */
+form input.invalid,
+form textarea.invalid,
+form textarea:focus:invalid,
+form input:focus:invalid {
+  background: var(--input-background-invalid);
+  border-color: var(--red-600);
+  box-shadow: var(--input-shadow-invalid);
+  outline: none;
+}
+
+/*
+ * Form - Number
+ */
+
+form div.group.number div {
+  border-radius: var(--border-radius);
+  display: flex;
+  overflow: clip;
+  padding: 0;
+}
+form div.group.number button.add,
+form div.group.number button.remove {
+  background: var(--background);
+  border-radius: unset;
+  color: unset;
+  font-weight: 500;
+  padding: 0;
+  width: 3rem;
+}
+form div.group.number button.add { border-left: var(--input-border); }
+form div.group.number button.remove { border-right: var(--input-border); }
+form div.group.number button.add:hover,
+form div.group.number button.remove:hover { background-color: var(--gray-850); }
+form div.group.number div input {
+  border: 0;
+  box-shadow: none;
+  width: 100%;
+}
+
+/*
+ * Form - Checkbox
+ */
+
+form div.group.checkbox label { display: inline-block; }
+
+/*
+ * Form - Dropdown
+ */
+
+form div.group.dropdown ul { display: none; }
+form div.group.dropdown input:focus + ul {
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: auto;
+}
+form div.group.dropdown ul li {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.5rem 1rem;
+}
+form div.group.dropdown ul li:hover {
+  background-color: var(--dark) !important;
+  color: var(--light);
+}
+
+/*
+ * Form - Radio
+ */
+
+form div.group.radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+form div.group.radio {
+  border: 1px solid var(--gray-800);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  padding: 0;
+}
+form div.group.radio input[type="radio"] + label {
+  border-bottom: 1px solid var(--gray-800);
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  position: relative;
+  width: 100%;
+  transition: all var(--transition);
+}
+form div.group.radio input[type="radio"]:checked + label {
+  background-color: var(--gray-100);
+  color: var(--background);
+}
+form div.group.radio input[type="radio"] + label:last-of-type {
+  border: 0;
+}
+
+.alert {
+  background-color: var(--gray-850);
+  border-radius: var(--border-radius);
+  color: var(--gray-300);
+  display: block;
+  padding: 1rem;
+  transition: all 0.3s;
+}
+.alert > div {
+  border-left: 1px solid;
+  display: inline-block;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  vertical-align: middle;
+  width: calc(100% - 3rem);
+}
+.alert.hidden {
+  height: 0;
+  margin: 0;
+  opacity: 0;
+  padding-bottom: 0;
+  padding-top:0;
+}
+.alert .outline {
+  display: inline-block;
+  height: 1rem;
+  margin-top: unset;
+  width: 1rem;
+}
+.alert.success {
+  background: linear-gradient(#cdff9b, #abeca9);
+  box-shadow: var(--alert-shadow) #cdff9b;
+  color: #198020;
+}
+.alert.success > div { border-left-color: #198020; }
+.alert.success .outline { stroke: #198020; }
+.alert.error {
+  background: linear-gradient(var(--red-800), var(--red-700));
+  box-shadow: var(--alert-shadow) var(--red-800);
+  color: var(--red-200);
+}
+.alert.error .outline { stroke: var(--red-200); }
+.alert.error > div { border-left-color: var(--red-200); }
+
+.separator {
+  border-top: 1px solid var(--separator);
+  color: var(--separator);
+  height: 0;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.separator > span {
+  background-color: var(--background);
+  display: inline-block;
+  margin-top: -1rem;
+  padding: 0 1rem;
+  vertical-align: middle;
+}
+
+/* Phones */
+@media screen and (max-width: 600px) {
+  .container { width: 100%; }
+  .dual > *, .tria > *, .quad > * { width: 100%; }
+}
+
+/* Tablets */
+@media screen and (min-width: 600px) and (max-width: 992px) {
+  .dual > *, .tria > *, .quad > * { width: 100%; }
+}
+
+/* Desktop */
+@media screen and (min-width: 992px) {
+  .container { width: 992px; }
+
+  .dual > * { width: 50%; }
+  .tria > * { width: 33.33%; }
+  .quad > * { width: 25%; }
+
+  /* Forms */
+  form .dual > div,
+  form .tria > div { padding-left: 0.5rem; padding-right: 0.5rem; }
+  form .dual > div:first-child,
+  form .tria > div:first-child { padding-left: 0; }
+  form .dual > div:last-child,
+  form .tria > div:last-child { padding-right: 0; }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  /* .grid { grid-template-columns: auto auto; } */
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  /* .grid { grid-template-columns: auto auto; } */
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  /* .grid { grid-template-columns: auto auto auto auto; } */
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

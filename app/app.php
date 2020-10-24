@@ -1,6 +1,6 @@
 <?php
-require_once '../config.php';
-require_once 'db.php';
+
+require_once('../config.php');
 
 function buy($data)
 {
@@ -48,45 +48,17 @@ function buy($data)
     );
 }
 
-function price()
+function items() {
+  return query(function($db) {
+      return $db->querySingle('SELECT id, title, units, price FROM items');
+  });
+}
+
+function price($id)
 {
     return query(function($db) {
         return $db->querySingle('SELECT price FROM bottles');
     });
-}
-
-function sendConfirmation($data)
-{
-    global $CONFIG;
-
-    $to = $data['email'];
-    $subject = 'Merci pour votre achat !';
-    $message = file_get_contents('email.html');
-
-    $customer = array(
-        $data['full_name'],
-        str_replace(chr(10), '<br/>', $data['address']),
-        $data['postal_code'] . ' ' . $data['city'],
-        $data['country']
-    );
-    $customer = implode('<br/>', $customer);
-
-    $message = str_replace('[CUSTOMER]', $customer, $message);
-    $message = str_replace('[AMOUNT]', $data['amount'], $message);
-    $message = str_replace('[UNITS]', $data['units'], $message);
-    $message = str_replace('[LOGO]', $CONFIG['logo'], $message);
-
-    $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=utf-8';
-    $headers[] = "To: <$to>";
-    $headers[] = 'From: Le Loclathon <' . $CONFIG['email'] . '>';
-    $headers[] = 'Bcc: ' .  implode(',', $CONFIG['agents']);
-    $headers[] = 'Reply-To: ' . $CONFIG['email'];
-    $headers[] = 'Return-Path: ' . $CONFIG['email'];
-    $headers[] = 'X-Mailer: PHP/' . phpversion();
-    $headers[] = 'X-MSMail-Priority: High';
-
-    mail($to, $subject, $message, implode("\r\n", $headers));
 }
 
 function units()
@@ -95,4 +67,5 @@ function units()
         return $db->querySingle('SELECT b.units - (SELECT coalesce(SUM(units), 0) FROM orders) as units FROM bottles b');
     });
 }
+
 ?>

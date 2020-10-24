@@ -1,0 +1,16 @@
+nav > .trigger { display: none; }
+nav > ul > li { display: inline-block; }
+nav > ul > li:not(:last-child)::after {
+  background-color: var(--gray-500);
+  content: '';
+  display: inline-block;
+  height: 0.7rem;
+  margin: 0 1rem;
+  width: 1px;
+}
+nav > ul > li > a {
+  border-top: 3px solid transparent;
+  display: inline-block;
+  padding: 2rem;
+}
+nav > ul > li > a:hover { border-top-color: var(--foreground); }

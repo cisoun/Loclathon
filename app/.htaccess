@@ -1,6 +1,7 @@
 RewriteEngine On
 
 # Api
+RewriteRule * api.php
 RewriteRule ^buy$ api.php
 RewriteRule ^price$ api.php
 RewriteRule ^units$ api.php
