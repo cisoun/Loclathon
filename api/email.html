@@ -2,33 +2,74 @@
 <html lang="fr" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Loclathon</title>
   <style>
     body {
-      ackground-color: #fff;
+      border:0;
       color: #333;
       font-family: sans-serif;
-	  padding: 2rem;
+      margin: 0;
+      padding: 0;
     }
-	h1 { font-weight: 100; }
-    .signature {
-      margin-top: 3rem;
+    h1 { font-weight: 100; }
+    table { border-collapse: collapse; }
+    .center { text-align: center; }
+    #main { width: 100%; }
+    #main td { background-color: #eee;  }
+    #content {
+      background-color: #fff;
+      border-radius: 10px;
+      max-width: 600px;
+      overflow: clip;
+      width: 100%;
     }
+    #content td { background-color: #fff; padding: 2rem; }
+    #content thead tr td { border-bottom: 1px solid #eee; }
+    #content tfoot tr td { border-top: 1px solid #eee; }
   </style>
 </head>
 <body>
-  <img src="[LOGO]" alt="Logo"/>
+  <table id="main">
+    <tr>
+      <td></td>
+      <td width="600" style="padding:2rem;">
+        <table id="content" cellspacing="0" cellpadding="0" border="0">
+          <thead>
+            <tr>
+              <td align="center">
+                <img src="[LOGO]" alt="Logo"/>
+                <h1>Le Loclathon</h1>
+                <h3>L'équipe du Loclathon vous remercie pour votre achat !</h3>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <h3>Livraison</h3>
+                [CUSTOMER]
 
-  <h1>Merci !</h1>
-  <p>L'équipe du Loclathon vous remercie pour votre achat :</p>
-  <p>
-    <b>La Locloise</b><br>
-    Nombre : [UNITS]<br>
-    Prix total : [AMOUNT] CHF
-  </p>
-  <p>La livraison s'effectuera à l'adresse suivante :</p>
-  <p>[CUSTOMER]</p>
-  <p class="signature">À bientôt !</p>
-  <p><i>- Le Loclathon</i></p>
+                <h3>Articles</h3>
+                <b>La Locloise</b><br>
+                Nombre : [UNITS]<br>
+                Prix total : [AMOUNT] CHF
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <p>À bientôt !</p>
+                <p><i>- Le Loclathon</i></p>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </td>
+      <td></td>
+    </tr>
+  </table>
 </body>
 </html>
