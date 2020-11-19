@@ -1,5 +1,6 @@
 img/
 photos/
+vendor/
 ._*
 *.db
 api/config.php
