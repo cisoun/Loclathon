@@ -91,6 +91,10 @@ const App = {
         const currency = 'CHF';
         const items = app.formAmountElement.value;
         const total = items * app.price;
+		let shipping = 7;
+		if (items > 3) {
+			shipping = 9;
+		}
 
         app.setModalStep(1);
 
@@ -99,10 +103,10 @@ const App = {
           purchase_units: [{
             amount: {
               currency_code: currency,
-              value: total,
+              value: total + shipping,
               breakdown: {
                 item_total: {
-                  value: total,
+                  value: total + shipping,
                   currency_code: currency
                 }
               }
@@ -115,7 +119,12 @@ const App = {
                 currency_code: currency,
                 value: app.price
               }
-            }]
+            }, {
+			  name: 'Frais de livraison',
+			  description: 'Frais de livraison pour la Suisse.',
+			  quantity: '1',
+			  unit_amount: { currency_code: currency, value: shipping }
+			}]
           }]
         });
       },
@@ -158,7 +167,7 @@ const App = {
 
   onAmountChanged () {
     // Clamp units from 0 to available units.
-    const units = Math.min(Math.max(this.formAmountElement.value, 0), this.units);
+    const units = Math.min(Math.max(this.formAmountElement.value, 1), this.formAmountElement.max);
     this.formAmountElement.value = units;
     this.amountElement.html(units * this.price);
   },
@@ -211,7 +220,7 @@ const App = {
   setUnits (units) {
     this.$units = units;
     this.unitsElement.html(units);
-    this.formAmountElement.max = units;
+    //this.formAmountElement.max = units;
     this.buyElement.toggleClass('d-none', units < 1);
 
     if (units <= 0) {

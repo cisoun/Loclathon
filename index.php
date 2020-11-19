@@ -64,7 +64,9 @@
       <div class="col-md-6 d-flex flex-column justify-content-center p-5">
         <div>
           <div class="h1">La Locloise</div>
-          <div id="status" class="h3 pb-5"><span id="price">-</span> CHF</div>
+            <div id="status" class="h3 pb-5"><span id="price">-</span> CHF<br/>
+            <sub>Coût de livraison: dès 7 cHF</sub>
+          </div>
           <p>
             La Locloise est une absinthe conçue spécialement à l'occasion du Loclathon.<br/>
             Son goût mentholé et doux procure une sensation rafraîchissante qui réjouira toute personne motivée à l'emporter avec elle lors de sa marche.
@@ -158,11 +160,12 @@
             </div>
             <form>
               <div class="form-group">
-                <label for="formAmount">Nombre de bouteilles *</label>
+                <label for="formAmount">Nombre de bouteilles (max 6)*</label>
                 <div class="form-inline form-row">
                   <input type="number" class="form-control col-12 col-md-6" id="formAmount" min="1" max="6" value="1" required>
-                  <span class="col-12 col-md-6 pl-md-3 font-weight-bold"><span id="amount">0</span> CHF</span>
+                  <span class="col-12 col-md-6 pl-md-3 font-weight-bold"><span id="amount">0</span> CHF + livraison</span>
                 </div>
+                <div class="py-2"><b>Frais de livraison:</b><br/>+7 CHF jusqu'à 3.<br/>+9 CHF jusqu'à 6.</div>
               </div>
               <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="formAgeCheck">
