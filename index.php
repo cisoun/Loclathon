@@ -1,17 +1,21 @@
 <?php require_once('api/config.php'); ?>
 <!doctype html>
-<html lang="fr">
+<html lang="fr" prefix="og: http://ogp.me/ns#">
 <head>
-  <title>Le Loclathon</title>
+  <title>Le Loclathon | Tournée des fontaines</title>
 
   <link rel="icon" type="image/svg" href="img/logo.svg">
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="description" content="Site officiel du Loclathon et de La Locloise.">
+  <meta name="description" content="Site officiel de la tournée des fontaines du Loclathon et de La Locloise.">
   <meta name="keywords" content="loclathon,absinthe,le locle,locloise">
   <meta name="author" content="Comité du Loclathon">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta property="og:image" content="img/photo.jpg">
+  <meta property="og:description" content="Site officiel du Loclathon et de La Locloise.">
+  <meta property="og:title" content="Le Loclathon">
 
   <!-- Bootstrap CSS -->
   <!--link href="https://fonts.googleapis.com/css?family=Fira+Sans:200,400,500" rel="stylesheet"-->
@@ -63,7 +67,11 @@
           <div id="status" class="h3 pb-5"><span id="price">-</span> CHF</div>
           <p>
             La Locloise est une absinthe conçue spécialement à l'occasion du Loclathon.<br/>
-            Son goût mentholé et doux procure une sensation rafraîchissante qui ne déplaîra pas au randonneur motivé à l'emporter avec lui lors de sa marche.
+            Son goût mentholé et doux procure une sensation rafraîchissante qui réjouira toute personne motivée à l'emporter avec elle lors de sa marche.
+          </p>
+          <p>
+            Les bénéfices seront réutilisés pour la réalisation d'autres cuvées ainsi qu'à la création de marchandises à l'effigie du Loclathon.
+            Merci pour votre soutien !
           </p>
           <p>
             Distillée à Môtiers dans le Val-de-Travers.<br>
@@ -73,7 +81,7 @@
           </p>
           <div id="buy" class="d-none">
             <p class="mt-5">Il reste actuellement <span id="units" class="font-weight-bold">0</span> bouteilles.</p>
-            <a class="btn btn-outline-light" href="#" data-toggle="modal" data-target="#modal">Acheter</a>
+            <a class="btn btn-outline-light px-4" href="#" data-toggle="modal" data-target="#modal">J'en veux une !</a>
           </div>
         </div>
       </div>
@@ -88,8 +96,8 @@
         <div class="col-sm-12 col-md-8 text-center">
           <h1> Qu'est-ce que c'est ?</h1>
           <p>
-            Le Loclathon est un événement annuel organisé par trois comparses depuis 2015.<br/>
-            Il réunit les amateurs d'abinsthe pour une marche de 12 heures sur 25 kilomètres à travers la ville du Locle afin de ralier les 27 fontaines officielle de la cité horlogère.
+            Le Loclathon est un événement annuel créé en 2015, organisé par trois comparses, qui depuis 2020, ont fondé une association éponyme à but non-lucratif autour de ce projet.
+            Il réunit les amateurs d'absinthe pour une marche de 12 heures sur 25 kilomètres à travers la ville du Locle afin de ralier les 27 fontaines officielle de la cité horlogère.
           </p>
           <p>
             Un verre est dégusté par chacun autour de chaque fontaine afin de passer un agréable moment entre amis tout en visitant la ville du Locle.
@@ -118,7 +126,7 @@
         <ul class="list-unstyled text-small">
           <li><a class="text-muted" href="files/flyer.pdf">Plan du parcours</a></li>
           <li><a class="text-muted" href="img/logo.svg">Logo</a></li>
-          <li><a class="text-muted" href="#">Photos (à venir)</a></li>
+          <li><a class="text-muted" href="photos">Photos</a></li>
         </ul>
       </div>
       <div class="col-md-3">
