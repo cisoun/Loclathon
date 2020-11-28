@@ -28,6 +28,6 @@ Tournée du <?php echo $date[$params['year']]; ?>.
   });
   foreach ($files as $file):
 ?>
-<a href="/static/photos/{{ year }}/<?php echo $file; ?>"><img src="/static/photos/{{ year }}/min/<?php echo $file; ?>"/></a>
+<a href="/static/photos/{{ year }}/<?php echo $file; ?>" target="_blank"><img src="/static/photos/{{ year }}/min/<?php echo $file; ?>"/></a>
 <?php endforeach; ?>
 @endsection
