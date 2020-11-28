@@ -37,8 +37,8 @@ List draft of all planned features. *
 **Content**
 
  - [X] *Loclathon* page.
- - [ ] *Locloise* page (to extract from *Loclathon*).
-    - [ ] Redirect [locloise.ch](locloise.ch) on it.
+ - [X] *Locloise* page (to extract from *Loclathon*).
+    - [X] Redirect [locloise.ch](locloise.ch) on it.
  - [ ] Custom shop (to be developed separately).
  - [X] Contact page.
  - [X] Photos page with subpages for each year.
