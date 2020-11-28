@@ -1,5 +1,4 @@
 @extend('views/layouts/main')
-
 @data('title', 'Albums');
 
 @section('css')

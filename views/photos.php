@@ -6,7 +6,6 @@ $date = [
 ?>
 
 @extend('views/layouts/photos')
-
 @data('title', '{{ year }}')
 
 @section('css')

@@ -1,5 +1,6 @@
 @extend('views/layouts/main')
 @data('title', 'La Locloise')
+
 @section('content')
 <main id="locloise" class="dual">
   <div id="bottle"></div>

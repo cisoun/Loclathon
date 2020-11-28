@@ -27,11 +27,14 @@ $min = rand(1, 5);
 $max = rand(1, 5);
 $_SESSION['check'] = strval($min + $max);
 ?>
+
 @extend('views/layouts/main')
 @data('title', 'Contact')
+
 @section('css')
 #contact { max-width: 600px;  }
 @endsection
+
 @section('content')
 <main id="contact" class="container dark">
   <!--a href="/"><svg id="logo"><use href="/static/img/logos.svg#loclathon"/></svg></a-->

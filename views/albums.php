@@ -4,6 +4,7 @@ $albums = [
   '2019' => '_DSC4627'
 ];
 ?>
+
 @extend('views/layouts/photos')
 @data('title', 'Photos')
 

@@ -1,5 +1,6 @@
 @extend('views/layouts/main')
 @data('title', 'La tournée des fontaines')
+
 @section('content')
 <main id="loclathon">
   <div class="fade"></div>
