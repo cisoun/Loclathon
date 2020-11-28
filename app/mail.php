@@ -3,13 +3,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-require('config.php');
-require('vendor/autoload.php');
+require_once('vendor/autoload.php');
+require_once('config.php');
 
 function mail_send($subject, $to, $body, $html = false)
 {
-    global $CONFIG;
-
     // Instantiation and passing `true` enables exceptions
     $mail = new PHPMailer(true);
 
