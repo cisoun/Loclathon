@@ -5,66 +5,51 @@ function read($path, $params=null) {
     return ob_get_clean();
 }
 
+function parse_matches(&$array, $key, $value) {
+	$data = [];
+	foreach ($array as $item) {
+		$data[$item[$key]] = $item[$value];
+	}
+	return $data;
+}
+
 function render($path, $params=null) {
     # Get page content.
     $content = read($path, $params);
     $layout_content = $content;
 
-    $layout_content = preg_replace_callback('
-        /\{\{\s*([a-zA-Z0-9\-_]+)\s*\}\}/',
-        function ($match) use ($params) {
-          return $params[$match[1]] ?? ''; //(as fallback)
-        },
-        $content
-    );
-
-    # Get layout.
+    # Process parent view if extends.
     if (preg_match('/\@extend\(\'([^\']+)\'\);?/', $content, $matches)) {
-      $layout = $matches[1];
-      $layout_content = render(getcwd() . '/' . $layout . '.php', $params);
-    } else {
-      return $layout_content;
-    }
+        $layout = $matches[1];
+        $layout_content = render(getcwd() . '/' . $layout . '.php', $params);
 
-    # Get data.
-    preg_match_all(
-        '/(\@data\(\'([^\']+)\',\s+\'([^\)]+)\'\))/',
-        $content,
-        $data,
-        PREG_SET_ORDER
-    );
+        # Replace data.
+        $pattern = '/\@data\(\'([^\']+)\',\s+\'([^\)]+)\'\)/';
+        preg_match_all($pattern, $content, $data, PREG_SET_ORDER);
+		$data = parse_matches($data, 1, 2);
+        $layout_content = preg_replace_callback(
+            '/\@data\(\'([a-zA-Z0-9\-_]+)\'\);?/',
+            function ($match) use ($data) {
+              return $data[$match[1]] ?? $match[3] ?? '';
+            },
+            $layout_content
+        );
 
-    # Get sections.
-    preg_match_all(
-        '/((?<=\@section)\(\'([^\']+)\'\)(.*?)(?=\@endsection))/ism',
-        $content,
-        $sections,
-        PREG_SET_ORDER
-    );
-
-    # Rewrite layout with content.
-    foreach ($sections as $section) {
-        $name = $section[2];
-        $content = $section[3];
-        $layout_content = preg_replace('
-            /\@render\(\'' . $name . '\'\);?/',
-            $content,
+        # Replace sections.
+        $pattern = '/(?<=\@section)\(\'([^\']+)\'\)(.*?)(?=\@endsection)/ism';
+        preg_match_all($pattern, $content, $sections, PREG_SET_ORDER);
+		$sections = parse_matches($sections, 1, 2);
+        $layout_content = preg_replace_callback(
+            '/\@render\(\'([a-zA-Z0-9\-_]+)\'\);?/',
+            function ($match) use ($sections) {
+              return $sections[$match[1]] ?? '';
+            },
             $layout_content
         );
     }
 
-    foreach ($data as $datum) {
-        $key = $datum[2];
-        $value = $datum[3];
-        $layout_content = preg_replace('
-            /\@data\(\'' . $key . '\'\);?/',
-            $value,
-            $layout_content
-        );
-    }
-
-    $layout_content = preg_replace_callback('
-        /{\{\s*([a-zA-Z0-9\-_]+)(\s*\|\s*\"(.*)\")?\s*\}\}/',
+    $layout_content = preg_replace_callback(
+        '/\{\{\s*([a-zA-Z0-9\-_]+)(\s*\|\s*\"(.*)\")?\s*\}\}/',
         function ($match) use ($params) {
           return $params[$match[1]] ?? $match[3];
         },
