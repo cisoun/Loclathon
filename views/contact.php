@@ -1,7 +1,3 @@
-@extend('views/layouts/main')
-
-@data('title', 'Contact')
-
 <?php
 require_once(getcwd() . '/app/mail.php');
 
@@ -31,28 +27,28 @@ $min = rand(1, 5);
 $max = rand(1, 5);
 $_SESSION['check'] = strval($min + $max);
 ?>
-
+@extend('views/layouts/main')
+@data('title', 'Contact')
 @section('css')
 #contact { max-width: 600px;  }
 @endsection
-
 @section('content')
-<div id="contact" class="container dark">
+<main id="contact" class="container dark">
   <!--a href="/"><svg id="logo"><use href="/static/img/logos.svg#loclathon"/></svg></a-->
   <h1>Formulaire de contact</h1>
   <?php if (!$ok) { ?>
     <form action="#" method="post">
       <div class="group">
         <label for="name">Prénom et nom :</label>
-        <input type="text" id="name" name="name" value="<?php echo $name; ?>" required>
+        <input type="text" id="name" name="name" placeholder="Prénom et nom" value="<?php echo $name; ?>" required>
       </div>
       <div class="group">
         <label for="mail">Email :</label>
-        <input type="email" id="mail" name="mail" value="<?php echo $mail; ?>" required>
+        <input type="email" id="mail" name="mail" placeholder="Email" value="<?php echo $mail; ?>" required>
       </div>
       <div class="group">
         <label for="message">Message :</label>
-        <textarea id="message" name="message" rows="10" required><?php echo $message; ?></textarea>
+        <textarea id="message" name="message" placeholder="message" rows="10" required><?php echo $message; ?></textarea>
       </div>
       <div class="group">
         <label for="check">Vérification :</label>
@@ -72,5 +68,5 @@ $_SESSION['check'] = strval($min + $max);
       <a href="..">Revenir au site <span>→</span></a>
     </div>
   <?php } ?>
-</div>
+</main>
 @endsection
