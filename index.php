@@ -16,7 +16,7 @@ switch (method()) {
     route('/shop', cached_view('shop/shop'));
     break;
   case 'POST':
-    route('/contact', view('contact'));
+    route('/contact', cached_view('contact'));
     break;
 }
 
