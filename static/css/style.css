@@ -7,42 +7,10 @@
   --gray-850: #ddd;
   --gray-900: #eee;
 
-
-  --red-900: #fff1f0;
-  --red-800: #ffccc7;
-  --red-700: #ffa39e;
-  --red-600: #ff7875;
-  --red-500: #ff4d4f;
-  --red-400: #f5222d;
-  --red-300: #cf1322;
-  --red-200: #a8071a;
-  --red-100: #820014;
-  --red-050: #5c0011;
-
-  --lime-900: #fcffe6;
-  --lime-800: #f4ffb8;
-  --lime-700: #eaff8f;
-  --lime-600: #d3f261;
-  --lime-500: #bae637;
-  --lime-400: #a0d911;
-  --lime-300: #7cb305;
-  --lime-200: #5b8c00;
-  --lime-100: #3f6600;
-  --lime-050: #254000;
-
-  --green-900: #f6ffed;
-  --green-800: #d9f7be;
-  --green-700: #b7eb8f;
-  --green-600: #95de64;
-  --green-500: #73d13d;
-  --green-400: #52c41a;
-  --green-300: #389e0d;
-  --green-200: #237804;
-  --green-100: #135200;
-  --green-050: #092b00;
-
-  --primary-dark: #1d463d;
-  --primary: #25b07c;
+  /* --primary-dark: #1d463d; */
+  --primary-dark: var(--green-300);  #1d463d;
+  /* --primary: #25b07c; */
+  --primary: var(--green-500);
   --secondary: #e54a4a;
 
   --background: var(--gray-100);
@@ -54,73 +22,24 @@
   --transition: 0.3s;
 
   --view-desktop: 992px;
+
+  --bubble-left: var(--green-500);
+  --bubble-left-color: var(--foreground);
+  --bubble-right: var(--green-200);
+  --bubble-right-color: var(--foreground);
 }
 
 * { box-sizing: border-box; }
 
-body {
-  background-color: var(--background);
-  border: 0;
-  color: var(--foreground);
-  /* font-family: 'Raleway', sans-serif; */
-  margin: 0;
-  padding: 0;
-}
-
 section { clear: both; }
-h1 { font-size: 3rem; font-weight: normal; margin-top: 10rem; }
+h1 { font-size: 3rem; font-weight: normal; }
 a { color: var(--gray-700); text-decoration: none; }
 a:hover { color: var(--gray-900); }
 
-.container { padding-bottom: 5rem; }
-
-.btn {
-  background-color: transparent;
-  border: 1px solid var(--gray-900);
-  border-radius: 0.3rem;
-  color: var(--foreground);
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1rem;
-  padding: 0.5rem 2rem;
-  text-decoration: none;
-  transition: all var(--transition);
-}
-.btn:hover {
-  background-color: var(--foreground);
-}
-.btn-dark {
-  border-color: var(--background);
-  color: var(--background);
-}
-.btn-dark:hover {
-  background-color: var(--background);
-  color: var(--foreground);
-}
-
-.alert {
-  background-color: var(--gray-850);
-  border-radius: var(--border-radius);
-  color: var(--gray-300);
-  display: block;
-  padding: 1rem;
-  transition: all 0.3s;
-}
-.alert.hidden {
-  height: 0;
-  margin: 0;
-  opacity: 0;
-  padding-bottom: 0;
-  padding-top:0;
-}
-.alert.error { background-color: var(--red-800); color: var(--red-200); }
-
-.card {
-  border: 1px solid var(--gray-800);
-  border-radius: var(--border-radius);
-  margin: 1rem 0;
-  padding: 1.6rem;
-}
+#photos,
+#shop,
+#contact { margin-top: 10rem; }
+footer { margin-top: 10rem; }
 
 nav {
   background-color: var(--background);
@@ -198,7 +117,7 @@ footer .logo {
   width: 6rem;
 }
 #loclathon .btn {
-  background-color: var(--secondary);
+  background-color: var(--red-500);
   border-radius: unset;
   border: 0;
   box-shadow: 0 1rem 3rem var(--gray-100);
@@ -211,32 +130,28 @@ footer .logo {
   transition: all var(--transition);
 }
 #loclathon .btn:hover {
-    background-color: var(--gray-900);
-    color: var(--gray-100);
+    background-color: var(--foreground);
+    color: var(--background);
     transform: scale(1.1) skewY(-3deg);
 }
 #loclathon .btn .gg { margin-left: 0.5rem; }
 
-
 #locloise > div { height: 50rem; }
-
+#locloise h1 { padding-top: 8rem; }
 #locloise #bottle {
   background-image: url('../img/locloise.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
-
 #locloise #buy { margin-top: 3rem; }
 #locloise #units { font-weight: bold; }
-
 #locloise #status {
   font-size: 2rem;
   margin-bottom: 3rem;
   margin-top: -2rem;
 }
 
-#info { padding-bottom: 10rem; }
 #faq {
   float: unset;
   margin-left: auto;
@@ -281,7 +196,11 @@ footer .outline { stroke-width: 1.4; }
   max-width: calc(100% - 4rem);
   padding: 1rem 2rem;
 }
-.left > .bubble { background: var(--primary); font-weight: bold; }
+.left > .bubble {
+  background: var(--bubble-left);
+  color: var(--bubble-left-color);
+  font-weight: bold;
+}
 .left > .bubble:after {
 	right: 100%;
 	top: 50%;
@@ -292,11 +211,14 @@ footer .outline { stroke-width: 1.4; }
 	position: absolute;
 	pointer-events: none;
 	border-color: tranparent;
-	border-right-color: var(--primary);
+	border-right-color: var(--bubble-left);
 	border-width: 10px;
 	margin-top: -10px;
 }
-.right > .bubble { background: var(--primary-dark); }
+.right > .bubble {
+  background: var(--bubble-right);
+  color: var(--bubble-right-color);
+}
 .right > .bubble:after {
 	left: 100%;
 	top: 50%;
@@ -307,7 +229,7 @@ footer .outline { stroke-width: 1.4; }
 	position: absolute;
 	pointer-events: none;
 	border-color: transparent;
-	border-left-color: var(--primary-dark);
+	border-left-color: var(--bubble-right);
 	border-width: 10px;
 	margin-top: -10px;
 }

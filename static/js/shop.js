@@ -1,68 +1,60 @@
-import Fetch from '../static/fetch.js';
+import Fetch from './fetch.js';
+
+// if (window.$ === undefined) {
+//   window.$ = (a) => { return document.querySelector(a); }
+//   window.$$ = (a) => { return document.querySelectorAll(a); }
+// }
 
 const Shop = {
-  $price: 0,
-  $units: 0,
-  $stock: 0,
+  $price: 38,
+  $units: 50,
+  $stock: 50,
   $total: 0,
-
-  ui: {},
 
   get price () { return this.$price; },
 
   get total () { return this.$total; },
   set total (value) {
     this.$total = value;
-    this.ui.total.innerHTML = this.$total;
+    this.html.total.innerHTML = this.$total;
   },
 
   get units () { return this.$units; },
   set units (value) {
     this.$units =  Math.max(Math.min(value, this.$stock), 1);
-    this.ui.units.value = this.$units;
+    this.html.units.value = this.$units;
     this.total = this.$units * this.price;
   },
 
   async initialize () {
-    this.ui.total = document.querySelector('#total');
-    this.ui.units = document.querySelector('#units');
+    const elements = Array.from(document.querySelectorAll('[id]'));
+    this.html = Object.fromEntries(elements.map(x => [x.id, x]));
 
-    /* Handle amount. */
-    const amount       = document.querySelector('.group.number div');
-    const addButton    = amount.querySelector('button.add');
-    const removeButton = amount.querySelector('button.remove');
-    const input        = amount.querySelector('input');
-    const min          = Number(input.min);
-    const max          = Number(input.max);
-    addButton.classList.remove('hidden');
-    removeButton.classList.remove('hidden');
-    addButton.onclick    = () => this.units = Number(input.value) + 1;
-    removeButton.onclick = () => this.units = Number(input.value) - 1;
-    input.onchange = () => this.units = Number(input.value);
+    this.html.country.onchange = () => this.onCountryOrNPAChange();
+    this.html.npa.onchange = () => this.onCountryOrNPAChange();
 
-    /* Handle shipping method. */
-    const infoOnSite = document.querySelector('#infoOnSite');
-    const shippingMethods = document.querySelectorAll('.group.radio input');
-    for (var method of shippingMethods) {
-      method.onchange = (e) => {
-        infoOnSite.classList.toggle('hidden', e.target.value != 'onsite');
-      };
-    }
-    const shippingOnSite = document.querySelector('#shippingOnSite');
-    infoOnSite.classList.toggle('hidden', !shippingOnSite.checked);
+    this.onCountryOrNPAChange();
 
-    const dropdowns = document.querySelectorAll('form .group.dropdown');
-    for (const dropdown of dropdowns) {
-      const input = dropdown.querySelector('input');
-      const dropdownItems = dropdown.querySelectorAll('ul > li');
-      for (const dropdownItem of dropdownItems) {
-        dropdownItem.onmousedown = () => input.value = dropdownItem.innerHTML;
-      }
-    }
-
-    await Fetch.get('/api/price').then((response) => this.$price = response);
-    await Fetch.get('/api/units').then((response) => this.$stock = response);
+    // await Fetch.get('/api/price').then((response) => this.$price = response);
+    // await Fetch.get('/api/units').then((response) => this.$stock = response);
     //  this.initializePaypal();
+  },
+
+  onAmountChange () {
+    // TODO
+  },
+
+  onCountryOrNPAChange () {
+    const country = this.html.country.value == 'CH';
+    const npa = ['2300', '2400'].includes(this.html.npa.value);
+
+    this.html.shippingByCarLabel.classList.toggle('hidden', !country);
+    this.html.shippingByCar.disabled = !(npa && country);
+
+    // Replace selection if necessary.
+    if (!(country && npa) && this.html.shippingByCar.checked) {
+      this.html.shippingOnSite.checked = true;
+    }
   },
 
   initializePaypal () {

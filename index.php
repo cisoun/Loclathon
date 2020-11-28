@@ -13,6 +13,7 @@ switch (method()) {
     route('/contact', cached_view('contact'));
     route('/photos', cached_view('albums'));
     route('/photos/:year', cached_view('photos'));
+    route('/shop', cached_view('shop/shop'));
     break;
   case 'POST':
     route('/contact', view('contact'));

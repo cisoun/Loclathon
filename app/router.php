@@ -21,9 +21,9 @@ function route($route, $callback) {
   // Check if URI matches route pattern.
   if (preg_match_all($pattern, $uri, $matches, PREG_SET_ORDER)) {
     if (preg_match_all('/:([^\/]+)/', $route, $fields)) {
-      $callback(array_combine($fields[1], array_slice($matches[0], 1)));
+		$callback(array_combine($fields[1], array_slice($matches[0], 1)));
     } else {
-      $callback([]);
+		$callback([]);
     }
     die(); // Don't process other routes.
   }
@@ -41,20 +41,20 @@ function cached_view($path) {
     global $uri;
     $file = getcwd() . '/cache/' . str_replace('/', '_', $uri);
     if (file_exists($file)) {
-      echo file_get_contents($file);
+    	echo file_get_contents($file);
     } else {
-      require_once('layout.php');
-      $content = render(getcwd() . '/views/' . $path . '.php', $params);
-      file_put_contents($file, $content);
-      echo $content;
+		require_once('layout.php');
+		$content = render(getcwd() . '/views/' . $path . '.php', $params);
+		file_put_contents($file, $content);
+		echo $content;
     }
   };
 }
 
 function view($path) {
-  return function ($params) use ($path) {
-    require_once('layout.php');
-    echo render(getcwd() . '/views/' . $path . '.php', $params);
-  };
+	return function ($params) use ($path) {
+		require_once('layout.php');
+		echo render(getcwd() . '/views/' . $path . '.php', $params);
+	};
 }
 ?>

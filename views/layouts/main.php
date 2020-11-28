@@ -16,12 +16,10 @@
   <meta property="og:description" content="Site officiel du Loclathon et de l'absinthe La Locloise.">
   <meta property="og:title" content="Le Loclathon | La Locloise">
 
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,600" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,600" rel="stylesheet" preload>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" preload>
 
   <!-- CSS -->
-  <!-- <link rel="stylesheet" href="/static/fonts/inter/inter.css"> -->
   <link rel="preload" href="/static/css/layout.css" as="style">
   <link rel="preload" href="/static/css/style.css" as="style">
 
@@ -76,6 +74,8 @@
       </div>
     </div>
   </footer>
+
+  @render('footer');
 
   <script type="text/javascript">
     const nav = document.querySelector('nav');
