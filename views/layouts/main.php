@@ -26,8 +26,8 @@
   <link rel="stylesheet" href="/static/css/layout.css">
   <link rel="stylesheet" href="/static/css/style.css">
 
-  <link rel="stylesheet" media="screen and (max-device-width: 992px)" href="/static/css/phone.css" />
-  <link rel="stylesheet" media="screen and (min-device-width: 992px)" href="/static/css/desktop.css" />
+  <link rel="stylesheet" media="screen and (max-width: 992px)" href="/static/css/phone.css" />
+  <link rel="stylesheet" media="screen and (min-width: 992px)" href="/static/css/desktop.css" />
 
   <style type="text/css">
   @render('css');
