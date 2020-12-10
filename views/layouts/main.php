@@ -39,10 +39,10 @@
     <a href="javascript:void(0);" class="trigger"><svg class="outline"><use xlink:href="/static/img/icons.svg#circle-menu"/></svg> Le Loclathon</a>
     <ul>
       <li><a href="/">Le Loclathon</a></li>
-      <li><a href="/locloise">La Locloise</a></li>
-      <li><a href="/photos">Photos</a></li>
-      <li><a href="/shop">Shop</a></li>
-      <li><a href="/#info">À propos</a></li>
+      <li><a href="/{{lang}}/locloise">La Locloise</a></li>
+      <li><a href="/{{lang}}/photos">Photos</a></li>
+      <li><a href="/{{lang}}/shop">Shop</a></li>
+      <li><a href="/{{lang}}#info">À propos</a></li>
     </ul>
   </nav>
 
@@ -70,7 +70,7 @@
       </div>
       <div>
         <h3><svg class="outline"><use xlink:href="/static/img/icons.svg#mail"/></svg> Contact</h3>
-        <a href="/contact">Nous écrire</a>
+        <a href="/{{lang}}/contact">Nous écrire</a>
       </div>
     </div>
   </footer>
