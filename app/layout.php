@@ -19,12 +19,12 @@ function render($path, $params=null) {
     $layout_content = $content;
 
     # Process parent view if extends.
-    if (preg_match('/\@extend\(\'([^\']+)\'\);?/', $content, $matches)) {
+    if (preg_match('/^\@extend\(\'([^\']+)\'\);?/mi', $content, $matches)) {
         $layout = $matches[1];
         $layout_content = render(getcwd() . '/' . $layout . '.php', $params);
 
         # Replace data.
-        $pattern = '/\@data\(\'([^\']+)\',\s+\'([^\)]+)\'\)/';
+        $pattern = '/^\@data\(\'([^\']+)\',\s+\'([^\)]+)\'\)/';
         preg_match_all($pattern, $content, $data, PREG_SET_ORDER);
 		$data = parse_matches($data, 1, 2);
         $layout_content = preg_replace_callback(
