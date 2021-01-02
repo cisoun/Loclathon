@@ -9,7 +9,7 @@ $date = [
 <block title>{{ year }}</block>
 
 <block css>
-.grid > a > img { height: 100%; width: 100%; }
+#grid > a > img { height: 100%; width: 100%; }
 </block>
 
 <block header>

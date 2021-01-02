@@ -5,7 +5,7 @@
 .photos { text-align: center; }
 #photos { max-width: 800px; text-align: center; }
 #photos h1 { margin-bottom: 0; }
-.grid {
+#grid {
   display: grid;
   grid-gap: 0;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -13,30 +13,30 @@
   margin: 6rem 0;
 }
 @media screen and (max-width: 400px) {
-  .grid {
+  #grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
-.grid::before {
+#grid::before {
   content: '';
   width: 0;
   padding-bottom: 100%;
   grid-row: 1 / 1;
   grid-column: 1 / 1;
 }
-.grid > *:first-child {
+#grid > *:first-child {
   grid-row: 1 / 1;
   grid-column: 1 / 1;
 }
-.grid > div,
-.grid > a {
+#grid > div,
+#grid > a {
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid transparent;
   transition: border var(--transition);
 }
-.grid > div:hover, .grid > a:hover { border: 2px solid var(--foreground); }
-.grid > div > a {
+#grid > div:hover, #grid > a:hover { border: 2px solid var(--foreground); }
+#grid > div > a {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
@@ -45,8 +45,8 @@
   transition: background var(--transition);
   width: 100%;
 }
-.grid > div:hover > a { background-color: rgba(0, 0, 0, 0.9); }
-.grid > div > a > div { font-size: 2rem; }
+#grid > div:hover > a { background-color: rgba(0, 0, 0, 0.9); }
+#grid > div > a > div { font-size: 2rem; }
 
 <? css ?>
 </block>
@@ -54,7 +54,7 @@
 <block content>
 <main id="photos" class="container">
   <? header ?>
-  <div id="grid" class="grid">
+  <div id="grid">
   <? grid ?>
   </div>
 </main>
