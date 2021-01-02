@@ -38,11 +38,11 @@
   <nav id="menu" class="nojs">
     <a href="javascript:void(0);" class="trigger"><svg class="outline"><use xlink:href="/static/img/icons.svg#circle-menu"/></svg> Le Loclathon</a>
     <ul>
-      <li><a href="/">Le Loclathon</a></li>
+      <li><a href="/"><svg class="outline fill"><use xlink:href="/static/img/icons.svg#loclathon"/></svg> Le Loclathon</a></li>
       <li><a href="/{{lang}}/locloise">La Locloise</a></li>
       <li><a href="/{{lang}}/photos">Photos</a></li>
       <li><a href="/{{lang}}/shop">Shop</a></li>
-      <li><a href="/{{lang}}#info">À propos</a></li>
+      <li><a href="/{{lang}}/contact">Contact</a></li>
     </ul>
   </nav>
 

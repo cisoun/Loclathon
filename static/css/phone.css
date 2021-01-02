@@ -7,14 +7,10 @@ nav > ul {
 }
 /* Show menu on mouse over when no JS. */
 nav.nojs:hover > ul,
-nav.toggled > ul {
-  display: block;
-}
+nav.toggled > ul { display: block; }
 
 nav:hover > .trigger,
-nav.toggled > .trigger {
-  background-color: var(--background);
-}
+nav.toggled > .trigger { background-color: var(--background); }
 
 nav > .trigger { display: block; }
 nav .trigger {

@@ -1,6 +1,6 @@
 nav > .trigger { display: none; }
 nav > ul > li { display: inline-block; }
-nav > ul > li:not(:last-child)::after {
+nav > ul > li:not(:last-child):not(:first-child)::after {
   background-color: var(--gray-500);
   content: '';
   display: inline-block;
@@ -14,3 +14,12 @@ nav > ul > li > a {
   padding: 2rem;
 }
 nav > ul > li > a:hover { border-top-color: var(--foreground); }
+
+nav > ul > li:first-child > a { margin-right: 200px; }
+nav > ul > li:first-child > a svg {
+  height: 2rem;
+  margin-right: 1rem;
+  width: 2rem;
+}
+
+#locloise h1 { padding-top: 8rem; }

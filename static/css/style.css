@@ -1,12 +1,4 @@
 :root {
-  --gray-100: #111;
-  --gray-300: #444;
-  --gray-500: #777;
-  --gray-700: #aaa;
-  --gray-800: #ccc;
-  --gray-850: #ddd;
-  --gray-900: #eee;
-
   /* --primary-dark: #1d463d; */
   --primary-dark: var(--green-300);  #1d463d;
   /* --primary: #25b07c; */
@@ -17,19 +9,19 @@
   --foreground: var(--gray-900);
 
   --border-radius: 0.3rem;
-  --input-shadow-size: 0.2rem;
+  --input-shadow-size: 0.2rem; */
 
   --transition: 0.3s;
 
   --view-desktop: 992px;
 
   --bubble-left: var(--green-500);
-  --bubble-left-color: var(--foreground);
+  --bubble-left-color: white;
   --bubble-right: var(--green-200);
-  --bubble-right-color: var(--foreground);
+  --bubble-right-color: white;
 }
 
-* { box-sizing: border-box; }
+body { background-color: var(--background); }
 
 section { clear: both; }
 h1 { font-size: 3rem; font-weight: normal; }
@@ -136,13 +128,17 @@ footer .logo {
 }
 #loclathon .btn .gg { margin-left: 0.5rem; }
 
-#locloise > div { height: 50rem; }
-#locloise h1 { padding-top: 8rem; }
-#locloise #bottle {
+/* #locloise > div { height: 50rem; } */
+/* #locloise h1 { padding-top: 8rem; } */
+/* #locloise > div:first-child {
   background-image: url('../img/locloise.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  height: 50rem;
+} */
+#locloise > div:first-child > img {
+  width: 100%;
 }
 #locloise #buy { margin-top: 3rem; }
 #locloise #units { font-weight: bold; }
@@ -244,21 +240,13 @@ footer .outline { stroke-width: 1.4; }
 @media screen and (max-width: 600px) {
   .uni > div, .dual > div, .tria > div, .quad > div { width: 100%; }
 
-  .modal .dialog {
-    height: 100%;
-    left: 0;
-    margin-left: unset;
-    top: 0;
-    width: 100%;
-  }
-
-  nav { background-color: var(--background); }
+  /* nav { background-color: var(--background); }
   nav .separator { display: none; }
   nav .trigger { display: block; vertical-align: middle; }
   nav .menu { display: none; overflow: hidden; text-align: left; }
   nav .menu a { display: block; padding: 1rem 0rem 1rem 5rem; }
   nav .menu a:last-child { margin-bottom: 2rem; }
-  nav:hover div.menu { display: block; }
+  nav:hover div.menu { display: block; } */
 
   #locloise .highlight { display: block; }
 
@@ -267,8 +255,8 @@ footer .outline { stroke-width: 1.4; }
 
 /* Tablets */
 @media screen and (min-width: 600px) and (max-width: 992px) {
-  .uni > div, .dual > div, .tria > div { width: 100%; }
-  .quad > div { width: 25%; }
+  /* .uni > div, .dual > div, .tria > div { width: 100%; }
+  .quad > div { width: 25%; } */
 }
 
 /* Phones and tablets */
@@ -290,10 +278,10 @@ footer .outline { stroke-width: 1.4; }
 @media screen and (min-width: 992px) {
   .container { width: 992px; }
 
-  .uni > div { width: 100%; }
+  /* .uni > div { width: 100%; }
   .dual > div { width: 50%; }
   .tria > div { width: 33.33%; }
-  .quad > div { width: 25%; }
+  .quad > div { width: 25%; } */
 
   .padded { padding: 3rem; }
 
