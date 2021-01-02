@@ -19,7 +19,7 @@ $albums = [
 @section('grid')
 <?php foreach ($albums as $year => $file): ?>
   <div style="background-image: url('/static/photos/<?php echo $year ?>/min/<?php echo $file ?>.jpg')">
-    <a href="/photos/<?php echo $year ?>"><div><?php echo $year ?></div></a>
+    <a href="/{{lang}}/photos/<?php echo $year ?>"><div><?php echo $year ?></div></a>
   </div>
 <?php endforeach; ?>
 @endsection
