@@ -1,5 +1,5 @@
 <?php
-define('BLOCK_PATTERN', '[a-zA-Z0-9\-\_]+');
+const BLOCK_PATTERN = '[a-zA-Z0-9\-\_]+';
 
 function read($path, $params = null) {
     ob_start();
