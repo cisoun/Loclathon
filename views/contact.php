@@ -30,7 +30,7 @@ $_SESSION['check'] = strval($min + $max);
 <extend>views/layouts/main</extend>
 <block title>Contact</block>
 <block css>
-#contact { max-width: 600px;  }
+#contact { max-width: 600px; }
 </block>
 <block content>
 <main id="contact" class="container dark">

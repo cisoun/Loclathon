@@ -49,7 +49,7 @@ function search_extend($content) {
 function search_blocks($content) {
 	$blocks = [];
 	$matches = preg_match_all(
-		'/<block ([a-zA-Z0-9\-\_]+)>(.+?)<\/block>/ims',
+		'/<block ([a-zA-Z0-9\-\_]+)>\s*(.+?)\s*<\/block>/ims',
 		$content,
 		$results,
 		PREG_SET_ORDER
