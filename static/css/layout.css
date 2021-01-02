@@ -22,15 +22,15 @@
   --green-200: #005b4a;
   --green-100: #00332a;
 
-  --yellow-900: #ffffe6;
-  --yellow-850: #fcf6af;
-  --yellow-800: #f9e67a;
-  --yellow-700: #f0bb41;
-  --yellow-600: #e19021;
-  --yellow-500: #cb6b10;
-  --yellow-400: #ac4c06;
-  --yellow-300: #853302;
-  --yellow-200: #5b2000;
+  --yellow-900: #fffbe6;
+  --yellow-850: #fcebaf;
+  --yellow-800: #f9d57a;
+  --yellow-700: #f0ab41;
+  --yellow-600: #e18421;
+  --yellow-500: #cb6310;
+  --yellow-400: #ac4806;
+  --yellow-300: #853202;
+  --yellow-200: #5b1f00;
   --yellow-100: #331100;
 
   --red-900: #ffe6e6;
@@ -44,6 +44,17 @@
   --red-200: #5b001e;
   --red-100: #330011;
 
+  --blue-900: #e6fbff;
+  --blue-850: #afe9fc;
+  --blue-800: #7ad0f9;
+  --blue-700: #419ef0;
+  --blue-600: #2170e1;
+  --blue-500: #104bcb;
+  --blue-400: #0630ac;
+  --blue-300: #021d85;
+  --blue-200: #00115b;
+  --blue-100: #000833;
+
   --dark: var(--gray-100);
   --light: white;
 
@@ -56,6 +67,16 @@
 
   --alert-shadow: 0 0.5rem 2rem;
   --border-radius: 0.3rem;
+
+  --alert-warning-background: var(--yellow-850);
+  --alert-warning-border: var(--yellow-700);
+  --alert-warning-color: var(--yellow-600);
+
+  --alert-error-background: var(--red-900);
+  --alert-error-border: var(--red-800);
+  --alert-error-color: var(--red-700);
+
+  --button-background: var(--foreground);
 
   --input-background-disabled: var(--background);
   --input-background-highlight: var(--foreground);
@@ -84,6 +105,13 @@
   --background: var(--gray-100);
   --foreground: var(--light);
 
+  --alert-error-background: var(--red-100);
+  --alert-error-border: var(--red-300);
+  --alert-error-color: var(--red-700);
+  /* --alert-error-shadow: var(--alert-shadow) var(--red-200); */
+
+  --button-background: var(--input-background);
+
   --input-background-disabled: var(--input-background);
   --input-background-highlight: var(--gray-300);
   --input-background-invalid: var(--red-200);
@@ -103,6 +131,8 @@
 
 * { box-sizing: border-box; }
 
+/* div { border: 1px solid white; } */
+
 html { height: 100%; }
 
 html,
@@ -117,7 +147,7 @@ body {
 
 body, button, input, textarea {
   font-family: 'Raleway', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
 }
 
@@ -126,7 +156,8 @@ section { clear: both; }
 hr { border: 0; border-top: var(--separator); }
 h1 { font-size: 3rem; font-weight: normal; }
 a { color: var(--foreground); font-weight: 600; text-decoration: none; }
-a:hover { color: var(--gray-300);  }
+a:hover { color: var(--gray-500); }
+img.responsive { width: 100%; }
 
 .container { margin-left: auto; margin-right: auto; }
 .uni > * { width: 100%; }
@@ -145,18 +176,34 @@ a:hover { color: var(--gray-300);  }
 
 .text-center { text-align: center; }
 .w-50 { display: inline-block; width: 50% !important; }
+.w-100 { width: 100% !important; }
 
 .label {
-  background-color: var(--green-200);
+  background-color: var(--gray-800);
   border-radius: var(--border-radius);
-  color: var(--green-850);
+  color: var(--gray-300);
   font-size: 0.6rem;
   padding: 0.2rem;
 }
+.label.green { background-color: var(--green-900); color: var(--green-300); }
+.dark .label.green { background-color: var(--green-200); color: var(--green-850); }
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: var(--input-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+table td {
+  padding: var(--input-padding);
+  border-bottom: var(--input-border);
+}
+table tr:last-child > td { border-bottom: none; }
 
 button,
 input[type="submit"] {
-  background-color: var(--gray-100);
+  background-color: var(--button-background);
   border: 0;
   border-radius: var(--border-radius);
   color: var(--light);
@@ -172,6 +219,9 @@ input[type="submit"]:hover {
   background-color: var(--gray-300);
 }
 
+button.green { background-color: var(--green-300); }
+button:hover.green { background-color: var(--green-400); }
+
 svg.outline {
   --outline-fill: var(--foreground);
   fill: none;
@@ -181,6 +231,14 @@ svg.outline {
   stroke: var(--foreground);
   vertical-align: middle;
   width: 1.4rem;
+}
+svg.outline.fill {
+  fill: var(--outline-fill);
+  stroke: none;
+}
+svg.outline.fill.dark {
+  fill: var(--foreground);
+  stroke: none;
 }
 svg.outline.dark {
   --outline-fill: var(--background);
@@ -391,11 +449,12 @@ form div.group.radio.with-check input:checked + label::before {
 }
 
 .alert {
-  background-color: var(--gray-850);
+  background-color: var(--gray-900);
   border-radius: var(--border-radius);
+  border-left: 5px solid var(--gray-700);
   color: var(--gray-300);
   display: block;
-  padding: 1rem;
+  padding: 1rem 2rem;
   transition: all 0.3s;
 }
 .alert > div {
@@ -421,18 +480,23 @@ form div.group.radio.with-check input:checked + label::before {
 }
 .alert.success {
   background: linear-gradient(#cdff9b, #abeca9);
-  box-shadow: var(--alert-shadow) #cdff9b;
   color: #198020;
 }
 .alert.success > div { border-left-color: #198020; }
 .alert.success .outline { stroke: #198020; }
-.alert.error {
-  background: linear-gradient(var(--red-800), var(--red-700));
-  box-shadow: var(--alert-shadow) var(--red-800);
-  color: var(--red-200);
+
+.alert.warning {
+  background: var(--alert-warning-background);
+  border-left-color: var(--alert-warning-border);
+  color: var(--alert-warning-color);
 }
-.alert.error .outline { stroke: var(--red-200); }
-.alert.error > div { border-left-color: var(--red-200); }
+.alert.error {
+  background: var(--alert-error-background);
+  border-left-color: var(--alert-error-border);
+  color: var(--alert-error-color);
+}
+.alert.error .outline { stroke: var(--alert-error-color); }
+.alert.error > div { border-left-color: var(--alert-error-color); }
 
 .separator {
   border-top: var(--separator);
@@ -476,6 +540,18 @@ form div.group.radio.with-check input:checked + label::before {
   form .tria > div:first-child { padding-left: 0; }
   form .dual > div:last-child,
   form .tria > div:last-child { padding-right: 0; }
+
+  .dual.spaced > div,
+  .tria.spaced > div,
+  .quad.spaced > div { padding: 0 3rem; }
+
+  .dual.spaced > div:first-child,
+  .tria.spaced > div:first-child,
+  .quad.spaced > div:first-child { padding-left: 0; }
+
+  .dual.spaced > div:last-child,
+  .tria.spaced > div:last-child,
+  .quad.spaced > div:last-child { padding-right: 0; }
 }
 
 /* Extra small devices (phones, 600px and down) */

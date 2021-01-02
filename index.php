@@ -18,6 +18,10 @@ switch (method()) {
     break;
   case 'POST':
     route('/contact', cached_view('contact'));
+    route('/shop', function ($params) {
+      require_once('app/shop.php');
+      render_shop($params);
+    });
     break;
 }
 

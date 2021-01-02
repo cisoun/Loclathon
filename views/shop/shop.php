@@ -24,91 +24,81 @@
 
 
   $countries = [
-    ['FR', 'France'],
+    // ['FR', 'France'],
     ['CH', 'Suisse'],
   ];
   $selected_country = form('country', 'CH');
   $units = min(6, 6); //units();
+  $confirm = false;
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once(getcwd() . '/app/shop.php');
     $result = shop_check($units);
 
     if ($result == 0) {
-      $error = '<b>Oups !</b> Les adresses mail ne sont pas valides.';
+      $confirm = true;
+      var_dump('yes');
+      header('Location: /shop/confirm');
     }
     else if ($result == 1) {
-      $error = '<b>Oups !</b> Les adresses mail ne correspondent pas.';
+      $error = '<b>Oups !</b> Les adresses mail ne sont pas valides.';
     }
     else if ($result == 2) {
-      $error = "<b>Désolé !</b> Nous n'avons plus que $units bouteilles en stock !";
+      $error = '<b>Oups !</b> Les adresses mail ne correspondent pas.';
     }
     else if ($result == 3) {
+      $error = "<b>Désolé !</b> Nous n'avons plus que $units bouteilles en stock !";
+    }
+    else if ($result == 4) {
       $error = "<b>Désolé !</b> Vous devez avoir au moins 18 ans pour acheter cet article !<br/>
-        Avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?";
+        Ou avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?";
     }
   }
 ?>
 
-@extend('views/layouts/main');
+@extend('views/layouts/shop');
 @section('footer')
   <script src="/static/js/layout.js" type="module" defer></script>
   <script src="/static/js/fetch.js" type="module" defer></script>
   <script src="/static/js/shop.js" type="module" defer></script>
 @endsection
 @section('css')
-    body {
-      font-family: 'Raleway';
-      text-align: justify;
-    }
+form h1 {
+  font-size: 1.4rem;
+  margin-top: 3rem;
+}
 
-    h1 {
-      font-size: 1.4rem;
-      margin-top: 3rem;
-    }
+hr {
+  margin: 2rem 0;
+  padding: 0;
+}
 
-    hr {
-      margin: 2rem 0;
-      padding: 0;
-    }
+.radio label { font-weight: bold; }
+.radio label small { font-weight: normal; }
 
-    form > div > div {
-      padding: 0 3rem !important;
-      min-height: 100%;
-    }
+#shipping { font-size: 1rem; padding-bottom: 1rem; white-space: nowrap; }
+#shipping div:last-child { font-weight: bold; text-align: right; }
 
-    #logo {
-      fill: var(--dark);
-      display: block;
-      margin: 3rem 0 0 3rem;
-      height: 80px;
-    }
+#price { font-size: 1.4rem; padding-bottom: 1rem; white-space: nowrap; }
+#price div:first-child { line-height: 2rem; }
+#price div:last-child { font-size: 1.6rem; font-weight: bold; text-align: right; }
 
-    .alert { margin: 2rem 3rem 0 3rem; }
-
-    .radio label { font-weight: bold; }
-    .radio label small { font-weight: normal; }
-
-    #shipping { font-size: 1rem; padding-bottom: 1rem; white-space: nowrap; }
-    #shipping div:last-child { font-weight: bold; text-align: right; }
-
-    #price { font-size: 1.4rem; padding-bottom: 1rem; white-space: nowrap; }
-    #price div:first-child { line-height: 2rem; }
-    #price div:last-child { font-size: 1.6rem; font-weight: bold; text-align: right; }
-
-    #payByPaypal, #payByInvoice { display: block; margin-top: 1rem; width: 100%; }
-    #pay .outline.dark { margin-right: 0.5rem; stroke: white; }
+#payByPaypal, #payByInvoice { display: block; margin-top: 1rem; width: 100%; }
+#pay .outline.dark { margin-right: 0.5rem; stroke: white; }
 @endsection
 
 @section('content')
-<main id="shop" class="container dark">
-  <!-- <svg id="logo"><use href="../static/img/locloise.all.svg#logo"/></svg> -->
+<main id="shop" class="container padded">
+  <!-- <svg id="logo"><use href="/static/img/locloise.svg#logo"/></svg> -->
 
-  <?php if (isset($error)) { ?>
-  <div class="alert error"><svg class="outline"><use href="../static/img/icons.svg#cross"/></svg><div><?php echo($error); ?></div></div>
-  <?php } ?>
+  <?php if (isset($error)): ?>
+  <div class="alert error">
+    <!-- <svg class="outline"><use href="../static/img/icons.svg#cross"/></svg> -->
+    <?php echo($error); ?></div>
+  <?php endif; ?>
 
-  <form action="#" method="POST" autocomplete="on">
-    <div class="dual">
+  <form action="/shop" method="POST" autocomplete="on">
+    <div class="dual spaced">
 
       <!-- First column -->
       <div>
@@ -184,10 +174,16 @@
         <h1>Livraison</h1>
 
         <div class="group radio with-check">
-          <input type="radio" name="shipping" id="shippingByCar" value="paypal" <?php radio('shipping', 'paypal', true); ?> disabled/>
-          <label for="shippingByCar" id="shippingByCarLabel">Livraison locale <span class="label">gratuit</span><br/><small>Uniquement pour Le Locle et La Chaux-de-Fonds.</small></label>
+          <input type="radio" name="shipping" id="shippingByCar" value="paypal" <?php radio('shipping', 'paypal', true); ?>/>
+          <label for="shippingByCar" id="shippingByCarLabel">
+            Livraison locale <span class="label green">gratuit</span><br/>
+            <small>Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).</small>
+          </label>
           <input type="radio" name="shipping" id="shippingOnSite" value="onsite" <?php radio('shipping', 'onsite'); ?>/>
-          <label for="shippingOnSite">Sur place <span class="label">gratuit</span><br><small>Vous venez cherchez la bouteille au dépôt.<br>Les instructions vous seront transmises par mail.</small></label>
+          <label for="shippingOnSite">
+            Sur place <span class="label green">gratuit</span><br>
+            <small>Vous venez cherchez la bouteille au dépôt.<br>Les instructions vous seront transmises par mail.</small>
+          </label>
           <input type="radio" name="shipping" id="shippingByPost" value="paypal" <?php radio('shipping', 'paypal', true); ?>/>
           <label for="shippingByPost">Envoi postal</label>
         </div>
@@ -195,12 +191,15 @@
         <h1>Paiement</h1>
 
         <div class="group radio with-check">
-          <input type="radio" name="payment" id="payTruc" value="direct" <?php radio('payment', 'direct', true); ?>/>
-          <label for="payTruc">Virement direct<br><small>Les données IBAN vous seront transmises par mail.</small></label>
+          <input type="radio" name="payment" id="payIBAN" value="direct" <?php radio('payment', 'direct', true); ?>/>
+          <label for="payIBAN">
+            Virement direct <span class="label green">gratuit</span><br>
+            <small>Les données IBAN vous seront transmises par mail.</small>
+          </label>
           <input type="radio" name="payment" id="payTwint" value="twint" <?php radio('payment', 'twint'); ?>/>
           <label for="payTwint">Twint / carte de crédit</label>
-          <input type="radio" name="payment" id="payYolo" value="paypal" <?php radio('payment', 'paypal'); ?>/>
-          <label for="payYolo">Paypal</label>
+          <input type="radio" name="payment" id="payPaypal" value="paypal" <?php radio('payment', 'paypal'); ?>/>
+          <label for="payPaypal">Paypal</label>
         </div>
 
         <hr />
@@ -215,7 +214,7 @@
         </div> -->
 
         <div id="pay">
-          <button id="payByInvoice" type="submit"><svg class="outline dark"><use href="../static/img/icons.svg#card"/></svg>Passer au paiement</button>
+          <button id="payByInvoice" type="submit"><svg class="outline dark"><use href="../static/img/icons.svg#card"/></svg>Vérifier la commande</button>
           <div id="payByPaypal"></div>
         </div>
 
@@ -223,5 +222,6 @@
 
     </div>
   </form>
+
 </main>
 @endsection
