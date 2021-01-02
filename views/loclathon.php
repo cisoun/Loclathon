@@ -1,7 +1,6 @@
-@extend('views/layouts/main')
-@data('title', 'La tournée des fontaines')
-
-@section('content')
+<extend>views/layouts/main</extend>
+<block title>La tournée des fontaines</block>
+<block content>
 <main id="loclathon">
   <div class="fade"></div>
   <div class="container padded">
@@ -40,4 +39,4 @@
     </div>
   </div>
 </section>
-@endsection
+</block>

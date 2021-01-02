@@ -1,16 +1,13 @@
-@extend('views/layouts/main')
-@data('title', 'La Locloise')
-@section('css')
-#details {
-  /*text-align: justify;*/
-}
+<extend>views/layouts/main</extend>
+<block title>La Locloise</block>
+<block css>
 #details h2 {
   margin: 3rem 0 2rem 0;
   text-decoration: smallcaps;
 }
 #details h1 { font-size: 2rem; }
-@endsection
-@section('content')
+</block>
+<block content>
 <main id="locloise" class="dual">
     <div><img src="/static/img/locloise.jpg" alt="La Locloise"/></div>
     <div class="padded">
@@ -57,4 +54,4 @@
     <p>En effet, la ville comporte 27 fontaines. Multipliez ce nombre par 2 et vous obtenez 54 !</p>
   </div>
 </section>
-@endsection
+</block>

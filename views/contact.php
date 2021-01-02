@@ -27,15 +27,12 @@ $min = rand(1, 5);
 $max = rand(1, 5);
 $_SESSION['check'] = strval($min + $max);
 ?>
-
-@extend('views/layouts/main')
-@data('title', 'Contact')
-
-@section('css')
+<extend>views/layouts/main</extend>
+<block title>Contact</block>
+<block css>
 #contact { max-width: 600px;  }
-@endsection
-
-@section('content')
+</block>
+<block content>
 <main id="contact" class="container dark">
   <!--a href="/"><svg id="logo"><use href="/static/img/logos.svg#loclathon"/></svg></a-->
   <h1>Formulaire de contact</h1>
@@ -72,4 +69,4 @@ $_SESSION['check'] = strval($min + $max);
     </div>
   <?php } ?>
 </main>
-@endsection
+</block>

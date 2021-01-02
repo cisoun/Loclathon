@@ -5,19 +5,19 @@ $date = [
 ];
 ?>
 
-@extend('views/layouts/photos')
-@data('title', '{{ year }}')
+<extend>views/layouts/photos</extend>
+<block title>{{ year }}</block>
 
-@section('css')
+<block css>
 .grid > a > img { height: 100%; width: 100%; }
-@endsection
+</block>
 
-@section('header')
+<block header>
 <h1>{{ year }}</h1>
 Tournée du <?php echo $date[$params['year']]; ?>.
-@endsection
+</block>
 
-@section('grid')
+<block grid>
 <?php
   $year = $params['year'];
   $root = getcwd() . "/static/photos/$year";
@@ -29,4 +29,4 @@ Tournée du <?php echo $date[$params['year']]; ?>.
 ?>
 <a href="/static/photos/{{ year }}/<?php echo $file; ?>" target="_blank"><img src="/static/photos/{{ year }}/min/<?php echo $file; ?>"/></a>
 <?php endforeach; ?>
-@endsection
+</block>

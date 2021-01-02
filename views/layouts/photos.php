@@ -1,7 +1,7 @@
-@extend('views/layouts/main')
-@data('title', 'Albums');
+<extend>views/layouts/main</extend>
+<block title>Albums</block>
 
-@section('css')
+<block css>
 .photos { text-align: center; }
 #photos { max-width: 800px; text-align: center; }
 #photos h1 { margin-bottom: 0; }
@@ -47,14 +47,15 @@
 }
 .grid > div:hover > a { background-color: rgba(0, 0, 0, 0.9); }
 .grid > div > a > div { font-size: 2rem; }
-@render('css');
-@endsection
 
-@section('content')
+<? css ?>
+</block>
+
+<block content>
 <main id="photos" class="container">
-  @render('header')
+  <? header ?>
   <div id="grid" class="grid">
-  @render('grid')
+  <? grid ?>
   </div>
 </main>
-@endsection
+</block>

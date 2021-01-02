@@ -56,13 +56,13 @@
   }
 ?>
 
-@extend('views/layouts/shop');
-@section('footer')
+<extend>views/layouts/shop</extend>
+<block footer>
   <script src="/static/js/layout.js" type="module" defer></script>
   <script src="/static/js/fetch.js" type="module" defer></script>
   <script src="/static/js/shop.js" type="module" defer></script>
-@endsection
-@section('css')
+</block>
+<block css>
 form h1 {
   font-size: 1.4rem;
   margin-top: 3rem;
@@ -85,9 +85,9 @@ hr {
 
 #payByPaypal, #payByInvoice { display: block; margin-top: 1rem; width: 100%; }
 #pay .outline.dark { margin-right: 0.5rem; stroke: white; }
-@endsection
+</block>
 
-@section('content')
+<block content>
 <main id="shop" class="container padded">
   <!-- <svg id="logo"><use href="/static/img/locloise.svg#logo"/></svg> -->
 
@@ -224,4 +224,4 @@ hr {
   </form>
 
 </main>
-@endsection
+</block>

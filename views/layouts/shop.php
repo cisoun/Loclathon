@@ -24,11 +24,11 @@
 
   <style type="text/css">
   main { max-width: 1000px; }
-  @render('css');
+  <? css ?>
   </style>
 </head>
 <body>
-@render('content')
-@render('footer')
+<? content ?>
+<? footer ?>
 </body>
 </html>

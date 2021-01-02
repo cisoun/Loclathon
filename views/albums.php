@@ -5,21 +5,21 @@ $albums = [
 ];
 ?>
 
-@extend('views/layouts/photos')
-@data('title', 'Photos')
+<extend>views/layouts/photos</extend>
+<block title>Photos</block>
 
-@section('css')
+<block css>
 #photos #grid div a span { background-color: rgba(0, 0, 0, 0.8); }
-@endsection
+</block>
 
-@section('header')
+<block header>
 <h1>Albums</h1>
-@endsection
+</block>
 
-@section('grid')
+<block grid>
 <?php foreach ($albums as $year => $file): ?>
   <div style="background-image: url('/static/photos/<?php echo $year ?>/min/<?php echo $file ?>.jpg')">
     <a href="/{{lang}}/photos/<?php echo $year ?>"><div><?php echo $year ?></div></a>
   </div>
 <?php endforeach; ?>
-@endsection
+</block>

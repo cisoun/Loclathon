@@ -1,6 +1,5 @@
-@extend('views/layouts/shop');
-@section('css')
-
+<extend>views/layouts/shop</extend>
+<block css>
 #shop table {
   width: 100%;
 }
@@ -22,11 +21,8 @@ h3 {
 
 #shop table tr td:first-child { font-weight: bold; text-align: left; }
 #shop table tr td:last-child { text-align: right; }
-@endsection
-@section('content')
-<form>
-
-</form>
+</block>
+<block content>
 <main id="shop" class="container padded">
   <!-- <svg id="logo"><use href="/static/img/locloise.svg#logo"/></svg> -->
 
@@ -77,4 +73,4 @@ h3 {
     </div>
   <div>
 </main>
-@endsection
+</block>

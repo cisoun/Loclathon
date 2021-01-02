@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <title>Le Loclathon | @data('title')</title>
+  <title>Le Loclathon | <? title ?></title>
 
   <link rel="icon" type="image/svg" href="/static/img/logo.svg">
 
@@ -30,7 +30,7 @@
   <link rel="stylesheet" media="screen and (min-width: 992px)" href="/static/css/desktop.css" />
 
   <style type="text/css">
-  @render('css');
+  <? css ?>
   </style>
 </head>
 <body>
@@ -46,7 +46,7 @@
     </ul>
   </nav>
 
-  @render('content')
+  <? content ?>
 
   <footer>
     <div class="quad container padded">
@@ -75,7 +75,7 @@
     </div>
   </footer>
 
-  @render('footer');
+  <? footer ?>
 
   <script type="text/javascript">
     const nav = document.querySelector('nav');
