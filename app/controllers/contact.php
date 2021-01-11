@@ -35,7 +35,7 @@ class Contact {
 				'from'       => env('mail_user'),
 				'from_title' => $name,
 				'to'         => [],
-				'bcc'        => env('mail_agents'),
+				'bcc'        => env('agents'),
 				'html'       => false,
 			]);
 			$sent = true;
