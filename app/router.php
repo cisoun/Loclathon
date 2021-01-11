@@ -1,5 +1,11 @@
 <?php
 class Router {
+	public static function call($callback) {
+		return function ($params) use ($callback) {
+			return call_user_func($callback, $params);
+		};
+	}
+
 	/**
 	* Do something when a route is valid.
 	*
@@ -34,20 +40,13 @@ class Router {
 
 	public static function view($view) {
 		return function ($params) use ($view) {
-			echo Layout::render($view, $params);
+			Response::view($view, $params);
 		};
 	}
 
 	public static function view_cached($view) {
 		return function ($params) use ($view) {
-			$file = getcwd() . '/cache/' . str_replace('/', '_', Request::uri());
-			if (file_exists($file)) {
-				echo file_get_contents($file);
-			} else {
-				$content = Layout::render($view, $params);
-				file_put_contents($file, $content);
-				echo $content;
-			}
+			Response::view_cached($view, $params);
 		};
 	}
 }
