@@ -1,5 +1,6 @@
 <?php
-require_once('app/router.php');
+require_once('config.php');
+require_once('app/app.php');
 
 # Serve static ressources.
 if (extension('png|jpg|jpeg|gif|css|js|svg|pdf')) {
@@ -7,23 +8,21 @@ if (extension('png|jpg|jpeg|gif|css|js|svg|pdf')) {
 }
 
 switch (method()) {
-  case 'GET':
-    route('/', redirect('/fr'));
-    route('/:lang', cached_view('loclathon'));
-    route('/:lang/locloise', cached_view('locloise'));
-    route('/:lang/contact', cached_view('contact'));
-    route('/:lang/photos', cached_view('albums'));
-    route('/:lang/photos/:year', cached_view('photos'));
-    route('/:lang/shop', view('shop/shop'));
-    break;
-  case 'POST':
-    route('/contact', cached_view('contact'));
-    route('/shop', function ($params) {
-      require_once('app/shop.php');
-      render_shop($params);
-    });
-    break;
+	case 'GET':
+		route('/',						redirect('/fr'));
+		route('/:lang',					view_cached('loclathon'));
+		route('/:lang/locloise',		view_cached('locloise'));
+		route('/:lang/photos',			view_cached('albums'));
+		route('/:lang/photos/:year',	view_cached('photos'));
+		route('/:lang/shop',			view('shop/shop'));
+		route('/:lang/contact',			call('Contact::show'));
+		break;
+	case 'POST':
+		route('/:lang/contact',			call('Contact::post'));
+		route('/shop',					call('Shop::post'));
+		break;
 }
 
+// Fallback: redirect to homepage.
 header('Location: /');
 ?>
