@@ -1,60 +1,47 @@
 <?php
-require_once(getcwd() . '/app/mail.php');
-
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
-
-$ok = false;
-$submit = false;
-$name = '';
-$mail = '';
-$message = '';
-
-if ($_POST) {
-  $submit = true;
-  $name = $_POST['name'];
-  $mail  = $_POST['mail'];
-  $message = $_POST['message'];
-  $ok = $_POST['check'] === $_SESSION['check'];
-
-  if ($ok) {
-    $subject = 'Message de ' . $name;
-    mail_send($subject, $mail, $message, false);
-  }
-}
-$min = rand(1, 5);
-$max = rand(1, 5);
-$_SESSION['check'] = strval($min + $max);
+$name    = $params['name'];
+$mail    = $params['mail'];
+$message = $params['message'];
+$error   = $params['error'];
+$sent    = $params['sent'];
+$min     = $params['min'];
+$max     = $params['max'];
 ?>
 
 <extend>layouts/main</extend>
 
 <block title>Contact</block>
+
 <block css>
 #contact { max-width: 600px; }
+#confirm { padding: 5rem 0; }
 </block>
+
 <block content>
 <main id="contact" class="container dark">
-  <!--a href="/"><svg id="logo"><use href="/static/img/logos.svg#loclathon"/></svg></a-->
-  <h1>Formulaire de contact</h1>
-  <?php if (!$ok) { ?>
-    <form action="#" method="post">
+  <?php if (!$sent): ?>
+    <h1><?= __('contact.title') ?></h1>
+    <?php if ($error > 0): ?>
+    <div class="alert error">
+      <?= __('contact.error')[$error - 1] ?>
+    </div>
+    <?php endif; ?>
+    <form action="/{{lang}}/contact" method="post">
       <div class="group">
         <label for="name">Prénom et nom :</label>
-        <input type="text" id="name" name="name" placeholder="Prénom et nom" value="<?php echo $name; ?>" required>
+        <input type="text" id="name" name="name" placeholder="Prénom et nom" value="<?= $name ?>" required>
       </div>
       <div class="group">
         <label for="mail">Email :</label>
-        <input type="email" id="mail" name="mail" placeholder="Email" value="<?php echo $mail; ?>" required>
+        <input type="email" id="mail" name="mail" placeholder="Email" <?= $error == 1 ? 'autofocus' : '' ?> value="<?= $mail ?>" required>
       </div>
       <div class="group">
         <label for="message">Message :</label>
-        <textarea id="message" name="message" placeholder="message" rows="10" required><?php echo $message; ?></textarea>
+        <textarea id="message" name="message" placeholder="message" rows="10" <?= $error == 2 ? 'autofocus' : '' ?> required><?= $message ?></textarea>
       </div>
       <div class="group">
         <label for="check">Vérification :</label>
-        <input type="number" id="check" name="check" placeholder="<?php echo "$min + $max ?" ?>" class="<?php if ($submit && !$ok) echo 'invalid'; ?>" required>
+        <input type="number" id="check" name="check" placeholder="<?= "$min + $max ?" ?>" <?= $error == 3 ? 'autofocus' : '' ?> required>
       </div>
       <div class="separator">
         <span>Confirmation</span>
@@ -63,12 +50,11 @@ $_SESSION['check'] = strval($min + $max);
         <button type="submit">Envoyer</button>
       </div>
     </form>
-  <?php } else { ?>
-    <div class="text-center">
+  <?php else: ?>
+    <div id="confirm" class="text-center">
       <h1>Merci !</h1>
       <p>Nous essayerons de te répondre au plus vite !</p>
-      <a href="..">Revenir au site <span>→</span></a>
     </div>
-  <?php } ?>
+  <?php endif ?>
 </main>
 </block>
