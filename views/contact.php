@@ -28,32 +28,32 @@ $max     = $params['max'];
     <?php endif; ?>
     <form action="/{{lang}}/contact" method="post">
       <div class="group">
-        <label for="name">Prénom et nom :</label>
-        <input type="text" id="name" name="name" placeholder="Prénom et nom" value="<?= $name ?>" required>
+        <label for="name"><?= __('contact.name') ?> :</label>
+        <input type="text" id="name" name="name" placeholder="<?= __('contact.name') ?>" value="<?= $name ?>" required>
       </div>
       <div class="group">
-        <label for="mail">Email :</label>
-        <input type="email" id="mail" name="mail" placeholder="Email" <?= $error == 1 ? 'autofocus' : '' ?> value="<?= $mail ?>" required>
+        <label for="mail"><?= __('contact.mail') ?> :</label>
+        <input type="email" id="mail" name="mail" placeholder="<?= __('contact.mail') ?>" <?= $error == 1 ? 'autofocus' : '' ?> value="<?= $mail ?>" required>
       </div>
       <div class="group">
-        <label for="message">Message :</label>
-        <textarea id="message" name="message" placeholder="message" rows="10" <?= $error == 2 ? 'autofocus' : '' ?> required><?= $message ?></textarea>
+        <label for="message"><?= __('contact.message') ?> :</label>
+        <textarea id="message" name="message" placeholder="<?= __('contact.message') ?>" rows="10" <?= $error == 2 ? 'autofocus' : '' ?> required><?= $message ?></textarea>
       </div>
       <div class="group">
-        <label for="check">Vérification :</label>
+        <label for="check"><?= __('contact.check') ?> :</label>
         <input type="number" id="check" name="check" placeholder="<?= "$min + $max ?" ?>" <?= $error == 3 ? 'autofocus' : '' ?> required>
       </div>
       <div class="separator">
-        <span>Confirmation</span>
+        <span><?= __('contact.confirmation') ?></span>
       </div>
       <div class="group uni">
-        <button type="submit">Envoyer</button>
+        <button type="submit"><?= __('contact.send') ?></button>
       </div>
     </form>
   <?php else: ?>
     <div id="confirm" class="text-center">
-      <h1>Merci !</h1>
-      <p>Nous essayerons de te répondre au plus vite !</p>
+      <h1><?= __('contact.thanks') ?></h1>
+      <p><?= __('contact.reply') ?></p>
     </div>
   <?php endif ?>
 </main>

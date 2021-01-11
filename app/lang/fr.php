@@ -1,12 +1,20 @@
 <?php
 return [
-	'contact.title' => 'Formulaire de contact',
-	'contact.error' => [
+	'contact.check'        => 'Vérification',
+	'contact.confirmation' => 'Confirmation',
+	'contact.mail'         => 'E-mail',
+	'contact.message'      => 'Message',
+	'contact.name'         => 'Prénom et nom',
+	'contact.reply'        => 'Nous essayerons de te répondre au plus vite !',
+	'contact.send'         => 'Envoyer',
+	'contact.thanks'       => 'Merci !',
+	'contact.title'        => 'Formulaire de contact',
+	'contact.error'        => [
 		"L'adresse e-mail n'est pas valide!",
 		'Le message est vide.',
 		'La vérification est éronnée. Merci de réessayer.'
 	],
-	'shop.error' => [
+	'shop.error'           => [
 		'<b>Oups !</b> Les adresses mail ne sont pas valides.',
 		'<b>Oups !</b> Les adresses mail ne correspondent pas.',
 		"<b>Désolé !</b> Nous n'avons plus que {{units}} bouteilles en stock !",
