@@ -1,4 +1,4 @@
-<extend>views/layouts/main</extend>
+<extend>layouts/main</extend>
 <block title>Albums</block>
 
 <block css>

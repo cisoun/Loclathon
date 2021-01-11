@@ -1,4 +1,4 @@
-<extend>views/layouts/shop</extend>
+<extend>layouts/shop</extend>
 <block css>
 #shop table {
   width: 100%;

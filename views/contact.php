@@ -27,7 +27,9 @@ $min = rand(1, 5);
 $max = rand(1, 5);
 $_SESSION['check'] = strval($min + $max);
 ?>
-<extend>views/layouts/main</extend>
+
+<extend>layouts/main</extend>
+
 <block title>Contact</block>
 <block css>
 #contact { max-width: 600px; }

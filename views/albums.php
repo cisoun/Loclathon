@@ -5,7 +5,7 @@ $albums = [
 ];
 ?>
 
-<extend>views/layouts/photos</extend>
+<extend>layouts/photos</extend>
 <block title>Photos</block>
 
 <block css>

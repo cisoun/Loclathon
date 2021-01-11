@@ -1,4 +1,4 @@
-<extend>views/layouts/main</extend>
+<extend>layouts/main</extend>
 <block title>La tournée des fontaines</block>
 <block content>
 <main id="loclathon">
