@@ -1,71 +1,44 @@
 <?php
+require_once('config.php');
 
-require_once('../config.php');
-
-function buy($data)
-{
-    $payer = $data['payer'];
-    $items = $data['purchase_units'][0]['items'][0];
-    $shipping = $data['purchase_units'][0]['shipping'];
-
-    $address = $shipping['address']['address_line_1'];
-    if (array_key_exists('address_line_2', $shipping['address']))
-        $address .= chr(10) . $shipping['address']['address_line_2'];
-
-    $array = array(
-        'order_id'      => $data['id'],
-        'payer_id'      => $payer['payer_id'],
-        'full_name'     => $shipping['name']['full_name'],
-        'email'         => $payer['email_address'],
-        'phone'         => $payer['phone']['phone_number']['national_number'],
-        'address'       => $address,
-        'city'          => $shipping['address']['admin_area_2'],
-        'postal_code'   => $shipping['address']['postal_code'],
-        'country'       => $shipping['address']['country_code'],
-        'units'         => $items['quantity'],
-        'amount'        => $items['quantity'] * price($data),
-        'status'        => '1',
-        'date'          => $data['create_time']
-    );
-
-    // At this point, send the confirmation to the customer and try to register
-    // the order into the database. If it fails, it should be visible in the
-    // dashboard of Paypal anyway.
-
-    sendConfirmation($array);
-
-    $result = query(function($db) use ($array) {
-        $query = sql_build_insert($db, 'orders', $array);
-        $result = $query->execute();
-        if ($result)
-            $result->finalize();
-        return $result;
-    });
-
-    return array(
-        'success' => $result !== false,
-        'email' => $array['email']
-    );
+// Functions
+function __($key, $params = []) { return Lang::get($key, $params); }
+function call($callback)        { return Router::call($callback); }
+function env($key, $fallback = false) {
+	global $CONFIG;
+	if (array_key_exists($key, $CONFIG))
+		return $CONFIG[$key];
+	return $fallback;
+}
+function extension($extensions) { return Request::has_extension($extensions); }
+function method()               { return Request::method(); }
+function redirect($url)         { return Router::redirect($url); }
+function route($uri, $callback) { return Router::route($uri, $callback); };
+function view($path)            { return Router::view($path); }
+if (env('debug')) {
+	function view_cached($path) { return Router::view($path); }
+} else {
+	function view_cached($path) { return Router::view_cached($path); }
 }
 
-function items() {
-  return query(function($db) {
-      return $db->querySingle('SELECT id, title, units, price FROM items');
-  });
-}
+spl_autoload_register(function ($class) {
+	$classes = [
+		'Lang'       => 'lang',
+		'Layout'     => 'layout',
+		'Mail'       => 'mail',
+		'Request'    => 'request',
+		'Response'   => 'response',
+		'Router'     => 'router',
+		'Session'    => 'session',
+		'Validation' => 'validation',
 
-function price($id)
-{
-    return query(function($db) {
-        return $db->querySingle('SELECT price FROM bottles');
-    });
-}
+		'Shop'       => 'controllers/shop',
+		'Contact'    => 'controllers/contact',
+	];
+	if (!array_key_exists($class, $classes))
+		die("$class class does not exist!");
+    require_once('app/' . $classes[$class] . '.php');
+});
 
-function units()
-{
-    return query(function($db) {
-        return $db->querySingle('SELECT b.units - (SELECT coalesce(SUM(units), 0) FROM orders) as units FROM bottles b');
-    });
-}
-
+Lang::load('fr');
 ?>
