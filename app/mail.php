@@ -50,13 +50,13 @@ class Mail {
 	    $mail->setFrom($params['from'], $params['from_title']);
 
 		// Add recipients.
-		foreach ($params['to'] as $recipient) {
-	    	$mail->addAddress($recipient);
+		foreach ($params['to'] as $to) {
+	    	$mail->addAddress($to);
 		}
 
 	    // Add agents.
-	    foreach ($params['bcc'] as $agent) {
-	        $mail->addBCC($agent);
+	    foreach ($params['bcc'] as $bcc) {
+	        $mail->addBCC($bcc);
 	    }
 
 	    // Content
