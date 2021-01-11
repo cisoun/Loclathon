@@ -454,6 +454,7 @@ form div.group.radio.with-check input:checked + label::before {
   border-left: 5px solid var(--gray-700);
   color: var(--gray-300);
   display: block;
+  margin: 1rem 0;
   padding: 1rem 2rem;
   transition: all 0.3s;
 }
