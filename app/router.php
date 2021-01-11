@@ -1,60 +1,54 @@
 <?php
-$uri = $_SERVER['REQUEST_URI'];
+class Router {
+	/**
+	* Do something when a route is valid.
+	*
+	* @param string $uri      URI of the route.
+	* @param array  $callback Callback to call.
+	*                         Must provide an associative array as parameter.
+	*
+	* @return null
+	*/
+	public static function route($uri, $callback) {
+		// Transform route into a regex pattern.
+		$pattern = preg_replace('/:[^\/]+/', '([^/]+)', $uri);
+		$pattern = preg_replace('/\//', '\\/', $pattern);
+		$pattern = "/^$pattern\/?$/";
 
-function extension($extensions) {
-  global $uri;
-  return preg_match('/\.(?:' . $extensions . ')$/', $uri);
-}
+		// Check if URI matches route pattern.
+		if (preg_match_all($pattern, Request::uri(), $matches, PREG_SET_ORDER)) {
+			if (preg_match_all('/:([^\/]+)/', $uri, $fields)) {
+				$callback(array_combine($fields[1], array_slice($matches[0], 1)));
+			} else {
+				$callback([]);
+			}
+			die(); // Don't process other routes.
+		}
+	}
 
-function method() {
-  return $_SERVER['REQUEST_METHOD'];
-}
+	public static function redirect($url) {
+		return function ($params) use ($url) {
+			header('Location: ' . $url);
+		};
+	}
 
-function route($route, $callback) {
-  global $uri;
+	public static function view($view) {
+		return function ($params) use ($view) {
+			echo Layout::render($view, $params);
+		};
+	}
 
-  // Transform route into a regex pattern.
-  $pattern = preg_replace('/:[^\/]+/', '([^/]+)', $route);
-  $pattern = preg_replace('/\//', '\\/', $pattern);
-  $pattern = "/^$pattern\/?$/";
-
-  // Check if URI matches route pattern.
-  if (preg_match_all($pattern, $uri, $matches, PREG_SET_ORDER)) {
-    if (preg_match_all('/:([^\/]+)/', $route, $fields)) {
-		$callback(array_combine($fields[1], array_slice($matches[0], 1)));
-    } else {
-		$callback([]);
-    }
-    die(); // Don't process other routes.
-  }
-}
-
-function redirect($url) {
-  return function ($params) use ($url) {
-    header('Location: ' . $url);
-  };
-}
-
-function cached_view($path) {
-  return view($path);
-  return function ($params) use ($path) {
-    global $uri;
-    $file = getcwd() . '/cache/' . str_replace('/', '_', $uri);
-    if (file_exists($file)) {
-    	echo file_get_contents($file);
-    } else {
-		require_once('layout.php');
-		$content = render(getcwd() . '/views/' . $path . '.php', $params);
-		file_put_contents($file, $content);
-		echo $content;
-    }
-  };
-}
-
-function view($path) {
-	return function ($params) use ($path) {
-		require_once('layout.php');
-		echo render(getcwd() . '/views/' . $path . '.php', $params);
-	};
+	public static function view_cached($view) {
+		return function ($params) use ($view) {
+			$file = getcwd() . '/cache/' . str_replace('/', '_', Request::uri());
+			if (file_exists($file)) {
+				echo file_get_contents($file);
+			} else {
+				$content = Layout::render($view, $params);
+				file_put_contents($file, $content);
+				echo $content;
+			}
+		};
+	}
 }
 ?>
