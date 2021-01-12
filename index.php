@@ -9,16 +9,16 @@ if (extension('png|jpg|jpeg|gif|css|js|svg|pdf|ico')) {
 
 switch (method()) {
 	case 'GET':
-		route('/',						redirect('/fr'));
-		route('/:lang',					view_cached('loclathon'));
-		route('/:lang/locloise',		view_cached('locloise'));
-		route('/:lang/photos',			view_cached('albums'));
-		route('/:lang/photos/:year',	view_cached('photos'));
-		route('/:lang/shop',			view('shop/shop'));
-		route('/:lang/contact',			call('Contact::show'));
+		route('/',						redirect('/' . Lang::user()));
+		route('/:lang',					with_lang(view_cached('loclathon')));
+		route('/:lang/locloise',		with_lang(view_cached('locloise')));
+		route('/:lang/photos',			with_lang(view_cached('albums')));
+		route('/:lang/photos/:year',	with_lang(view_cached('photos')));
+		route('/:lang/shop',			with_lang(view('shop/shop')));
+		route('/:lang/contact',			with_lang(call('Contact::show')));
 		break;
 	case 'POST':
-		route('/:lang/contact',			call('Contact::post'));
+		route('/:lang/contact',			with_lang(call('Contact::post')));
 		route('/shop',					call('Shop::post'));
 		break;
 }

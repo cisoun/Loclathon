@@ -20,6 +20,16 @@ if (env('debug')) {
 } else {
 	function view_cached($path) { return Router::view_cached($path); }
 }
+function with_lang($callback) {
+	return function ($params) use ($callback) {
+		$lang = $params['lang'];
+		if (in_array($lang, env('locales'))) {
+			Lang::load($lang);
+			return $callback($params);
+		}
+		return redirect('/' . env('locale'))($params);
+	};
+}
 
 spl_autoload_register(function ($class) {
 	$classes = [
@@ -39,6 +49,4 @@ spl_autoload_register(function ($class) {
 		die("$class class does not exist!");
     require_once('app/' . $classes[$class] . '.php');
 });
-
-Lang::load('fr');
 ?>
