@@ -40,9 +40,9 @@
     <ul>
       <li><a href="/"><svg class="outline fill"><use xlink:href="/static/img/icons.svg#loclathon"/></svg> Le Loclathon</a></li>
       <li><a href="/{{lang}}/locloise">La Locloise</a></li>
-      <li><a href="/{{lang}}/photos">Photos</a></li>
-      <li><a href="/{{lang}}/shop">Shop</a></li>
-      <li><a href="/{{lang}}/contact">Contact</a></li>
+      <li><a href="/{{lang}}/photos"><?= __('menu.photos') ?></a></li>
+      <li><a href="/{{lang}}/shop"><?= __('menu.shop') ?></a></li>
+      <li><a href="/{{lang}}/contact"><?= __('menu.contact') ?></a></li>
     </ul>
   </nav>
 

@@ -1,5 +1,8 @@
 <?php
 return [
+	'menu.contact'         => 'Contact',
+	'menu.photos'          => 'Photos',
+	'menu.shop'            => 'Magasin',
 	'contact.check'        => 'Vérification',
 	'contact.confirmation' => 'Confirmation',
 	'contact.mail'         => 'E-mail',
@@ -10,7 +13,7 @@ return [
 	'contact.thanks'       => 'Merci !',
 	'contact.title'        => 'Formulaire de contact',
 	'contact.error'        => [
-		"L'adresse e-mail n'est pas valide!",
+		"L'adresse e-mail n'est pas valide.",
 		'Le message est vide.',
 		'La vérification est éronnée. Merci de réessayer.'
 	],
