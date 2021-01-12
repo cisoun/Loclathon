@@ -1,13 +1,19 @@
 <?php
 class Lang {
-	private static string $PATH = 'lang';
-	private static array  $DATA = [];
+	private static array  $DATA    = [];
+	private static string $CURRENT = '';
+	private static string $PATH    = 'lang';
+
+	public static function current() {
+		return self::$CURRENT;
+	}
 
 	public static function langs() {
 		return glob(self::$PATH . '/*.php');
 	}
 
 	public static function load($lang) {
+		self::$CURRENT = $lang;
 		self::$DATA = require_once(self::$PATH . '/' . $lang . '.php');
 	}
 
