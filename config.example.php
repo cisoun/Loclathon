@@ -10,6 +10,12 @@ $CONFIG = [
   #   Debug environment will disable cached views.
 	'debug'         => true,
 
+  # Default locale.
+  'locale'        => 'fr',
+
+  # Available locales.
+  'locales'       => ['en', 'fr'],
+
   # Logo URL that will be included in the confirmation.
 	'logo'          => '',
 
