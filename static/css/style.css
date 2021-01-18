@@ -24,7 +24,6 @@
 body { background-color: var(--background); }
 
 section { clear: both; }
-h1 { font-size: 3rem; font-weight: normal; }
 a { color: var(--gray-700); text-decoration: none; }
 a:hover { color: var(--gray-900); }
 
@@ -63,7 +62,6 @@ footer .logo {
   padding-top: 12rem;
   text-align: center;
 }
-
 #loclathon .fade {
   background: linear-gradient(#000, transparent);
   position: absolute;
@@ -72,42 +70,16 @@ footer .logo {
   width: 100%;
   height: 20rem;
 }
-#loclathon .container {
-  font-family: 'Bebas Neue', sans-serif;
-  text-align: left;
+#loclathon > #logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4rem;
 }
-#loclathon .btn { margin-top: 10rem; }
+#loclathon .btn { margin-top: 6rem; }
 #loclathon .btn:hover .outline { transition: all var(--transition); }
 #loclathon .btn:hover .outline { stroke: var(--background); }
 
-#loclathon h1,
-#loclathon h3,
-#loclathon h5 {
-  margin: 0;
-}
-
-#loclathon h1 { text-shadow: 0.5rem 1rem var(--gray-100); }
-#loclathon h3,
-#loclathon h5 { text-shadow: 0.2rem 0.5rem var(--gray-100); }
-
-#loclathon h1 { font-size: 8rem; }
-#loclathon h3 { font-size: 3rem; }
-#loclathon h5 { font-size: 2rem; margin-bottom: 3rem; }
-
-#loclathon .highlight {
-  background-color: var(--gray-100);
-  display: inline-block;
-  font-size: 2rem;
-  margin: 1rem auto 0 auto;
-  padding: 1rem 2rem;
-}
-
-#loclathon .container * { transform: skewY(-3deg); }
-#loclathon .logo {
-  display: block;
-  height: 6rem;
-  width: 6rem;
-}
 #loclathon .btn {
   background-color: var(--red-500);
   border-radius: unset;
@@ -128,15 +100,6 @@ footer .logo {
 }
 #loclathon .btn .gg { margin-left: 0.5rem; }
 
-/* #locloise > div { height: 50rem; } */
-/* #locloise h1 { padding-top: 8rem; } */
-/* #locloise > div:first-child {
-  background-image: url('../img/locloise.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 50rem;
-} */
 #locloise > div:first-child > img {
   width: 100%;
 }
@@ -283,7 +246,7 @@ footer .outline { stroke-width: 1.4; }
   .tria > div { width: 33.33%; }
   .quad > div { width: 25%; } */
 
-  .padded { padding: 3rem; }
+  /* .padded { padding: 3rem; } */
 
   form .dual > div,
   form .tria > div { padding-left: 0.5rem; padding-right: 0.5rem; }

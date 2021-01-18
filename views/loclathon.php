@@ -1,18 +1,16 @@
 <extend>layouts/main</extend>
 <block title>La tournée des fontaines</block>
+<block css>
+#loclathon > div > img {
+  width: 100%;
+}
+</block>
 <block content>
 <main id="loclathon">
   <div class="fade"></div>
-  <div class="container padded">
-    <h1>Le Loclathon</h1>
-    <h3>Prochaine tournée en été 2021</h3>
-    <div class="highlight">27 fontaines</div>
-    <div class="highlight">25 kilomètres</div>
-    <div class="highlight">12 heures de bonne ambiance</div>
-  </div>
+  <img id="logo" class="container" src="/static/img/home.{{lang}}.svg" alt="Le Loclathon"/>
   <a href="#info" class="btn">En savoir plus <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
 </main>
-
 <section id="info" class="dual">
   <div class="padded">
     <h1> Qu'est-ce que c'est ?</h1>
