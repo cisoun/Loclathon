@@ -1,3 +1,7 @@
+<?php
+$uri = Request::uri();
+$page = substr($uri, 3);
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -43,6 +47,14 @@
       <li><a href="/{{lang}}/photos"><?= __('menu.photos') ?></a></li>
       <li><a href="/{{lang}}/shop"><?= __('menu.shop') ?></a></li>
       <li><a href="/{{lang}}/contact"><?= __('menu.contact') ?></a></li>
+      <li class="lang">
+        <a href="/{{lang}}"><span><?= Lang::current() ?></span></a>
+        <div>
+          <?php foreach (env('locales') as $locale): ?>
+          <a href="/<?= $locale . $page ?>"><?= __('lang.' . $locale) ?></a>
+          <?php endforeach; ?>
+        </div>
+      </li>
     </ul>
   </nav>
 
@@ -64,13 +76,13 @@
         <a href="https://fb.com/loclathon">Facebook</a>
       </div>
       <div>
-        <h3><svg class="outline"><use xlink:href="/static/img/icons.svg#grid"/></svg> Ressources</h3>
-        <a href="files/flyer.pdf">Plan du parcours</a>
-        <a href="img/logo.svg">Logo</a>
+        <h3><svg class="outline"><use xlink:href="/static/img/icons.svg#grid"/></svg> <?= __('footer.resources') ?></h3>
+        <a href="files/flyer.pdf"><?= __('footer.resources.map') ?></a>
+        <a href="img/logo.svg"><?= __('footer.resources.logo') ?></a>
       </div>
       <div>
-        <h3><svg class="outline"><use xlink:href="/static/img/icons.svg#mail"/></svg> Contact</h3>
-        <a href="/{{lang}}/contact">Nous écrire</a>
+        <h3><svg class="outline"><use xlink:href="/static/img/icons.svg#mail"/></svg> <?= __('footer.contact') ?></h3>
+        <a href="/{{lang}}/contact"><?= __('footer.contact.write') ?></a>
       </div>
     </div>
   </footer>
