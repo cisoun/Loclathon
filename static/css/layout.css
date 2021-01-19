@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200,400,600');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 :root {
   --gray-100: #111;
@@ -64,6 +63,9 @@
 
   --background: white;
   --foreground: var(--gray-100);
+
+  --link-color: var(--gray-700);
+  --link-color-hover: var(--foreground);
 
   --alert-shadow: 0 0.5rem 2rem;
   --border-radius: 0.3rem;
@@ -154,7 +156,7 @@ body, button, input, textarea {
 section { clear: both; }
 
 hr { border: 0; border-top: var(--separator); }
-h1 { font-size: 3rem; font-weight: normal; }
+h1 { font-size: 3rem; font-weight: normal; line-height: 3rem; }
 a { color: var(--foreground); font-weight: 600; text-decoration: none; }
 a:hover { color: var(--gray-500); }
 img.responsive { width: 100%; }
@@ -172,7 +174,7 @@ img.responsive { width: 100%; }
 .center { margin-left: auto; margin-right: auto; }
 .hidden { display: none !important; }
 
-.padded { padding: 2rem; }
+.padded { padding: 0 2rem; }
 
 .text-center { text-align: center; }
 .w-50 { display: inline-block; width: 50% !important; }
@@ -529,6 +531,7 @@ form div.group.radio.with-check input:checked + label::before {
 /* Desktop */
 @media screen and (min-width: 992px) {
   .container { width: 992px; }
+  .padded { padding: 0 3rem; }
 
   .dual > * { width: 50%; }
   .tria > * { width: 33.33%; }

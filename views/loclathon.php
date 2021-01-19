@@ -9,10 +9,10 @@
 <main id="loclathon">
   <div class="fade"></div>
   <img id="logo" class="container" src="/static/img/home.{{lang}}.svg" alt="Le Loclathon"/>
-  <a href="#info" class="btn">En savoir plus <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
+  <a href="#about" class="btn">En savoir plus <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
 </main>
-<section id="info" class="dual">
-  <div class="padded">
+<section id="about" class="dual padded spaced">
+  <div>
     <h1> Qu'est-ce que c'est ?</h1>
     <p>
       Le Loclathon est un événement annuel créé en 2015, organisé par trois comparses, qui depuis 2020, ont fondé une association éponyme à but non-lucratif autour de ce projet.
@@ -23,7 +23,7 @@
     </p>
     <p>Êtes-vous amatrice ou amateur d'absinthe ? Alors rejoingnez-nous !</p>
   </div>
-  <div class="padded">
+  <div>
     <h1>F.A.Q</h1>
     <div id="faq">
       <div class="left"><span class="bubble">À qui est ouvert l'événement ?</span></div>
@@ -33,7 +33,7 @@
       <div class="left"><span class="bubble">C'est donc gratuit ?</span></div>
       <div class="right"><span class="bubble">Carrément !</span><span class="logo"></span></div>
       <div class="left"><span class="bubble">Que dois-je prendre avec moi ?</span></div>
-      <div class="right"><span class="bubble">Boisson de votre choix, un verre et de bonnes chaussures. À manger éventuellement.</span><span class="logo"></span></div>
+      <div class="right"><span class="bubble">Boisson de votre choix, un verre et de bonnes chaussures.<br>À manger éventuellement.</span><span class="logo"></span></div>
     </div>
   </div>
 </section>

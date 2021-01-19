@@ -1,3 +1,5 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); */
+
 :root {
   /* --primary-dark: #1d463d; */
   --primary-dark: var(--green-300);  #1d463d;
@@ -15,7 +17,7 @@
 
   --view-desktop: 992px;
 
-  --bubble-left: var(--green-500);
+  --bubble-left: var(--green-400);
   --bubble-left-color: white;
   --bubble-right: var(--green-200);
   --bubble-right-color: white;
@@ -26,6 +28,7 @@ body { background-color: var(--background); }
 section { clear: both; }
 a { color: var(--gray-700); text-decoration: none; }
 a:hover { color: var(--gray-900); }
+p { line-height: 1.6rem; }
 
 #photos,
 #shop,
@@ -34,6 +37,7 @@ footer { margin-top: 10rem; }
 
 nav {
   background-color: var(--background);
+  box-shadow: 0 0 3rem 2rem var(--background);
   font-weight: bold;
   position: fixed;
   text-align: center;
@@ -42,7 +46,10 @@ nav {
   width: 100%;
   z-index: 1;
 }
-nav.transparent { background-color: transparent; }
+nav.transparent {
+  background-color: transparent;
+  box-shadow: unset;
+}
 nav > ul { list-style-type: none; margin: 0; padding: 0; }
 
 footer .logo {
@@ -99,10 +106,10 @@ footer .logo {
     transform: scale(1.1) skewY(-3deg);
 }
 #loclathon .btn .gg { margin-left: 0.5rem; }
+#about { padding-top: 6rem; }
+#about > div:first-child { text-align: justify; }
 
-#locloise > div:first-child > img {
-  width: 100%;
-}
+#locloise > div:first-child > img { width: 100%; }
 #locloise #buy { margin-top: 3rem; }
 #locloise #units { font-weight: bold; }
 #locloise #status {
@@ -122,23 +129,23 @@ footer .logo {
 
 footer {
   border-top: 1px dotted var(--gray-300);
-  font-size: 0.8rem;
+  line-height: 1rem;
+  /* font-size: 0.8rem; */
   padding: 3rem 0;
 }
 footer h3 .outline {
   height: 1.4rem;
-  margin-left: -2rem;
-  margin-top: -0.125rem;
-  position: absolute;
+  margin-right: 0.5rem;
+  margin-top: -0.2rem;
   width: 1.4rem;
 }
 footer a {
   display: block;
-  padding: 0.3rem 0;
+  padding: 0.3rem 0 0.3rem 2.15rem;
   margin-right: 2rem;
   transition: padding var(--transition);
 }
-footer a:hover { padding-left: 0.3rem; }
+footer a:hover { padding-left: 2.5rem; }
 footer div a:last-of-type { border-bottom: none; }
 footer .outline { stroke-width: 1.4; }
 
@@ -154,6 +161,10 @@ footer .outline { stroke-width: 1.4; }
   margin: 0.5rem;
   max-width: calc(100% - 4rem);
   padding: 1rem 2rem;
+  transition: transform var(--transition);
+}
+.bubble:hover {
+  transform: scale(1.05);
 }
 .left > .bubble {
   background: var(--bubble-left);
