@@ -1,6 +1,8 @@
 <?php
 $uri = Request::uri();
 $page = substr($uri, 3);
+$locales = env('locales');
+$current_locale = Lang::current();
 ?>
 <!doctype html>
 <html lang="fr">
@@ -21,7 +23,7 @@ $page = substr($uri, 3);
   <meta property="og:title" content="Le Loclathon | La Locloise">
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,600" rel="stylesheet" preload>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" preload>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" preload> -->
 
   <!-- CSS -->
   <link rel="preload" href="/static/css/layout.css" as="style">
@@ -48,10 +50,12 @@ $page = substr($uri, 3);
       <li><a href="/{{lang}}/shop"><?= __('menu.shop') ?></a></li>
       <li><a href="/{{lang}}/contact"><?= __('menu.contact') ?></a></li>
       <li class="lang">
-        <a href="/{{lang}}"><span><?= Lang::current() ?></span></a>
+        <a href="/{{lang}}"><span><?= $current_locale ?></span></a>
         <div>
-          <?php foreach (env('locales') as $locale): ?>
-          <a href="/<?= $locale . $page ?>"><?= __('lang.' . $locale) ?></a>
+          <?php foreach ($locales as $locale): ?>
+            <?php if ($locale !== $current_locale): ?>
+            <a href="/<?= $locale . $page ?>"><?= __('lang.' . $locale) ?></a>
+            <?php endif; ?>
           <?php endforeach; ?>
         </div>
       </li>
