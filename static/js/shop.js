@@ -48,12 +48,12 @@ const Shop = {
     const country = this.html.country.value == 'CH';
     const npa = ['2300', '2400'].includes(this.html.npa.value);
 
-    this.html.shippingByCarLabel.classList.toggle('hidden', !country);
-    this.html.shippingByCar.disabled = !(npa && country);
+    this.html.shippingLocal.classList.toggle('hidden', !country);
+    this.html.shippingLocal.disabled = !(npa && country);
 
     // Replace selection if necessary.
-    if (!(country && npa) && this.html.shippingByCar.checked) {
-      this.html.shippingOnSite.checked = true;
+    if (!(country && npa) && this.html.shippingLocal.checked) {
+      this.html.shippingPickUp.checked = true;
     }
   },
 
