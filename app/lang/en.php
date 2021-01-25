@@ -8,6 +8,22 @@ return [
 	'footer.social'         => 'Social',
 	'lang.en'               => 'English',
 	'lang.fr'               => 'French',
+	'loclathon.about'       => [
+		"Le Loclathon is an annual event created in 2015, organized by longtime friends, who, since 2020, have founded an eponymous non-profit association around this project. It brings together all absinthe lovers for a 12 hours and 25 kilometers trip through the watchmaking city of Le Locle in order to rally all of its 27 official fountains.",
+		"A glass is savoured by all at each fountain to share a good time between friends, all by visiting the city of Le Locle.",
+		"Are you an amateur of absinthe? So join us to our trip!"
+	],
+	'loclathon.about.title' => 'What is this?',
+	'loclathon.bubbles'     => [
+		'To whom is the event open?',
+		'To everyone.',
+		'Do I have to sign up to participate?',
+		'No, the event is public.',
+		"So it's free?",
+		'Totally!',
+		'What should I bring with me?',
+		'Drink of your choice, a glass and a good pair of shoes. Something to eat eventually. You can also buy food at noon when we arrive at the city center.'
+	],
 	'menu.contact'          => 'Contact',
 	'menu.photos'           => 'Photos',
 	'menu.shop'             => 'Shop',
