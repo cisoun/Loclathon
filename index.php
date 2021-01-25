@@ -10,6 +10,7 @@ if (extension('png|jpg|webp|ttf|css|js|svg|pdf|ico')) {
 switch (method()) {
 	case 'GET':
 		route('/',						redirect('/' . Lang::user()));
+		route('/locloise',              redirect('/' . Lang::user() . '/locloise'));
 		route('/:lang',					with_lang(view_cached('loclathon')));
 		route('/:lang/locloise',		with_lang(view_cached('locloise')));
 		route('/:lang/photos',			with_lang(view_cached('albums')));
