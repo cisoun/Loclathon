@@ -21,6 +21,7 @@ if (env('debug')) {
 	function view_cached($path) { return Router::view_cached($path); }
 }
 function with_lang($callback) {
+	// Load the locale given in the URI and continue.
 	return function ($params) use ($callback) {
 		$lang = $params['lang'];
 		if (in_array($lang, env('locales'))) {
@@ -31,8 +32,13 @@ function with_lang($callback) {
 	};
 }
 
+/* Load the app classes whenever they are called.
+ * Therefore, it will be not necessary to import them manually.
+ */
 spl_autoload_register(function ($class) {
 	$classes = [
+		// Core classes.
+		// DO NOT EDIT!
 		'Lang'       => 'lang',
 		'Layout'     => 'layout',
 		'Mail'       => 'mail',
@@ -42,6 +48,7 @@ spl_autoload_register(function ($class) {
 		'Session'    => 'session',
 		'Validation' => 'validation',
 
+		// Controller classes.
 		'Shop'       => 'controllers/shop',
 		'Contact'    => 'controllers/contact',
 	];

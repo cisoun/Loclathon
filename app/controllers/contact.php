@@ -41,7 +41,7 @@ class Contact {
 			$sent = true;
 		}
 
-		// Regenerate varification code to avoid spam (page reloading).
+		// Regenerate verification code to avoid spam (page reloading).
 		self::generate_check($min, $max);
 
 		$params['error']   = $error ?? 0;
