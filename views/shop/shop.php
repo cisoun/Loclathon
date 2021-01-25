@@ -1,72 +1,19 @@
 <?php
-  function form($key, $default = NULL) {
-    if (array_key_exists($key, $_POST)) {
-      return $_POST[$key];
-    } else if ($default) {
-      return $default;
-    }
-    return '';
-  }
-
-  function checkbox($key) {
-    if (array_key_exists($key, $_POST)) {
-      echo('checked');
-    }
-  }
-
-  function radio($key, $value, $checked = false) {
-    $has_selection = array_key_exists($key, $_POST);
-    $selected = $has_selection && $_POST[$key] === $value;
-    if ($selected || (!$has_selection && $checked)) {
-      echo('checked');
-    }
-  }
-
-
-  $countries = [
-    // ['FR', 'France'],
-    ['CH', 'Suisse'],
-  ];
-  $selected_country = form('country', 'CH');
-  $units = min(6, 6); //units();
-  $confirm = false;
-
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once(getcwd() . '/app/shop.php');
-    $result = shop_check($units);
-
-    if ($result == 0) {
-      $confirm = true;
-      var_dump('yes');
-      header('Location: /shop/confirm');
-    }
-    else if ($result == 1) {
-      $error = '<b>Oups !</b> Les adresses mail ne sont pas valides.';
-    }
-    else if ($result == 2) {
-      $error = '<b>Oups !</b> Les adresses mail ne correspondent pas.';
-    }
-    else if ($result == 3) {
-      $error = "<b>Désolé !</b> Nous n'avons plus que $units bouteilles en stock !";
-    }
-    else if ($result == 4) {
-      $error = "<b>Désolé !</b> Vous devez avoir au moins 18 ans pour acheter cet article !<br/>
-        Ou avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?";
-    }
-  }
+$countries = $params['countries'];
+$selected_country = $params['country'];
+$units = $params['units'];
+$confirm = false;
+$error = $params['error'];
 ?>
 
-<extend>views/layouts/shop</extend>
+<extend>layouts/main</extend>
 <block footer>
   <script src="/static/js/layout.js" type="module" defer></script>
   <script src="/static/js/fetch.js" type="module" defer></script>
   <script src="/static/js/shop.js" type="module" defer></script>
 </block>
 <block css>
-form h1 {
-  font-size: 1.4rem;
-  margin-top: 3rem;
-}
+form h1 { font-size: 1.4rem; }
 
 hr {
   margin: 2rem 0;
@@ -88,16 +35,16 @@ hr {
 </block>
 
 <block content>
-<main id="shop" class="container padded">
+<main id="shop" class="container padded dark">
   <!-- <svg id="logo"><use href="/static/img/locloise.svg#logo"/></svg> -->
 
-  <?php if (isset($error)): ?>
+  <?php if ($error > 0): ?>
   <div class="alert error">
     <!-- <svg class="outline"><use href="../static/img/icons.svg#cross"/></svg> -->
-    <?php echo($error); ?></div>
+    <?php echo(__('shop.error')[$error - 1]); ?></div>
   <?php endif; ?>
 
-  <form action="/shop" method="POST" autocomplete="on">
+  <form action="/{{lang}}/shop" method="POST" autocomplete="on">
     <div class="dual spaced">
 
       <!-- First column -->
@@ -108,50 +55,50 @@ hr {
         <div class="dual">
           <div class="group">
             <label for="firstName">Prénom:</label>
-            <input id="firstName" name="first_name" type="text" placeholder="Prénom" value="<?= form('first_name'); ?>" required>
+            <input id="firstName" name="first_name" type="text" placeholder="Prénom" value="{{ first_name }}" required>
           </div>
           <div class="group">
             <label for="lastName">Nom:</label>
-            <input id="lastName" name="last_name" type="text" placeholder="Nom" value="<?= form('last_name'); ?>" required>
+            <input id="lastName" name="last_name" type="text" placeholder="Nom" value="{{ last_name }}" required>
           </div>
         </div>
         <div class="group">
           <label for="street">Rue:</label>
-          <input id="street" name="street" type="text" placeholder="Rue" value="<?= form('street'); ?>" required>
+          <input id="street" name="street" type="text" placeholder="Rue" value="{{ street }}" required>
         </div>
         <div class="tria">
           <div class="group">
             <label for="city">Ville:</label>
-            <input id="city" name="city" type="text" placeholder="Ville" value="<?= form('city'); ?>" required>
+            <input id="city" name="city" type="text" placeholder="Ville" value="{{ city }}" required>
           </div>
           <div class="group">
             <label for="npa">NPA:</label>
-            <input id="npa" name="npa" type="number" placeholder="1000" value="<?= form('npa'); ?>" required>
+            <input id="npa" name="npa" type="number" placeholder="1000" value="{{ npa }}" required>
           </div>
           <div class="group dropdown">
             <label for="country">Pays:</label>
             <select name="country" id="country" required>
               <?php foreach ($countries as $country) { ?>
-                <option value="<?= $country[0] ?>" <?= $country[0] == $selected_country ? 'selected' : ''; ?>><?= $country[1] ?></option>
+                <option value="<?= $country ?>" <?= $country == $selected_country ? 'selected' : ''; ?>><?= __('shop.countries')[$country] ?></option>
               <?php } ?>
             </select>
           </div>
         </div>
         <div class="group">
           <label for="email1">Adresse email:</label>
-          <input id="email1" name="email1" type="email" placeholder="Adresse email" value="<?= form('email1'); ?>" required>
+          <input id="email1" name="email1" type="email" placeholder="Adresse email" value="{{ email1 }}" required>
         </div>
         <div class="group">
           <label for="email2">Adresse email (confirmation):</label>
-          <input id="email2" name="email2" type="email" placeholder="Adresse email" value="<?= form('email2'); ?>" required>
+          <input id="email2" name="email2" type="email" placeholder="Adresse email" value="{{ email2 }}" required>
         </div>
         <div class="group">
           <label for="phone">Téléphone (facultatif):</label>
-          <input id="phone" name="phone" type="tel" placeholder="Numéro de téléphone" value="<?= form('phone'); ?>">
+          <input id="phone" name="phone" type="tel" placeholder="Numéro de téléphone" value="{{ phone }}">
         </div>
 
         <div class="group checkbox">
-          <input type="checkbox" id="age" name="age" <?php checkbox('age'); ?>>
+          <input type="checkbox" id="age" name="age" {{ age }}>
           <label for="age">Je certifie avoir plus de 18 ans.</label>
         </div>
 
@@ -165,7 +112,7 @@ hr {
         <div class="group number">
           <label for="units">Nombre de bouteilles</label>
           <div>
-            <input type="number" id="units" name="units" min=1 max=<?php echo($units); ?> value=<?= form('units', 1); ?> required>
+            <input type="number" id="units" name="units" min=1 max=<?= $units ?> value="{{ units }}" required>
             <button type="button" class="hidden">-</button>
             <button type="button" class="hidden">+</button>
           </div>
@@ -174,31 +121,31 @@ hr {
         <h1>Livraison</h1>
 
         <div class="group radio with-check">
-          <input type="radio" name="shipping" id="shippingByCar" value="paypal" <?php radio('shipping', 'paypal', true); ?>/>
-          <label for="shippingByCar" id="shippingByCarLabel">
+          <input type="radio" name="shipping" id="shippingLocal" value="local" {{ shipping.local }}/>
+          <label for="shippingLocal" id="shippingLocalLabel">
             Livraison locale <span class="label green">gratuit</span><br/>
             <small>Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).</small>
           </label>
-          <input type="radio" name="shipping" id="shippingOnSite" value="onsite" <?php radio('shipping', 'onsite'); ?>/>
-          <label for="shippingOnSite">
+          <input type="radio" name="shipping" id="shippingPickUp" value="pickup" {{ shipping.pickup }}/>
+          <label for="shippingPickUp">
             Sur place <span class="label green">gratuit</span><br>
             <small>Vous venez cherchez la bouteille au dépôt.<br>Les instructions vous seront transmises par mail.</small>
           </label>
-          <input type="radio" name="shipping" id="shippingByPost" value="paypal" <?php radio('shipping', 'paypal', true); ?>/>
+          <input type="radio" name="shipping" id="shippingByPost" value="post" {{ shipping.post }}/>
           <label for="shippingByPost">Envoi postal</label>
         </div>
 
         <h1>Paiement</h1>
 
         <div class="group radio with-check">
-          <input type="radio" name="payment" id="payIBAN" value="direct" <?php radio('payment', 'direct', true); ?>/>
+          <input type="radio" name="payment" id="payIBAN" value="direct" {{ payment.direct }}/>
           <label for="payIBAN">
-            Virement direct <span class="label green">gratuit</span><br>
+            Virement direct<br>
             <small>Les données IBAN vous seront transmises par mail.</small>
           </label>
-          <input type="radio" name="payment" id="payTwint" value="twint" <?php radio('payment', 'twint'); ?>/>
+          <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>
           <label for="payTwint">Twint / carte de crédit</label>
-          <input type="radio" name="payment" id="payPaypal" value="paypal" <?php radio('payment', 'paypal'); ?>/>
+          <input type="radio" name="payment" id="payPaypal" value="paypal" {{ payment.paypal }}/>
           <label for="payPaypal">Paypal</label>
         </div>
 

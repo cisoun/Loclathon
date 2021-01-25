@@ -25,9 +25,14 @@ return [
 		'The message is empty.',
 		'The verification is incorrect. Please try again.'
 	],
+	'shop.countries'        => [
+		'CH'                => 'Switzerland',
+		'FR'                => 'France'
+	],
 	'shop.error'            => [
-		'<b>Oops !</b> Les adresses mail ne sont pas valides.',
-		'<b>Oops !</b> Les adresses mail ne correspondent pas.',
+		"<b>Oops !</b> The form is incomplete.",
+		'<b>Oops !</b> The mail addresses are not valid.',
+		'<b>Oops !</b> The mail addresses do not match.',
 		"<b>Désolé !</b> Nous n'avons plus que {{units}} bouteilles en stock !",
 		"<b>Désolé !</b> Vous devez avoir au moins 18 ans pour acheter cet article !<br/>
 		Ou avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?"

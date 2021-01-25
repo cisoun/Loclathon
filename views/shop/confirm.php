@@ -1,4 +1,7 @@
-<extend>layouts/shop</extend>
+<?php
+$country = $params['country'];
+?>
+<extend>layouts/main</extend>
 <block css>
 #shop table {
   width: 100%;
@@ -25,19 +28,18 @@ h3 {
 <block content>
 <main id="shop" class="container padded">
   <!-- <svg id="logo"><use href="/static/img/locloise.svg#logo"/></svg> -->
-
   <h1>Résumé de la commande</h1>
 
   <div class="dual spaced">
     <div>
       <h3>Adresse</h3>
       <p>
-      Cyriaque Skrapits<br>
-      Rue de France 14<br>
-      2400 Le Locle<br>
-      Suisse
+      {{ first_name }} {{ last_name }}<br>
+      {{ street }}<br>
+      {{ npa }} {{ city }}<br>
+      <?= __('shop.countries')[$country] ?>
       </p>
-      <p><a href="#">— Changer mon adresse</a></p>
+      <p><a href="/{{lang}}/shop">Changer mon adresse</a></p>
       <h3>Décompte</h3>
       <table>
         <tr>
@@ -63,13 +65,12 @@ h3 {
           <td>100 CHF</td>
         </tr>
       </table>
-      <p><a href="#">— Changer ma commande</a></p>
+      <p><a href="/{{lang}}/shop">Changer ma commande</a></p>
     </div>
     <div id="pay">
       <h3>Paiement</h3>
       <button id="payByInvoice" type="submit"><svg class="outline dark"><use href="../static/img/icons.svg#card"/></svg>Vérifier la commande</button>
       <div class="separator"><span>Hello</span></div>
-
     </div>
   <div>
 </main>

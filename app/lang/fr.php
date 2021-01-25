@@ -25,7 +25,12 @@ return [
 		'Le message est vide.',
 		'La vérification est éronnée. Merci de réessayer.'
 	],
+	'shop.countries'        => [
+		'CH'                => 'Suisse',
+		'FR'                => 'France'
+	],
 	'shop.error'            => [
+		"<b>Oups !</b> Le formulaire n'est pas complet.",
 		'<b>Oups !</b> Les adresses mail ne sont pas valides.',
 		'<b>Oups !</b> Les adresses mail ne correspondent pas.',
 		"<b>Désolé !</b> Nous n'avons plus que {{units}} bouteilles en stock !",
