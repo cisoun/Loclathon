@@ -9,7 +9,13 @@
 </block>
 <block content>
 <main id="locloise" class="dual">
-    <div><img src="/static/img/locloise.jpg" alt="La Locloise"/></div>
+    <div>
+      <picture>
+        <source srcset="/static/img/locloise.webp" type="image/webp">
+        <source srcset="/static/img/locloise.jpg" type="image/jpeg">
+        <img src="/static/img/locloise.jpg" alt="La Locloise">
+      </picture>
+    </div>
     <div class="padded">
       <h1>La Locloise</h1>
       <div id="status"><span id="price">-</span> CHF</div>
