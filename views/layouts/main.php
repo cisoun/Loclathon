@@ -5,7 +5,7 @@ $locales = env('locales');
 $current_locale = Lang::current();
 ?>
 <!doctype html>
-<html lang="fr">
+<html lang="<?= $current_locale ?>">
 <head>
   <title>Le Loclathon | <? title ?></title>
 
@@ -18,22 +18,21 @@ $current_locale = Lang::current();
   <meta name="author" content="Comité du Loclathon">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <meta property="og:image" content="static/img/preview.jpg">
+  <!-- Open Graph data -->
   <meta property="og:description" content="Site officiel du Loclathon et de l'absinthe La Locloise.">
+  <meta property="og:image" content="/static/img/preview.jpg">
   <meta property="og:title" content="Le Loclathon | La Locloise">
-
-  <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,600" rel="stylesheet" preload>
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" preload> -->
 
   <!-- CSS -->
   <link rel="preload" href="/static/css/layout.css" as="style">
   <link rel="preload" href="/static/css/style.css" as="style">
+  <link rel="preload" href="/static/css/phone.css" as="style">
+  <link rel="preload" href="/static/css/desktop.css" as="style">
 
   <link rel="stylesheet" href="/static/css/layout.css">
   <link rel="stylesheet" href="/static/css/style.css">
-
-  <link rel="stylesheet" media="screen and (max-width: 992px)" href="/static/css/phone.css" />
-  <link rel="stylesheet" media="screen and (min-width: 992px)" href="/static/css/desktop.css" />
+  <link rel="stylesheet" href="/static/css/phone.css" media="screen and (max-width: 992px)">
+  <link rel="stylesheet" href="/static/css/desktop.css" media="screen and (min-width: 992px)">
 
   <style type="text/css">
   <? css ?>
@@ -44,7 +43,8 @@ $current_locale = Lang::current();
   <nav id="menu" class="nojs">
     <a href="javascript:void(0);" class="trigger"><svg class="outline"><use xlink:href="/static/img/icons.svg#circle-menu"/></svg> Le Loclathon</a>
     <ul>
-      <li><a href="/{{lang}}"><svg class="outline fill"><use xlink:href="/static/img/icons.svg#loclathon"/></svg> Le Loclathon</a></li>
+      <!-- <svg class="outline fill"><use xlink:href="/static/img/icons.svg#loclathon"/></svg> -->
+      <li><a href="/{{lang}}">Le Loclathon</a></li>
       <li><a href="/{{lang}}/locloise">La Locloise</a></li>
       <li><a href="/{{lang}}/photos"><?= __('menu.photos') ?></a></li>
       <li><a href="/{{lang}}/shop"><?= __('menu.shop') ?></a></li>
@@ -75,17 +75,20 @@ $current_locale = Lang::current();
         </small>
       </div>
       <div>
-        <h3><svg class="outline"><use xlink:href="/static/img/icons.svg#user"/></svg> Social</h3>
+        <svg class="outline"><use xlink:href="/static/img/icons.svg#user"/></svg>
+        <h1>Social</h1>
         <a href="https://instagram.com/loclathon">Instagram</a>
         <a href="https://fb.com/loclathon">Facebook</a>
       </div>
       <div>
-        <h3><svg class="outline"><use xlink:href="/static/img/icons.svg#grid"/></svg> <?= __('footer.resources') ?></h3>
+        <svg class="outline"><use xlink:href="/static/img/icons.svg#grid"/></svg>
+        <h1><?= __('footer.resources') ?></h1>
         <a href="files/flyer.pdf"><?= __('footer.resources.map') ?></a>
         <a href="img/logo.svg"><?= __('footer.resources.logo') ?></a>
       </div>
       <div>
-        <h3><svg class="outline"><use xlink:href="/static/img/icons.svg#mail"/></svg> <?= __('footer.contact') ?></h3>
+        <svg class="outline"><use xlink:href="/static/img/icons.svg#mail"/></svg>
+        <h1><?= __('footer.contact') ?></h1>
         <a href="/{{lang}}/contact"><?= __('footer.contact.write') ?></a>
       </div>
     </div>

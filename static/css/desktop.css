@@ -62,4 +62,5 @@ nav > ul > li.lang > div > a:hover {
 }
 
 #locloise h1 { padding-top: 8rem; }
-#about, #details { margin: 0 auto; width: 90%; }
+#faq { width: 80%; }
+#about, #details { margin: 0 auto; max-width: 1300px; width: 100%; }

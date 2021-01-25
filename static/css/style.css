@@ -1,21 +1,6 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); */
-
 :root {
-  /* --primary-dark: #1d463d; */
-  --primary-dark: var(--green-300);  #1d463d;
-  /* --primary: #25b07c; */
-  --primary: var(--green-500);
-  --secondary: #e54a4a;
-
   --background: var(--gray-100);
   --foreground: var(--gray-900);
-
-  --border-radius: 0.3rem;
-  --input-shadow-size: 0.2rem; */
-
-  --transition: 0.3s;
-
-  --view-desktop: 992px;
 
   --bubble-left: var(--green-400);
   --bubble-left-color: white;
@@ -32,12 +17,12 @@ p { line-height: 1.6rem; }
 
 #photos,
 #shop,
-#contact { margin-top: 10rem; }
+#contact,
 footer { margin-top: 10rem; }
 
 nav {
   background-color: var(--background);
-  box-shadow: 0 0 3rem 2rem var(--background);
+  box-shadow: 0 0 3rem 1rem var(--background);
   font-weight: bold;
   position: fixed;
   text-align: center;
@@ -52,20 +37,15 @@ nav.transparent {
 }
 nav > ul { list-style-type: none; margin: 0; padding: 0; }
 
-footer .logo {
-  height: 2rem;
-  margin-bottom: 1rem;
-  width: 2rem;
-}
-
 #loclathon {
   background-attachment: fixed;
   background-image: url('../img/photo.jpg');
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
+  line-height: 0;
   min-height: 30rem;
   overflow: hidden;
-  padding-bottom: 12rem;
   padding-top: 12rem;
   text-align: center;
 }
@@ -83,7 +63,7 @@ footer .logo {
   margin-right: auto;
   margin-top: 4rem;
 }
-#loclathon .btn { margin-top: 6rem; }
+#loclathon .btn { margin-top: 5rem; }
 #loclathon .btn:hover .outline { transition: all var(--transition); }
 #loclathon .btn:hover .outline { stroke: var(--background); }
 
@@ -109,7 +89,7 @@ footer .logo {
 #about { padding-top: 6rem; }
 #about > div:first-child { text-align: justify; }
 
-#locloise > div:first-child > img { width: 100%; }
+#locloise > div:first-child img { width: 100%; }
 #locloise #buy { margin-top: 3rem; }
 #locloise #units { font-weight: bold; }
 #locloise #status {
@@ -118,36 +98,32 @@ footer .logo {
   margin-top: -2rem;
 }
 
-#faq {
-  float: unset;
-  margin-left: auto;
-  margin-right: auto;
-}
+#faq { margin-left: auto; margin-right: auto; }
 #faq div span { vertical-align: middle; }
 #faq > .right { text-align: right; }
 #faq .logo { display: inline-block; }
 
 footer {
   border-top: 1px dotted var(--gray-300);
-  line-height: 1rem;
-  /* font-size: 0.8rem; */
   padding: 3rem 0;
 }
-footer h3 .outline {
+footer .logo {
+  height: 2rem;
+  margin-bottom: 1rem;
+  width: 2rem;
+}
+footer .outline {
+  float: left;
   height: 1.4rem;
-  margin-right: 0.5rem;
-  margin-top: -0.2rem;
+  margin-left: -2.2rem;
+  margin-top: 0.8rem;
+  stroke-width: 1.4;
   width: 1.4rem;
 }
-footer a {
-  display: block;
-  padding: 0.3rem 0 0.3rem 2.15rem;
-  margin-right: 2rem;
-  transition: padding var(--transition);
-}
-footer a:hover { padding-left: 2.5rem; }
-footer div a:last-of-type { border-bottom: none; }
-footer .outline { stroke-width: 1.4; }
+footer h1 { font-size: 1rem; font-weight: bold; margin: 0; }
+footer a { display: block; padding: 0.2rem 0; transition: padding var(--transition); }
+footer a:hover { padding-left: 0.5rem; }
+footer > div > div { padding-left: 2rem; }
 
 .logo {
   background-image: url('../img/logo-outline.svg');
@@ -203,68 +179,8 @@ footer .outline { stroke-width: 1.4; }
 	border-width: 10px;
 	margin-top: -10px;
 }
-
 .right > .logo {
   margin-left: 1rem;
   width: 2rem;
   height: 2rem;
-}
-
-/* Phones */
-@media screen and (max-width: 600px) {
-  .uni > div, .dual > div, .tria > div, .quad > div { width: 100%; }
-
-  /* nav { background-color: var(--background); }
-  nav .separator { display: none; }
-  nav .trigger { display: block; vertical-align: middle; }
-  nav .menu { display: none; overflow: hidden; text-align: left; }
-  nav .menu a { display: block; padding: 1rem 0rem 1rem 5rem; }
-  nav .menu a:last-child { margin-bottom: 2rem; }
-  nav:hover div.menu { display: block; } */
-
-  #locloise .highlight { display: block; }
-
-  footer { padding-left: 3rem; }
-}
-
-/* Tablets */
-@media screen and (min-width: 600px) and (max-width: 992px) {
-  /* .uni > div, .dual > div, .tria > div { width: 100%; }
-  .quad > div { width: 25%; } */
-}
-
-/* Phones and tablets */
-@media screen and (max-width: 992px) {
-  .container { width: 100%; }
-
-  #loclathon { padding: 10rem auto; }
-  #loclathon h1 { font-size: 14vw !important; }
-  #loclathon h3 { font-size: 8vw !important; }
-  #loclathon h5 { font-size: 6vw !important; }
-  #loclathon .highlight { font-size: 6vw; }
-
-  #loclathon h1 { text-shadow: 1vw 2vw var(--gray-100); }
-  #loclathon h3,
-  #loclathon h5 { text-shadow: 0.5vw 1vw var(--gray-100); }
-}
-
-/* Desktop */
-@media screen and (min-width: 992px) {
-  .container { width: 992px; }
-
-  /* .uni > div { width: 100%; }
-  .dual > div { width: 50%; }
-  .tria > div { width: 33.33%; }
-  .quad > div { width: 25%; } */
-
-  /* .padded { padding: 3rem; } */
-
-  form .dual > div,
-  form .tria > div { padding-left: 0.5rem; padding-right: 0.5rem; }
-  form .dual > div:first-child,
-  form .tria > div:first-child { padding-left: 0; }
-  form .dual > div:last-child,
-  form .tria > div:last-child { padding-right: 0; }
-
-  #faq { width: 80%; }
 }

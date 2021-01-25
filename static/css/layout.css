@@ -1,4 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:200,400,600');
+@font-face {
+  font-display: swap;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'),
+       url(../fonts/Raleway-Regular.woff2) format('woff2'),
+       url(../fonts/raleway/static/Raleway-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Raleway'),
+       url(../fonts/Raleway-SemiBold.woff2) format('woff2'),
+       url(../fonts/raleway/static/Raleway-SemiBold.ttf) format('truetype');
+}
 
 :root {
   --gray-100: #111;
@@ -560,20 +577,18 @@ form div.group.radio.with-check input:checked + label::before {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  /* .grid { grid-template-columns: auto auto; } */
+  /* .uni > div, .dual > div, .tria > div, .quad > div { width: 100%; } */
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  /* .grid { grid-template-columns: auto auto; } */
-}
+@media only screen and (min-width: 600px) {}
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  /* .grid { grid-template-columns: auto auto auto auto; } */
+  .container { width: 992px; }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
