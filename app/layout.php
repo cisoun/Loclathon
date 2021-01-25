@@ -1,6 +1,6 @@
 <?php
 class Layout {
-	private const BLOCK_PATTERN = '[a-zA-Z0-9\-\_]+';
+	private const BLOCK_PATTERN = '[a-zA-Z0-9\-\_\.]+';
 
 	public static function read($path, $params = null) {
 	    ob_start();
