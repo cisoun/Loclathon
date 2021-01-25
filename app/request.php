@@ -11,12 +11,20 @@ class Request {
 		return preg_match('/\.(?:' . $extensions . ')$/', self::uri());
 	}
 
+	public static function has_input($key) {
+		return array_key_exists($key, $_POST);
+	}
+
 	// public static function parameter($parameter, $request) {
 	// 	return $request['parameters'][$parameter];
 	// }
 
 	public static function input($key, $fallback = '') {
 		return $_REQUEST[$key];
+	}
+
+	public static function inputs() {
+		return $_REQUEST;
 	}
 
 	/**
@@ -35,6 +43,11 @@ class Request {
 	 */
 	public static function method() {
 		return $_SERVER['REQUEST_METHOD'];
+	}
+
+	public static function set_input($key, $value) {
+		die('NOT USED');
+		$_REQUEST[$key] = $value;
 	}
 
 	/**
