@@ -6,24 +6,31 @@ class Router {
 		};
 	}
 
+	// public static function prefix($prefix, $callback) {
+	// 	$uri = Request::uri();
+	// 	if (str_starts_with($uri, $prefix)) {
+	// 		return $callback($uri);
+	// 	}
+	// }
+
 	/**
 	* Do something when a route is valid.
 	*
-	* @param string $uri      URI of the route.
+	* @param string $path     Path of the route.
 	* @param array  $callback Callback to call.
 	*                         Must provide an associative array as parameter.
 	*
 	* @return null
 	*/
-	public static function route($uri, $callback) {
+	public static function route($path, $callback) {
 		// Transform route into a regex pattern.
-		$pattern = preg_replace('/:[^\/]+/', '([^/]+)', $uri);
+		$pattern = preg_replace('/:[^\/]+/', '([^/]+)', $path);
 		$pattern = preg_replace('/\//', '\\/', $pattern);
 		$pattern = "/^$pattern\/?$/";
 
 		// Check if URI matches route pattern.
-		if (preg_match_all($pattern, Request::uri(), $matches, PREG_SET_ORDER)) {
-			if (preg_match_all('/:([^\/]+)/', $uri, $fields)) {
+		if (preg_match_all($pattern, Request::path(), $matches, PREG_SET_ORDER)) {
+			if (preg_match_all('/:([^\/]+)/', $path, $fields)) {
 				$callback(array_combine($fields[1], array_slice($matches[0], 1)));
 			} else {
 				$callback([]);
