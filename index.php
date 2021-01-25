@@ -3,7 +3,7 @@ require_once('config.php');
 require_once('app/app.php');
 
 # Serve static ressources.
-if (extension('png|jpg|jpeg|gif|css|js|svg|pdf|ico')) {
+if (extension('png|jpg|webp|ttf|css|js|svg|pdf|ico')) {
 	return false;
 }
 
