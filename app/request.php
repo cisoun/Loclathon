@@ -45,6 +45,29 @@ class Request {
 		return $_SERVER['REQUEST_METHOD'];
 	}
 
+	/**
+	 * Return the parameters of a request.
+	 *
+	 * @return array Array of parameters.
+	 */
+	public static function params() {
+		parse_str($_SERVER['QUERY_STRING'], $params);
+		return $params;
+	}
+
+	/**
+	 * Return the request path.
+	 *
+	 * If you also need the parameters of the URI, use `uri()` instead.
+	 *
+	 * @return string Request path.
+	 */
+	public static function path() {
+		if (array_key_exists('PATH_INFO', $_SERVER))
+			return $_SERVER['PATH_INFO'];
+		return self::uri();
+	}
+
 	public static function set_input($key, $value) {
 		die('NOT USED');
 		$_REQUEST[$key] = $value;
