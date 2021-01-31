@@ -7,6 +7,9 @@ $error = $params['error'];
 ?>
 
 <extend>layouts/main</extend>
+
+<block title><?= __('menu.shop') ?></block>
+
 <block footer>
   <script src="/static/js/layout.js" type="module" defer></script>
   <script src="/static/js/fetch.js" type="module" defer></script>
