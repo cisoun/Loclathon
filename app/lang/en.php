@@ -24,6 +24,17 @@ return [
 		'What should I bring with me?',
 		'Drink of your choice, a glass and a good pair of shoes. Something to eat eventually. You can also buy food at noon when we arrive at the city center.'
 	],
+	'locloise.buy'          => "Order",
+	'locloise.description'  => [
+		"La Locloise is an absinthe specially designed for the Loclathon.<br>Its mentholated and mild taste provides a refreshing sensation that will delight any person motivated to take it with them on their walk.",
+		"The profits will be reused for the production of other batches and for the creation of merchandise bearing the Loclathon's effigy as well. Thank you for your support! ",
+		"Distilled at Môtiers in the Val-de-Travers, Switzerland.",
+	],
+	'locloise.details'      => [
+		'Volume: <b>0.5 L</b>',
+		'Alcohol: <b>54 %</b>',
+		'Taste: <b>minty, fresh</b>'
+	],
 	'menu.contact'          => 'Contact',
 	'menu.photos'           => 'Photos',
 	'menu.shop'             => 'Shop',

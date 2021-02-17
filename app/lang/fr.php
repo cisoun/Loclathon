@@ -24,6 +24,17 @@ return [
 		'Que dois-je prendre avec moi ?',
 		'Boisson de votre choix, un verre et de bonnes chaussures. De quoi manger éventuellement. Vous pouvez également acheter à manger lors de la pause de midi au centre-ville.'
 	],
+	'locloise.buy'          => "Commander",
+	'locloise.description'  => [
+		"La Locloise est une absinthe conçue spécialement à l'occasion du Loclathon.<br>Son goût mentholé et doux procure une sensation rafraîchissante qui réjouira toute personne motivée à l'emporter avec elle lors de sa marche.",
+		"Les bénéfices seront réutilisés pour la réalisation d'autres cuvées ainsi qu'à la création de marchandises à l'effigie du Loclathon. Merci pour votre soutien !",
+		"Distillée à Môtiers dans le Val-de-Travers.",
+	],
+	'locloise.details'      => [
+		'Volume : <b>0.5 L</b>',
+		'Alcool : <b>54 %</b>',
+		'Goût : <b>mentholé, frais</b>'
+	],
 	'menu.contact'          => 'Contact',
 	'menu.photos'           => 'Photos',
 	'menu.shop'             => 'Magasin',
