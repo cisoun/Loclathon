@@ -24,15 +24,17 @@ $current_locale = Lang::current();
   <meta property="og:title" content="Le Loclathon | La Locloise">
 
   <!-- CSS -->
-  <link rel="preload" href="/static/css/layout.css" as="style">
-  <link rel="preload" href="/static/css/style.css" as="style">
-  <link rel="preload" href="/static/css/phone.css" as="style">
-  <link rel="preload" href="/static/css/desktop.css" as="style">
+  <link rel="preload" href="/static/css/layout.css" as="style" crossorigin>
+  <link rel="preload" href="/static/css/style.css" as="style" crossorigin>
+  <link rel="preload" href="/static/css/phone.css" as="style" crossorigin>
+  <link rel="preload" href="/static/css/desktop.css" as="style" crossorigin>
+  <? preload ?>
 
   <link rel="stylesheet" href="/static/css/layout.css">
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="stylesheet" href="/static/css/phone.css" media="screen and (max-width: 992px)">
   <link rel="stylesheet" href="/static/css/desktop.css" media="screen and (min-width: 992px)">
+  <!--? stylesheets ?-->
 
   <style type="text/css">
   <? css ?>
@@ -43,7 +45,6 @@ $current_locale = Lang::current();
   <nav id="menu" class="nojs">
     <a href="javascript:void(0);" class="trigger"><svg class="outline"><use xlink:href="/static/img/icons.svg#circle-menu"/></svg> Le Loclathon</a>
     <ul>
-      <!-- <svg class="outline fill"><use xlink:href="/static/img/icons.svg#loclathon"/></svg> -->
       <li><a href="/{{lang}}">Le Loclathon</a></li>
       <li><a href="/{{lang}}/locloise">La Locloise</a></li>
       <li><a href="/{{lang}}/photos"><?= __('menu.photos') ?></a></li>
@@ -75,19 +76,19 @@ $current_locale = Lang::current();
         </small>
       </div>
       <div>
-        <svg class="outline"><use xlink:href="/static/img/icons.svg#user"/></svg>
+        <svg class="outline fill"><use xlink:href="/static/img/icons.svg#user"/></svg>
         <h1>Social</h1>
         <a href="https://instagram.com/loclathon">Instagram</a>
         <a href="https://fb.com/loclathon">Facebook</a>
       </div>
       <div>
-        <svg class="outline"><use xlink:href="/static/img/icons.svg#grid"/></svg>
+        <svg class="outline fill"><use xlink:href="/static/img/icons.svg#grid"/></svg>
         <h1><?= __('footer.resources') ?></h1>
         <a href="files/flyer.pdf"><?= __('footer.resources.map') ?></a>
         <a href="img/logo.svg"><?= __('footer.resources.logo') ?></a>
       </div>
       <div>
-        <svg class="outline"><use xlink:href="/static/img/icons.svg#mail"/></svg>
+        <svg class="outline fill"><use xlink:href="/static/img/icons.svg#mail"/></svg>
         <h1><?= __('footer.contact') ?></h1>
         <a href="/{{lang}}/contact"><?= __('footer.contact.write') ?></a>
       </div>

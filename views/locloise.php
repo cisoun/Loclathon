@@ -5,9 +5,44 @@ $details = __('locloise.details');
 <extend>layouts/main</extend>
 <block title>La Locloise</block>
 <block css>
-#details h2 {
-  margin: 3rem 0 2rem 0;
-  text-decoration: smallcaps;
+ul.breadcrumb {
+  background-color: var(--gray-100);
+  border: 1px solid var(--foreground);
+  border-radius: 1rem;
+  display: inline-block;
+  padding: unset;
+  text-align: center;
+}
+ul.breadcrumb li {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+ul.breadcrumb li:not(:last-child) {
+  border-right: 1px solid var(--foreground);
+}
+@media only screen and (max-width: 600px) {
+  ul.breadcrumb { display: block; }
+  ul.breadcrumb li { display: block; text-align: left; }
+  ul.breadcrumb li:not(:last-child) {
+    border-bottom: 1px solid var(--foreground);
+    border-right: unset;
+  }
+}
+@media only screen and (min-width: 992px) {
+  #description { padding-top: 3rem; }
+}
+
+#buy { overflow: hidden; transition: var(--transition); }
+#buy .outline {
+  margin-left: -3.4rem; /* -Icon size - button padding */
+  margin-right: 1.9rem; /* Icon size + 0.5rem */
+  opacity: 0;
+  transition: var(--transition);
+}
+#buy:hover .outline {
+  margin-left: 0rem;
+  margin-right: 0.5rem;
+  opacity: 1;
 }
 </block>
 <block content>

@@ -28,15 +28,16 @@
   --gray-900: #eee;
 
   --green-900: #e6ffea;
-  --green-850: #affcc2;
-  --green-800: #7af9a3;
-  --green-700: #41f093;
-  --green-600: #21e192;
-  --green-500: #10cb8f;
-  --green-400: #06ac82;
-  --green-300: #02856a;
-  --green-200: #005b4a;
-  --green-100: #00332a;
+  --green-850: #b0fdc3;
+  --green-800: #7bfba4;
+  --green-700: #41ef93;
+  --green-600: #21db8f;
+  --green-500: #0fbf87;
+  --green-400: #069b75;
+  --green-300: #02725b;
+  --green-200: #00483b;
+  --green-100: #00241e;
+
 
   --yellow-900: #fffbe6;
   --yellow-850: #fcebaf;
@@ -74,8 +75,9 @@
   --dark: var(--gray-100);
   --light: white;
 
-  --primary-dark: #1d463d;
-  --primary: #25b07c;
+  --primary-dark: var(--green-300);
+  --primary: var(--green-400);
+  --primary-light: var(--green-600);
   --secondary: #e54a4a;
 
   --background: white;
@@ -96,6 +98,9 @@
   --alert-error-color: var(--red-700);
 
   --button-background: var(--foreground);
+  --button-border: 0;
+
+  --icon-size: 1.4rem;
 
   --input-background-disabled: var(--background);
   --input-background-highlight: var(--foreground);
@@ -127,9 +132,9 @@
   --alert-error-background: var(--red-100);
   --alert-error-border: var(--red-300);
   --alert-error-color: var(--red-700);
-  /* --alert-error-shadow: var(--alert-shadow) var(--red-200); */
 
   --button-background: var(--input-background);
+  --button-border: 0; /*1px solid var(--foreground);*/
 
   --input-background-disabled: var(--input-background);
   --input-background-highlight: var(--gray-300);
@@ -146,6 +151,8 @@
   --radio-check-outside-color: var(--foreground);
 
   --separator: 1px solid var(--gray-300);
+
+  --outline-fill: var(--foreground);
 }
 
 * { box-sizing: border-box; }
@@ -177,6 +184,8 @@ h1 { font-size: 3rem; font-weight: normal; line-height: 3rem; }
 a { color: var(--foreground); font-weight: 600; text-decoration: none; }
 a:hover { color: var(--gray-500); }
 img.responsive { width: 100%; }
+
+div.dark { background-color: var(--dark); color: var(--light); }
 
 .container { margin-left: auto; margin-right: auto; }
 .uni > * { width: 100%; }
@@ -220,50 +229,58 @@ table td {
 }
 table tr:last-child > td { border-bottom: none; }
 
+.button,
 button,
 input[type="submit"] {
   background-color: var(--button-background);
-  border: 0;
+  border: var(--button-border);
   border-radius: var(--border-radius);
   color: var(--light);
   cursor: pointer;
+  display: inline-block;
   font-weight: 700;
   padding: 1rem;
   outline: unset !important;
+  text-align: center;
   text-decoration: none;
   transition: all var(--transition);
 }
+
+.button:hover,
 button:hover,
 input[type="submit"]:hover {
   background-color: var(--gray-300);
+  color: var(--foreground);
 }
 
-button.green { background-color: var(--green-300); }
-button:hover.green { background-color: var(--green-400); }
+.button.big,
+button.big,
+input[type="submit"].big {
+  font-size: 1rem;
+  padding: 2rem;
+}
 
+.button.primary,       button.primary       { background-color: var(--primary); }
+.button.primary:hover, button:hover.primary { background-color: var(--primary-light); }
+.button.blue,          button.blue          { background-color: var(--blue-400); }
+.button.blue:hover,    button:hover.blue    { background-color: var(--blue-500); }
+.button.green,         button.green         { background-color: var(--green-400); }
+.button.green:hover,   button:hover.green   { background-color: var(--green-500); }
+.button.white,         button.white         { background-color: var(--gray-900); color: var(--dark); }
+.button.white:hover,   button:hover.white   { background-color: var(--gray-800); }
+
+button > svg.outline { margin-right: 0.5rem; }
 svg.outline {
-  --outline-fill: var(--foreground);
-  fill: none;
-  height: 1.4rem;
+  --outline-fill: none;
+  height: var(--icon-size);
   margin-top: -0.15rem;
   stroke-width: 2;
   stroke: var(--foreground);
   vertical-align: middle;
-  width: 1.4rem;
+  width: var(--icon-size);
 }
-svg.outline.fill {
-  fill: var(--outline-fill);
-  stroke: none;
-}
-svg.outline.fill.dark {
-  fill: var(--foreground);
-  stroke: none;
-}
-svg.outline.dark {
-  --outline-fill: var(--background);
-  stroke: var(--background);
-}
-
+svg.outline.fill { --outline-fill: var(--foreground); }
+svg.outline.dark { stroke: var(--dark); }
 
 /*
  * Forms
@@ -585,6 +602,10 @@ form div.group.radio.with-check input:checked + label::before {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {}
+
+@media only screen and (max-width: 992px) {
+  .responsive { widtH: 100%; }
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {

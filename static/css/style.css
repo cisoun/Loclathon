@@ -64,8 +64,6 @@ nav > ul { list-style-type: none; margin: 0; padding: 0; }
   margin-top: 4rem;
 }
 #loclathon .btn { margin-top: 5rem; }
-#loclathon .btn:hover .outline { transition: all var(--transition); }
-#loclathon .btn:hover .outline { stroke: var(--background); }
 
 #loclathon .btn {
   background-color: var(--red-500);
@@ -90,7 +88,7 @@ nav > ul { list-style-type: none; margin: 0; padding: 0; }
 #about > div:first-child { text-align: justify; }
 
 #locloise > div:first-child img { width: 100%; }
-#locloise #buy { margin-top: 3rem; }
+#locloise #buy { margin-top: 3rem; padding: 1rem 2rem; }
 #locloise #units { font-weight: bold; }
 #locloise #status {
   font-size: 2rem;
