@@ -1,34 +1,23 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <title>Le Loclathon | Shop</title>
+<extend>layouts/main</extend>
 
-  <link rel="icon" type="image/svg" href="/static/img/logo.svg">
+<block title><?= __('menu.shop') ?></block>
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="description" content="Site officiel du Loclathon et de l'absinthe La Locloise.">
-  <meta name="keywords" content="loclathon,absinthe,le locle,locloise">
-  <meta name="author" content="Comité du Loclathon">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<block preload>
+<link rel="preload" href="/static/js/layout.js" as="script">
+<link rel="preload" href="/static/js/fetch.js" as="script">
+<link rel="preload" href="/static/js/shop.js" as="script">
+</block>
 
-  <meta property="og:image" content="static/img/preview.jpg">
-  <meta property="og:description" content="Site officiel du Loclathon et de l'absinthe La Locloise.">
-  <meta property="og:title" content="Le Loclathon | La Locloise">
+<block footer>
+<script src="/static/js/layout.js" type="module" defer></script>
+<script src="/static/js/fetch.js" type="module" defer></script>
+<script src="/static/js/shop.js" type="module" defer></script>
+</block>
 
-  <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,600" rel="stylesheet" preload>
+<block css><? css ?></block>
 
-  <!-- CSS -->
-  <link rel="preload" href="/static/css/layout.css" as="style">
-  <link rel="stylesheet" href="/static/css/layout.css">
-
-  <style type="text/css">
-  main { max-width: 1000px; }
-  <? css ?>
-  </style>
-</head>
-<body>
-<? content ?>
-<? footer ?>
-</body>
-</html>
+<block content>
+<main id="shop" class="container padded dark">
+  <? content ?>
+</main>
+</block>
