@@ -20,7 +20,7 @@ class Request {
 	// }
 
 	public static function input($key, $fallback = '') {
-		return $_REQUEST[$key];
+		return $_REQUEST[$key] ?? $fallback;
 	}
 
 	public static function inputs() {
