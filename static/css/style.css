@@ -63,9 +63,9 @@ nav > ul { list-style-type: none; margin: 0; padding: 0; }
   margin-right: auto;
   margin-top: 4rem;
 }
-#loclathon .btn { margin-top: 5rem; }
+#loclathon .button { margin-top: 5rem; }
 
-#loclathon .btn {
+#loclathon .button {
   background-color: var(--red-500);
   border-radius: unset;
   border: 0;
@@ -78,12 +78,13 @@ nav > ul { list-style-type: none; margin: 0; padding: 0; }
   text-decoration: none;
   transition: all var(--transition);
 }
-#loclathon .btn:hover {
-    background-color: var(--foreground);
-    color: var(--background);
-    transform: scale(1.1) skewY(-3deg);
+#loclathon .button:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+  transform: scale(1.1) skewY(-3deg);
 }
-#loclathon .btn .gg { margin-left: 0.5rem; }
+#loclathon .button svg { transition: var(--transition); }
+#loclathon .button:hover svg { stroke: var(--background); }
 #about { padding-top: 6rem; }
 #about > div:first-child { text-align: justify; }
 

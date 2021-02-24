@@ -8,20 +8,20 @@ $bubbles = __('loclathon.bubbles');
   width: 100%;
 }
 #bottom {
-margin-bottom: -2px; /* Dirty fix. */
-width: 100%;
-background: url('/static/img/bottom.svg');
-height: 300px;
-background-position-y: bottom;
-background-repeat: no-repeat;
-background-size: 100%;
+  background: url('/static/img/bottom.svg');
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 300px;
+  margin-bottom: -2px; /* Dirty fix. */
+  width: 100%;
 }
 </block>
 <block content>
 <main id="loclathon">
   <div class="fade"></div>
   <img id="logo" class="container" src="/static/img/home.{{lang}}.svg" alt="Le Loclathon"/>
-  <a href="#about" class="btn">En savoir plus <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
+  <a href="#about" class="button">En savoir plus <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
   <div id="bottom"></div>
 </main>
 <section id="about" class="dual padded spaced">
