@@ -1,8 +1,10 @@
 <?php
 class Shop {
-	public static function show($params) {
-		Session::start();
+	private static function prices() {
 
+	}
+	
+	public static function show($params) {
 		// $params['first_name'] = '';
 		// $params['last_name'] = '';
 		// $params['street'] = '';
@@ -13,19 +15,21 @@ class Shop {
 		// $params['email2'] = '';
 		// $params['phone'] = '';
 
-		$params['units'] = 1;
-
-		$params['age'] = NULL;
+		// Values by default.
+		// $params['age'] = NULL;
+		$params['countries'] = ['CH'];
+		$params['email'] = '';
 		$params['payment'] = 'direct';
 		$params['shipping'] = 'post';
+		$params['units'] = 1;
 
-		$params['countries'] = ['CH'];
-
+		// Restore form if available.
+		Session::start();
 		if (Session::has('FORM')) {
 			$params = array_merge($params, Session::get('FORM'));
 		}
 
-		$params['age'] = $params['age'] == 'on' ? 'checked' : '';
+		// Fix form.
 
 		$checked = 'checked';
 
@@ -39,29 +43,61 @@ class Shop {
 		$params['shipping.pickup'] = $shipping == 'pickup' ? $checked : '';
 		$params['shipping.post']   = $shipping == 'post'   ? $checked : '';
 
-		Response::view('shop/shop', $params);
+		return Response::view('shop/shop', $params);
+	}
+
+	public static function show_confirm($params) {
+		$units = $params['units'] * 38;
+		$payment = 3;
+		$shipping = 9.7;
+
+		$params['units_price'] 	  = $units;
+		$params['payment_price']  = $payment;
+		$params['shipping_price'] = $shipping;
+		$params['total_price'] 	  = $units + $payment + $shipping;
+
+		Response::view('shop/confirm', $params);
 	}
 
 	public static function post($params) {
-		$params = array_merge($params, Request::inputs());
-		Session::start();
-		$form = [];
-		foreach (Request::inputs() as $key => $value) {
-			$form[$key] = $value;
-		}
-		Session::set('FORM', $form);
+		$inputs = Request::inputs();
+		$success = self::validate($inputs, $errors);
+		$params = array_merge($params, $inputs);
 
-		$result = self::check(10);
-		if ($result == 0) {
-			view('shop/confirm')($params);
-		} else {
-			$params['error'] = $result;
-			self::show($params);
+		Session::start();
+		Session::set('FORM', $params);
+
+		// var_dump($inputs);
+		// var_dump($errors);
+		// die();
+
+		$params['stock'] = 10;
+
+		if (!$success) {
+			$params['errors'] = $errors;
+			return self::show($params);
 		}
+
+		return self::show_confirm($params);
 	}
 
-	private static function check($stock) {
-		$inputs = [
+	public static function validate(&$params, &$results) {
+		$rules = array(
+    		'first_name' => 'text',
+			'last_name'  => 'text',
+			'street'     => 'text',
+			'city'       => 'text',
+			'npa'        => 'text',
+			'country'    => 'text',
+			'email1'     => 'email',
+			'email2'     => 'email|same:email1',
+			'phone'      => 'text',
+			'age'        => 'value:on',
+			'payment'    => 'text',
+			'shipping'   => 'text',
+			'units'      => 'range:1:3' // TODO: Add stock.
+		);
+		$mandatory_fields = [
 			'first_name',
 			'last_name',
 			'street',
@@ -70,24 +106,23 @@ class Shop {
 			'country'
 		];
 
-		foreach ($inputs as $input) {
-			if (!Validation::text(Request::input($input))) {
-				return 1;
+		$success = Validation::array($params, $rules, $errors);
+
+		if (!$success) {
+			foreach ($mandatory_fields as $field) {
+				if (array_key_exists($field, $errors)) {
+					$results[] = 0;
+					break;
+				}
 			}
+
+			if (array_key_exists('email1', $errors)) { $results[] = 1; }
+			if (array_key_exists('email2', $errors)) { $results[] = 2; }
+			if (array_key_exists('age', $errors))    { $results[] = 3; }
+			if (array_key_exists('units', $errors))  { $results[] = 4; }
 		}
 
-		$email1 = Request::input('email1');
-		$email2 = Request::input('email2');
-		$units  = Request::input('units');
-
-		$authorized = array_key_exists('age', $_POST);
-
-		if (!Validation::email($email1))                 { return 2; }
-		else if ($email1 !== $email2)                    { return 3; }
-		else if ($units > $stock)                        { return 4; }
-		else if (!$authorized)                           { return 5; }
-
-		return 0;
+		return $success;
 	}
 }
 ?>

@@ -2,19 +2,56 @@
 $countries = $params['countries'];
 $selected_country = $params['country'];
 $units = $params['units'];
-$confirm = false;
-$error = $params['error'];
+$errors = $params['errors'] ?? [];
+
+$form = [
+  'firstName'      => ['name' => 'first_name', 'type' => 'text',     'value' => '{{first_name}}', 'required' => true, 'placeholder' => "Prénom"],
+  'lastName'       => ['name' => 'last_name',  'type' => 'text',     'value' => '{{last_name}}',  'required' => true, 'placeholder' => "Nom"],
+  'street'         => ['name' => 'street',     'type' => 'text',     'value' => '{{street}}',     'required' => true, 'placeholder' => "Rue"],
+  'city'           => ['name' => 'city',       'type' => 'text',     'value' => '{{city}}',       'required' => true, 'placeholder' => "Ville"],
+  'npa'            => ['name' => 'npa',        'type' => 'number',   'value' => '{{npa}}',        'required' => true, 'placeholder' => "1000"],
+  'email1'         => ['name' => 'email1',     'type' => 'email',    'value' => '{{email1}}',     'required' => true, 'placeholder' => "Adresse email"],
+  'email2'         => ['name' => 'email2',     'type' => 'email',    'value' => '{{email2}}',     'required' => true, 'placeholder' => "Adresse email"],
+  'phone'          => ['name' => 'phone',      'type' => 'tel',      'value' => '{{phone}}',      'placeholder' => "Numéro de téléphone"],
+  'age'            => ['name' => 'age',        'type' => 'checkbox', 'checked' => "$params[age]"],
+  'units'          => ['name' => 'units',      'type' => 'number',   'value' => '{{units}}',      'required' => true, 'min' => 1, 'max' => 6],
+  'shippingLocal'  => ['name' => 'shipping',   'type' => 'radio',    'value' => 'local',  'checked' => '{{shipping.local}}'],
+  'shippingPickUp' => ['name' => 'shipping',   'type' => 'radio',    'value' => 'pickup', 'checked' => '{{shipping.pickup}}'],
+  'shippingByPost' => ['name' => 'shipping',   'type' => 'radio',    'value' => 'post',   'checked' => '{{shipping.post}}'],
+  'payIBAN'        => ['name' => 'payment',    'type' => 'radio',    'value' => 'direct', 'checked' => '{{payment.direct}}'],
+  'payTwint'       => ['name' => 'payment',    'type' => 'radio',    'value' => 'twint',  'checked' => '{{payment.twint}}'],
+  'payPaypal'      => ['name' => 'payment',    'type' => 'radio',    'value' => 'paypal', 'checked' => '{{payment.paypal}}'],
+];
+
+$input = function($id) use ($form) {
+  $attrs = ["id=\"$id\""];
+  foreach ($form[$id] as $key => $value) {
+    switch($key) {
+      case 'checked':  if ($value) { $attrs[] = 'checked'; } break;
+      case 'required': if ($value) { $attrs[] = 'required'; } break;
+      default: $attrs[] = "$key=\"$value\"";
+    }
+  }
+  return '<input ' . join(' ', $attrs) . '/>';
+}
 ?>
 
-<extend>layouts/main</extend>
+<extend>layouts/shop</extend>
 
 <block title><?= __('menu.shop') ?></block>
 
-<block footer>
-  <script src="/static/js/layout.js" type="module" defer></script>
-  <script src="/static/js/fetch.js" type="module" defer></script>
-  <script src="/static/js/shop.js" type="module" defer></script>
+<block preload>
+<link rel="preload" href="/static/js/layout.js" as="script">
+<link rel="preload" href="/static/js/fetch.js" as="script">
+<link rel="preload" href="/static/js/shop.js" as="script">
 </block>
+
+<block footer>
+<script src="/static/js/layout.js" type="module"></script>
+<script src="/static/js/fetch.js" type="module"></script>
+<script src="/static/js/shop.js" type="module"></script>
+</block>
+
 <block css>
 form h1 { font-size: 1.4rem; }
 
@@ -38,140 +75,141 @@ hr {
 </block>
 
 <block content>
-<main id="shop" class="container padded dark">
-  <!-- <svg id="logo"><use href="/static/img/locloise.svg#logo"/></svg> -->
+<?php if ($errors): ?>
+<div class="alert error">
+  <!-- <svg class="outline"><use href="../static/img/icons.svg#cross"/></svg> -->
+  <ul>
+  <?php foreach ($errors as $error): ?>
+    <li><?= __('shop.errors')[$error] ?></li>
+  <?php endforeach; ?>
+  </ul>
+</div>
+<?php endif; ?>
 
-  <?php if ($error > 0): ?>
-  <div class="alert error">
-    <!-- <svg class="outline"><use href="../static/img/icons.svg#cross"/></svg> -->
-    <?php echo(__('shop.error')[$error - 1]); ?></div>
-  <?php endif; ?>
+<form action="/{{lang}}/shop" method="POST" autocomplete="on">
+  <div class="dual spaced">
 
-  <form action="/{{lang}}/shop" method="POST" autocomplete="on">
-    <div class="dual spaced">
+    <!-- First column -->
+    <div>
 
-      <!-- First column -->
-      <div>
+      <h1>Coordonnées</h1>
 
-        <h1>Coordonnées</h1>
-
-        <div class="dual">
-          <div class="group">
-            <label for="firstName">Prénom:</label>
-            <input id="firstName" name="first_name" type="text" placeholder="Prénom" value="{{ first_name }}" required>
-          </div>
-          <div class="group">
-            <label for="lastName">Nom:</label>
-            <input id="lastName" name="last_name" type="text" placeholder="Nom" value="{{ last_name }}" required>
-          </div>
+      <div class="dual">
+        <div class="group">
+          <label for="firstName">Prénom:</label>
+          <?= $input('firstName') ?>
         </div>
         <div class="group">
-          <label for="street">Rue:</label>
-          <input id="street" name="street" type="text" placeholder="Rue" value="{{ street }}" required>
+          <label for="lastName">Nom:</label>
+          <?= $input('lastName') ?>
         </div>
-        <div class="tria">
-          <div class="group">
-            <label for="city">Ville:</label>
-            <input id="city" name="city" type="text" placeholder="Ville" value="{{ city }}" required>
-          </div>
-          <div class="group">
-            <label for="npa">NPA:</label>
-            <input id="npa" name="npa" type="number" placeholder="1000" value="{{ npa }}" required>
-          </div>
-          <div class="group dropdown">
-            <label for="country">Pays:</label>
-            <select name="country" id="country" required>
-              <?php foreach ($countries as $country) { ?>
-                <option value="<?= $country ?>" <?= $country == $selected_country ? 'selected' : ''; ?>><?= __('shop.countries')[$country] ?></option>
-              <?php } ?>
-            </select>
-          </div>
+      </div>
+      <div class="group">
+        <label for="street">Rue:</label>
+        <?= $input('street') ?>
+      </div>
+      <div class="tria">
+        <div class="group">
+          <label for="city">Ville:</label>
+          <?= $input('city') ?>
         </div>
         <div class="group">
-          <label for="email1">Adresse email:</label>
-          <input id="email1" name="email1" type="email" placeholder="Adresse email" value="{{ email1 }}" required>
+          <label for="npa">NPA:</label>
+          <?= $input('npa') ?>
         </div>
-        <div class="group">
-          <label for="email2">Adresse email (confirmation):</label>
-          <input id="email2" name="email2" type="email" placeholder="Adresse email" value="{{ email2 }}" required>
+        <div class="group dropdown">
+          <label for="country">Pays:</label>
+          <select name="country" id="country" required>
+            <?php foreach ($countries as $country) { ?>
+              <option value="<?= $country ?>" <?= $country == $selected_country ? 'selected' : ''; ?>><?= __('shop.countries')[$country] ?></option>
+            <?php } ?>
+          </select>
         </div>
-        <div class="group">
-          <label for="phone">Téléphone (facultatif):</label>
-          <input id="phone" name="phone" type="tel" placeholder="Numéro de téléphone" value="{{ phone }}">
-        </div>
-
-        <div class="group checkbox">
-          <input type="checkbox" id="age" name="age" {{ age }}>
-          <label for="age">Je certifie avoir plus de 18 ans.</label>
-        </div>
-
+      </div>
+      <div class="group">
+        <label for="email1">Adresse email:</label>
+        <?= $input('email1') ?>
+      </div>
+      <div class="group">
+        <label for="email2">Adresse email (confirmation):</label>
+        <?= $input('email2') ?>
+      </div>
+      <div class="group">
+        <label for="phone">Téléphone (facultatif):</label>
+        <?= $input('phone') ?>
       </div>
 
-      <!-- Second column -->
-      <div>
-
-        <h1>Panier</h1>
-
-        <div class="group number">
-          <label for="units">Nombre de bouteilles</label>
-          <div>
-            <input type="number" id="units" name="units" min=1 max=<?= $units ?> value="{{ units }}" required>
-            <button type="button" class="hidden">-</button>
-            <button type="button" class="hidden">+</button>
-          </div>
-        </div>
-
-        <h1>Livraison</h1>
-
-        <div class="group radio with-check">
-          <input type="radio" name="shipping" id="shippingLocal" value="local" {{ shipping.local }}/>
-          <label for="shippingLocal" id="shippingLocalLabel">
-            Livraison locale <span class="label green">gratuit</span><br/>
-            <small>Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).</small>
-          </label>
-          <input type="radio" name="shipping" id="shippingPickUp" value="pickup" {{ shipping.pickup }}/>
-          <label for="shippingPickUp">
-            Sur place <span class="label green">gratuit</span><br>
-            <small>Vous venez cherchez la bouteille au dépôt.<br>Les instructions vous seront transmises par mail.</small>
-          </label>
-          <input type="radio" name="shipping" id="shippingByPost" value="post" {{ shipping.post }}/>
-          <label for="shippingByPost">Envoi postal</label>
-        </div>
-
-        <h1>Paiement</h1>
-
-        <div class="group radio with-check">
-          <input type="radio" name="payment" id="payIBAN" value="direct" {{ payment.direct }}/>
-          <label for="payIBAN">
-            Virement direct<br>
-            <small>Les données IBAN vous seront transmises par mail.</small>
-          </label>
-          <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>
-          <label for="payTwint">Twint / carte de crédit</label>
-          <input type="radio" name="payment" id="payPaypal" value="paypal" {{ payment.paypal }}/>
-          <label for="payPaypal">Paypal</label>
-        </div>
-
-        <hr />
-
-        <!-- <div id="shipping">
-          <div class="w-50">Shipping</div>
-          <div class="w-50"><span id="total">7.90</span> CHF</div>
-        </div>
-        <div id="price">
-          <div class="w-50">Total</div>
-          <div class="w-50"><span id="total">35</span> CHF</div>
-        </div> -->
-
-        <div id="pay">
-          <button id="payByInvoice" type="submit"><svg class="outline dark"><use href="../static/img/icons.svg#card"/></svg>Vérifier la commande</button>
-          <div id="payByPaypal"></div>
-        </div>
-
+      <div class="group checkbox">
+        <?= $input('age') ?>
+        <label for="age">Je certifie avoir plus de 18 ans.</label>
       </div>
 
     </div>
-  </form>
 
-</main>
+    <!-- Second column -->
+    <div>
+
+      <h1>Panier</h1>
+
+      <div class="group number">
+        <label for="units">Nombre de bouteilles</label>
+        <div>
+          <!-- <input type="number" id="units" name="units" min=1 max=6 value="{{ units }}" required> -->
+          <?= $input('units') ?>
+          <button type="button" class="hidden">-</button>
+          <button type="button" class="hidden">+</button>
+        </div>
+      </div>
+
+      <h1>Livraison</h1>
+
+      <div class="group radio with-check">
+        <input type="radio" name="shipping" id="shippingLocal" value="local" {{ shipping.local }}/>
+        <label for="shippingLocal" id="shippingLocalLabel">
+          Livraison locale <span class="label green">gratuit</span><br/>
+          <small>Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).</small>
+        </label>
+        <input type="radio" name="shipping" id="shippingPickUp" value="pickup" {{ shipping.pickup }}/>
+        <label for="shippingPickUp">
+          Sur place <span class="label green">gratuit</span><br>
+          <small>Vous venez cherchez la bouteille au dépôt.<br>Les instructions vous seront transmises par mail.</small>
+        </label>
+        <input type="radio" name="shipping" id="shippingByPost" value="post" {{ shipping.post }}/>
+        <label for="shippingByPost">Envoi postal</label>
+      </div>
+
+      <h1>Paiement</h1>
+
+      <div class="group radio with-check">
+        <input type="radio" name="payment" id="payIBAN" value="direct" {{ payment.direct }}/>
+        <label for="payIBAN">
+          Virement direct<br>
+          <small>Les données IBAN vous seront transmises par mail.</small>
+        </label>
+        <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>
+        <label for="payTwint">Twint / carte de crédit</label>
+        <input type="radio" name="payment" id="payPaypal" value="paypal" {{ payment.paypal }}/>
+        <label for="payPaypal">Paypal</label>
+      </div>
+
+      <hr />
+
+      <!-- <div id="shipping">
+        <div class="w-50">Shipping</div>
+        <div class="w-50"><span id="total">7.90</span> CHF</div>
+      </div>
+      <div id="price">
+        <div class="w-50">Total</div>
+        <div class="w-50"><span id="total">35</span> CHF</div>
+      </div> -->
+
+      <div id="pay">
+        <button id="payByInvoice" type="submit"><svg class="outline fill dark"><use href="../static/img/icons.svg#card"/></svg>Vérifier la commande</button>
+        <div id="payByPaypal"></div>
+      </div>
+
+    </div>
+
+  </div>
+</form>
 </block>

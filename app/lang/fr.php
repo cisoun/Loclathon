@@ -52,17 +52,18 @@ return [
 		'Le message est vide.',
 		'La vérification est éronnée. Merci de réessayer.'
 	],
+	'shop.closed'           => 'Magasin fermé...',
+	'shop.closed_message'   => 'Merci de repasser plus tard.',
 	'shop.countries'        => [
 		'CH'                => 'Suisse',
 		'FR'                => 'France'
 	],
-	'shop.error'            => [
+	'shop.errors'           => [
 		"<b>Oups !</b> Le formulaire n'est pas complet.",
-		'<b>Oups !</b> Les adresses mail ne sont pas valides.',
-		'<b>Oups !</b> Les adresses mail ne correspondent pas.',
-		"<b>Désolé !</b> Nous n'avons plus que {{units}} bouteilles en stock !",
-		"<b>Désolé !</b> Vous devez avoir au moins 18 ans pour acheter cet article !<br/>
-		Ou avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?"
+		'<b>Oups !</b> Les adresses email ne sont pas valides.',
+		'<b>Oups !</b> Les adresses email ne correspondent pas.',
+		"<b>Désolé !</b> Vous devez avoir au moins 18 ans pour acheter cet article !<br/>Ou avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?",
+		"<b>Désolé !</b> Nous n'avons plus que {{stock}} bouteilles en stock !",
 	]
 ];
 ?>

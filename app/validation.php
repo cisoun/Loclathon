@@ -122,7 +122,7 @@ class Validation {
 	 * @return bool
 	 */
 	public static function text($var) {
-		return trim($var) != false;
+		return trim($var);
 	}
 }
 ?>
