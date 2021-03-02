@@ -20,7 +20,7 @@ switch (method()) {
 		break;
 	case 'POST':
 		route('/:lang/contact',			with_lang(call('Contact::post')));
-		route('/:lang/shop',			with_lang(call('Shop::post')));
+		route('/:lang/shop',			with_trim(with_lang(call('Shop::post'))));
 		break;
 }
 

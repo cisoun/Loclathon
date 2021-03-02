@@ -20,6 +20,7 @@ if (env('debug')) {
 } else {
 	function view_cached($path) { return Router::view_cached($path); }
 }
+
 function with_lang($callback) {
 	// Load the locale given in the URI and continue.
 	return function ($params) use ($callback) {
@@ -29,6 +30,13 @@ function with_lang($callback) {
 			return $callback($params);
 		}
 		return redirect('/' . env('locale'))($params);
+	};
+}
+function with_trim($callback) {
+	// Trim all data of the request.
+	return function ($params) use ($callback) {
+		$_REQUEST = array_map('trim', $_REQUEST);
+		return $callback($params);
 	};
 }
 
