@@ -64,6 +64,19 @@ return [
 		'<b>Oups !</b> Les adresses email ne correspondent pas.',
 		"<b>Désolé !</b> Vous devez avoir au moins 18 ans pour acheter cet article !<br/>Ou avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?",
 		"<b>Désolé !</b> Nous n'avons plus que {{stock}} bouteilles en stock !",
+	],
+	'shop.free'             => 'gratuit',
+	'shop.payment'          => 'Paiement',
+	'shop.payments'         => [
+		'direct'            => 'Virement bancaire',
+		'paypal'            => 'PayPal',
+		'twint'             => 'Twint',
+	],
+	'shop.shipping'         => 'Livraison',
+	'shop.shippings'        => [
+		'local'             => 'Livraison locale',
+		'pickup'            => 'Sur place',
+		'post'				=> 'Envoi postal',
 	]
 ];
 ?>

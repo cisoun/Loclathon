@@ -1,12 +1,16 @@
 <?php
 $country = $params['country'];
+$payment = $params['payment'];
+$shipping = $params['shipping'];
 ?>
-<extend>layouts/main</extend>
+<extend>layouts/shop</extend>
 <block css>
 #shop table {
   width: 100%;
 }
-
+#shop tr {
+  background-color: var(--input-background);
+}
 #shop table tr:last-child {
   font-size: 1.4rem;
   font-weight: bold;
@@ -26,52 +30,52 @@ h3 {
 #shop table tr td:last-child { text-align: right; }
 </block>
 <block content>
-<main id="shop" class="container padded">
-  <!-- <svg id="logo"><use href="/static/img/locloise.svg#logo"/></svg> -->
-  <h1>Résumé de la commande</h1>
+<h1>Résumé de la commande</h1>
 
-  <div class="dual spaced">
-    <div>
-      <h3>Adresse</h3>
-      <p>
-      {{ first_name }} {{ last_name }}<br>
-      {{ street }}<br>
-      {{ npa }} {{ city }}<br>
-      <?= __('shop.countries')[$country] ?>
-      </p>
-      <p><a href="/{{lang}}/shop">Changer mon adresse</a></p>
-      <h3>Décompte</h3>
-      <table>
-        <tr>
-          <td>3x La Locloise</td>
-          <td>100 CHF</td>
-        </tr>
-        <tr>
-          <td>
-            Livraison<br>
-            <small>Envoi postal</small>
-          </td>
-          <td>9.7 CHF</td>
-        </tr>
-        <tr>
-          <td>
-            Paiement<br>
-            <small>Virement direct</small>
-          </td>
-          <td>2.4 CHF</td>
-        </tr>
-        <tr>
-          <td>Total</td>
-          <td>100 CHF</td>
-        </tr>
-      </table>
-      <p><a href="/{{lang}}/shop">Changer ma commande</a></p>
-    </div>
-    <div id="pay">
-      <h3>Paiement</h3>
-      <button id="payByInvoice" type="submit"><svg class="outline dark"><use href="../static/img/icons.svg#card"/></svg>Vérifier la commande</button>
-      <div class="separator"><span>Hello</span></div>
-    </div>
+<div class="dual spaced">
   <div>
-</main>
+    <h3>Adresse</h3>
+    <p>
+    {{ first_name }} {{ last_name }}<br>
+    {{ street }}<br>
+    {{ npa }} {{ city }}<br>
+    <?= __('shop.countries')[$country] ?>
+    </p>
+    <p>
+    Confirmation will be sent to:<br/>
+    {{ email1 }}
+    </p>
+    <p><a href="/{{lang}}/shop">Changer mon adresse</a></p>
+  </div>
+  <div id="pay">
+    <h3>Décompte</h3>
+    <table>
+      <tr>
+        <td>{{ units }} x La Locloise</td>
+        <td>{{ total_price }} CHF</td>
+      </tr>
+      <tr>
+        <td>
+          <?= __('shop.shippings')[$shipping] ?><br>
+          <small><?= __('shop.shipping') ?></small>
+        </td>
+        <td>{{ shipping_price }} CHF</td>
+      </tr>
+      <tr>
+        <td>
+          <?= __('shop.payments')[$payment] ?><br>
+          <small><?= __('shop.payment') ?></small>
+        </td>
+        <td>{{ payment_price }} CHF</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>{{ total_price }} CHF</td>
+      </tr>
+    </table>
+    <p><a href="/{{lang}}/shop">Changer ma commande</a></p>
+    <h3>Paiement</h3>
+    <button id="payByInvoice" type="submit"><svg class="outline"><use href="../static/img/icons.svg#card"/></svg>Vérifier la commande</button>
+  </div>
+<div>
 </block>

@@ -4,12 +4,15 @@ $selected_country = $params['country'];
 $units = $params['units'];
 $errors = $params['errors'] ?? [];
 
+$payments = __('shop.payments');
+$shippings = __('shop.shippings');
+
 $form = [
   'firstName'      => ['name' => 'first_name', 'type' => 'text',     'value' => '{{first_name}}', 'required' => true, 'placeholder' => "Prénom"],
   'lastName'       => ['name' => 'last_name',  'type' => 'text',     'value' => '{{last_name}}',  'required' => true, 'placeholder' => "Nom"],
   'street'         => ['name' => 'street',     'type' => 'text',     'value' => '{{street}}',     'required' => true, 'placeholder' => "Rue"],
   'city'           => ['name' => 'city',       'type' => 'text',     'value' => '{{city}}',       'required' => true, 'placeholder' => "Ville"],
-  'npa'            => ['name' => 'npa',        'type' => 'number',   'value' => '{{npa}}',        'required' => true, 'placeholder' => "1000"],
+  'npa'            => ['name' => 'npa',        'type' => 'number',   'value' => '{{npa}}',        'required' => true, 'placeholder' => "1000", 'min' => 1000],
   'email1'         => ['name' => 'email1',     'type' => 'email',    'value' => '{{email1}}',     'required' => true, 'placeholder' => "Adresse email"],
   'email2'         => ['name' => 'email2',     'type' => 'email',    'value' => '{{email2}}',     'required' => true, 'placeholder' => "Adresse email"],
   'phone'          => ['name' => 'phone',      'type' => 'tel',      'value' => '{{phone}}',      'placeholder' => "Numéro de téléphone"],
@@ -166,16 +169,16 @@ hr {
       <div class="group radio with-check">
         <input type="radio" name="shipping" id="shippingLocal" value="local" {{ shipping.local }}/>
         <label for="shippingLocal" id="shippingLocalLabel">
-          Livraison locale <span class="label green">gratuit</span><br/>
+          <?= $shippings['local'] ?> <span class="label green"><?= __('shop.free') ?></span><br/>
           <small>Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).</small>
         </label>
         <input type="radio" name="shipping" id="shippingPickUp" value="pickup" {{ shipping.pickup }}/>
         <label for="shippingPickUp">
-          Sur place <span class="label green">gratuit</span><br>
+          <?= $shippings['pickup'] ?> <span class="label green"><?= __('shop.free') ?></span><br>
           <small>Vous venez cherchez la bouteille au dépôt.<br>Les instructions vous seront transmises par mail.</small>
         </label>
         <input type="radio" name="shipping" id="shippingByPost" value="post" {{ shipping.post }}/>
-        <label for="shippingByPost">Envoi postal</label>
+        <label for="shippingByPost"><?= $shippings['post'] ?></label>
       </div>
 
       <h1>Paiement</h1>
@@ -183,13 +186,13 @@ hr {
       <div class="group radio with-check">
         <input type="radio" name="payment" id="payIBAN" value="direct" {{ payment.direct }}/>
         <label for="payIBAN">
-          Virement direct<br>
+          <?= $payments['direct'] ?><br>
           <small>Les données IBAN vous seront transmises par mail.</small>
         </label>
         <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>
-        <label for="payTwint">Twint / carte de crédit</label>
+        <label for="payTwint"><?= $payments['twint'] ?></label>
         <input type="radio" name="payment" id="payPaypal" value="paypal" {{ payment.paypal }}/>
-        <label for="payPaypal">Paypal</label>
+        <label for="payPaypal"><?= $payments['paypal'] ?></label>
       </div>
 
       <hr />
