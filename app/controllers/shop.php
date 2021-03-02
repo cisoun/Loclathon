@@ -91,7 +91,7 @@ class Shop {
 			'country'    => 'text',
 			'email1'     => 'email',
 			'email2'     => 'email|same:email1',
-			'phone'      => 'text',
+			'phone'      => 'optional|stripped',
 			'age'        => 'value:on',
 			'payment'    => 'text',
 			'shipping'   => 'text',

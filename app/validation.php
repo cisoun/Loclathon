@@ -1,42 +1,57 @@
 <?php
 class Validation {
+	private static string $ARGS_SEPARATOR      = ':';
+	private static string $CALLBACKS_SEPARATOR = '|';
+	private static string $OPTIONAL            = 'optional';
+
 	/**
 	 * Validate and sanitize an array according to given rules.
 	 *
 	 * Rules can be chained with a vertical bar.
+	 * WARNING: fields without 'optional' are required!
 	 *
 	 * Rules:
-	 * 	- email:           Must be an email address.
-	 * 	- html:            Must be a string.
-	 *	- int:             Must be a number.
-	 *  - range:min:max:   Must be a number between `min` and `max`.
-	 * 	- same:field1:...: Must be the same as the given fields.
-	 * 	- string:          Must be a string WITHOUT HTML chars.
-	 * 	- text:            Must NOT be an empty string.
-	 * 	- value:val1:...:  Must be one of the given values.
+	 * 	- email:                Must be an email address.
+	 *							SANITIZED.
+	 *	- int:                  Must be a number.
+	 *							SANITIZED.
+	 *  - optional:             Ignore if empty.
+	 *  - range:min:max:        Must be a number between `min` and `max`.
+	 * 	- same:field1:...:      Must be the same as the given fields.
+	 * 	- stripped:             Must be a string WITHOUT HTML chars.
+	 *							SANITIZED.
+	 * 	- text:                 Must NOT be an empty string.
+	 *							SANITIZED.
+	 * 	- value:val1:...:       Must be one of the given values.
 	 *
 	 * Example:
-	 *	Validation::array($array, array(
+	 *	Validation::array($array, [
 	 *		'name'   => 'text',
-	 *		'age'    => 'int|range:1:100',
+	 *		'age'    => 'optional|int|range:1:100',
 	 *		'gender' => 'value:man:woman',
 	 *		'email1' => 'email',
 	 *		'email2' => 'email|same:email1',
-	 *	), $errors);
+	 *	], $errors);
 	 *
 	 * @param array $array  Array to validate.
 	 * @param array $field  Array containing rules (field => rules).
-	 * @param array $errors Found errors.
+	 * @param array $errors Errors found.
 	 *
 	 * @return bool Array is valid or not.
 	 */
 	public static function array(&$array, $fields, &$errors) {
 		$errors = [];
 		foreach ($fields as $field => $rules) {
-			$callbacks = explode('|', $rules);
+			$callbacks = explode(self::$CALLBACKS_SEPARATOR, $rules);
+			// Ignore if optional and empty.
+			$optional = in_array(self::$OPTIONAL, $callbacks);
+			if ($optional && empty($array[$field])) {
+				continue;
+			}
+			// Process each rule...
 			foreach ($callbacks as $callback) {
 				$error    = NULL;
-				$args     = explode(':', $callback);
+				$args     = explode(self::$ARGS_SEPARATOR, $callback);
 				$callback = array_shift($args);
 				$array[$field] = self::array_check($callback, $args, $array, $field, $error);
 				if ($error) {
@@ -58,7 +73,7 @@ class Validation {
 	 * @param array $array Array to validate and sanitize.
 	 * @param bool $error  Returned error for the given field.
 	 *
-	 * @return bool Array is valid or not.
+	 * @return bool Sanitized field.
 	 */
 	private static function array_check($rule, $args, $array, $field, &$error) {
 		$value = $array[$field] ?? NULL;
@@ -67,9 +82,7 @@ class Validation {
 			// 	return $value ? $value : $args;
 			case 'email':
 				$error = !self::email($value);
-				return filter_var($value, FILTER_SANITIZE_EMAIL);
-			case 'html':
-				return filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
+				return self::sanitize_email($value);
 			case 'int':
 				return filter_var($value, FILTER_SANITIZE_NUMBER_INT);
 			case 'range':
@@ -83,11 +96,12 @@ class Validation {
 				}
 				$error = $errors ?? false;
 				return $value;
-			case 'string':
+			case 'stripped':
 				return filter_var($value, FILTER_SANITIZE_STRING);
 			case 'text':
-				$error = !self::text($value);
-				return filter_var($value, FILTER_SANITIZE_STRING);
+				$value = self::sanitize_text($value);
+				$error = empty($value);
+				return $value;
 			case 'value':
 				$error = !in_array($value, $args);
 				return $value;
@@ -112,8 +126,12 @@ class Validation {
 		return false;
 	}
 
-	public static function sanitized_email($email) {
+	public static function sanitize_email($email) {
 		return filter_var($email, FILTER_SANITIZE_EMAIL);
+	}
+
+	public static function sanitize_text($text) {
+		return filter_var($text, FILTER_SANITIZE_SPECIAL_CHARS);
 	}
 
 	/**
@@ -121,8 +139,8 @@ class Validation {
 	 *
 	 * @return bool
 	 */
-	public static function text($var) {
-		return trim($var);
+	public static function text($text) {
+		return trim($text);
 	}
 }
 ?>
