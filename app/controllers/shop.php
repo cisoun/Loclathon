@@ -65,11 +65,7 @@ class Shop {
 		$params = array_merge($params, $inputs);
 
 		Session::start();
-		Session::set('FORM', $params);
-
-		// var_dump($inputs);
-		// var_dump($errors);
-		// die();
+		Session::set('FORM', $inputs);
 
 		$params['stock'] = 10;
 
@@ -83,12 +79,12 @@ class Shop {
 
 	public static function validate(&$params, &$results) {
 		$rules = array(
-    		'first_name' => 'text',
-			'last_name'  => 'text',
-			'street'     => 'text',
-			'city'       => 'text',
-			'npa'        => 'text',
-			'country'    => 'text',
+    		'first_name' => 'stripped',
+			'last_name'  => 'stripped',
+			'street'     => 'stripped',
+			'city'       => 'stripped',
+			'npa'        => 'stripped',
+			'country'    => 'stripped',
 			'email1'     => 'email',
 			'email2'     => 'email|same:email1',
 			'phone'      => 'optional|stripped',
