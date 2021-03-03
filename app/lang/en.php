@@ -60,13 +60,13 @@ return [
 		'CH'                => 'Switzerland',
 		'FR'                => 'France'
 	],
-	'shop.error'            => [
-		"<b>Oops !</b> The form is incomplete.",
-		'<b>Oops !</b> The mail addresses are not valid.',
-		'<b>Oops !</b> The mail addresses do not match.',
-		"<b>Désolé !</b> Nous n'avons plus que {{units}} bouteilles en stock !",
-		"<b>Désolé !</b> Vous devez avoir au moins 18 ans pour acheter cet article !<br/>
-		Ou avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?"
+	'shop.errors'            => [
+		"<b>Oops!</b> The form is incomplete.",
+		'<b>Oops!</b> The mail addresses are not valid.',
+		'<b>Oops!</b> The mail addresses do not match.',
+		"<b>Sorry!</b> You must be at least 18 years old to ordere!<br/>
+		Or did you forget to check the box at the bottom of the page?",
+		"<b>Sorry!</b> We cannnot deliver more than {{stock}} bottles...",
 	],
 	'shop.inputs'           => [
 		'first_name'        => 'First name',
