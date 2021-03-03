@@ -52,8 +52,10 @@ return [
 		'Le message est vide.',
 		'La vérification est éronnée. Merci de réessayer.'
 	],
+	'shop.cart'             => 'Panier',
 	'shop.closed'           => 'Magasin fermé...',
 	'shop.closed_message'   => 'Merci de repasser plus tard.',
+	'shop.contact'          => 'Coordonnées',
 	'shop.countries'        => [
 		'CH'                => 'Suisse',
 		'FR'                => 'France'
@@ -65,6 +67,19 @@ return [
 		"<b>Désolé !</b> Vous devez avoir au moins 18 ans pour acheter cet article !<br/>Ou avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?",
 		"<b>Désolé !</b> Nous n'avons plus que {{stock}} bouteilles en stock !",
 	],
+	'shop.inputs'           => [
+		'first_name'        => 'Prénom',
+		'last_name'         => 'Nom',
+		'street'            => 'Rue',
+		'city'              => 'Ville',
+		'npa'               => 'Code postal',
+		'country'           => 'Pays',
+		'email1'            => 'Adresse email',
+		'email2' 			=> 'Adresse email (confirmation)',
+		'phone'				=> 'Téléphone (facultatif)',
+		'age'				=> "J'ai plus de 18 ans.",
+		'units'				=> 'Nombre de bouteilles',
+	],
 	'shop.free'             => 'gratuit',
 	'shop.payment'          => 'Paiement',
 	'shop.payments'         => [
@@ -72,11 +87,19 @@ return [
 		'paypal'            => 'PayPal',
 		'twint'             => 'Twint',
 	],
+	'shop.payments.infos'	=> [
+		'direct'			=> 'Les données IBAN vous seront transmises par email.'
+	],
 	'shop.shipping'         => 'Livraison',
 	'shop.shippings'        => [
 		'local'             => 'Livraison locale',
 		'pickup'            => 'Sur place',
 		'post'				=> 'Envoi postal',
+	],
+	'shop.shippings.infos'   => [
+		'local'             => 'Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).',
+		'pickup'            => 'Vous venez cherchez vos articles au dépôt.<br>Les instructions vous seront transmises par mail.',
+		'post'              => 'Livraison par la Poste Suisse.'
 	]
 ];
 ?>

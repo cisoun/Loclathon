@@ -4,8 +4,11 @@ $selected_country = $params['country'];
 $units = $params['units'];
 $errors = $params['errors'] ?? [];
 
+$inputs = __('shop.inputs');
 $payments = __('shop.payments');
+$payments_infos = __('shop.payments.infos');
 $shippings = __('shop.shippings');
+$shippings_infos = __('shop.shippings.infos');
 
 $form = [
   'firstName'      => ['name' => 'first_name', 'type' => 'text',     'value' => '{{first_name}}', 'required' => true, 'placeholder' => "Prénom"],
@@ -95,33 +98,33 @@ hr {
     <!-- First column -->
     <div>
 
-      <h1>Coordonnées</h1>
+      <h1><?= __('shop.contact') ?></h1>
 
       <div class="dual">
         <div class="group">
-          <label for="firstName">Prénom:</label>
+          <label for="firstName"><?= $inputs['first_name'] ?>:</label>
           <?= $input('firstName') ?>
         </div>
         <div class="group">
-          <label for="lastName">Nom:</label>
+          <label for="lastName"><?= $inputs['last_name'] ?>:</label>
           <?= $input('lastName') ?>
         </div>
       </div>
       <div class="group">
-        <label for="street">Rue:</label>
+        <label for="street"><?= $inputs['street'] ?>:</label>
         <?= $input('street') ?>
       </div>
       <div class="tria">
         <div class="group">
-          <label for="city">Ville:</label>
+          <label for="city"><?= $inputs['city'] ?>:</label>
           <?= $input('city') ?>
         </div>
         <div class="group">
-          <label for="npa">NPA:</label>
+          <label for="npa"><?= $inputs['npa'] ?>:</label>
           <?= $input('npa') ?>
         </div>
         <div class="group dropdown">
-          <label for="country">Pays:</label>
+          <label for="country"><?= $inputs['country'] ?>:</label>
           <select name="country" id="country" required>
             <?php foreach ($countries as $country) { ?>
               <option value="<?= $country ?>" <?= $country == $selected_country ? 'selected' : ''; ?>><?= __('shop.countries')[$country] ?></option>
@@ -130,21 +133,21 @@ hr {
         </div>
       </div>
       <div class="group">
-        <label for="email1">Adresse email:</label>
+        <label for="email1"><?= $inputs['email1'] ?>:</label>
         <?= $input('email1') ?>
       </div>
       <div class="group">
-        <label for="email2">Adresse email (confirmation):</label>
+        <label for="email2"><?= $inputs['email2'] ?>:</label>
         <?= $input('email2') ?>
       </div>
       <div class="group">
-        <label for="phone">Téléphone (facultatif):</label>
+        <label for="phone"><?= $inputs['phone'] ?>:</label>
         <?= $input('phone') ?>
       </div>
 
       <div class="group checkbox">
         <?= $input('age') ?>
-        <label for="age">Je certifie avoir plus de 18 ans.</label>
+        <label for="age"><?= $inputs['age'] ?></label>
       </div>
 
     </div>
@@ -152,42 +155,44 @@ hr {
     <!-- Second column -->
     <div>
 
-      <h1>Panier</h1>
+      <h1><?= __('shop.cart') ?></h1>
 
       <div class="group number">
-        <label for="units">Nombre de bouteilles</label>
+        <label for="units"><?= $inputs['units'] ?>:</label>
         <div>
-          <!-- <input type="number" id="units" name="units" min=1 max=6 value="{{ units }}" required> -->
           <?= $input('units') ?>
           <button type="button" class="hidden">-</button>
           <button type="button" class="hidden">+</button>
         </div>
       </div>
 
-      <h1>Livraison</h1>
+      <h1><?= __('shop.shipping') ?></h1>
 
       <div class="group radio with-check">
         <input type="radio" name="shipping" id="shippingLocal" value="local" {{ shipping.local }}/>
         <label for="shippingLocal" id="shippingLocalLabel">
           <?= $shippings['local'] ?> <span class="label green"><?= __('shop.free') ?></span><br/>
-          <small>Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).</small>
+          <small><?= $shippings_infos['local'] ?></small>
         </label>
         <input type="radio" name="shipping" id="shippingPickUp" value="pickup" {{ shipping.pickup }}/>
         <label for="shippingPickUp">
           <?= $shippings['pickup'] ?> <span class="label green"><?= __('shop.free') ?></span><br>
-          <small>Vous venez cherchez la bouteille au dépôt.<br>Les instructions vous seront transmises par mail.</small>
+          <small><?= $shippings_infos['pickup'] ?></small>
         </label>
         <input type="radio" name="shipping" id="shippingByPost" value="post" {{ shipping.post }}/>
-        <label for="shippingByPost"><?= $shippings['post'] ?></label>
+        <label for="shippingByPost">
+          <?= $shippings['post'] ?><br>
+          <small><?= $shippings_infos['post'] ?></small>
+        </label>
       </div>
 
-      <h1>Paiement</h1>
+      <h1><?= __('shop.payment') ?></h1>
 
       <div class="group radio with-check">
         <input type="radio" name="payment" id="payIBAN" value="direct" {{ payment.direct }}/>
         <label for="payIBAN">
           <?= $payments['direct'] ?><br>
-          <small>Les données IBAN vous seront transmises par mail.</small>
+          <small><?= $payments_infos['direct'] ?></small>
         </label>
         <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>
         <label for="payTwint"><?= $payments['twint'] ?></label>

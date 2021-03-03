@@ -52,6 +52,10 @@ return [
 		'The message is empty.',
 		'The verification is incorrect. Please try again.'
 	],
+	'shop.cart'             => 'Cart',
+	'shop.closed'           => 'Shop is closed...',
+	'shop.closed_message'   => 'Please come back later!',
+	'shop.contact'          => 'Contact informations',
 	'shop.countries'        => [
 		'CH'                => 'Switzerland',
 		'FR'                => 'France'
@@ -63,6 +67,40 @@ return [
 		"<b>Désolé !</b> Nous n'avons plus que {{units}} bouteilles en stock !",
 		"<b>Désolé !</b> Vous devez avoir au moins 18 ans pour acheter cet article !<br/>
 		Ou avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?"
+	],
+	'shop.inputs'           => [
+		'first_name'        => 'First name',
+		'last_name'         => 'Last name',
+		'street'            => 'Street',
+		'city'              => 'City',
+		'npa'               => 'Postal code',
+		'country'           => 'Country',
+		'email1'            => 'Email address',
+		'email2' 			=> 'Email address (confirmation)',
+		'phone'				=> 'Phone (optional)',
+		'age'				=> 'I am at least 18 years old.',
+		'units'				=> 'Bottles amount',
+	],
+	'shop.free'             => 'free',
+	'shop.payment'          => 'Payment',
+	'shop.payments'         => [
+		'direct'            => 'Bank transfert',
+		'paypal'            => 'PayPal',
+		'twint'             => 'Twint',
+	],
+	'shop.payments.infos'	=> [
+		'direct'			=> 'Bank details will be sent by mail.'
+	],
+	'shop.shipping'         => 'Shipping',
+	'shop.shippings'        => [
+		'local'             => 'Local shipping',
+		'pickup'            => 'Local pickup',
+		'post'				=> 'By Post',
+	],
+	'shop.shippings.infos'   => [
+		'local'             => 'Only for Le Locle and La Chaux-de-Fonds (Switzerland).',
+		'pickup'            => 'You come at hour warehouse to get your articles.<br>Instructions will be sent by mail.',
+		'post'              => 'Delivery by the Swiss Post.'
 	]
 ];
 ?>
