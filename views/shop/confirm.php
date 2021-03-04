@@ -52,25 +52,25 @@ h3 {
     <table>
       <tr>
         <td>{{ units }} x La Locloise</td>
-        <td>{{ total_price }} CHF</td>
+        <td>{{ price }} CHF</td>
       </tr>
       <tr>
         <td>
           <?= __('shop.shippings')[$shipping] ?><br>
           <small><?= __('shop.shipping') ?></small>
         </td>
-        <td>{{ shipping_price }} CHF</td>
+        <td>{{ shipping_fees }} CHF</td>
       </tr>
       <tr>
         <td>
           <?= __('shop.payments')[$payment] ?><br>
           <small><?= __('shop.payment') ?></small>
         </td>
-        <td>{{ payment_price }} CHF</td>
+        <td>{{ payment_fees }} CHF</td>
       </tr>
       <tr>
         <td>Total</td>
-        <td>{{ total_price }} CHF</td>
+        <td>{{ total }} CHF</td>
       </tr>
     </table>
     <p><a href="/{{lang}}/shop">Changer ma commande</a></p>

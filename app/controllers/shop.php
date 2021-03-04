@@ -1,7 +1,42 @@
 <?php
 class Shop {
-	private static function prices() {
+	public const BOTTLE_PRICE = 38;
 
+	private static function get_payment_fees($price, $payment) {
+		switch ($payment) {
+			# SEE: https://www.paypal.com/businesswallet/classic-fees
+			case 'paypal': return 0.55 + $price * 0.034;
+			# SEE: https://www.twint.ch/content/uploads/2017/03/Payment-Vertrag-Portal-FR.pdf
+			case 'twint':  return $price * 0.013;
+			default:       return 0;
+		}
+	}
+
+	private static function get_shipping_fees($units, $shipping) {
+		switch ($shipping) {
+			# Swiss Post: price calculated after the weight of the cardboard
+			#	and bottle. After 4 bottles, ceil to 15 CHF.
+			# TODO: test and adapt later!
+			# SEE: https://www.post.ch/fr/expedier-des-colis
+			case 'post': return [10, 12.5, 13.5, 15][min($units - 1, 3)];
+			default:     return 0;
+		}
+	}
+
+	private static function get_prices($units, $payment, $shipping) {
+		$price           = $units * self::BOTTLE_PRICE;
+		$shipping_fees   = self::get_shipping_fees($units, $shipping);
+		$payment_fees    = self::get_payment_fees($price + $shipping_fees, $payment);
+		// Round to lowest decimal.
+		// 	Examples: 1.26 => 1.2, 3.98 => 3.9.
+		$payment_fees    = floor($payment_fees * 10) / 10;
+
+		return [
+			'price' 		=> $price,
+			'payment_fees' 	=> $payment_fees,
+			'shipping_fees' => $shipping_fees,
+			'total' 		=> $price + $shipping_fees + $payment_fees
+		];
 	}
 	
 	public static function show($params) {
@@ -74,6 +109,12 @@ class Shop {
 			return self::show($params);
 		}
 
+		$prices = self::get_prices(
+			$params['units'],
+			$params['payment'],
+			$params['shipping']
+		);
+		$params = array_merge($params, $prices);
 		return self::show_confirm($params);
 	}
 
@@ -91,7 +132,7 @@ class Shop {
 			'age'        => 'value:on',
 			'payment'    => 'text',
 			'shipping'   => 'text',
-			'units'      => 'range:1:3' // TODO: Add stock.
+			'units'      => 'range:1:6' // TODO: Add stock.
 		);
 		$mandatory_fields = [
 			'first_name',
