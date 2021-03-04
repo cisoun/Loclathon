@@ -72,6 +72,7 @@ return [
 		"<b>Sorry!</b> You must be at least 18 years old to ordere!<br/>
 		Or did you forget to check the box at the bottom of the page?",
 		"<b>Sorry!</b> We cannnot deliver more than {{stock}} bottles...",
+		'<b>Sorry!</b> Local delivery is not available for this postal code...'
 	],
 	'shop.inputs'           => [
 		'first_name'        => 'First name',

@@ -145,6 +145,13 @@ class Shop {
 
 		$success = Validation::array($params, $rules, $errors);
 
+		// Check shipping if local.
+		if ($params['shipping'] == 'local' and
+			!in_array($params['npa'], [2300, 2400])) {
+			$success = false;
+			$errors['shipping'] = true;
+		}
+
 		if (!$success) {
 			foreach ($mandatory_fields as $field) {
 				if (array_key_exists($field, $errors)) {
@@ -153,10 +160,11 @@ class Shop {
 				}
 			}
 
-			if (array_key_exists('email1', $errors)) { $results[] = 1; }
-			if (array_key_exists('email2', $errors)) { $results[] = 2; }
-			if (array_key_exists('age', $errors))    { $results[] = 3; }
-			if (array_key_exists('units', $errors))  { $results[] = 4; }
+			if (array_key_exists('email1', $errors))   { $results[] = 1; }
+			if (array_key_exists('email2', $errors))   { $results[] = 2; }
+			if (array_key_exists('age', $errors))      { $results[] = 3; }
+			if (array_key_exists('units', $errors))    { $results[] = 4; }
+			if (array_key_exists('shipping', $errors)) { $results[] = 5; }
 		}
 
 		return $success;

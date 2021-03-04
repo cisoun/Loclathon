@@ -71,6 +71,7 @@ return [
 		'<b>Oups !</b> Les adresses email ne correspondent pas.',
 		"<b>Désolé !</b> Vous devez avoir au moins 18 ans pour acheter cet article !<br/>Ou avez-vous oublié de cocher la case de vérification d'âge en bas de la page ?",
 		"<b>Désolé !</b> Nous ne pouvons vous livrer plus de {{stock}} bouteilles...",
+		"<b>Désolé !</b> La livraison locale n'est pas disponible pour ce code postal..."
 	],
 	'shop.inputs'           => [
 		'first_name'        => 'Prénom',
