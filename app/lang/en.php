@@ -58,6 +58,7 @@ return [
 	'shop.closed_message'   => 'Please come back later!',
 	'shop.change_address'   => 'Change my address',
 	'shop.change_order'     => 'Change my order',
+	'shop.checkout'         => 'Checkout',
 	'shop.confirmation_to'  => 'Confirmation will be sent to',
 	'shop.contact'          => 'Contact informations',
 	'shop.countries'        => [
@@ -87,6 +88,7 @@ return [
 	],
 	'shop.free'             => 'free',
 	'shop.order_summary'    => 'Order summary',
+	'shop.pay'              => 'Proceed to payment',
 	'shop.payment'          => 'Payment',
 	'shop.payments'         => [
 		'direct'            => 'Bank transfert',

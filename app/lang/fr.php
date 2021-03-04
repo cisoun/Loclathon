@@ -58,6 +58,7 @@ return [
 	'shop.closed_message'   => 'Merci de repasser plus tard.',
 	'shop.change_address'   => 'Changer mon adresse',
 	'shop.change_order'     => 'Changer ma commande',
+	'shop.checkout'         => 'Vérifier la commande',
 	'shop.confirmation_to'  => 'La confirmation sera envoyée à',
 	'shop.contact'          => 'Coordonnées',
 	'shop.countries'        => [
@@ -86,6 +87,7 @@ return [
 	],
 	'shop.free'             => 'gratuit',
 	'shop.order_summary'    => 'Résumé de la commande',
+	'shop.pay'              => 'Procéder au paiement',
 	'shop.payment'          => 'Paiement',
 	'shop.payments'         => [
 		'direct'            => 'Virement bancaire',

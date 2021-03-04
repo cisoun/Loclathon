@@ -215,7 +215,7 @@ hr {
       </div> -->
 
       <div id="pay">
-        <button id="payByInvoice" type="submit"><svg class="outline fill dark"><use href="../static/img/icons.svg#card"/></svg>Vérifier la commande</button>
+        <button id="payByInvoice" type="submit"><svg class="outline fill dark"><use href="../static/img/icons.svg#card"/></svg><?= __('shop.checkout') ?></button>
         <div id="payByPaypal"></div>
       </div>
 

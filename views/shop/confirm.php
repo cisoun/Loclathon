@@ -76,7 +76,7 @@ h3 {
     </table>
     <p><a href="/{{lang}}/shop"><?= __('shop.change_order') ?></a></p>
     <h3><?= __('shop.shipping') ?></h3>
-    <button id="payByInvoice" type="submit"><svg class="outline"><use href="../static/img/icons.svg#card"/></svg>Vérifier la commande</button>
+    <button id="payByInvoice" type="submit"><svg class="outline"><use href="../static/img/icons.svg#card"/></svg><?= __('shop.pay') ?></button>
   </div>
 <div>
 </block>
