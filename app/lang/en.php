@@ -96,7 +96,9 @@ return [
 		'twint'             => 'Twint',
 	],
 	'shop.payments.infos'	=> [
-		'direct'			=> 'Bank details will be sent by mail.'
+		'direct'			=> 'Bank details will be sent by mail.',
+		'paypal'            => 'PayPal or credit cart.',
+		'twint'             => 'Twint or credit cart.'
 	],
 	'shop.shipping'         => 'Shipping',
 	'shop.shippings'        => [

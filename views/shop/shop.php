@@ -198,9 +198,15 @@ hr {
           <small><?= $payments_infos['direct'] ?></small>
         </label>
         <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>
-        <label for="payTwint"><?= $payments['twint'] ?></label>
+        <label for="payTwint">
+          <?= $payments['twint'] ?><br>
+          <small><?= $payments_infos['twint'] ?></small>
+        </label>
         <input type="radio" name="payment" id="payPaypal" value="paypal" {{ payment.paypal }}/>
-        <label for="payPaypal"><?= $payments['paypal'] ?></label>
+        <label for="payPaypal">
+          <?= $payments['paypal'] ?><br>
+          <small><?= $payments_infos['paypal'] ?></small>
+        </label>
       </div>
 
       <hr />

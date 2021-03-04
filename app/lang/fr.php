@@ -95,7 +95,9 @@ return [
 		'twint'             => 'Twint',
 	],
 	'shop.payments.infos'	=> [
-		'direct'			=> 'Les données IBAN vous seront transmises par email.'
+		'direct'			=> 'Les données IBAN vous seront transmises par email.',
+		'paypal'            => 'PayPal ou carte de crédit.',
+		'twint'             => 'Twint ou carte de crédit.'
 	],
 	'shop.shipping'         => 'Livraison',
 	'shop.shippings'        => [
