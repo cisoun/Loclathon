@@ -38,7 +38,7 @@ class Shop {
 			'total' 		=> $price + $shipping_fees + $payment_fees
 		];
 	}
-	
+
 	public static function show($params) {
 		// $params['first_name'] = '';
 		// $params['last_name'] = '';

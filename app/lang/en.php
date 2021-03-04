@@ -52,9 +52,13 @@ return [
 		'The message is empty.',
 		'The verification is incorrect. Please try again.'
 	],
+	'shop.address'          => 'Address',
 	'shop.cart'             => 'Cart',
 	'shop.closed'           => 'Shop is closed...',
 	'shop.closed_message'   => 'Please come back later!',
+	'shop.change_address'   => 'Change my address',
+	'shop.change_order'     => 'Change my order',
+	'shop.confirmation_to'  => 'Confirmation will be sent to',
 	'shop.contact'          => 'Contact informations',
 	'shop.countries'        => [
 		'CH'                => 'Switzerland',
@@ -82,6 +86,7 @@ return [
 		'units'				=> 'Bottles amount',
 	],
 	'shop.free'             => 'free',
+	'shop.order_summary'    => 'Order summary',
 	'shop.payment'          => 'Payment',
 	'shop.payments'         => [
 		'direct'            => 'Bank transfert',

@@ -30,25 +30,26 @@ h3 {
 #shop table tr td:last-child { text-align: right; }
 </block>
 <block content>
-<h1>Résumé de la commande</h1>
+<h1><?= __('shop.order_summary') ?></h1>
 
 <div class="dual spaced">
   <div>
-    <h3>Adresse</h3>
+    <h3><?= __('shop.address') ?></h3>
     <p>
-    {{ first_name }} {{ last_name }}<br>
-    {{ street }}<br>
-    {{ npa }} {{ city }}<br>
-    <?= __('shop.countries')[$country] ?>
+      {{ first_name }} {{ last_name }}<br>
+      {{ street }}<br>
+      {{ npa }} {{ city }}<br>
+      <?= __('shop.countries')[$country] ?>
     </p>
     <p>
-    Confirmation will be sent to:<br/>
-    {{ email1 }}
+    <b>
+      <?= __('shop.confirmation_to') ?></b>:<br/>
+      {{ email1 }}
     </p>
-    <p><a href="/{{lang}}/shop">Changer mon adresse</a></p>
+    <p><a href="/{{lang}}/shop"><?= __('shop.change_address') ?></a></p>
   </div>
   <div id="pay">
-    <h3>Décompte</h3>
+    <h3><?= __('shop.payment') ?></h3>
     <table>
       <tr>
         <td>{{ units }} x La Locloise</td>
@@ -73,8 +74,8 @@ h3 {
         <td>{{ total }} CHF</td>
       </tr>
     </table>
-    <p><a href="/{{lang}}/shop">Changer ma commande</a></p>
-    <h3>Paiement</h3>
+    <p><a href="/{{lang}}/shop"><?= __('shop.change_order') ?></a></p>
+    <h3><?= __('shop.shipping') ?></h3>
     <button id="payByInvoice" type="submit"><svg class="outline"><use href="../static/img/icons.svg#card"/></svg>Vérifier la commande</button>
   </div>
 <div>

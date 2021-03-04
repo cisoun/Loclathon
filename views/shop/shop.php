@@ -171,12 +171,14 @@ hr {
       <div class="group radio with-check">
         <input type="radio" name="shipping" id="shippingLocal" value="local" {{ shipping.local }}/>
         <label for="shippingLocal" id="shippingLocalLabel">
-          <?= $shippings['local'] ?> <span class="label green"><?= __('shop.free') ?></span><br/>
+          <?= $shippings['local'] ?>
+          <span class="label green"><?= __('shop.free') ?></span><br>
           <small><?= $shippings_infos['local'] ?></small>
         </label>
         <input type="radio" name="shipping" id="shippingPickUp" value="pickup" {{ shipping.pickup }}/>
         <label for="shippingPickUp">
-          <?= $shippings['pickup'] ?> <span class="label green"><?= __('shop.free') ?></span><br>
+          <?= $shippings['pickup'] ?>
+          <span class="label green"><?= __('shop.free') ?></span><br>
           <small><?= $shippings_infos['pickup'] ?></small>
         </label>
         <input type="radio" name="shipping" id="shippingByPost" value="post" {{ shipping.post }}/>
@@ -191,7 +193,8 @@ hr {
       <div class="group radio with-check">
         <input type="radio" name="payment" id="payIBAN" value="direct" {{ payment.direct }}/>
         <label for="payIBAN">
-          <?= $payments['direct'] ?><br>
+          <?= $payments['direct'] ?>
+          <span class="label green"><?= __('shop.free') ?></span><br>
           <small><?= $payments_infos['direct'] ?></small>
         </label>
         <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>

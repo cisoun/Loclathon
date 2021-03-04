@@ -52,9 +52,13 @@ return [
 		'Le message est vide.',
 		'La vérification est éronnée. Merci de réessayer.'
 	],
+	'shop.address'          => 'Adresse',
 	'shop.cart'             => 'Panier',
 	'shop.closed'           => 'Magasin fermé...',
 	'shop.closed_message'   => 'Merci de repasser plus tard.',
+	'shop.change_address'   => 'Changer mon adresse',
+	'shop.change_order'     => 'Changer ma commande',
+	'shop.confirmation_to'  => 'La confirmation sera envoyée à',
 	'shop.contact'          => 'Coordonnées',
 	'shop.countries'        => [
 		'CH'                => 'Suisse',
@@ -81,6 +85,7 @@ return [
 		'units'				=> 'Nombre de bouteilles',
 	],
 	'shop.free'             => 'gratuit',
+	'shop.order_summary'    => 'Résumé de la commande',
 	'shop.payment'          => 'Paiement',
 	'shop.payments'         => [
 		'direct'            => 'Virement bancaire',
