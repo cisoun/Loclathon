@@ -269,7 +269,7 @@ input[type="submit"].big {
 .button.white,         button.white         { background-color: var(--gray-900); color: var(--dark); }
 .button.white:hover,   button:hover.white   { background-color: var(--gray-800); }
 
-button > svg.outline { margin-right: 0.5rem; }
+.button > svg.outline, button > svg.outline { margin-right: 0.5rem; }
 svg.outline {
   --outline-fill: none;
   height: var(--icon-size);
