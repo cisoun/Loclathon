@@ -41,7 +41,7 @@ class Router {
 
 	public static function redirect($url) {
 		return function ($params) use ($url) {
-			header('Location: ' . $url);
+			Response::location($url);
 		};
 	}
 

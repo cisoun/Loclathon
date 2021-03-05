@@ -1,5 +1,9 @@
 <?php
 class Response {
+	public static function location($url) {
+		header('Location: ' . $url);
+	}
+
 	public static function view($view, $params) {
 		echo Layout::render($view, $params);
 	}
