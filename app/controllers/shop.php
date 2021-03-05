@@ -96,6 +96,7 @@ class Shop {
 
 	public static function post($params) {
 		$inputs = Request::inputs();
+
 		$success = self::validate($inputs, $errors);
 		$params = array_merge($params, $inputs);
 
@@ -109,6 +110,7 @@ class Shop {
 			return self::show($params);
 		}
 
+		// Calculate prices and fees.
 		$prices = self::get_prices(
 			$params['units'],
 			$params['payment'],

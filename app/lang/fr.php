@@ -106,7 +106,7 @@ return [
 		'pickup'            => 'Sur place',
 		'post'				=> 'Envoi postal',
 	],
-	'shop.shippings.infos'   => [
+	'shop.shippings.infos'  => [
 		'local'             => 'Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).',
 		'pickup'            => 'Vous venez cherchez vos articles au dépôt.<br>Les instructions vous seront transmises par mail.',
 		'post'              => 'Livraison par la Poste Suisse.'

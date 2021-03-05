@@ -211,15 +211,6 @@ hr {
 
       <hr />
 
-      <!-- <div id="shipping">
-        <div class="w-50">Shipping</div>
-        <div class="w-50"><span id="total">7.90</span> CHF</div>
-      </div>
-      <div id="price">
-        <div class="w-50">Total</div>
-        <div class="w-50"><span id="total">35</span> CHF</div>
-      </div> -->
-
       <div id="pay">
         <button id="payByInvoice" type="submit"><svg class="outline fill dark"><use href="../static/img/icons.svg#card"/></svg><?= __('shop.checkout') ?></button>
         <div id="payByPaypal"></div>

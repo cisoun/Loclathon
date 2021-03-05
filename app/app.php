@@ -2,8 +2,8 @@
 require_once('config.php');
 
 // Functions
-function __($key, $params = []) { return Lang::get($key, $params); }
-function call($callback)        { return Router::call($callback); }
+function __($key, $params = [])	{ return Lang::get($key, $params); }
+function call($callback)		{ return Router::call($callback); }
 function env($key, $fallback = false) {
 	global $CONFIG;
 	if (array_key_exists($key, $CONFIG))
@@ -11,17 +11,17 @@ function env($key, $fallback = false) {
 	return $fallback;
 }
 function extension($extensions) { return Request::has_extension($extensions); }
-function method()               { return Request::method(); }
-function redirect($url)         { return Router::redirect($url); }
-function route($uri, $callback) { return Router::route($uri, $callback); };
-function view($path)            { return Router::view($path); }
+function method()				{ return Request::method(); }
+function redirect($url)			{ return Router::redirect($url); }
+function route($uri, $callback)	{ return Router::route($uri, $callback); };
+function view($path)			{ return Router::view($path); }
 if (env('debug')) {
-	function view_cached($path) { return Router::view($path); }
+	function view_cached($path)	{ return Router::view($path); }
 } else {
-	function view_cached($path) { return Router::view_cached($path); }
+	function view_cached($path)	{ return Router::view_cached($path); }
 }
 
-function with_lang($callback) {
+function with_lang($callback)	{
 	// Load the locale given in the URI and continue.
 	return function ($params) use ($callback) {
 		$lang = $params['lang'];
@@ -32,7 +32,7 @@ function with_lang($callback) {
 		return redirect('/' . env('locale'))($params);
 	};
 }
-function with_trim($callback) {
+function with_trim($callback)	{
 	// Trim all data of the request.
 	return function ($params) use ($callback) {
 		$_REQUEST = array_map('trim', $_REQUEST);

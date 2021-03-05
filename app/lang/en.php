@@ -107,7 +107,7 @@ return [
 		'pickup'            => 'Local pickup',
 		'post'				=> 'By Post',
 	],
-	'shop.shippings.infos'   => [
+	'shop.shippings.infos'  => [
 		'local'             => 'Only for Le Locle and La Chaux-de-Fonds (Switzerland).',
 		'pickup'            => 'You come at hour warehouse to get your articles.<br>Instructions will be sent by mail.',
 		'post'              => 'Delivery by the Swiss Post.'
