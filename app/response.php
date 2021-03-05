@@ -5,12 +5,13 @@ class Response {
 	}
 
 	public static function view_cached($view, $params) {
-		$file = getcwd() . '/cache/' . str_replace('/', '_', Request::uri());
-		if (file_exists($file)) {
-			echo file_get_contents($file);
+		$folder = 'views';
+		$file = str_replace('/', '_', Request::uri());
+		if (Cache::has($folder, $file)) {
+			echo Cache::get($folder, $file);
 		} else {
 			$content = Layout::render($view, $params);
-			file_put_contents($file, $content);
+			Cache::put($folder, $file, $content);
 			echo $content;
 		}
 	}

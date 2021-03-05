@@ -4,6 +4,18 @@ class Session {
 		return $_SESSION;
 	}
 
+	public static function cache($content) {
+		return Cache::set(
+			'sessions',
+			self::id(),
+			Cache::serialize($content)
+		);
+	}
+
+	public static function from_cache() {
+		return Cache::unserialize(Cache::get('session', self::id()));
+	}
+
 	public static function get($key) {
 		return $_SESSION[$key];
 	}
@@ -12,13 +24,17 @@ class Session {
 		return array_key_exists($key, $_SESSION);
 	}
 
+	public static function id() {
+		return session_id();
+	}
+
 	public static function set($key, $value) {
 		$_SESSION[$key] = $value;
 	}
 
 	public static function start() {
 		if (session_status() == PHP_SESSION_NONE) {
-		  session_start();
+		 	session_start();
 		}
 	}
 }

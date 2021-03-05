@@ -115,6 +115,11 @@ class Shop {
 			$params['shipping']
 		);
 		$params = array_merge($params, $prices);
+
+		// Cache the data so the user cannot modify them before confirmation.
+		// Cached data will be reused at confirmation.
+		Session::cache($params);
+
 		return self::show_confirm($params);
 	}
 

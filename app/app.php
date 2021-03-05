@@ -47,6 +47,7 @@ spl_autoload_register(function ($class) {
 	$classes = [
 		// Core classes.
 		// DO NOT EDIT!
+		'Cache'      => 'cache',
 		'Lang'       => 'lang',
 		'Layout'     => 'layout',
 		'Mail'       => 'mail',
