@@ -12,6 +12,21 @@ function env($key, $fallback = false) {
 }
 function extension($extensions) { return Request::has_extension($extensions); }
 function method()				{ return Request::method(); }
+// function middleware($callback,
+// 					$before = NULL,
+// 					$after = NULL) {
+// 	return function ($params) use ($callback, $before, $after) {
+// 		if (!is_array($before)) { $before = [$before]; }
+// 		foreach ($before as $b) { if ($b && !$b($params)) return; }
+//
+// 		$results = $callback($params);
+//
+// 		if (!is_array($after))  { $after = [$after]; }
+// 		foreach ($after as $a)  { if ($a && !$a($params)) return; }
+//
+// 		return $results;
+// 	};
+// }
 function redirect($url)			{ return Router::redirect($url); }
 function route($uri, $callback)	{ return Router::route($uri, $callback); };
 function view($path)			{ return Router::view($path); }
@@ -39,6 +54,13 @@ function with_trim($callback)	{
 		return $callback($params);
 	};
 }
+
+// $middlewares = [
+// 	'lang',
+// ];
+// foreach ($middlewares as $middleware) {
+// 	$middleware[$middleware] = require_once('middlewares/' . $middleware . '.php');
+// }
 
 /* Load the app classes whenever they are called.
  * Therefore, it will be not necessary to import them manually.
