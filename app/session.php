@@ -1,19 +1,21 @@
 <?php
 class Session {
+	private const CACHE_PATH = 'sessions';
+
 	public static function all() {
 		return $_SESSION;
 	}
 
 	public static function cache($content) {
 		return Cache::set(
-			'sessions',
+			self::CACHE_PATH,
 			self::id(),
 			Cache::serialize($content)
 		);
 	}
 
 	public static function from_cache() {
-		return Cache::unserialize(Cache::get('session', self::id()));
+		return Cache::unserialize(Cache::get(self::CACHE_PATH, self::id()));
 	}
 
 	public static function get($key) {
