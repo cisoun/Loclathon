@@ -24,12 +24,13 @@ class Router {
 	*/
 	public static function route($path, $callback) {
 		// Transform route into a regex pattern.
-		$pattern = preg_replace('/:[^\/]+/', '([^/]+)', $path);
-		$pattern = preg_replace('/\//', '\\/', $pattern);
+		$pattern = preg_replace('/:[^\/]+/', '([^/]+)', $path); // Capture route parameters.
+		$pattern = preg_replace('/\//', '\\/', $pattern);       // Escape slashes.
 		$pattern = "/^$pattern\/?$/";
 
 		// Check if URI matches route pattern.
 		if (preg_match_all($pattern, Request::path(), $matches, PREG_SET_ORDER)) {
+			// Extract route parameters if any and pass them to callback.
 			if (preg_match_all('/:([^\/]+)/', $path, $fields)) {
 				$callback(array_combine($fields[1], array_slice($matches[0], 1)));
 			} else {
