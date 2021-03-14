@@ -36,10 +36,14 @@ class Mail {
 	    $mail->isSMTP();
 	    $mail->Host       = $params['host'];
 	    $mail->Username   = $params['user'];
-	    $mail->Password   = $params['password'];
+		$mail->Password   = $params['password'];
 	    $mail->SMTPAuth   = true;
 	    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 	    $mail->Port       = 587;
+
+		// Encoding.
+		$mail->CharSet = 'UTF-8';
+		$mail->Encoding = 'base64';
 
 	    // Make it quicker.
 	    $mail->SMTPOptions = array(
