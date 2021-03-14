@@ -1,7 +1,8 @@
+._*
+.DS_Store
+config.php
+database.db
 static/fonts/
 static/img/
 static/photos/
 vendor
-._*
-.DS_Store
-config.php
