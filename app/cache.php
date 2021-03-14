@@ -18,6 +18,10 @@ class Cache {
 		return file_exists($folder . '/' . $name);
 	}
 
+	public static function remove($folder, $name) {
+		return unlink(CACHE_PATH . '/' . $folder . '/' . $name);
+	}
+
 	public static function serialize($content) {
 		return serialize($content);
 	}
