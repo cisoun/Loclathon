@@ -64,7 +64,7 @@ class Mail {
 	    }
 
 	    // Content
-	    $mail->isHTML($params['html']);
+	    $mail->isHTML($params['html'] ?? false);
 	    $mail->Subject = $params['subject'];
 	    $mail->Body    = $params['body'];
 
