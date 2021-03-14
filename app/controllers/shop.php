@@ -1,6 +1,14 @@
 <?php
 class Shop {
 	public const BOTTLE_PRICE = 38;
+	private const ID_SYMBOLS = '0123456789ABCDEF';
+
+	private static function generate_id() {
+		$id = '';
+		for ($i = 0; $i < 6; $i++)
+			$id .= self::ID_SYMBOLS[rand(0, 15)];
+		return $id;
+	}
 
 	private static function get_payment_fees($price, $payment) {
 		switch ($payment) {
@@ -92,36 +100,41 @@ class Shop {
 			'total'
 		];
 
-		if ($db = new SQLite3('database.db')) {
+		// Write to database or in cache.
+		if (file_exists('database.db')) {
+			$db = new SQLite3('database.db');
+
 			// Prepare SQL query.
 			$query = 'INSERT INTO orders ( %s ) VALUES ( %s )';
-			$values = array_map(function ($key) { return ':' . $key; }, $keys);
-			$query = sprintf(
-				$query,
-				implode(', ', $keys),
-				implode(', ', $values)
-			);
+		    $query_keys = implode(',', $keys);
+		    $query_values = ':' . implode(',:', $keys);
+		    $query = sprintf($query, $query_keys, $query_values);
 
 			// Bind values.
 			$statement = $db->prepare($query);
-			for ($i = 0; $i < count($keys); $i++) {
-				$statement->bindValue($values[$i], $params[$keys[$i]]);
-			}
+			foreach ($keys as $key)
+        		$statement->bindValue(':' . $key, $params[$key]);
 
 			$statement->execute();
 			$id = $db->lastInsertRowID();
 			$db->close();
 		} else {
-			// Fallback
+			// Fallback.
+			$id = self::generate_id();
+			while (Cache::has('orders', $id))
+				$id = self::generate_id();
+			Cache::set('orders', $id, Cache::serialize($params));
 		}
 
 		return $id;
 	}
 
 	public static function show_confirm($params) {
-		global $CONFIG;
 		Session::start();
 		$data = Session::from_cache();
+
+		// Redirect user to shop if session cache is removed
+		// (order already processed).
 		if (!$data) {
 			return Response::location('/' . $params['lang'] . '/shop');
 		}
@@ -129,36 +142,33 @@ class Shop {
 		$params = array_merge($params, $data);
 		$params['order_id'] = self::register_order($params);
 
+		// Process the payment.
 		switch($params['payment']) {
-			case 'direct':
-				break;
+			case 'direct': break; // Nothing to do.
 			case 'paypal':
+				die('todo');
 				break;
 			case 'twint':
+				die('todo');
 				break;
 			default:
 				die('Mmh what...');
 		}
 
 		// Send email
-		$body = Layout::render('emails/confirmation', $params);
-
 		$email['host']       = env('mail_host');
 		$email['user']       = env('mail_user');
 		$email['password']   = env('mail_password');
-
 		$email['from']       = 'noreply@loclathon.ch';
 		$email['from_title'] = 'Le Loclathon';
-
 		$email['to']         = env('agents');
-		$email['bcc']        = [];
-
-		$email['html'] = true;
-		$email['subject'] = __('email.confirmation')['subject'] . $params['order_id'];
-		$email['body'] = $body;
-
+		$email['html']       = true;
+		$email['subject']    = __('email.confirmation')['subject'] . $params['order_id'];
+		$email['body']       = Layout::render('emails/confirmation', $params);
 		Mail::send($email);
 
+		// Remove the session cache when order is processed.
+		// This prevents the user to send the order multiple times.
 		Session::remove_cache();
 
 		return Response::view('shop/confirm', $params);
