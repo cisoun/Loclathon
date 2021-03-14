@@ -9,7 +9,7 @@ $current_locale = Lang::current();
 <head>
   <title>Le Loclathon | <? title ?></title>
 
-  <link rel="icon" type="image/svg" href="/static/img/logo.svg">
+  <link rel="icon" type="image/svg" href="/static/img/favicon.svg">
 
   <!-- Required meta tags -->
   <meta charset="utf-8">

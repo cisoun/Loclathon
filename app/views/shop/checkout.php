@@ -22,7 +22,7 @@ h3 {
   margin-top: 3rem;
 }
 
-#pay > button {
+#pay > a.button {
   width: 100%;
 }
 
@@ -44,7 +44,7 @@ h3 {
     <p>
     <b>
       <?= __('shop.confirmation_to') ?></b>:<br/>
-      {{ email1 }}
+      {{ email }}
     </p>
     <p><a href="/{{lang}}/shop"><?= __('shop.change_address') ?></a></p>
   </div>
@@ -76,7 +76,7 @@ h3 {
     </table>
     <p><a href="/{{lang}}/shop"><?= __('shop.change_order') ?></a></p>
     <h3><?= __('shop.shipping') ?></h3>
-    <button id="payByInvoice" type="submit"><svg class="outline"><use href="../static/img/icons.svg#card"/></svg><?= __('shop.pay') ?></button>
+    <a href="/{{lang}}/shop/confirm" class="button"><svg class="outline"><use href="../static/img/icons.svg#card"/></svg><?= __('shop.pay') ?></a>
   </div>
 <div>
 </block>

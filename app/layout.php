@@ -9,7 +9,7 @@ class Layout {
 	}
 
 	public static function render($view, $params = null) {
-	    $content = self::read(getcwd() . '/views/' . $view . '.php', $params);
+	    $content = self::read(getcwd() . '/app/views/' . $view . '.php', $params);
 
 	    # Process parent view if extends.
 	    if ($layout = self::search_extend($content)) {
