@@ -42,7 +42,7 @@ class Mail {
 	    $mail->Port       = 587;
 
 		// Encoding.
-		$mail->CharSet = 'UTF-8';
+		$mail->CharSet  = 'UTF-8';
 		$mail->Encoding = 'base64';
 
 	    // Make it quicker.
@@ -51,7 +51,7 @@ class Mail {
 		);
 
 	    // Add sender.
-	    $mail->setFrom($params['from'], $params['from_title']);
+	    $mail->setFrom($params['from'], $params['from_title'] ?? '');
 
 		// Add recipients.
 		foreach ($params['to'] as $to) {
@@ -59,9 +59,11 @@ class Mail {
 		}
 
 	    // Add agents.
-	    foreach ($params['bcc'] as $bcc) {
-	        $mail->addBCC($bcc);
-	    }
+		if (isset($params['bcc'])) {
+		    foreach ($params['bcc'] as $bcc) {
+		        $mail->addBCC($bcc);
+		    }
+		}
 
 	    // Content
 	    $mail->isHTML($params['html'] ?? false);

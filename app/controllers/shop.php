@@ -39,19 +39,133 @@ class Shop {
 		];
 	}
 
-	public static function show($params) {
-		// $params['first_name'] = '';
-		// $params['last_name'] = '';
-		// $params['street'] = '';
-		// $params['city'] = '';
-		// $params['npa'] = '';
-		// $params['country'] = 'CH';
-		// $params['email1'] = '';
-		// $params['email2'] = '';
-		// $params['phone'] = '';
+	public static function post($params) {
+		$inputs = Request::inputs();
 
-		// Values by default.
-		// $params['age'] = NULL;
+		$success = self::validate($inputs, $errors);
+		$params = array_merge($params, $inputs);
+
+		Session::start();
+		Session::set('FORM', $inputs);
+
+		$params['stock'] = 10;
+
+		if (!$success) {
+			$params['errors'] = $errors;
+			return self::show($params);
+		}
+
+		// Calculate prices and fees.
+		$prices = self::get_prices(
+			$params['units'],
+			$params['payment'],
+			$params['shipping']
+		);
+		$params = array_merge($params, $prices);
+		$params['email'] = $params['email1'];
+		unset($params['email1']);
+		unset($params['email2']);
+
+		// Cache the data so the user cannot modify them before confirmation.
+		// Cached data will be reused at confirmation.
+		Session::cache($params);
+
+		return Response::view('shop/checkout', $params);
+	}
+
+	private static function register_order($params) {
+		$keys = [
+			'first_name',
+			'last_name',
+			'street',
+			'city',
+			'npa',
+			'country',
+			'email',
+			'phone',
+			'units',
+			'payment',
+			'shipping',
+			'price',
+			'payment_fees',
+			'shipping_fees',
+			'total'
+		];
+
+		if ($db = new SQLite3('database.db')) {
+			// Prepare SQL query.
+			$query = 'INSERT INTO orders ( %s ) VALUES ( %s )';
+			$values = array_map(function ($key) { return ':' . $key; }, $keys);
+			$query = sprintf(
+				$query,
+				implode(', ', $keys),
+				implode(', ', $values)
+			);
+
+			// Bind values.
+			$statement = $db->prepare($query);
+			for ($i = 0; $i < count($keys); $i++) {
+				$statement->bindValue($values[$i], $params[$keys[$i]]);
+			}
+
+			$statement->execute();
+			$id = $db->lastInsertRowID();
+			$db->close();
+		} else {
+			// Fallback
+		}
+
+		return $id;
+	}
+
+	public static function show_confirm($params) {
+		global $CONFIG;
+		Session::start();
+		$data = Session::from_cache();
+		if (!$data) {
+			return Response::location('/' . $params['lang'] . '/shop');
+		}
+
+		$params = array_merge($params, $data);
+		$params['order_id'] = self::register_order($params);
+
+		switch($params['payment']) {
+			case 'direct':
+				break;
+			case 'paypal':
+				break;
+			case 'twint':
+				break;
+			default:
+				die('Mmh what...');
+		}
+
+		// Send email
+		$body = Layout::render('emails/confirmation', $params);
+
+		$email['host']       = env('mail_host');
+		$email['user']       = env('mail_user');
+		$email['password']   = env('mail_password');
+
+		$email['from']       = 'noreply@loclathon.ch';
+		$email['from_title'] = 'Le Loclathon';
+
+		$email['to']         = env('agents');
+		$email['bcc']        = [];
+
+		$email['html'] = true;
+		$email['subject'] = __('email.confirmation')['subject'] . $params['order_id'];
+		$email['body'] = $body;
+
+		Mail::send($email);
+
+		Session::remove_cache();
+
+		return Response::view('shop/confirm', $params);
+	}
+
+	public static function show_shop($params) {
+		// Default values.
 		$params['countries'] = ['CH'];
 		$params['email'] = '';
 		$params['payment'] = 'direct';
@@ -81,52 +195,8 @@ class Shop {
 		return Response::view('shop/shop', $params);
 	}
 
-	public static function show_confirm($params) {
-		$units = $params['units'] * 38;
-		$payment = 3;
-		$shipping = 9.7;
-
-		$params['units_price'] 	  = $units;
-		$params['payment_price']  = $payment;
-		$params['shipping_price'] = $shipping;
-		$params['total_price'] 	  = $units + $payment + $shipping;
-
-		Response::view('shop/confirm', $params);
-	}
-
-	public static function post($params) {
-		$inputs = Request::inputs();
-
-		$success = self::validate($inputs, $errors);
-		$params = array_merge($params, $inputs);
-
-		Session::start();
-		Session::set('FORM', $inputs);
-
-		$params['stock'] = 10;
-
-		if (!$success) {
-			$params['errors'] = $errors;
-			return self::show($params);
-		}
-
-		// Calculate prices and fees.
-		$prices = self::get_prices(
-			$params['units'],
-			$params['payment'],
-			$params['shipping']
-		);
-		$params = array_merge($params, $prices);
-
-		// Cache the data so the user cannot modify them before confirmation.
-		// Cached data will be reused at confirmation.
-		Session::cache($params);
-
-		return self::show_confirm($params);
-	}
-
 	public static function validate(&$params, &$results) {
-		$rules = array(
+		$rules = [
     		'first_name' => 'stripped',
 			'last_name'  => 'stripped',
 			'street'     => 'stripped',
@@ -140,7 +210,7 @@ class Shop {
 			'payment'    => 'text',
 			'shipping'   => 'text',
 			'units'      => 'range:1:6' // TODO: Add stock.
-		);
+		];
 		$mandatory_fields = [
 			'first_name',
 			'last_name',

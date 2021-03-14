@@ -1,5 +1,4 @@
 <?php
-require_once('config.php');
 require_once('app/app.php');
 
 # Serve static ressources.
@@ -15,7 +14,8 @@ switch (method()) {
 		route('/:lang/locloise',		with_lang(view_cached('locloise')));
 		route('/:lang/photos',			with_lang(view_cached('albums')));
 		route('/:lang/photos/:year',	with_lang(view_cached('photos')));
-		route('/:lang/shop',			with_lang(call('Shop::show')));
+		route('/:lang/shop',			with_lang(call('Shop::show_shop')));
+		route('/:lang/shop/confirm',    with_lang(call('Shop::show_confirm')));
 		route('/:lang/contact',			with_lang(call('Contact::show')));
 		break;
 	case 'POST':

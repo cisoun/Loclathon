@@ -16,7 +16,33 @@ This website is used to present the event and to sell the dedicated absinthe of
 
 ## Requirements
 
-- php >= 7
+- Composer
+- PHP >= 7
+- SQLite3
+
+## Installation
+
+From project directory:
+
+```sh
+# Install PHPMailer.
+composer install
+# Create database for orders.
+cat static/database.sql | sqlite3 database.db
+# Configure the project.
+cp config.example.php config.php
+$EDITOR config.php
+```
+
+### Tweaks
+
+- You can mount the `cache` folder in *tmpfs*. Consider at least 100 Mb.
+
+## Development
+
+```sh
+php -S 127.0.0.1:8000 index.php
+```
 
 ## Status
 
@@ -26,7 +52,7 @@ List draft of all planned features. *
 
  - [X] Custom routing.
  - [X] Custom template engine.
- - [ ] Custom translation manager.
+ - [X] Custom translation system.
  - [X] Custom cache system.
     - *Used to render and store static pages.*
 
@@ -47,9 +73,9 @@ List draft of all planned features. *
 
  - [ ] Good accessibility.
  - [ ] Low time response.
- - [ ] Minimal dependencies.
+ - [X] Minimal dependencies.
     - *Use pure CSS and vanilla JS.*
     - *Use the fewest external packages (except customs).*
- - [ ] Support for french, english and german.
+ - [X] Support for french, english and german.
 
 <sub>\* A checked feature does not mean that it is finished but exists.</sub>

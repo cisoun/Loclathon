@@ -1,5 +1,16 @@
 <?php
 return [
+	'email.confirmation'    => [
+		'amount'            => 'Amount',
+		'bank_account'      => 'Bank account',
+		'instructions'      => 'In order to process the shipping, please send the total amount to the following account:',
+		'process'           => 'Payment process',
+		'reference'         => 'Reference',
+		'subject'           => 'Loclathon Order #',
+		'thanks'            => 'Thank you very much for your order!',
+	],
+	'email.contact'         => 'Contact us',
+	'email.see_you'         => 'See you soon!',
 	'footer.contact'        => 'Contact',
 	'footer.contact.write'  => 'Write to us',
 	'footer.resources'      => 'Resources',
@@ -59,6 +70,9 @@ return [
 	'shop.change_address'   => 'Change my address',
 	'shop.change_order'     => 'Change my order',
 	'shop.checkout'         => 'Checkout',
+	'shop.confirm.title'    => 'Order received!',
+	'shop.confirm.message'  => 'Le Loclathon thanks you for your order!',
+	'shop.confirm.direct'   => 'We will process to the shipping once the payment is received.',
 	'shop.confirmation_to'  => 'Confirmation will be sent to',
 	'shop.contact'          => 'Contact informations',
 	'shop.countries'        => [
