@@ -9,7 +9,9 @@ class Cache {
 
 	public static function get($folder, $name) {
 		$file = CACHE_PATH . '/' . $folder . '/' . $name;
-		return file_get_contents($file);
+		if (file_exists($file))
+			return file_get_contents($file);
+		return false;
 	}
 
 	public static function has($folder, $name) {
