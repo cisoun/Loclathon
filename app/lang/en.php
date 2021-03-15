@@ -35,6 +35,7 @@ return [
 		'What should I bring with me?',
 		'Drink of your choice, a glass and a good pair of shoes. Something to eat eventually. You can also buy food at noon when we arrive at the city center.'
 	],
+	'loclathon.learn_more'  => 'Learn more',
 	'locloise.buy'          => "Order",
 	'locloise.description'  => [
 		"La Locloise is an absinthe specially designed for the Loclathon.<br>Its mentholated and mild taste provides a refreshing sensation that will delight any person motivated to take it with them on their walk.",
