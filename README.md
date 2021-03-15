@@ -36,6 +36,7 @@ $EDITOR config.php
 
 ### Tweaks
 
+- Add a cron job to remove old session/order caches.
 - You can mount the `cache` folder in *tmpfs*. Consider at least 100 Mb.
 
 ## Development
