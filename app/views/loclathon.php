@@ -21,7 +21,7 @@ $bubbles = __('loclathon.bubbles');
 <main id="loclathon">
   <div class="fade"></div>
   <img id="logo" class="container" src="/static/img/home.{{lang}}.svg" alt="Le Loclathon"/>
-  <a href="#about" class="button">En savoir plus <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
+  <a href="#about" class="button"><?= __('loclathon.learn_more') ?> <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
   <div id="bottom"></div>
 </main>
 <section id="about" class="dual padded spaced">
