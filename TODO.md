@@ -7,6 +7,7 @@
   - [ ] Handle PayPal exceptions: page showing error to customer ("Sorry, got <error>, admin was notified.").
 
 ## Milestone 2 - April 2021
+- [ ] Shop: add JS spinner when the PayPal order is being created.
 - [ ] Add german translations.
 - [ ] Photos carousel in homepage.
 - [ ] Add support for TWINT.
@@ -21,3 +22,6 @@
 
 ## Ideas
 - Use SQLite 3.35 to use the new `RETURNING` clause.
+- Change layout of the confirmation mail.
+  - Put all contact informations at the left bottom.
+  - Put transaction informations at the right bottom.
