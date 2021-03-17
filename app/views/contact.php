@@ -13,12 +13,12 @@ $max     = $params['max'];
 <block title>Contact</block>
 
 <block css>
-#contact { max-width: 600px; }
+#contact { max-width: 700px; }
 #confirm { padding: 5rem 0; }
 </block>
 
 <block content>
-<main id="contact" class="container dark">
+<main id="contact" class="container padded dark">
   <?php if (!$sent): ?>
     <h1><?= __('contact.title') ?></h1>
     <?php if ($error > 0): ?>
