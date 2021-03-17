@@ -141,6 +141,7 @@ class Shop {
 			'price',
 			'payment_fees',
 			'shipping_fees',
+			'paypal_order_id',
 			'total'
 		];
 
@@ -157,7 +158,7 @@ class Shop {
 			// Bind values.
 			$statement = $db->prepare($query);
 			foreach ($keys as $key)
-        		$statement->bindValue(':' . $key, $params[$key]);
+				$statement->bindValue(':' . $key, $params[$key] ?? NULL);
 
 			$statement->execute();
 			$id = $db->lastInsertRowID();
