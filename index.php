@@ -26,5 +26,5 @@ switch (method()) {
 }
 
 // Fallback: redirect to homepage.
-//header('Location: /');
+header('Location: /');
 ?>
