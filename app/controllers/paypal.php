@@ -159,17 +159,13 @@ class PayPal
 		];
 
 		$client = self::client();
-	    $response = $client->execute($request);
-		Cache::set('orders', 'order', json_encode((array)$response));
-		return $response;
+	    return $client->execute($request);;
 	}
 
 	public static function capture($order_id) {
 		$request = new OrdersCaptureRequest($order_id);
 		$request->prefer('return=representation');
 		$client = self::client();
-	    $response = $client->execute($request);
-		Cache::set('orders', 'capture', json_encode((array)$response));
-		return $response;
+	    return $client->execute($request);
 	}
 }
