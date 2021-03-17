@@ -23,8 +23,6 @@ const Layout = {
         input.focus();
       }
 
-
-
       // Handle click on menu items.
       const items = container.querySelectorAll('ul > li');
       items.forEach(item => {
@@ -32,7 +30,8 @@ const Layout = {
       });
     });
 
-
+    // NOTE: Dropdown support, not needed now.
+    //
     // const dropdowns = document.querySelectorAll('form .group.dropdown');
     // for (const dropdown of dropdowns) {
     //   const input = dropdown.querySelector('input');

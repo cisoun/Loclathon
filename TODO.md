@@ -7,6 +7,7 @@
   - [ ] Handle PayPal exceptions: page showing error to customer ("Sorry, got <error>, admin was notified.").
 
 ## Milestone 2 - April 2021
+- [ ] [CRITICAL] Handle lack of bottles stock in shop.
 - [ ] Shop: add JS spinner when the PayPal order is being created.
 - [ ] Add german translations.
 - [ ] Photos carousel in homepage.
