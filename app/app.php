@@ -60,6 +60,7 @@ spl_autoload_register(function ($class) {
 		// Controller classes.
 		'Shop'       => 'controllers/shop',
 		'Contact'    => 'controllers/contact',
+		'PayPal'     => 'controllers/paypal',
 	];
 	if (!array_key_exists($class, $classes))
 		die("$class class does not exist!");

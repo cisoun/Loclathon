@@ -66,7 +66,12 @@ h3 { margin-top: 2em; }
     </th>
   </tr>
   <tr>
-    <td><?= $payments[$payment] ?></td>
+    <td>
+		<?= $payments[$payment] ?>
+		<?php if ($payment == 'paypal'): ?>
+		<br><?= sprintf($m['paypal_order_id'], $params['paypal_order_id']) ?>
+		<?php endif; ?>
+	</td>
     <td class="sum">{{ payment_fees }} CHF</td>
   </tr>
   <tr><td colspan="2"><hr/></td></tr>
@@ -86,10 +91,9 @@ h3 { margin-top: 2em; }
   <a href="mailto:{{email}}">{{email}}</a><br>
   {{phone}}
 </div>
-<?php if ($payment == 'direct'): ?>
-<div class="clear">
+<div class="clear"></div>
 
-</div>
+<?php if ($payment == 'direct'): ?>
 <h3><?= $m['process'] ?></h3>
 <p class="justify">
   <?= $m['instructions'] ?>

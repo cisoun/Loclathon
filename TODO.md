@@ -3,7 +3,8 @@
 ## Milestone 1 - End of March 2021
 - [X] [CRITICAL] Prevent shop confirmation to send order once again when refreshing the page (/shop/confirm).
 - [ ] [BUG] Fix language selection in nav menu on mobiles.
-- [ ] Add support for Paypal.
+- [X] Add support for Paypal.
+  - [ ] Handle PayPal exceptions: page showing error to customer ("Sorry, got <error>, admin was notified.").
 
 ## Milestone 2 - April 2021
 - [ ] Add german translations.

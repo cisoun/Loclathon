@@ -60,7 +60,7 @@ class Shop {
 
 		if (!$success) {
 			$params['errors'] = $errors;
-			return self::show($params);
+			return self::show_shop($params);
 		}
 
 		// Calculate prices and fees.
@@ -129,7 +129,31 @@ class Shop {
 		return $id;
 	}
 
-	public static function show_confirm($params) {
+	public static function pay($params) {
+		Session::start();
+		$data = Session::from_cache();
+		$params = array_merge($params, $data);
+
+		// Process the payment.
+		switch($params['payment']) {
+			case 'paypal':
+				$response  = PayPal::order($params);
+				$order_id  = PayPal::get_order_id($response);
+				$order_url = PayPal::get_approve_url($response);
+				// Retain order ID.
+				Session::set('paypal_order_id', $order_id);
+				// Redirect user to order's approve link.
+				return Response::location($order_url);
+				break;
+			case 'twint':
+				die('todo');
+				break;
+			default:
+				self::confirm($params);
+		}
+	}
+
+	public static function confirm($params) {
 		Session::start();
 		$data = Session::from_cache();
 
@@ -140,20 +164,16 @@ class Shop {
 		}
 
 		$params = array_merge($params, $data);
-		$params['order_id'] = self::register_order($params);
 
-		// Process the payment.
-		switch($params['payment']) {
-			case 'direct': break; // Nothing to do.
-			case 'paypal':
-				die('todo');
-				break;
-			case 'twint':
-				die('todo');
-				break;
-			default:
-				die('Mmh what...');
+		if ($data['payment'] == 'paypal') {
+			$order_id = Session::get('paypal_order_id');
+			$response = PayPal::capture($order_id);
+			$params['paypal_order_id'] = $order_id;
+			$params['payment_fees']   += PayPal::get_taxes_amount($response);
+			$params['total']           = PayPal::get_total_amount($response);
 		}
+
+		$params['order_id'] = self::register_order($params);
 
 		// Send email
 		$email['host']       = env('mail_host');
