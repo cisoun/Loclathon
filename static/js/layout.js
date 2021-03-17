@@ -1,6 +1,7 @@
 const Layout = {
   initialize () {
-    //this.initializeDropdowns();
+    // NOTE: Dropdown support, not needed now.
+    // this.initializeDropdowns();
     this.initializeNumbers();
   },
 
@@ -29,17 +30,6 @@ const Layout = {
         item.onmousedown = () => input.value = item.innerHTML;
       });
     });
-
-    // NOTE: Dropdown support, not needed now.
-    //
-    // const dropdowns = document.querySelectorAll('form .group.dropdown');
-    // for (const dropdown of dropdowns) {
-    //   const input = dropdown.querySelector('input');
-    //   const dropdownItems = dropdown.querySelectorAll('ul > li');
-    //   for (const dropdownItem of dropdownItems) {
-    //     dropdownItem.onmousedown = () => input.value = dropdownItem.innerHTML;
-    //   }
-    // }
   },
 
   initializeNumbers () {
