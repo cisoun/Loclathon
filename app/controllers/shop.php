@@ -67,7 +67,7 @@ class Shop {
 		$email['password']   = env('mail_password');
 		$email['from']       = 'noreply@loclathon.ch';
 		$email['from_title'] = 'Le Loclathon';
-		$email['to']         = $params['email'];
+		$email['to']         = [$params['email']];
 		$email['bcc']        = env('agents');
 		$email['html']       = true;
 		$email['subject']    = __('email.confirmation')['subject'] . $params['order_id'];
