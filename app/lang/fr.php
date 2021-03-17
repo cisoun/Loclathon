@@ -4,6 +4,7 @@ return [
 		'amount'            => 'Montant',
 		'bank_account'      => 'Compte bancaire',
 		'instructions'      => "Afin que nous procédions à la livraison, merci d'envoyer le montant total au compte suivant:",
+		'paypal_order_id'   => 'N° de transaction : %s',
 		'process'           => 'Procédure de paiement',
 		'reference'         => 'Référence / motif de paiement',
 		'subject'           => 'Commande Loclathon #',

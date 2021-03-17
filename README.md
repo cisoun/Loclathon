@@ -20,12 +20,16 @@ This website is used to present the event and to sell the dedicated absinthe of
 - PHP >= 7
 - SQLite3
 
+Modules:
+- [PHPMailer](https://github.com/PHPMailer/PHPMailer) (via Composer)
+- [Checkout-PHP-SDK](https://github.com/paypal/Checkout-PHP-SDK/) (via Composer)
+
 ## Installation
 
 From project directory:
 
 ```sh
-# Install PHPMailer.
+# Install PHP modules.
 composer install
 # Create database for orders.
 cat static/database.sql | sqlite3 database.db

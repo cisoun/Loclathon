@@ -2,6 +2,9 @@
 /**
  * PayPal controller.
  *
+ * Merchant dashboard: https://developer.paypal.com/developer/accounts/
+ * Sandbox dashboard:  https://www.sandbox.paypal.com/mep/dashboard
+ *
  * Documentation:
  *	- https://github.com/paypal/Checkout-PHP-SDK
  *	- https://developer.paypal.com/docs/checkout/reference/server-integration/setup-sdk/
@@ -10,6 +13,8 @@ require_once('vendor/autoload.php');
 
 use PayPalCheckoutSdk\Core\PayPalHttpClient;
 use PayPalCheckoutSdk\Core\SandboxEnvironment;
+use PayPalCheckoutSdk\Orders\OrdersCaptureRequest;
+use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 
 ini_set('error_reporting', E_ALL); // or error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -22,8 +27,7 @@ class PayPal
      * credentials context. Use this instance to invoke PayPal APIs, provided the
      * credentials have access.
      */
-    public static function client()
-    {
+    public static function client() {
         return new PayPalHttpClient(self::environment());
     }
 
@@ -40,41 +44,132 @@ class PayPal
         return new LiveEnvironment($clientId, $clientSecret);
     }
 
+	public static function get_approve_url($response) {
+		foreach($response->result->links as $link)
+			if ($link->rel == 'approve')
+				return $link->href;
+	}
+
+	public static function get_order_id($response) {
+		return $response->result->id;
+	}
+
+	public static function get_taxes_amount($response) {
+		return $response->result
+						->purchase_units[0]
+						->amount->breakdown
+						->tax_total
+						->value;
+	}
+
+	public static function get_total_amount($response) {
+		return $response->result->purchase_units[0]->amount->value;
+	}
+
 	public static function order($params) {
-		$host = $_SERVER['SERVER_NAME'];
+		$scheme = $_SERVER["REQUEST_SCHEME"] ?? 'http';
+		$host = $_SERVER['HTTP_HOST'];
 		$lang = $params['lang'];
 
 		// Construct a request object and set desired parameters
 		// Here, OrdersCreateRequest() creates a POST request to /v2/checkout/orders
-		use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
+		// https://developer.paypal.com/docs/api/orders/v2/#definition-order_application_context
 		$request = new OrdersCreateRequest();
 		$request->prefer('return=representation');
 		$request->body = [
 			'intent' => 'CAPTURE',
+			'application_context' => [
+				'brand_name' => 'Le Loclathon',
+				'landing_page' => 'BILLING',
+                'shipping_preference' => 'SET_PROVIDED_ADDRESS',
+                'user_action' => 'CONTINUE',
+				'cancel_url' => "$scheme://$host/$lang/shop",
+				'return_url' => "$scheme://$host/$lang/shop/confirm"
+			],
 			'purchase_units' => [
 				[
-					'reference_id' => 'locloise',
+					// 'reference_id' => 'locloise',
+					'description' => 'Sporting Goods',
 					'amount' => [
-						'value' => $params['price'],
-						'currency_code' => 'CHF'
-					]
+						'value' => $params['total'],
+						'currency_code' => 'CHF',
+						'breakdown' => [
+							'item_total' => [
+								'currency_code' => 'CHF',
+								'value' => $params['price'],
+							],
+							'shipping' => [
+								'currency_code' => 'CHF',
+								'value' => $params['shipping_fees'],
+							],
+							'tax_total' => [
+								'currency_code' => 'CHF',
+								'value' => $params['payment_fees'],
+							],
+							// 'shipping_discount' =>
+							// 	array(
+							// 		'currency_code' => 'CHF',
+							// 		'value' => '10.00',
+							// 	),
+						],
+					],
+					'items' => [
+						[
+							'name' => 'La Locloise',
+							'description' => 'La Locloise, bouteille 5dl officielle du Loclathon.',
+							'quantity' => $params['units'],
+							'unit_amount' => [
+								'currency_code' => 'CHF',
+								'value' => $params['price'] / $params['units']
+							]
+						],
+						// [
+						// 	'name' => 'Frais de livraison',
+						// 	'description' => 'Frais de livraison pour la Suisse.',
+						// 	'quantity' => '1',
+						// 	'unit_amount' => [
+						// 		'currency_code' => 'CHF',
+						// 		'value' => $params['shipping_fees']
+						// 	]
+						// ], [
+						// 	'name' => 'Frais de paiement',
+						// 	'description' => 'Frais de paiement.',
+						// 	'quantity' => '1',
+						// 	'unit_amount' => [
+						// 		'currency_code' => 'CHF',
+						// 		'value' => $params['payment_fees']
+						// 	]
+						// ]
+					],
+					'shipping' => [
+						'method' => 'Swiss Post',
+						'name' => [
+							'full_name' => "{$params['first_name']} {$params['last_name']}",
+						],
+						'address' => [
+							'address_line_1' => $params['street'],
+							'admin_area_2' => $params['city'],
+							'postal_code' => $params['npa'],
+							'country_code' => $params['country'],
+						],
+					],
 				]
 			],
-			'application_context' => [
-				'cancel_url' => "$host/$lang/shop/confirmation",
-				'return_url' => "$host/$lang/shop"
-			]
+
 		];
 
-		try {
-		    // Call API with your client and get a response for your call
-		    $response = $client->execute($request);
+		$client = self::client();
+	    $response = $client->execute($request);
+		Cache::set('orders', 'order', json_encode((array)$response));
+		return $response;
+	}
 
-		    // If call returns body in response, you can get the deserialized version from the result attribute of the response
-		    print_r($response);
-		}catch (HttpException $ex) {
-		    echo $ex->statusCode;
-		    print_r($ex->getMessage());
-		}
+	public static function capture($order_id) {
+		$request = new OrdersCaptureRequest($order_id);
+		$request->prefer('return=representation');
+		$client = self::client();
+	    $response = $client->execute($request);
+		Cache::set('orders', 'capture', json_encode((array)$response));
+		return $response;
 	}
 }
