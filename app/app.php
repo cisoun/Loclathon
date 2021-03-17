@@ -6,9 +6,7 @@ function __($key, $params = [])	{ return Lang::get($key, $params); }
 function call($callback)		{ return Router::call($callback); }
 function env($key, $fallback = false) {
 	global $CONFIG;
-	if (array_key_exists($key, $CONFIG))
-		return $CONFIG[$key];
-	return $fallback;
+	return $CONFIG[$key] ?? $fallback;
 }
 function extension($extensions) { return Request::has_extension($extensions); }
 function method()				{ return Request::method(); }
@@ -21,6 +19,7 @@ if (env('debug')) {
 	function view_cached($path)	{ return Router::view_cached($path); }
 }
 
+// Pseudo middlewares
 function with_lang($callback)	{
 	// Load the locale given in the URI and continue.
 	return function ($params) use ($callback) {
@@ -40,28 +39,27 @@ function with_trim($callback)	{
 	};
 }
 
-/* Load the app classes whenever they are called.
- * Therefore, it will be not necessary to import them manually.
- */
-spl_autoload_register(function ($class) {
-	$classes = [
-		// Core classes.
-		// DO NOT EDIT!
-		'Cache'      => 'cache',
-		'Lang'       => 'lang',
-		'Layout'     => 'layout',
-		'Mail'       => 'mail',
-		'Request'    => 'request',
-		'Response'   => 'response',
-		'Router'     => 'router',
-		'Session'    => 'session',
-		'Validation' => 'validation',
+// Load the app classes whenever they are called.
+// Therefore, it will be not necessary to import them manually.
+$classes = [
+	// Core classes.
+	// DO NOT EDIT!
+	'Cache'      => 'cache',
+	'Lang'       => 'lang',
+	'Layout'     => 'layout',
+	'Mail'       => 'mail',
+	'Request'    => 'request',
+	'Response'   => 'response',
+	'Router'     => 'router',
+	'Session'    => 'session',
+	'Validation' => 'validation',
 
-		// Controller classes.
-		'Shop'       => 'controllers/shop',
-		'Contact'    => 'controllers/contact',
-		'PayPal'     => 'controllers/paypal',
-	];
+	// Controller classes.
+	'Shop'       => 'controllers/shop',
+	'Contact'    => 'controllers/contact',
+	'PayPal'     => 'controllers/paypal',
+];
+spl_autoload_register(function ($class) use ($classes) {
 	if (!array_key_exists($class, $classes))
 		die("$class class does not exist!");
     require_once('app/' . $classes[$class] . '.php');
