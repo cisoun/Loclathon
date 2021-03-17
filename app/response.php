@@ -15,7 +15,7 @@ class Response {
 			echo Cache::get($folder, $file);
 		} else {
 			$content = Layout::render($view, $params);
-			Cache::set($folder, $file, $content);
+			Cache::store($folder, $file, $content);
 			echo $content;
 		}
 	}

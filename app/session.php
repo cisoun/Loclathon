@@ -7,7 +7,7 @@ class Session {
 	}
 
 	public static function cache($data) {
-		return Cache::set(
+		return Cache::store(
 			self::CACHE_PATH,
 			self::id(),
 			Cache::serialize($data)

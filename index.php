@@ -14,14 +14,14 @@ switch (method()) {
 		route('/:lang/locloise',		with_lang(view_cached('locloise')));
 		route('/:lang/photos',			with_lang(view_cached('albums')));
 		route('/:lang/photos/:year',	with_lang(view_cached('photos')));
-		route('/:lang/shop',			with_lang(call('Shop::show_shop')));
+		route('/:lang/shop',			with_lang(call('Shop::show')));
 		route('/:lang/shop/pay',        with_lang(call('Shop::pay')));
 		route('/:lang/shop/confirm',    with_lang(call('Shop::confirm')));
 		route('/:lang/contact',			with_lang(call('Contact::show')));
 		break;
 	case 'POST':
 		route('/:lang/contact',			with_lang(call('Contact::post')));
-		route('/:lang/shop',			with_trim(with_lang(call('Shop::post'))));
+		route('/:lang/shop',			with_trim(with_lang(call('Shop::checkout'))));
 		break;
 }
 

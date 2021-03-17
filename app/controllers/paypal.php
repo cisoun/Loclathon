@@ -66,25 +66,50 @@ class PayPal
 		return $response->result->purchase_units[0]->amount->value;
 	}
 
+	/**
+	 * Capture the order.
+	 *
+	 * Summary: The seller accepts the payment.
+	 *
+	 * Requests PayPal to capture the order specified by the order ID provided
+	 * by self::order().
+	 *
+	 * WARNING: Turn "Payment review" to "OFF" in the seller settings!
+	 */
+	public static function capture($order_id) {
+		$request = new OrdersCaptureRequest($order_id);
+		$request->prefer('return=representation');
+		$client = self::client();
+	    return $client->execute($request);
+	}
+
+	/**
+	 * Create the order.
+	 *
+	 * Summary: The customer creates the order.
+	 *
+	 * Requests PayPal to create the order. The response will provide the
+	 * link to call to approve the payment (use self::capture() for that).
+	 */
 	public static function order($params) {
 		$scheme = $_SERVER["REQUEST_SCHEME"] ?? 'http';
 		$host = $_SERVER['HTTP_HOST'];
 		$lang = $params['lang'];
 
-		// Construct a request object and set desired parameters
+		// Construct a request object and set desired parameters.
 		// Here, OrdersCreateRequest() creates a POST request to /v2/checkout/orders
-		// https://developer.paypal.com/docs/api/orders/v2/#definition-order_application_context
+		// SEE: https://developer.paypal.com/docs/api/orders/v2/#definition-order_application_context
 		$request = new OrdersCreateRequest();
 		$request->prefer('return=representation');
 		$request->body = [
 			'intent' => 'CAPTURE',
 			'application_context' => [
-				'brand_name' => 'Le Loclathon',
-				'landing_page' => 'BILLING',
+				'brand_name'          => 'Le Loclathon',
+				'landing_page'        => 'BILLING',
                 'shipping_preference' => 'SET_PROVIDED_ADDRESS',
-                'user_action' => 'CONTINUE',
-				'cancel_url' => "$scheme://$host/$lang/shop",
-				'return_url' => "$scheme://$host/$lang/shop/confirm"
+                'user_action'         => 'CONTINUE',
+				'cancel_url'          => "$scheme://$host/$lang/shop",
+				'return_url'          => "$scheme://$host/$lang/shop/confirm"
 			],
 			'purchase_units' => [
 				[
@@ -120,37 +145,20 @@ class PayPal
 							'quantity' => $params['units'],
 							'unit_amount' => [
 								'currency_code' => 'CHF',
-								'value' => $params['price'] / $params['units']
+								'value'         => $params['price'] / $params['units']
 							]
 						],
-						// [
-						// 	'name' => 'Frais de livraison',
-						// 	'description' => 'Frais de livraison pour la Suisse.',
-						// 	'quantity' => '1',
-						// 	'unit_amount' => [
-						// 		'currency_code' => 'CHF',
-						// 		'value' => $params['shipping_fees']
-						// 	]
-						// ], [
-						// 	'name' => 'Frais de paiement',
-						// 	'description' => 'Frais de paiement.',
-						// 	'quantity' => '1',
-						// 	'unit_amount' => [
-						// 		'currency_code' => 'CHF',
-						// 		'value' => $params['payment_fees']
-						// 	]
-						// ]
 					],
 					'shipping' => [
-						'method' => 'Swiss Post',
+						'method' => __('shop.shippings')[$params['shipping']],
 						'name' => [
 							'full_name' => "{$params['first_name']} {$params['last_name']}",
 						],
 						'address' => [
 							'address_line_1' => $params['street'],
-							'admin_area_2' => $params['city'],
-							'postal_code' => $params['npa'],
-							'country_code' => $params['country'],
+							'admin_area_2'   => $params['city'],
+							'postal_code'    => $params['npa'],
+							'country_code'   => $params['country'],
 						],
 					],
 				]
@@ -160,12 +168,5 @@ class PayPal
 
 		$client = self::client();
 	    return $client->execute($request);;
-	}
-
-	public static function capture($order_id) {
-		$request = new OrdersCaptureRequest($order_id);
-		$request->prefer('return=representation');
-		$client = self::client();
-	    return $client->execute($request);
 	}
 }

@@ -3,6 +3,84 @@ class Shop {
 	public const BOTTLE_PRICE = 38;
 	private const ID_SYMBOLS = '0123456789ABCDEF';
 
+	public static function checkout($params) {
+		$inputs = Request::inputs();
+
+		$success = self::validate($inputs, $errors);
+		$params = array_merge($params, $inputs);
+
+		Session::start();
+		Session::set('FORM', $inputs);
+
+		$params['stock'] = 10;
+
+		if (!$success) {
+			$params['errors'] = $errors;
+			return self::show_shop($params);
+		}
+
+		// Calculate prices and fees.
+		$prices = self::get_prices(
+			$params['units'],
+			$params['payment'],
+			$params['shipping']
+		);
+		$params = array_merge($params, $prices);
+		$params['email'] = $params['email1'];
+		unset($params['email1']);
+		unset($params['email2']);
+
+		// Cache the data so the user cannot modify them before confirmation.
+		// Cached data will be reused at confirmation.
+		Session::cache($params);
+
+		return Response::view('shop/checkout', $params);
+	}
+
+	public static function confirm($params) {
+		Session::start();
+		$data = Session::from_cache();
+
+		// Redirect user to shop if session cache is removed
+		// (order already processed).
+		if (!$data) {
+			return Response::location('/' . $params['lang'] . '/shop');
+		}
+
+		$params = array_merge($params, $data);
+
+		if ($data['payment'] == 'paypal') {
+			$order_id = Session::get('paypal_order_id');
+			$response = PayPal::capture($order_id);
+			// PayPal may change the payment prices if the user pays by
+			// credit card. Update the prices.
+			$params['paypal_order_id'] = $order_id;
+			$params['payment_fees']   += PayPal::get_taxes_amount($response);
+			$params['total']           = PayPal::get_total_amount($response);
+		}
+
+		$params['order_id'] = self::register_order($params);
+
+		// Send email.
+		$email['host']       = env('mail_host');
+		$email['user']       = env('mail_user');
+		$email['password']   = env('mail_password');
+		$email['from']       = 'noreply@loclathon.ch';
+		$email['from_title'] = 'Le Loclathon';
+		$email['to']         = $params['email'];
+		$email['bcc']        = env('agents');
+		$email['html']       = true;
+		$email['subject']    = __('email.confirmation')['subject'] . $params['order_id'];
+		$email['body']       = Layout::render('emails/confirmation', $params);
+		Mail::send($email);
+
+		// Remove the session cache when order is processed.
+		// This prevents the user to send the order multiple times.
+		Session::remove_cache();
+
+		return Response::view('shop/confirm', $params);
+	}
+
 	private static function generate_id() {
 		$id = '';
 		for ($i = 0; $i < 6; $i++)
@@ -47,40 +125,6 @@ class Shop {
 		];
 	}
 
-	public static function post($params) {
-		$inputs = Request::inputs();
-
-		$success = self::validate($inputs, $errors);
-		$params = array_merge($params, $inputs);
-
-		Session::start();
-		Session::set('FORM', $inputs);
-
-		$params['stock'] = 10;
-
-		if (!$success) {
-			$params['errors'] = $errors;
-			return self::show_shop($params);
-		}
-
-		// Calculate prices and fees.
-		$prices = self::get_prices(
-			$params['units'],
-			$params['payment'],
-			$params['shipping']
-		);
-		$params = array_merge($params, $prices);
-		$params['email'] = $params['email1'];
-		unset($params['email1']);
-		unset($params['email2']);
-
-		// Cache the data so the user cannot modify them before confirmation.
-		// Cached data will be reused at confirmation.
-		Session::cache($params);
-
-		return Response::view('shop/checkout', $params);
-	}
-
 	private static function register_order($params) {
 		$keys = [
 			'first_name',
@@ -123,7 +167,7 @@ class Shop {
 			$id = self::generate_id();
 			while (Cache::has('orders', $id))
 				$id = self::generate_id();
-			Cache::set('orders', $id, Cache::serialize($params));
+			Cache::store('orders', $id, Cache::serialize($params));
 		}
 
 		return $id;
@@ -153,48 +197,7 @@ class Shop {
 		}
 	}
 
-	public static function confirm($params) {
-		Session::start();
-		$data = Session::from_cache();
-
-		// Redirect user to shop if session cache is removed
-		// (order already processed).
-		if (!$data) {
-			return Response::location('/' . $params['lang'] . '/shop');
-		}
-
-		$params = array_merge($params, $data);
-
-		if ($data['payment'] == 'paypal') {
-			$order_id = Session::get('paypal_order_id');
-			$response = PayPal::capture($order_id);
-			$params['paypal_order_id'] = $order_id;
-			$params['payment_fees']   += PayPal::get_taxes_amount($response);
-			$params['total']           = PayPal::get_total_amount($response);
-		}
-
-		$params['order_id'] = self::register_order($params);
-
-		// Send email
-		$email['host']       = env('mail_host');
-		$email['user']       = env('mail_user');
-		$email['password']   = env('mail_password');
-		$email['from']       = 'noreply@loclathon.ch';
-		$email['from_title'] = 'Le Loclathon';
-		$email['to']         = env('agents');
-		$email['html']       = true;
-		$email['subject']    = __('email.confirmation')['subject'] . $params['order_id'];
-		$email['body']       = Layout::render('emails/confirmation', $params);
-		Mail::send($email);
-
-		// Remove the session cache when order is processed.
-		// This prevents the user to send the order multiple times.
-		Session::remove_cache();
-
-		return Response::view('shop/confirm', $params);
-	}
-
-	public static function show_shop($params) {
+	public static function show($params) {
 		// Default values.
 		$params['countries'] = ['CH'];
 		$params['email'] = '';
