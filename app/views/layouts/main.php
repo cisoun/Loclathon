@@ -50,12 +50,13 @@ $current_locale = Lang::locale();
       <li><a href="/{{lang}}/photos"><?= __('menu.photos') ?></a></li>
       <li><a href="/{{lang}}/shop"><?= __('menu.shop') ?></a></li>
       <li><a href="/{{lang}}/contact"><?= __('menu.contact') ?></a></li>
-      <li class="lang">
+      <li id="langs">
         <a href="/{{lang}}"><span><?= $current_locale ?></span></a>
+		<hr>
         <div>
           <?php foreach ($locales as $locale): ?>
             <?php if ($locale !== $current_locale): ?>
-            <a href="/<?= $locale . $page ?>"><?= __('lang.' . $locale) ?></a>
+            <a href="/<?= $locale . $page ?>"><img src="/static/img/lang.<?= $locale ?>.svg"/><?= LANG_NAMES[$locale] ?></a>
             <?php endif; ?>
           <?php endforeach; ?>
         </div>

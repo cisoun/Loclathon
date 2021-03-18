@@ -21,20 +21,19 @@ nav > ul > li:first-child > a svg {
   width: 2rem;
 }
 
-nav > ul > li.lang > a > span {
+nav > ul > li#langs > a > span {
   border: 1px solid var(--gray-300);
   border-radius: var(--border-radius);
   box-shadow: inset 0 0 0 0rem var(--foreground);
   padding: 0.5rem 1rem;
-  text-transform: uppercase;
   transition: var(--transition);
 }
-nav > ul > li.lang > a:hover > span {
+nav > ul > li#langs > a:hover > span {
   box-shadow: inset 0 0 0 2rem var(--foreground);
   color: var(--background);
 }
 
-nav > ul > li.lang > div {
+nav > ul > li#langs > div {
   background-color: var(--background);
   border-radius: var(--border-radius);
   opacity: 0;
@@ -45,17 +44,17 @@ nav > ul > li.lang > div {
   transition: all var(--transition);
 }
 
-nav > ul > li.lang:hover > div {
+nav > ul > li#langs:hover > div {
   opacity: 1;
   transform: translateY(0);
 }
 
-nav > ul > li.lang > div > a {
+nav > ul > li#langs > div > a {
   display: block;
   padding: 0.5rem 1rem;
   width: 100%;
 }
-nav > ul > li.lang > div > a:hover {
+nav > ul > li#langs > div > a:hover {
   background-color: var(--foreground);
   color: var(--background);
   display: block;

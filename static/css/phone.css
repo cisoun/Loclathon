@@ -7,11 +7,12 @@ nav > ul {
 nav.nojs:hover > ul,
 nav.toggled > ul { display: block; }
 
+/* Darken menu when hovered. */
 nav:hover > .trigger,
 nav.toggled > .trigger { background-color: var(--background); }
 
-nav > .trigger { display: block; }
-nav .trigger {
+nav > .trigger {
+  display: block;
   line-height: 2rem;
   padding: 2rem;
   text-align: left;
@@ -22,11 +23,16 @@ nav .trigger .outline {
   stroke: var(--gray-700);
 }
 nav .trigger:hover .outline { stroke: var(--foreground); }
-nav > ul > li > a {
+
+/* Links in menu. */
+nav > ul > li a {
   display: block;
   padding: 1rem 5rem;
   text-align: left;
 }
+/* Hide current language. */
+nav > ul > li#langs > a { display: none; }
+nav > ul > li#langs > hr { display: block; }
 
 footer > div > div:not(div:first-child) { margin-top: 2rem; }
 footer a { padding: 0.5rem 0; }
