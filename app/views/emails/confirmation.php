@@ -69,7 +69,7 @@ h3 { margin-top: 2em; }
     <td>
 		<?= $payments[$payment] ?>
 		<?php if ($payment == 'paypal'): ?>
-		<br><small><?= sprintf($m['paypal_order_id'], $params['paypal_order_id']) ?></small>
+		<br><small><?= $m['paypal_order_id'] ?></small>
 		<?php endif; ?>
 	</td>
     <td class="sum">{{ payment_fees }} CHF</td>

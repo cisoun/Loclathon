@@ -4,7 +4,7 @@ return [
 		'amount'            => 'Amount',
 		'bank_account'      => 'Bank account',
 		'instructions'      => 'In order to process the shipping, please send the total amount to the following account:',
-		'paypal_order_id'   => 'Transaction number: %s',
+		'paypal_order_id'   => 'Transaction number: {{paypal_order_id}}',
 		'process'           => 'Payment process',
 		'reference'         => 'Reference',
 		'subject'           => 'Loclathon Order #',
