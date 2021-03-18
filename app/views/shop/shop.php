@@ -196,11 +196,11 @@ hr {
           <span class="label green"><?= __('shop.free') ?></span><br>
           <small><?= $payments_infos['direct'] ?></small>
         </label>
-        <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>
+        <!-- <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>
         <label for="payTwint">
           <?= $payments['twint'] ?><br>
           <small><?= $payments_infos['twint'] ?></small>
-        </label>
+        </label> -->
         <input type="radio" name="payment" id="payPaypal" value="paypal" {{ payment.paypal }}/>
         <label for="payPaypal">
           <?= $payments['paypal'] ?><br>
