@@ -18,8 +18,6 @@ return [
 	'footer.resources.logo' => 'Logo',
 	'footer.resources.map'  => 'Map of the route',
 	'footer.social'         => 'Social',
-	'lang.en'               => 'English',
-	'lang.fr'               => 'French',
 	'loclathon.about'       => [
 		"Le Loclathon is an annual event created in 2015, organized by longtime friends, who, since 2020, have founded an eponymous non-profit association around this project. It brings together all absinthe lovers for a 12 hours and 25 kilometers trip through the watchmaking city of Le Locle in order to rally all of its 27 official fountains.",
 		"A glass is savoured by all at each fountain to share a good time between friends, all by visiting the city of Le Locle.",

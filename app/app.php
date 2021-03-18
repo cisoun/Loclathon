@@ -1,6 +1,12 @@
 <?php
 require_once('config.php');
 
+if (env('debug')) {
+	ini_set('error_reporting', E_ALL);
+	ini_set('display_errors', '1');
+	ini_set('display_startup_errors', '1');
+}
+
 // Functions
 function __($key, $params = []) {
 	if (is_array($key))
@@ -28,7 +34,7 @@ function with_lang($callback)	{
 	// Load the locale given in the URI and continue.
 	return function ($params) use ($callback) {
 		$lang = $params['lang'];
-		if (in_array($lang, env('locales'))) {
+		if (in_array($lang, Lang::locales())) {
 			Lang::load($lang);
 			return $callback($params);
 		}

@@ -18,8 +18,6 @@ return [
 	'footer.resources.logo' => 'Logo',
 	'footer.resources.map'  => 'Plan du parcours',
 	'footer.social'         => 'Social',
-	'lang.en'               => 'Anglais',
-	'lang.fr'               => 'Français',
 	'loclathon.about'       => [
 		"Le Loclathon est un événement annuel créé en 2015, organisé par trois comparses, qui depuis 2020, ont fondé une association éponyme à but non-lucratif autour de ce projet. Il réunit les amateurs d'absinthe pour une marche de 12 heures sur 25 kilomètres à travers la ville du Locle afin de rallier les 27 fontaines officielles de la cité horlogère.",
 		"Un verre est dégusté par chacun autour de chaque fontaine afin de passer un agréable moment entre amis tout en visitant la ville du Locle.",

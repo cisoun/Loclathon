@@ -1,21 +1,11 @@
 <?php
+define('LANG_PATH', getcwd() . '/app/lang');
+define('LANG_NAMES', require_once(LANG_PATH . '/langs.php'));
+
 class Lang {
 	private static array  $DATA    = [];
-	private static string $CURRENT = '';
-	private static string $PATH    = 'lang';
-
-	public static function current() {
-		return self::$CURRENT;
-	}
-
-	public static function langs() {
-		return glob(self::$PATH . '/*.php');
-	}
-
-	public static function load($lang, $subpath = '') {
-		self::$CURRENT = $lang;
-		self::$DATA = require_once(self::$PATH . '/' . $lang . $subpath . '.php');
-	}
+	private static string $LOCALE  = '';
+	private static array  $LOCALES = [];
 
 	/**
 	 * Return a text specified by a key.
@@ -45,6 +35,31 @@ class Lang {
 		return $text;
 	}
 
+	/**
+	 * Load a given language.
+	 */
+	public static function load($lang) {
+		self::$LOCALE = $lang;
+		self::$DATA   = require_once(LANG_PATH . "/$lang.php");
+	}
+
+	/**
+	 * Return the current locale.
+	 */
+	public static function locale() {
+		return self::$LOCALE;
+	}
+
+	/**
+	 * Return the available locales.
+	 */
+	public static function locales() {
+		return env('locales');
+	}
+
+	/**
+	 * Return the user's locale.
+	 */
 	public static function user() {
 		return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 	}

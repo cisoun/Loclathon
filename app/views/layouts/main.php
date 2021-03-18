@@ -1,8 +1,8 @@
 <?php
-$uri = Request::uri();
-$page = substr($uri, 3);
-$locales = env('locales');
-$current_locale = Lang::current();
+$uri            = Request::uri();
+$page           = substr($uri, 3);
+$locales        = Lang::locales();
+$current_locale = Lang::locale();
 ?>
 <!doctype html>
 <html lang="<?= $current_locale ?>">
