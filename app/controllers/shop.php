@@ -216,7 +216,7 @@ class Shop {
 		$email['user']       = env('mail_user');
 		$email['password']   = env('mail_password');
 		$email['from']       = 'noreply@loclathon.ch';
-		$email['from_title'] = 'Le Loclathon';
+		$email['from_title'] = env('title');
 		$email['to']         = [$params['email']];
 		$email['bcc']        = env('agents');
 		$email['html']       = true;
