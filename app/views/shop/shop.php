@@ -19,7 +19,7 @@ $form = [
   'email1'         => ['name' => 'email1',     'type' => 'email',    'value' => '{{email1}}',     'required' => true, 'placeholder' => "Adresse email"],
   'email2'         => ['name' => 'email2',     'type' => 'email',    'value' => '{{email2}}',     'required' => true, 'placeholder' => "Adresse email"],
   'phone'          => ['name' => 'phone',      'type' => 'tel',      'value' => '{{phone}}',      'placeholder' => "Numéro de téléphone"],
-  'age'            => ['name' => 'age',        'type' => 'checkbox', 'checked' => "$params[age]"],
+  'age'            => ['name' => 'age',        'type' => 'checkbox', 'checked' => $params['age']],
   'units'          => ['name' => 'units',      'type' => 'number',   'value' => '{{units}}',      'required' => true, 'min' => 1, 'max' => 6],
   'shippingLocal'  => ['name' => 'shipping',   'type' => 'radio',    'value' => 'local',  'checked' => '{{shipping.local}}'],
   'shippingPickUp' => ['name' => 'shipping',   'type' => 'radio',    'value' => 'pickup', 'checked' => '{{shipping.pickup}}'],
@@ -83,10 +83,9 @@ hr {
 <block content>
 <?php if ($errors): ?>
 <div class="alert error">
-  <!-- <svg class="outline"><use href="../static/img/icons.svg#cross"/></svg> -->
   <ul>
   <?php foreach ($errors as $error): ?>
-    <li><?= __(['shop.errors', $error]) ?></li>
+    <li><?= __('shop.errors')[$error] ?></li>
   <?php endforeach; ?>
   </ul>
 </div>

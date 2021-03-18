@@ -4,12 +4,13 @@ define('CACHE_PATH', getcwd() . '/cache');
 /**
  * Cache class.
  *
- * This class helps to store temporary data into the `cache` folder.
- * The cached content is usually put into a dedicated subfolder. For instance,
- * a prerendered HTML view will be put into the `views` subfolder.
+ *   This class helps to store temporary data into the `cache` folder.
  *
- * WARNING: Do not put content that must not be lost.
- * TIP:     On a *NIX system, mount this folder as `tmpfs`.
+ *   The cached content is usually put into a dedicated subfolder. For instance,
+ *   a prerendered HTML view will be put into the `views` subfolder.
+ *
+ *   WARNING: Do not put content that must not be lost.
+ *   TIP:     On a *NIX system, mount this folder as `tmpfs`.
  */
 class Cache {
 	/**

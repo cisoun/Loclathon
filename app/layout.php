@@ -25,7 +25,7 @@ class Layout {
 		return preg_replace_callback(
 			'/<\?\s?(' . self::BLOCK_PATTERN . ')\s?\?>/',
 			function ($match) use ($blocks, $fallback) {
-			  return $blocks[$match[1]] ?? $fallback;
+			 	return $blocks[$match[1]] ?? $fallback;
 			},
 			$content
 		);
@@ -35,7 +35,7 @@ class Layout {
 		return preg_replace_callback(
 	        '/\{\{\s*(' . self::BLOCK_PATTERN . ')(\s*\|\s*\"(.*)\")?\s*\}\}/',
 	        function ($match) use ($params) {
-	          return $params[$match[1]] ?? $match[3] ?? '';
+	         	return $params[$match[1]] ?? $match[3] ?? '';
 	        },
 	        $content
 	    );

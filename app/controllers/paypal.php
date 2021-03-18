@@ -2,12 +2,12 @@
 /**
  * PayPal controller.
  *
- * Merchant dashboard: https://developer.paypal.com/developer/accounts/
- * Sandbox dashboard:  https://www.sandbox.paypal.com/mep/dashboard
+ *   Merchant dashboard: https://developer.paypal.com/developer/accounts/
+ *   Sandbox dashboard:  https://www.sandbox.paypal.com/mep/dashboard
  *
- * Documentation:
- *	- https://github.com/paypal/Checkout-PHP-SDK
- *	- https://developer.paypal.com/docs/checkout/reference/server-integration/setup-sdk/
+ *   Documentation:
+ *    - https://github.com/paypal/Checkout-PHP-SDK
+ *    - https://developer.paypal.com/docs/checkout/reference/server-integration/setup-sdk/
  */
 require_once('vendor/autoload.php');
 
