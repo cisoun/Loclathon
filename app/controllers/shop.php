@@ -155,15 +155,16 @@ class Shop {
 		$inputs = Request::inputs();
 		$success = self::validate($inputs, $errors);
 
+		// Replace form in session.
 		Session::start();
-		Session::set('FORM', $inputs);
+		Session::merge($inputs);
 
 		$params = array_merge($params, $inputs);
 		$params['stock'] = 10;
 
 		if (!$success) {
 			$params['errors'] = $errors;
-			return self::show_shop($params);
+			return self::show($params);
 		}
 
 		// Calculate prices and fees.
@@ -174,32 +175,31 @@ class Shop {
 		);
 		$params = array_merge($params, $prices);
 		$params['email'] = $params['email1'];
-		unset($params['email1']);
-		unset($params['email2']);
 
 		// Cache the data so the user cannot modify them before confirmation.
 		// Cached data will be reused at confirmation.
-		Session::cache($params);
+		Session::merge($params);
+		Session::set('checkout', true);
 
 		return Response::view('shop/checkout', $params);
 	}
 
 	/**
-	 * User has confirmed its order.
+	 * Order has been confirmed.
 	 */
 	public static function confirm($params) {
 		Session::start();
-		$data = Session::from_cache();
 
 		// Redirect user to shop if session cache is removed
 		// (order already processed).
-		if (!$data) {
+		if (!Session::has('checkout')) {
 			return Response::location('/' . $params['lang'] . '/shop');
 		}
 
-		$params = array_merge($params, $data);
+		$params = array_merge($params, Session::all());
 
-		if ($data['payment'] == 'paypal') {
+		// Confirm payment to PayPal.
+		if ($params['payment'] == 'paypal') {
 			$order_id = Session::get('paypal_order_id');
 			$response = PayPal::capture($order_id);
 			// PayPal may change the payment prices if the user pays by
@@ -222,11 +222,11 @@ class Shop {
 		$email['html']       = true;
 		$email['subject']    = __('email.confirmation')['subject'] . $params['order_id'];
 		$email['body']       = Layout::render('emails/confirmation', $params);
-		//Mail::send($email);
+		Mail::send($email);
 
 		// Remove the session cache when order is processed.
 		// This prevents the user to send the order multiple times.
-		Session::remove_cache();
+		Session::remove('checkout');
 
 		return Response::view('shop/confirm', $params);
 	}
@@ -236,8 +236,7 @@ class Shop {
 	 */
 	public static function pay($params) {
 		Session::start();
-		$data = Session::from_cache();
-		$params = array_merge($params, $data);
+		$params = array_merge($params, Session::all());
 
 		// Process the payment.
 		switch($params['payment']) {
@@ -271,9 +270,7 @@ class Shop {
 
 		// Restore form if available.
 		Session::start();
-		if (Session::has('FORM')) {
-			$params = array_merge($params, Session::get('FORM'));
-		}
+		$params = array_merge($params, Session::all());
 
 		// Fix form.
 

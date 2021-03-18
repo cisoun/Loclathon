@@ -1,24 +1,24 @@
 <?php
-class Session {
-	private const CACHE_PATH = 'sessions';
+/**
+ * Session class.
+ *
+ *   The sessions are stored in separated files in the server in the folder
+ *   defined by `session.save_path` in `php.ini` (by default `/tmp`).
+ *
+ *   A good practice is to ensure the sessions path points to a tmpfs
+ *   mounted directory, which is uually the case.
+ */
 
+// Comment the following line to store sessions in the default directory.
+session_save_path(getcwd() . '/cache/sessions');
+
+class Session {
 	public static function all() {
 		return $_SESSION;
 	}
 
-	public static function cache($data) {
-		return Cache::store(
-			self::CACHE_PATH,
-			self::id(),
-			Cache::serialize($data)
-		);
-	}
-
-	public static function from_cache() {
-		$data = Cache::get(self::CACHE_PATH, self::id());
-		if ($data)
-			return Cache::unserialize($data);
-		return false;
+	public static function destroy() {
+		return session_destroy();
 	}
 
 	public static function get($key) {
@@ -33,8 +33,16 @@ class Session {
 		return session_id();
 	}
 
-	public static function remove_cache() {
-		return Cache::remove(self::	CACHE_PATH, self::id());
+	public static function merge($array) {
+		$_SESSION = array_replace($_SESSION, $array);
+	}
+
+	public static function remove($key) {
+		unset($_SESSION[$key]);
+	}
+
+	public static function replace($array) {
+		$_SESSION = $array;
 	}
 
 	public static function reset() {
