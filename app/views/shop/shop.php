@@ -86,7 +86,7 @@ hr {
   <!-- <svg class="outline"><use href="../static/img/icons.svg#cross"/></svg> -->
   <ul>
   <?php foreach ($errors as $error): ?>
-    <li><?= __('shop.errors')[$error] ?></li>
+    <li><?= __(['shop.errors', $error]) ?></li>
   <?php endforeach; ?>
   </ul>
 </div>

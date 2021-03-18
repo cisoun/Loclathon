@@ -220,7 +220,7 @@ class Shop {
 		$email['to']         = [$params['email']];
 		$email['bcc']        = env('agents');
 		$email['html']       = true;
-		$email['subject']    = __('email.confirmation')['subject'] . $params['order_id'];
+		$email['subject']    = __(['email.confirmation', 'subject'], $params);
 		$email['body']       = Layout::render('emails/confirmation', $params);
 		Mail::send($email);
 

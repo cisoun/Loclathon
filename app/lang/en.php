@@ -7,7 +7,7 @@ return [
 		'paypal_order_id'   => 'Transaction number: {{paypal_order_id}}',
 		'process'           => 'Payment process',
 		'reference'         => 'Reference',
-		'subject'           => 'Loclathon Order #',
+		'subject'           => 'Loclathon Order #{{order_id}}',
 		'thanks'            => 'Thank you very much for your order!',
 	],
 	'email.contact'         => 'Contact us',

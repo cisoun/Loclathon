@@ -7,7 +7,7 @@ return [
 		'paypal_order_id'   => 'N° de transaction : {{paypal_order_id}}',
 		'process'           => 'Procédure de paiement',
 		'reference'         => 'Référence / motif de paiement',
-		'subject'           => 'Commande Loclathon #',
+		'subject'           => 'Commande Loclathon #{{order_id}}',
 		'thanks'            => "L'équipe du Loclathon vous remercie pour votre achat !",
 	],
 	'email.contact'         => 'Nous contacter',

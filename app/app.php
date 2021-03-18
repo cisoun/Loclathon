@@ -2,7 +2,11 @@
 require_once('config.php');
 
 // Functions
-function __($key, $params = [])	{ return Lang::get($key, $params); }
+function __($key, $params = []) {
+	if (is_array($key))
+		return Lang::get_through($key, $params);
+	return Lang::get($key, $params);
+}
 function call($callback)		{ return Router::call($callback); }
 function env($key, $fallback = false) {
 	global $CONFIG;
