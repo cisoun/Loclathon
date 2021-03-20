@@ -163,6 +163,7 @@ hr {
           <button type="button" class="hidden">-</button>
           <button type="button" class="hidden">+</button>
         </div>
+        <sub><?= __('shop.large_orders') ?></sub>
       </div>
 
       <h1><?= __('shop.shipping') ?></h1>
