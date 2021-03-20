@@ -1,6 +1,6 @@
 # Loclathon
 
-Source repository for the [Loclathon's website](https://loclathon.ch).
+Source repository for the website of [Le Loclathon](https://loclathon.ch).
 
 ## Summary
 
@@ -14,10 +14,23 @@ the fresh water they deliver.
 This website is used to present the event and to sell the dedicated absinthe of
 *Le Loclathon*, [La Locloise](https://loclathon.ch/#locloise).
 
+## How it works
+
+This website is built upon a custom framework inspired by Laravel, that handles
+pages rendering, routing, caching, requests management, responses, requests
+validation, localization and so on... It uses a functional paradigm based on
+static classes loaded at runtime when necessary. No external underlying system,
+but to be used with caution as it does not handle all the security for you.
+Every request has to be passed to the [index.php](index.php) file.
+
+For the frontend, you'll find a custom CSS library that handles the layout
+and the JS usage is very limited in order to be supported by no-JS browsers.
+
 ## Requirements
 
+- Apache >=2
 - Composer
-- PHP >= 7
+- PHP >=7
 - SQLite3
 
 Modules:
@@ -26,7 +39,7 @@ Modules:
 
 ## Installation
 
-From project directory:
+From the project directory:
 
 ```sh
 # Install PHP modules.
@@ -36,51 +49,32 @@ cat static/database.sql | sqlite3 database.db
 # Configure the project.
 cp config.example.php config.php
 $EDITOR config.php
+# Secure files permissions.
+chmod -R 770 .
+chmod 660 config.php database.db
 ```
 
 ### Tweaks
 
-- Add a cron job to remove old session/order caches.
-- You can mount the `cache` folder in *tmpfs*. Consider at least 100 Mb.
+- Add a cron job to remove old order caches.
+- Mount the `cache` and `static` folders in *tmpfs* to speed up data transfers.
+  Consider at least 100 Mb for `cache`.
 
 ## Development
+
+Use the PHP internal server:
 
 ```sh
 php -S 127.0.0.1:8000 index.php
 ```
 
-## Status
+## Roadmap
 
-List draft of all planned features. *  
+Please refer to [TODO.md](TODO.md).
 
-**Backend**
+## Contact
 
- - [X] Custom routing.
- - [X] Custom template engine.
- - [X] Custom translation system.
- - [X] Custom cache system.
-    - *Used to render and store static pages.*
-
-**Frontend**
-
- - [X] Custom CSS layout.
-
-**Content**
-
- - [X] *Loclathon* page.
- - [X] *Locloise* page (to extract from *Loclathon*).
-    - [X] Redirect [locloise.ch](locloise.ch) on it.
- - [ ] Custom shop (to be developed separately).
- - [X] Contact page.
- - [X] Photos page with subpages for each year.
-
-**QA**
-
- - [ ] Good accessibility.
- - [ ] Low time response.
- - [X] Minimal dependencies.
-    - *Use pure CSS and vanilla JS.*
-    - *Use the fewest external packages (except customs).*
- - [X] Support for french, english and german.
-
-<sub>\* A checked feature does not mean that it is finished but exists.</sub>
+Please, don't hesitate to open an issue, or pull request, if you have found a
+bug.  
+For feedbacks or questions, you'll find my email address on my
+[website](https://drowned.ch).
