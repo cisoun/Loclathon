@@ -11,14 +11,14 @@ $shippings = __('shop.shippings');
 $shippings_infos = __('shop.shippings.infos');
 
 $form = [
-  'firstName'      => ['name' => 'first_name', 'type' => 'text',     'value' => '{{first_name}}', 'required' => true, 'placeholder' => "Prénom"],
-  'lastName'       => ['name' => 'last_name',  'type' => 'text',     'value' => '{{last_name}}',  'required' => true, 'placeholder' => "Nom"],
-  'street'         => ['name' => 'street',     'type' => 'text',     'value' => '{{street}}',     'required' => true, 'placeholder' => "Rue"],
-  'city'           => ['name' => 'city',       'type' => 'text',     'value' => '{{city}}',       'required' => true, 'placeholder' => "Ville"],
+  'firstName'      => ['name' => 'first_name', 'type' => 'text',     'value' => '{{first_name}}', 'required' => true, 'placeholder' => $inputs['first_name']],
+  'lastName'       => ['name' => 'last_name',  'type' => 'text',     'value' => '{{last_name}}',  'required' => true, 'placeholder' => $inputs['last_name']],
+  'street'         => ['name' => 'street',     'type' => 'text',     'value' => '{{street}}',     'required' => true, 'placeholder' => $inputs['street']],
+  'city'           => ['name' => 'city',       'type' => 'text',     'value' => '{{city}}',       'required' => true, 'placeholder' => $inputs['city']],
   'npa'            => ['name' => 'npa',        'type' => 'number',   'value' => '{{npa}}',        'required' => true, 'placeholder' => "1000", 'min' => 1000],
-  'email1'         => ['name' => 'email1',     'type' => 'email',    'value' => '{{email1}}',     'required' => true, 'placeholder' => "Adresse email"],
-  'email2'         => ['name' => 'email2',     'type' => 'email',    'value' => '{{email2}}',     'required' => true, 'placeholder' => "Adresse email"],
-  'phone'          => ['name' => 'phone',      'type' => 'tel',      'value' => '{{phone}}',      'placeholder' => "Numéro de téléphone"],
+  'email1'         => ['name' => 'email1',     'type' => 'email',    'value' => '{{email1}}',     'required' => true, 'placeholder' => $inputs['email1']],
+  'email2'         => ['name' => 'email2',     'type' => 'email',    'value' => '{{email2}}',     'required' => true, 'placeholder' => $inputs['email1']],
+  'phone'          => ['name' => 'phone',      'type' => 'tel',      'value' => '{{phone}}',      'placeholder' => $inputs['phone']],
   'age'            => ['name' => 'age',        'type' => 'checkbox', 'checked' => $params['age']],
   'units'          => ['name' => 'units',      'type' => 'number',   'value' => '{{units}}',      'required' => true, 'min' => 1, 'max' => 6],
   'shippingLocal'  => ['name' => 'shipping',   'type' => 'radio',    'value' => 'local',  'checked' => '{{shipping.local}}'],
