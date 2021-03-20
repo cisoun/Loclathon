@@ -157,7 +157,7 @@ class Shop {
 
 		// Replace form in session.
 		Session::start();
-		Session::merge($inputs);
+		Session::set('FORM', $inputs);
 
 		$params = array_merge($params, $inputs);
 		$params['stock'] = 10;
@@ -178,8 +178,7 @@ class Shop {
 
 		// Cache the data so the user cannot modify them before confirmation.
 		// Cached data will be reused at confirmation.
-		Session::merge($params);
-		Session::set('checkout', true);
+		Session::set('FORM', $params);
 
 		return Response::view('shop/checkout', $params);
 	}
@@ -192,11 +191,11 @@ class Shop {
 
 		// Redirect user to shop if session cache is removed
 		// (order already processed).
-		if (!Session::has('checkout')) {
+		if (!Session::has('FORM')) {
 			return Response::location('/' . $params['lang'] . '/shop');
 		}
 
-		$params = array_merge($params, Session::all());
+		$params = array_merge($params, Session::get('FORM'));
 
 		// Confirm payment to PayPal.
 		if ($params['payment'] == 'paypal') {
@@ -226,7 +225,7 @@ class Shop {
 
 		// Remove the session cache when order is processed.
 		// This prevents the user to send the order multiple times.
-		Session::remove('checkout');
+		Session::remove('FORM');
 
 		return Response::view('shop/confirm', $params);
 	}
@@ -236,7 +235,7 @@ class Shop {
 	 */
 	public static function pay($params) {
 		Session::start();
-		$params = array_merge($params, Session::all());
+		$params = array_merge($params, Session::get('FORM'));
 
 		// Process the payment.
 		switch($params['payment']) {
@@ -270,7 +269,9 @@ class Shop {
 
 		// Restore form if available.
 		Session::start();
-		$params = array_merge($params, Session::all());
+		if (Session::has('FORM')) {
+			$params = array_merge($params, Session::get('FORM'));
+		}
 
 		// Fix form.
 
