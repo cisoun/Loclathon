@@ -50,7 +50,7 @@ nav > ul > li#langs > div > a > img {
 
 #loclathon {
   background-attachment: fixed;
-  background-image: url('../img/photo.jpg');
+  background-image: url('../img/photo_2021.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -66,7 +66,7 @@ nav > ul > li#langs > div > a > img {
   top: 0;
   left: 0;
   width: 100%;
-  height: 20rem;
+  height: 10rem;
 }
 #loclathon > #logo {
   display: block;
