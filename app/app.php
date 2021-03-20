@@ -10,7 +10,7 @@ if (env('debug')) {
 // Functions
 function __($key, $params = []) {
 	if (is_array($key))
-		return Lang::get_through($key, $params);
+	return Lang::get_through($key, $params);
 	return Lang::get($key, $params);
 }
 function call($callback)		{ return Router::call($callback); }
@@ -30,7 +30,7 @@ if (env('debug')) {
 }
 
 // Pseudo middlewares
-function with_lang($callback)	{
+function with_lang($callback)   {
 	// Load the locale given in the URI and continue.
 	return function ($params) use ($callback) {
 		$lang = $params['lang'];
@@ -71,7 +71,7 @@ $classes = [
 ];
 spl_autoload_register(function ($class) use ($classes) {
 	if (!array_key_exists($class, $classes))
-		die("$class class does not exist!");
-    require_once('app/' . $classes[$class] . '.php');
+	die("$class class does not exist!");
+	require_once('app/' . $classes[$class] . '.php');
 });
 ?>

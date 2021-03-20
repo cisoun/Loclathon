@@ -1,31 +1,33 @@
 <?php
+define('VIEWS_PATH', getcwd() . '/app/views');
+
 class Layout {
 	private const BLOCK_PATTERN = '[a-zA-Z0-9\-\_\.]+';
 
 	public static function read($path, $params = null) {
-	    ob_start();
-	    include($path);
-	    return ob_get_clean();
+		ob_start();
+		include($path);
+		return ob_get_clean();
 	}
 
 	public static function render($view, $params = null) {
-	    $content = self::read(getcwd() . '/app/views/' . $view . '.php', $params);
+		$content = self::read(VIEWS_PATH . "/$view.php", $params);
 
-	    # Process parent view if extends.
-	    if ($layout = self::search_extend($content)) {
+		# Process parent view if extends.
+		if ($layout = self::search_extend($content)) {
 			$blocks = self::search_blocks($content);
 			$content = self::render($layout, $params);
 			$content = self::replace_blocks($content, $blocks);
-	    }
+		}
 
-	    return self::replace_params($content, $params);
+		return self::replace_params($content, $params);
 	}
 
 	private static function replace_blocks($content, $blocks, $fallback = '') {
 		return preg_replace_callback(
 			'/<\?\s?(' . self::BLOCK_PATTERN . ')\s?\?>/',
 			function ($match) use ($blocks, $fallback) {
-			 	return $blocks[$match[1]] ?? $fallback;
+				return $blocks[$match[1]] ?? $fallback;
 			},
 			$content
 		);
@@ -33,17 +35,17 @@ class Layout {
 
 	private static function replace_params($content, $params) {
 		return preg_replace_callback(
-	        '/\{\{\s*(' . self::BLOCK_PATTERN . ')(\s*\|\s*\"(.*)\")?\s*\}\}/',
-	        function ($match) use ($params) {
-	         	return $params[$match[1]] ?? $match[3] ?? '';
-	        },
-	        $content
-	    );
+			'/\{\{\s*(' . self::BLOCK_PATTERN . ')(\s*\|\s*\"(.*)\")?\s*\}\}/',
+			function ($match) use ($params) {
+				return $params[$match[1]] ?? $match[3] ?? '';
+			},
+			$content
+		);
 	}
 
 	private static function search_extend($content) {
 		if (preg_match('/^<extend>(.*)?(?=<\/extend>)/im', $content, $matches))
-			return $matches[1];
+		return $matches[1];
 		return false;
 	}
 

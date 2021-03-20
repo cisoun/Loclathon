@@ -1,7 +1,5 @@
-[*.{css,html,php}]
-indent_style = space
-indent_size = 2
-
-[{app/**.php}]
+[*]
 indent_style = tab
+
+[*.{css,html,php}]
 indent_size = 4

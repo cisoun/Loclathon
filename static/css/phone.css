@@ -1,7 +1,7 @@
 nav > ul {
-  background-color: var(--background);
-  display: none;
-  padding-bottom: 2rem;
+	background-color: var(--background);
+	display: none;
+	padding-bottom: 2rem;
 }
 /* Show menu on mouse over when no JS. */
 nav.nojs:hover > ul,
@@ -12,27 +12,27 @@ nav:hover > .trigger,
 nav.toggled > .trigger { background-color: var(--background); }
 
 nav > .trigger {
-  display: block;
-  line-height: 2rem;
-  padding: 2rem;
-  text-align: left;
+	display: block;
+	line-height: 2rem;
+	padding: 2rem;
+	text-align: left;
 }
 nav .trigger .outline {
-  display: inline-block;
-  margin-right: 1.375rem;
-  stroke: var(--gray-700);
+	display: inline-block;
+	margin-right: 1.375rem;
+	stroke: var(--gray-700);
 }
 nav .trigger:hover .outline { stroke: var(--foreground); }
 
 /* Links in menu. */
 nav > ul > li a {
-  display: block;
-  padding: 1rem 5rem;
-  text-align: left;
+	display: block;
+	padding: 1rem 5rem;
+	text-align: left;
 }
 /* Hide current language. */
 nav > ul > li#langs > a { display: none; }
 nav > ul > li#langs > hr { display: block; }
 
 footer > div > div:not(div:first-child) { margin-top: 2rem; }
-footer a { padding: 0.5rem 0; }
+footer a { border-top: 1px solid var(--gray-150); padding: 1rem 0; }

@@ -1,7 +1,7 @@
 <?php
 $date = [
-  '2020' => '5 septembre 2020',
-  '2019' => '24 août 2019'
+	'2020' => '5 septembre 2020',
+	'2019' => '24 août 2019'
 ];
 ?>
 
@@ -19,13 +19,13 @@ Tournée du <?php echo $date[$params['year']]; ?>.
 
 <block grid>
 <?php
-  $year = $params['year'];
-  $root = getcwd() . "/static/photos/$year";
-  $files = scandir($root);
-  $files = array_filter($files, function ($file) use ($root) {
-    return !is_dir($root . "/$file");
-  });
-  foreach ($files as $file):
+	$year = $params['year'];
+	$root = getcwd() . "/static/photos/$year";
+	$files = scandir($root);
+	$files = array_filter($files, function ($file) use ($root) {
+		return !is_dir($root . "/$file");
+	});
+	foreach ($files as $file):
 ?>
 <a href="/static/photos/{{ year }}/<?php echo $file; ?>" target="_blank"><img src="/static/photos/{{ year }}/min/<?php echo $file; ?>"/></a>
 <?php endforeach; ?>

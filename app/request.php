@@ -15,10 +15,6 @@ class Request {
 		return array_key_exists($key, $_POST);
 	}
 
-	// public static function parameter($parameter, $request) {
-	// 	return $request['parameters'][$parameter];
-	// }
-
 	public static function input($key, $fallback = '') {
 		return $_REQUEST[$key] ?? $fallback;
 	}

@@ -1,11 +1,11 @@
 :root {
-  --background: var(--gray-100);
-  --foreground: var(--gray-900);
+	--background: var(--gray-100);
+	--foreground: var(--gray-900);
 
-  --bubble-left: var(--green-400);
-  --bubble-left-color: white;
-  --bubble-right: var(--green-200);
-  --bubble-right-color: white;
+	--bubble-left: var(--green-400);
+	--bubble-left-color: white;
+	--bubble-right: var(--green-200);
+	--bubble-right-color: white;
 }
 
 html { scrollbar-color: var(--foreground) var(--background); }
@@ -22,77 +22,77 @@ p { line-height: 1.6rem; }
 footer { margin-top: 10rem; }
 
 nav {
-  background-color: var(--background);
-  box-shadow: 0 0 3rem 1rem var(--background);
-  font-weight: bold;
-  position: fixed;
-  text-align: center;
-  top: 0;
-  transition: background-color var(--transition);
-  width: 100%;
-  z-index: 1;
+	background-color: var(--background);
+	box-shadow: 0 0 3rem 1rem var(--background);
+	font-weight: bold;
+	position: fixed;
+	text-align: center;
+	top: 0;
+	transition: background-color var(--transition);
+	width: 100%;
+	z-index: 1;
 }
 nav.transparent {
-  background-color: transparent;
-  box-shadow: unset;
+	background-color: transparent;
+	box-shadow: unset;
 }
 nav > ul { list-style-type: none; margin: 0; padding: 0; }
 nav > ul > li#langs > a > span { text-transform: uppercase; }
 nav > ul > li#langs > hr {
-  border: 0;
-  border-top: 1px solid var(--gray-150);
-  display: none;
+	border: 0;
+	border-top: 1px solid var(--gray-150);
+	display: none;
 }
 nav > ul > li#langs > div > a > img {
-  margin-right: 0.5rem;
-  vertical-align: baseline;
-  max-height: 0.8em;
+	margin-right: 0.5rem;
+	vertical-align: baseline;
+	max-height: 0.8em;
 }
 
 #loclathon {
-  background-attachment: fixed;
-  background-image: url('../img/photo_2021.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  line-height: 0;
-  min-height: 30rem;
-  overflow: hidden;
-  padding-top: 12rem;
-  text-align: center;
+	background-attachment: fixed;
+	background-image: url('../img/photo_2021.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	line-height: 0;
+	min-height: 30rem;
+	overflow: hidden;
+	padding-top: 12rem;
+	text-align: center;
 }
 #loclathon .fade {
-  background: linear-gradient(#000, transparent);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10rem;
+	background: linear-gradient(#000, transparent);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 10rem;
 }
 #loclathon > #logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 #loclathon .button { margin-top: 5rem; }
 
 #loclathon .button {
-  background-color: var(--red-500);
-  border-radius: unset;
-  border: 0;
-  box-shadow: 0 1rem 3rem var(--gray-100);
-  color: var(--gray-900);
-  display: inline-block;
-  font-weight: bold;
-  line-height: 2rem;
-  padding: 1rem 2rem;
-  text-decoration: none;
-  transition: all var(--transition);
+	background-color: var(--red-500);
+	border-radius: unset;
+	border: 0;
+	box-shadow: 0 1rem 3rem var(--gray-100);
+	color: var(--gray-900);
+	display: inline-block;
+	font-weight: bold;
+	line-height: 2rem;
+	padding: 1rem 2rem;
+	text-decoration: none;
+	transition: all var(--transition);
 }
 #loclathon .button:hover {
-  background-color: var(--foreground);
-  color: var(--background);
-  transform: scale(1.1) skewY(-3deg);
+	background-color: var(--foreground);
+	color: var(--background);
+	transform: scale(1.1) skewY(-3deg);
 }
 #loclathon .button svg { transition: var(--transition); }
 #loclathon .button:hover svg { stroke: var(--background); }
@@ -103,9 +103,9 @@ nav > ul > li#langs > div > a > img {
 #locloise #buy { margin-top: 3rem; padding: 1rem 2rem; }
 #locloise #units { font-weight: bold; }
 #locloise #status {
-  font-size: 2rem;
-  margin-bottom: 3rem;
-  margin-top: -2rem;
+	font-size: 2rem;
+	margin-bottom: 3rem;
+	margin-top: -2rem;
 }
 
 #faq { margin-left: auto; margin-right: auto; }
@@ -114,21 +114,21 @@ nav > ul > li#langs > div > a > img {
 #faq .logo { display: inline-block; }
 
 footer {
-  border-top: 1px dotted var(--gray-300);
-  padding: 3rem 0;
+	border-top: 1px dotted var(--gray-300);
+	padding: 3rem 0;
 }
 footer .logo {
-  height: 2rem;
-  margin-bottom: 1rem;
-  width: 2rem;
+	height: 2rem;
+	margin-bottom: 1rem;
+	width: 2rem;
 }
 footer .outline {
-  float: left;
-  height: 1.4rem;
-  margin-left: -2.2rem;
-  margin-top: 0.8rem;
-  stroke-width: 1.4;
-  width: 1.4rem;
+	float: left;
+	height: 1.4rem;
+	margin-left: -2.2rem;
+	margin-top: 0.8rem;
+	stroke-width: 1.4;
+	width: 1.4rem;
 }
 footer h1 { font-size: 1rem; font-weight: bold; margin: 0; }
 footer a { display: block; padding: 0.2rem 0; transition: padding var(--transition); }
@@ -136,26 +136,26 @@ footer a:hover { padding-left: 0.5rem; }
 footer > div > div { padding-left: 2rem; }
 
 .logo {
-  background-image: url('../img/logo-outline.svg');
-  background-size: cover;
+	background-image: url('../img/logo-outline.svg');
+	background-size: cover;
 }
 
 .bubble {
-  border-radius: 0.2rem;
+	border-radius: 0.2rem;
 	position: relative;
-  display: inline-block;
-  margin: 0.5rem;
-  max-width: calc(100% - 4rem);
-  padding: 1rem 2rem;
-  transition: transform var(--transition);
+	display: inline-block;
+	margin: 0.5rem;
+	max-width: calc(100% - 4rem);
+	padding: 1rem 2rem;
+	transition: transform var(--transition);
 }
 .bubble:hover {
-  transform: scale(1.05);
+	transform: scale(1.05);
 }
 .left > .bubble {
-  background: var(--bubble-left);
-  color: var(--bubble-left-color);
-  font-weight: bold;
+	background: var(--bubble-left);
+	color: var(--bubble-left-color);
+	font-weight: bold;
 }
 .left > .bubble:after {
 	right: 100%;
@@ -172,8 +172,8 @@ footer > div > div { padding-left: 2rem; }
 	margin-top: -10px;
 }
 .right > .bubble {
-  background: var(--bubble-right);
-  color: var(--bubble-right-color);
+	background: var(--bubble-right);
+	color: var(--bubble-right-color);
 }
 .right > .bubble:after {
 	left: 100%;
@@ -190,7 +190,7 @@ footer > div > div { padding-left: 2rem; }
 	margin-top: -10px;
 }
 .right > .logo {
-  margin-left: 1rem;
-  width: 2rem;
-  height: 2rem;
+	margin-left: 1rem;
+	width: 2rem;
+	height: 2rem;
 }

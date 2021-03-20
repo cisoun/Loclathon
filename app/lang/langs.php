@@ -1,7 +1,7 @@
 <?php
 return [
-    'de' => 'Deutsch',
-    'en' => 'English',
-    'fr' => 'Français',
+	'de' => 'Deutsch',
+	'en' => 'English',
+	'fr' => 'Français',
 ];
 ?>

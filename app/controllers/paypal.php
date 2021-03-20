@@ -22,27 +22,27 @@ ini_set('display_startup_errors', '1');
 
 class PayPal
 {
-    /**
-     * Returns PayPal HTTP client instance with environment that has access
-     * credentials context. Use this instance to invoke PayPal APIs, provided the
-     * credentials have access.
-     */
-    public static function client() {
-        return new PayPalHttpClient(self::environment());
-    }
+	/**
+	 * Returns PayPal HTTP client instance with environment that has access
+	 * credentials context. Use this instance to invoke PayPal APIs, provided the
+	 * credentials have access.
+	 */
+	public static function client() {
+		return new PayPalHttpClient(self::environment());
+	}
 
-    /**
-     * Set up and return PayPal PHP SDK environment with PayPal access credentials.
-     * This sample uses SandboxEnvironment. In production, use LiveEnvironment.
-     */
-    public static function environment()
-    {
-        $clientId = env('paypal_id');
-        $clientSecret = env('paypal_secret');
+	/**
+	 * Set up and return PayPal PHP SDK environment with PayPal access credentials.
+	 * This sample uses SandboxEnvironment. In production, use LiveEnvironment.
+	 */
+	public static function environment()
+	{
+		$clientId = env('paypal_id');
+		$clientSecret = env('paypal_secret');
 		if (env('debug'))
 			return new SandboxEnvironment($clientId, $clientSecret);
-        return new LiveEnvironment($clientId, $clientSecret);
-    }
+		return new LiveEnvironment($clientId, $clientSecret);
+	}
 
 	public static function get_approve_url($response) {
 		foreach($response->result->links as $link)
@@ -80,7 +80,7 @@ class PayPal
 		$request = new OrdersCaptureRequest($order_id);
 		$request->prefer('return=representation');
 		$client = self::client();
-	    return $client->execute($request);
+		return $client->execute($request);
 	}
 
 	/**
@@ -106,8 +106,8 @@ class PayPal
 			'application_context' => [
 				'brand_name'          => 'Le Loclathon',
 				'landing_page'        => 'BILLING',
-                'shipping_preference' => 'SET_PROVIDED_ADDRESS',
-                'user_action'         => 'CONTINUE',
+				'shipping_preference' => 'SET_PROVIDED_ADDRESS',
+				'user_action'         => 'CONTINUE',
 				'cancel_url'          => "$scheme://$host/$lang/shop",
 				'return_url'          => "$scheme://$host/$lang/shop/confirm"
 			],
@@ -167,6 +167,6 @@ class PayPal
 		];
 
 		$client = self::client();
-	    return $client->execute($request);;
+		return $client->execute($request);;
 	}
 }

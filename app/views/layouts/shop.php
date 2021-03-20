@@ -18,6 +18,6 @@
 
 <block content>
 <main id="shop" class="container padded dark">
-  <? content ?>
+	<? content ?>
 </main>
 </block>

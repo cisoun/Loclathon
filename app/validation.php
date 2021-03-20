@@ -11,27 +11,27 @@ class Validation {
 	 * WARNING: fields without 'optional' are required!
 	 *
 	 * Rules:
-	 * 	- email:                Must be an email address.
-	 *							SANITIZED.
-	 *	- int:                  Must be a number.
-	 *							SANITIZED.
+	 *  - email:                Must be an email address.
+	 *                          SANITIZED.
+	 *  - int:                  Must be a number.
+	 *                          SANITIZED.
 	 *  - optional:             Ignore if empty.
 	 *  - range:min:max:        Must be a number between `min` and `max`.
-	 * 	- same:field1:...:      Must be the same as the given fields.
-	 * 	- stripped:             Must be a string WITHOUT HTML chars.
-	 *							SANITIZED.
-	 * 	- text:                 Must NOT be an empty string.
-	 *							SANITIZED.
-	 * 	- value:val1:...:       Must be one of the given values.
+	 *  - same:field1:...:      Must be the same as the given fields.
+	 *  - stripped:             Must be a string WITHOUT HTML chars.
+	 *                          SANITIZED.
+	 *  - text:                 Must NOT be an empty string.
+	 *                          SANITIZED.
+	 *  - value:val1:...:       Must be one of the given values.
 	 *
 	 * Example:
-	 *	Validation::array($array, [
-	 *		'name'   => 'text',
-	 *		'age'    => 'optional|int|range:1:100',
-	 *		'gender' => 'value:man:woman',
-	 *		'email1' => 'email',
-	 *		'email2' => 'email|same:email1',
-	 *	], $errors);
+	 * Validation::array($array, [
+	 *     'name'   => 'text',
+	 *     'age'    => 'optional|int|range:1:100',
+	 *     'gender' => 'value:man:woman',
+	 *     'email1' => 'email',
+	 *     'email2' => 'email|same:email1',
+	 * ], $errors);
 	 *
 	 * @param array $array  Array to validate.
 	 * @param array $field  Array containing rules (field => rules).
