@@ -1,5 +1,6 @@
 <?php
 $bubbles = __('loclathon.bubbles');
+$next = __('loclathon.next');
 ?>
 <extend>layouts/main</extend>
 <block title>La tournée des fontaines</block>
@@ -16,6 +17,8 @@ $bubbles = __('loclathon.bubbles');
   margin-bottom: -2px; /* Dirty fix. */
   width: 100%;
 }
+#tour { font-size: 1.2rem; }
+#tour_warning { font-weight: bold; }
 </block>
 <block content>
 <main id="loclathon">
@@ -26,6 +29,10 @@ $bubbles = __('loclathon.bubbles');
 </main>
 <section id="about" class="dual padded spaced">
   <div>
+    <h1><?= __('loclathon.next.title') ?></h1>
+    <p id="tour"><?= $next[0] ?></p>
+    <p><?= $next[1] ?></p>
+    <p id="tour_warning"><?= $next[2] ?></p>
     <h1><?= __('loclathon.about.title') ?></h1>
     <?php foreach (__('loclathon.about') as $line): ?>
     <p><?= $line ?></p>

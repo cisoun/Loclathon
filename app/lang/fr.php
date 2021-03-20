@@ -35,6 +35,12 @@ return [
 		'Boisson de votre choix, un verre et de bonnes chaussures. De quoi manger éventuellement. Vous pouvez également acheter à manger lors de la pause de midi au centre-ville.'
 	],
 	'loclathon.learn_more'  => 'En savoir plus',
+  'loclathon.next'        => [
+    'Prochaine tournée : <b>21 août 2021</b>',
+    'Reportée au <b>28 août 2021</b> en cas de mauvais temps. La date définitive sera annoncée via cette page ou les réseaux sociaux dans la semaine avant la tournée.',
+    'COVID-19 : une inscription de participation pourra être nécessaire en fonction des mesures santaires imposées par les autorités.'
+  ],
+  'loclathon.next.title'  => 'Prochaine tournée',
 	'locloise.buy'          => 'Commander',
 	'locloise.description'  => [
 		"La Locloise est une absinthe conçue spécialement à l'occasion du Loclathon.<br>Son goût mentholé et doux procure une sensation rafraîchissante qui réjouira toute personne motivée à l'emporter avec elle lors de sa marche.",
