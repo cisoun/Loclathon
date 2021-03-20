@@ -85,8 +85,8 @@ $current_locale = Lang::locale();
       <div>
         <svg class="outline fill"><use xlink:href="/static/img/icons.svg#grid"/></svg>
         <h1><?= __('footer.resources') ?></h1>
-        <a href="files/flyer.pdf"><?= __('footer.resources.map') ?></a>
-        <a href="img/logo.svg"><?= __('footer.resources.logo') ?></a>
+        <a href="/static/files/tour.pdf"><?= __('footer.resources.map') ?></a>
+        <a href="/static/img/logo.svg"><?= __('footer.resources.logo') ?></a>
       </div>
       <div>
         <svg class="outline fill"><use xlink:href="/static/img/icons.svg#mail"/></svg>

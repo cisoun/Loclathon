@@ -2,6 +2,7 @@
 .DS_Store
 config.php
 database.db
+static/files/
 static/fonts/
 static/img/
 static/photos/
