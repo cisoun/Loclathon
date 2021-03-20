@@ -8,6 +8,7 @@
   --bubble-right-color: white;
 }
 
+html { scrollbar-color: var(--foreground) var(--background); }
 body { background-color: var(--background); }
 
 section { clear: both; }
