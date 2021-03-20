@@ -1,25 +1,26 @@
 # TO DO
 
-## Milestone 1 - End of March 2021
+## Milestone 1 - 2021-03-02
 - [X] [CRITICAL] Prevent shop confirmation to send order once again when refreshing the page (/shop/confirm).
 - [X] Fix language selection in nav menu on mobiles.
 - [X] Add support for Paypal.
-  - [ ] Handle PayPal exceptions: page showing error to customer ("Sorry, got <error>, admin was notified.").
-- [ ] Add 2021 date in homepage logo.
+  - [ ] [CANCELLED] ~~Handle PayPal exceptions: page showing error to customer ("Sorry, got <error>, admin was notified.").~~
+- [X] Add 2021 date in homepage logo.
 
-## Milestone 2 - April 2021
+## Milestone 2 - 2021-04
 - [ ] [CRITICAL] Handle lack of bottles stock in shop.
+- [ ] [CRITICAL] Add support for TWINT.
 - [ ] Shop: add JS spinner when the PayPal order is being created.
 - [ ] Add german translations.
 - [ ] Photos carousel in homepage.
-- [ ] Add support for TWINT.
 - [ ] Add GDPR clause / privacy policy.
-  - Shop customers must know that their session data are cached during the order process.
+  - Customers must know that their session data are cached during the order
+    process.
 
-## Milestone 3
-- Extract shop from website to a new subdomain/subfolder.
-  - Let's create a customizable shop.
-- Improve shop to handle more articles.
+## Milestone 3 - TBD
+- Improve shop.
+  - Must support more articles.
+  - Extract and isolate shop into a subdomain (shop.loclathon.ch).
 - Improve photos preview (use JS to allow photos navigation in albums).
 
 ## Ideas
