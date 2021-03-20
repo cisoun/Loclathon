@@ -104,7 +104,7 @@
           Association du Loclathon, Nicolas Huguenin<br>
           Rue de France 4<br>
           2400 Le Locle<br>
-          Suisse
+          <?= __('shop.countries')['CH'] ?>
         </small>
       </td>
       <td></td>
