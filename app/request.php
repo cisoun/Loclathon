@@ -59,9 +59,7 @@ class Request {
 	 * @return string Request path.
 	 */
 	public static function path() {
-		if (array_key_exists('PATH_INFO', $_SERVER))
-			return $_SERVER['PATH_INFO'];
-		return self::uri();
+		return $_SERVER['PATH_INFO'] ?? explode("?", self::uri(), 2)[0];
 	}
 
 	public static function set_input($key, $value) {
