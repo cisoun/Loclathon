@@ -31,7 +31,7 @@ class Cache {
 	}
 
 	public static function has($folder, $name) {
-		return file_exists($folder . '/' . $name);
+		return file_exists(CACHE_PATH . '/' . $folder . '/' . $name);
 	}
 
 	public static function remove($folder, $name) {
