@@ -22,6 +22,9 @@ $CONFIG = [
     # Mail host for outgoing mails.
     'mail_host'      => gethostbyname('my.host.com'),
 
+	# A noreply mail address for outgoing mails.
+	'mail_noreply'   => 'noreply@doe.com',
+
     # Password for the mail address.
     'mail_password'  => '',
 

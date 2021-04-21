@@ -71,7 +71,7 @@ $classes = [
 ];
 spl_autoload_register(function ($class) use ($classes) {
 	if (!array_key_exists($class, $classes))
-	die("$class class does not exist!");
+		die("$class class does not exist!");
 	require_once('app/' . $classes[$class] . '.php');
 });
 ?>
