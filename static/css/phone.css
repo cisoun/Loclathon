@@ -36,3 +36,5 @@ nav > ul > li#langs > hr { display: block; }
 
 footer > div > div:not(div:first-child) { margin-top: 2rem; }
 footer a { border-top: 1px solid var(--gray-150); padding: 1rem 0; }
+
+#loclathon .button { margin: 5rem; }
