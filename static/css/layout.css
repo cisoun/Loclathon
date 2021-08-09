@@ -209,9 +209,10 @@ div.dark { background-color: var(--dark); color: var(--light); }
 
 .center { margin-left: auto; margin-right: auto; }
 .hidden { display: none !important; }
-
+.block { display: block; }
 .padded { padding: 0 2rem; }
 
+.text-bold { font-weight: bold; }
 .text-center { text-align: center; }
 .w-50 { display: inline-block; width: 50% !important; }
 .w-100 { width: 100% !important; }

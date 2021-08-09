@@ -28,19 +28,23 @@ return [
 		'To whom is the event open?',
 		'To everyone.',
 		'Do I have to sign up to participate?',
-		'No, the event is public.',
+		'Yes. The current situation due to the COVID-19 disease requires a subscription for all participants.',
+		//'No, the event is public.',
 		"So it's free?",
 		'Totally!',
 		'What should I bring with me?',
-		'Drink of your choice, a glass and a good pair of shoes. Something to eat eventually. You can also buy food at noon when we arrive at the city center.'
+		'Drink of your choice, a glass and a good pair of shoes. Something to eat eventually. You can also buy food at noon when we arrive at the city center.',
+		'We also ask you to take masks and hydroalcoholic gel. Thank you for your understanding!'
 	],
 	'loclathon.learn_more'  => 'Learn more',
-  'loclathon.next'        => [
-    'Next tour: <b>21 August 2021</b>',
-    'Reported to the <b>28 August 2021</b> in case of bad weather. The definitive date will be announced via this page or social networks the week before the tour.',
-    'COVID-19: a participation registration may be mandatory depending of the sanitary measures imposed by the authorities.'
-  ],
-  'loclathon.next.title'  => 'Next tour',
+	'loclathon.next'        => [
+		'Next tour: <b>21 August 2021</b>',
+		'Reported to the <b>28 August 2021</b> in case of bad weather. The definitive date will be announced via this page or social networks the week before the tour.',
+		'COVID-19: a participation registration may be mandatory depending of the sanitary measures imposed by the authorities.'
+	],
+	'loclathon.next.title'  => 'Next tour',
+	'loclathon.subscribe1'  => 'Subscribe',
+	'loclathon.subscribe2'  => 'Subscribe to the tour',
 	'locloise.buy'          => "Order",
 	'locloise.description'  => [
 		"La Locloise is an absinthe specially designed for the Loclathon.<br>Its mentholated and mild taste provides a refreshing sensation that will delight any person motivated to take it with them on their walk.",

@@ -18,10 +18,12 @@ switch (method()) {
 		route('/:lang/shop/pay',     with_lang(call('Shop::pay')));
 		route('/:lang/shop/confirm', with_lang(call('Shop::confirm')));
 		route('/:lang/contact',      with_lang(call('Contact::show')));
+		route('/:lang/inscription',  with_lang(view_cached('covid')));
 		break;
 	case 'POST':
 		route('/:lang/contact',      with_lang(call('Contact::post')));
 		route('/:lang/shop',         with_trim(with_lang(call('Shop::checkout'))));
+		route('/:lang/inscription',  with_lang(view('covid')));
 		break;
 }
 
