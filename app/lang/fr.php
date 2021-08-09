@@ -111,7 +111,7 @@ return [
 		'units'				=> 'Nombre de bouteilles',
 	],
 	'shop.free'             => 'gratuit',
-  'shop.large_orders'     => 'Pour plus de 6 bouteilles, merci de nous contacter ou séparer en plusieurs commandes.',
+	'shop.large_orders'     => 'Pour plus de 6 bouteilles, merci de nous contacter ou séparer en plusieurs commandes.',
 	'shop.order_summary'    => 'Résumé de la commande',
 	'shop.pay'              => 'Procéder au paiement',
 	'shop.payment'          => 'Paiement',

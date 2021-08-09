@@ -112,7 +112,7 @@ return [
 		'units'				=> 'Bottles amount',
 	],
 	'shop.free'             => 'free',
-  'shop.large_orders'     => 'For more than 6 bottles, please contact us or split your order.',
+	'shop.large_orders'     => 'For more than 6 bottles, please contact us or split your order.',
 	'shop.order_summary'    => 'Order summary',
 	'shop.pay'              => 'Proceed to payment',
 	'shop.payment'          => 'Payment',
