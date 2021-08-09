@@ -34,7 +34,7 @@ class Session {
 	}
 
 	public static function merge($array) {
-		$_SESSION = array_replace($_SESSION, $array);
+		$_SESSION = array_merge($_SESSION, $array);
 	}
 
 	public static function remove($key) {
