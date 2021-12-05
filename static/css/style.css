@@ -44,10 +44,11 @@ nav > ul > li#langs > hr {
 	border-top: 1px solid var(--gray-150);
 	display: none;
 }
-nav > ul > li#langs > div > a > img {
+#langs > div > a > img,
+#langs > a > span > img {
 	margin-right: 0.5rem;
-	vertical-align: baseline;
 	max-height: 0.8em;
+	vertical-align: baseline;
 }
 
 #loclathon {
