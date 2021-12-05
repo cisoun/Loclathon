@@ -38,9 +38,10 @@ return [
 	],
 	'loclathon.learn_more'  => 'Learn more',
 	'loclathon.next'        => [
-		'Next tour: <b>21 August 2021</b>',
+		'When: <b>21 August 2021</b>',
+		'Where: <b>Le Locle train station, 09:00 - 09:15</b>',
 		'Reported to the <b>28 August 2021</b> in case of bad weather. The definitive date will be announced via this page or social networks the week before the tour.',
-		'COVID-19: a participation registration may be mandatory depending of the sanitary measures imposed by the authorities.'
+		'COVID-19: a participation registration is mandatory due to the sanitary measures imposed by the authorities.'
 	],
 	'loclathon.next.title'  => 'Next tour',
 	'loclathon.subscribe1'  => 'Subscribe',
@@ -134,7 +135,7 @@ return [
 	],
 	'shop.shippings.infos'  => [
 		'local'             => 'Only for Le Locle and La Chaux-de-Fonds (Switzerland).',
-		'pickup'            => 'You come at hour warehouse to get your articles.<br>Instructions will be sent by mail.',
+		'pickup'            => 'You come at our warehouse to get your articles.<br>Instructions will be sent by mail.',
 		'post'              => 'Delivery by the Swiss Post.'
 	]
 ];

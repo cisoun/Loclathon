@@ -38,9 +38,10 @@ return [
 	],
 	'loclathon.learn_more'  => 'En savoir plus',
 	'loclathon.next'        => [
-		'Prochaine tournée : <b>21 août 2021</b>',
+		'Date : <b>21 août 2021</b>',
+		'Rendez-vous : <b>gare du Locle, 09h00 - 09h15</b>',
 		'Reportée au <b>28 août 2021</b> en cas de mauvais temps. La date définitive sera annoncée via cette page ou les réseaux sociaux dans la semaine avant la tournée.',
-		'COVID-19 : une inscription de participation pourra être nécessaire en fonction des mesures santaires imposées par les autorités.'
+		'COVID-19 : une inscription de participation est nécessaire en raison des mesures santaires imposées par les autorités.'
 	],
 	'loclathon.next.title'  => 'Prochaine tournée',
 	'loclathon.subscribe1'  => "S'inscrire",
