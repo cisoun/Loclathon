@@ -10,7 +10,7 @@
  */
 
 // Comment the following line to store sessions in the default directory.
-session_save_path(getcwd() . '/cache/sessions');
+// session_save_path(getcwd() . '/cache/sessions');
 
 class Session {
 	public static function all() {
