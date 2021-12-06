@@ -6,7 +6,7 @@ $next = __('loclathon.next');
 <block title>La tournée des fontaines</block>
 <block css>
 #loclathon > div > img { width: 100%; }
-#tour { font-size: 1.2rem; }
+.bigger { font-size: 1.2rem; }
 #tour_warning { font-weight: bold; }
 #bottom { width: 100%; }
 @keyframes clouds {
@@ -58,9 +58,9 @@ $next = __('loclathon.next');
 <section id="about" class="dual padded spaced">
 	<div>
 		<h1><?= __('loclathon.next.title') ?></h1>
-		<p id="tour"><?= $next[0] ?></p>
-		<p><?= $next[1] ?></p>
-		<p id="tour_warning"><?= $next[2] ?></p>
+		<p class="bigger"><?= $next[0] ?><br><?= $next[1] ?></p>
+		<!-- <p><?= $next[2] ?></p> -->
+		<p id="tour_warning"><?= $next[3] ?></p>
 		<h1><?= __('loclathon.about.title') ?></h1>
 		<?php foreach (__('loclathon.about') as $line): ?>
 		<p><?= $line ?></p>
