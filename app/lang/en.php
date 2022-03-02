@@ -28,7 +28,7 @@ return [
 		'To whom is the event open?',
 		'To everyone.',
 		'Do I have to sign up to participate?',
-		'Yes. The current situation due to the COVID-19 disease requires a subscription for all participants.',
+		'No. Except if the current situation due to the COVID-19 disease requires it.',
 		//'No, the event is public.',
 		"So it's free?",
 		'Totally!',
@@ -38,9 +38,9 @@ return [
 	],
 	'loclathon.learn_more'  => 'Learn more',
 	'loclathon.next'        => [
-		'When: <b>21 August 2021</b>',
+		'When: <b>20 August 2022</b>',
 		'Where: <b>Le Locle train station, 09:00 - 09:15</b>',
-		'Reported to the <b>28 August 2021</b> in case of bad weather. The definitive date will be announced via this page or social networks the week before the tour.',
+		'Reported to the <b>27 August 2022</b> in case of bad weather. The definitive date will be announced via this page or social networks the week before the tour.',
 		'COVID-19: a participation registration is mandatory due to the sanitary measures imposed by the authorities.'
 	],
 	'loclathon.next.title'  => 'Next tour',

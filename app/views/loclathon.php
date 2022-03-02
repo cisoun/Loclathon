@@ -33,8 +33,8 @@ $next = __('loclathon.next');
 <main id="loclathon">
 	<div class="fade"></div>
 	<img id="logo" class="container" src="/static/img/home.{{lang}}.svg" alt="Le Loclathon" width="100%" height="100%"/>
-	<!-- <a href="#about" class="button"><?= __('loclathon.learn_more') ?> <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a> -->
-	<a href="/{{lang}}/inscription" class="button"><?= __('loclathon.subscribe2') ?> <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
+	<a href="#about" class="button"><?= __('loclathon.learn_more') ?> <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
+	<!-- <a href="/{{lang}}/inscription" class="button"><?= __('loclathon.subscribe2') ?> <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a> -->
 	<svg id="bottom" version="1.1" viewBox="0 0 158.75 26.458" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 		<defs>
 			<linearGradient id="gradient" x1="158.75" x2="158.75" y1="26.458" y2="14.784" gradientUnits="userSpaceOnUse">
@@ -72,12 +72,12 @@ $next = __('loclathon.next');
 			<div class="left"><span class="bubble"><?= $bubbles[0] ?></span></div>
 			<div class="right"><span class="bubble"><?= $bubbles[1] ?></span><span class="logo"></span></div>
 			<div class="left"><span class="bubble"><?= $bubbles[2] ?></span></div>
-			<div class="right"><span class="bubble"><?= $bubbles[3] ?><br/><br/><a id="subscribe" href="/{{lang}}/inscription">→ <?= __('loclathon.subscribe1') ?></a></span><span class="logo"></span></div>
+			<div class="right"><span class="bubble"><?= $bubbles[3] ?><!--br/><br/><a id="subscribe" href="/{{lang}}/inscription">→ <?= __('loclathon.subscribe1') ?></a></span><span class="logo"--></span></div>
 			<div class="left"><span class="bubble"><?= $bubbles[4] ?></span></div>
 			<div class="right"><span class="bubble"><?= $bubbles[5] ?></span><span class="logo"></span></div>
 			<div class="left"><span class="bubble"><?= $bubbles[6] ?></span></div>
 			<div class="right"><span class="bubble"><?= $bubbles[7] ?></span><span class="logo"></span></div>
-			<div class="right"><span class="bubble text-bold"><?= $bubbles[8] ?></span><span class="logo"></span></div>
+			<!-- <div class="right"><span class="bubble text-bold"><?= $bubbles[8] ?></span><span class="logo"></span></div> -->
 		</div>
 	</div>
 </section>
