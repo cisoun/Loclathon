@@ -60,7 +60,7 @@ $next = __('loclathon.next');
 		<h1><?= __('loclathon.next.title') ?></h1>
 		<p class="bigger"><?= $next[0] ?><br><?= $next[1] ?></p>
 		<!-- <p><?= $next[2] ?></p> -->
-		<p id="tour_warning"><?= $next[3] ?></p>
+		<!-- <p id="tour_warning"><?= $next[3] ?></p> -->
 		<h1><?= __('loclathon.about.title') ?></h1>
 		<?php foreach (__('loclathon.about') as $line): ?>
 		<p><?= $line ?></p>
