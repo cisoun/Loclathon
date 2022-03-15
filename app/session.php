@@ -21,8 +21,8 @@ class Session {
 		return session_destroy();
 	}
 
-	public static function get($key) {
-		return $_SESSION[$key];
+	public static function get($key, $fallback = NULL) {
+		return $_SESSION[$key] ?? $fallback;
 	}
 
 	public static function has($key) {
