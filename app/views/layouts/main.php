@@ -94,12 +94,12 @@ $current_locale = Lang::locale();
 	</footer>
 	<? footer ?>
 	<script type="text/javascript">
-		const nav = document.querySelector('nav');
+		const nav = document.getElementById('menu');
 		nav.classList.remove('nojs');
 		nav.classList.add('transparent');
 
 		window.onscroll = () => {
-			if (window.pageYOffset < 100) {
+			if (window.pageYOffset < 50) {
 				nav.classList.add('transparent');
 			} else {
 				nav.classList.remove('transparent');
