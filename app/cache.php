@@ -10,6 +10,10 @@ define('CACHE_PATH', getcwd() . '/cache');
  *   a prerendered HTML view will be put into the `views` subfolder.
  *
  *   WARNING: Do not put content that must not be lost.
+ *
+ *   NOTE:    We use serialize() over json_encode() as it is type-safe and
+ *            faster.
+ *
  *   TIP:     On a *NIX system, mount this folder as `tmpfs`.
  */
 class Cache {
