@@ -33,7 +33,7 @@ if (env('debug')) {
 function with_lang($callback)   {
 	// Load the locale given in the URI and continue.
 	return function ($params) use ($callback) {
-		$lang = $params['lang'];
+		$lang = $params['lang'] ?? Lang::user();
 		if (in_array($lang, Lang::locales())) {
 			Lang::load($lang);
 			return $callback($params);
