@@ -19,9 +19,7 @@ $current_locale = Lang::locale();
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Open Graph data -->
-	<meta property="og:description" content="Site officiel du Loclathon et de l'absinthe La Locloise.">
-	<meta property="og:image" content="/static/img/photo_2022.jpg">
-	<meta property="og:title" content="Le Loclathon | La Locloise">
+	<? ogd ?>
 
 	<!-- CSS -->
 	<link rel="preload" href="/static/css/layout.css" as="style" crossorigin>

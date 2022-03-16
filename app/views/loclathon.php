@@ -29,6 +29,13 @@ $next = __('loclathon.next');
 	display: block;
 }
 </block>
+
+<block ogd>
+<meta property="og:description" content="Site officiel du Loclathon et de l'absinthe La Locloise.">
+<meta property="og:image" content="/static/img/preview.jpg">
+<meta property="og:title" content="Le Loclathon | La Locloise">
+</block>
+
 <block content>
 <main id="loclathon">
 	<div class="fade"></div>
