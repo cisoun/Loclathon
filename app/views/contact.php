@@ -28,28 +28,28 @@ $max     = $params['max'];
 		</div>
 		<?php endif; ?>
 		<form action="/{{lang}}/contact" method="post">
-			<div class="group">
+			<fieldset>
 				<label for="name"><?= __('contact.name') ?> :</label>
 				<input type="text" id="name" name="name" placeholder="<?= __('contact.name') ?>" value="<?= $name ?>" required>
-			</div>
-			<div class="group">
+			</fieldset>
+			<fieldset>
 				<label for="mail"><?= __('contact.mail') ?> :</label>
 				<input type="email" id="mail" name="mail" placeholder="<?= __('contact.mail') ?>" <?= $error == 1 ? 'autofocus' : '' ?> value="<?= $mail ?>" required>
-			</div>
-			<div class="group">
+			</fieldset>
+			<fieldset>
 				<label for="message"><?= __('contact.message') ?> :</label>
 				<textarea id="message" name="message" placeholder="<?= __('contact.message') ?>" rows="10" <?= $error == 2 ? 'autofocus' : '' ?> required><?= $message ?></textarea>
-			</div>
-			<div class="group">
+			</fieldset>
+			<fieldset>
 				<label for="check"><?= __('contact.check') ?> :</label>
 				<input type="number" id="check" name="check" placeholder="<?= "$min + $max ?" ?>" <?= $error == 3 ? 'autofocus' : '' ?> required>
-			</div>
+			</fieldset>
 			<div class="separator">
 				<span><?= __('contact.confirmation') ?></span>
 			</div>
-			<div class="group uni">
-				<button type="submit"><?= __('contact.send') ?></button>
-			</div>
+			<fieldset>
+				<button type="submit" class="w-100 white"><?= __('contact.send') ?></button>
+			</fieldset>
 		</form>
 	<?php else: ?>
 		<div id="confirm" class="text-center">
