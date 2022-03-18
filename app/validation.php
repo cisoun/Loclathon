@@ -97,7 +97,7 @@ class Validation {
 				$error = $errors ?? false;
 				return $value;
 			case 'stripped':
-				return filter_var($value, FILTER_SANITIZE_STRING);
+				return htmlspecialchars($value);
 			case 'text':
 				$value = self::sanitize_text($value);
 				$error = empty($value);
