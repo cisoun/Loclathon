@@ -10,6 +10,7 @@ ul.breadcrumb {
 	border: 1px solid var(--foreground);
 	border-radius: 1rem;
 	display: inline-block;
+	line-height: 1rem;
 	padding: unset;
 	text-align: center;
 }
@@ -67,7 +68,7 @@ ul.breadcrumb li:not(:last-child) {
 				<li><?= $details[2] ?></li>
 			</ul>
 		</p>
-		<a id="buy" class="button big responsive white" href="/{{lang}}/shop">
+		<a id="buy" class="button big responsive white" href="/{{lang}}/shop/product/la-locloise-05l">
 			<svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg>
 			<?= __('locloise.buy') ?>
 		</a>
