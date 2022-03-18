@@ -13,6 +13,7 @@ require_once('vendor/autoload.php');
 
 use PayPalCheckoutSdk\Core\PayPalHttpClient;
 use PayPalCheckoutSdk\Core\SandboxEnvironment;
+use PayPalCheckoutSdk\Core\ProductionEnvironment;
 use PayPalCheckoutSdk\Orders\OrdersCaptureRequest;
 use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 
@@ -92,67 +93,62 @@ class PayPal
 	 * link to call to approve the payment (use self::capture() for that).
 	 */
 	public static function order($params) {
-		$scheme = $_SERVER["REQUEST_SCHEME"] ?? 'http';
-		$host = $_SERVER['HTTP_HOST'];
-		$lang = $params['lang'];
+		$scheme    = $_SERVER["REQUEST_SCHEME"] ?? 'http';
+		$host      = $_SERVER['HTTP_HOST'];
+		$lang      = $params['lang'];
+		$full_name = "{$params['first_name']} {$params['last_name']}";
+		$items     = array_map(function ($article) {
+			return [
+				'name'              => $article['title'],
+				'quantity'          => $article['units'],
+				'unit_amount'       => [
+					'currency_code' => 'CHF',
+					'value'         => $article['price'] / $article['units']
+				]
+			];
+		}, $params['articles']);
 
-		// Construct a request object and set desired parameters.
-		// Here, OrdersCreateRequest() creates a POST request to /v2/checkout/orders
-		// SEE: https://developer.paypal.com/docs/api/orders/v2/#definition-order_application_context
+		// Build a request object and set desired parameters.
+		// This creates a POST request to /v2/checkout/orders.
+		// SEE: https://developer.paypal.com/api/orders/v2/#orders_create
 		$request = new OrdersCreateRequest();
 		$request->prefer('return=representation');
 		$request->body = [
-			'intent' => 'CAPTURE',
+			'intent'              => 'CAPTURE',
 			'application_context' => [
 				'brand_name'          => 'Le Loclathon',
 				'landing_page'        => 'BILLING',
 				'shipping_preference' => 'SET_PROVIDED_ADDRESS',
 				'user_action'         => 'CONTINUE',
-				'cancel_url'          => "$scheme://$host/$lang/shop",
+				'cancel_url'          => "$scheme://$host/$lang/shop/review",
 				'return_url'          => "$scheme://$host/$lang/shop/confirm"
 			],
-			'purchase_units' => [
+			'purchase_units'      => [
 				[
-					// 'reference_id' => 'locloise',
 					'description' => 'Sporting Goods',
-					'amount' => [
-						'value' => $params['total'],
+					'amount'      => [
+						'value'         => $params['total'],
 						'currency_code' => 'CHF',
-						'breakdown' => [
+						'breakdown'     => [
 							'item_total' => [
 								'currency_code' => 'CHF',
-								'value' => $params['price'],
+								'value'         => $params['total_articles'],
 							],
-							'shipping' => [
+							'shipping'   => [
 								'currency_code' => 'CHF',
-								'value' => $params['shipping_fees'],
+								'value'         => $params['shipping_fees'],
 							],
-							'tax_total' => [
+							'tax_total'  => [
 								'currency_code' => 'CHF',
-								'value' => $params['payment_fees'],
+								'value'         => $params['payment_fees'],
 							],
-							// 'shipping_discount' =>
-							// 	array(
-							// 		'currency_code' => 'CHF',
-							// 		'value' => '10.00',
-							// 	),
 						],
 					],
-					'items' => [
-						[
-							'name' => 'La Locloise',
-							'description' => 'La Locloise, bouteille 5dl officielle du Loclathon.',
-							'quantity' => $params['units'],
-							'unit_amount' => [
-								'currency_code' => 'CHF',
-								'value'         => $params['price'] / $params['units']
-							]
-						],
-					],
-					'shipping' => [
-						'method' => __('shop.shippings')[$params['shipping']],
-						'name' => [
-							'full_name' => "{$params['first_name']} {$params['last_name']}",
+					'items'       => $items,
+					'shipping'    => [
+						'method'  => __('shop.shippings')[$params['shipping']],
+						'name'    => [
+							'full_name' => $full_name,
 						],
 						'address' => [
 							'address_line_1' => $params['street'],
@@ -161,9 +157,8 @@ class PayPal
 							'country_code'   => $params['country'],
 						],
 					],
-				]
+				],
 			],
-
 		];
 
 		$client = self::client();

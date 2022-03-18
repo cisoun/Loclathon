@@ -10,7 +10,7 @@ if (env('debug')) {
 // Functions
 function __($key, $params = []) {
 	if (is_array($key))
-	return Lang::get_through($key, $params);
+		return Lang::get_through($key, $params);
 	return Lang::get($key, $params);
 }
 function call($callback)		{ return Router::call($callback); }
@@ -55,6 +55,7 @@ $classes = [
 	// Core classes.
 	// DO NOT EDIT!
 	'Cache'      => 'cache',
+	'HTML'       => 'html',
 	'Lang'       => 'lang',
 	'Layout'     => 'layout',
 	'Mail'       => 'mail',

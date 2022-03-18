@@ -1,7 +1,16 @@
 <?php
+require_once('articles.php');
+
 class Shop {
-	private const BOTTLE_PRICE = 38;
-	private const ID_SYMBOLS   = '0123456789ABCDEF';
+	private const ID_SYMBOLS       = '0123456789ABCDEF';
+	private const CART             = 'cart';
+	private const FORM             = 'form';
+	private const ORDER            = 'order';
+
+	public const STATE_NORMAL      = 0;
+	public const STATE_PREORDER    = 1;
+	public const STATE_SOLDOUT     = 2;
+	public const STATE_UNAVAILABLE = 3;
 
 	private static function generate_id() {
 		$id = '';
@@ -31,23 +40,32 @@ class Shop {
 		}
 	}
 
-	private static function get_prices($units, $payment, $shipping) {
-		$price           = $units * self::BOTTLE_PRICE;
+	private static function get_prices($cart, $total, $payment, $shipping) {
+		$units           = array_sum($cart);
 		$shipping_fees   = self::get_shipping_fees($units, $shipping);
-		$payment_fees    = self::get_payment_fees($price + $shipping_fees, $payment);
+		$payment_fees    = self::get_payment_fees($total + $shipping_fees, $payment);
 		// Round to lowest decimal.
 		// 	Examples: 1.26 => 1.2, 3.98 => 3.9.
 		$payment_fees    = floor($payment_fees * 10) / 10;
 
 		return [
-			'price' 		=> $price,
-			'payment_fees' 	=> $payment_fees,
-			'shipping_fees' => $shipping_fees,
-			'total' 		=> $price + $shipping_fees + $payment_fees
+			'payment_fees' 	 => $payment_fees,
+			'shipping_fees'  => $shipping_fees,
+			'total_articles' => $total,
+			'total' 		 => $total + $shipping_fees + $payment_fees
 		];
 	}
 
 	private static function register_order($params) {
+		// TODO: TEMPORARY WORKAROUND.
+		$id = self::generate_id();
+		while (Cache::has('orders', $id))
+			$id = self::generate_id();
+		Cache::store('orders', $id, Cache::serialize($params));
+		return $id;
+
+		// TODO: Adapt.
+
 		$keys = [
 			'first_name',
 			'last_name',
@@ -104,13 +122,11 @@ class Shop {
 			'city'       => 'stripped',
 			'npa'        => 'stripped',
 			'country'    => 'stripped',
-			'email1'     => 'email',
-			'email2'     => 'email|same:email1',
+			'email'      => 'email',
 			'phone'      => 'optional|stripped',
 			'age'        => 'value:on',
 			'payment'    => 'text',
 			'shipping'   => 'text',
-			'units'      => 'range:1:6' // TODO: Add stock.
 		];
 		$mandatory_fields = [
 			'first_name',
@@ -138,8 +154,7 @@ class Shop {
 				}
 			}
 
-			if (array_key_exists('email1', $errors))   { $results[] = 1; }
-			if (array_key_exists('email2', $errors))   { $results[] = 2; }
+			if (array_key_exists('email', $errors))    { $results[] = 1; }
 			if (array_key_exists('age', $errors))      { $results[] = 3; }
 			if (array_key_exists('units', $errors))    { $results[] = 4; }
 			if (array_key_exists('shipping', $errors)) { $results[] = 5; }
@@ -148,37 +163,190 @@ class Shop {
 		return $success;
 	}
 
-	/**
-	 * User is reviewing its order.
-	 */
-	public static function checkout($params) {
+
+	public static function cart($params) {
 		$inputs = Request::inputs();
-		$success = self::validate($inputs, $errors);
-
-		// Replace form in session.
-		Session::start();
-		Session::set('FORM', $inputs);
-
-		$params = array_merge($params, $inputs);
-		$params['stock'] = 10;
-
-		if (!$success) {
-			$params['errors'] = $errors;
-			return self::show($params);
+		foreach ($inputs as $key => $value) {
+			switch ($key) {
+				case 'checkout':
+					$cart = Request::input('cart');
+					self::cart_update($cart);
+					$lang = $params['lang'];
+					return Response::location("/$lang/shop/checkout");
+				case 'clear':
+					return self::cart_clear($params);
+				case 'delete':
+					Session::start();
+					$cart = Session::get(self::CART);
+					unset($cart[$value]);
+					Session::set(self::CART, $cart);
+					break;
+				case 'update':
+					$cart = Request::input('cart');
+					self::cart_update($cart);
+					break;
+			}
 		}
 
-		// Calculate prices and fees.
-		$prices = self::get_prices(
-			$params['units'],
-			$params['payment'],
-			$params['shipping']
-		);
-		$params = array_merge($params, $prices);
-		$params['email'] = $params['email1'];
+		return Response::location("/{$params['lang']}/shop/cart");
+	}
 
-		// Cache the data so the user cannot modify them before confirmation.
-		// Cached data will be reused at confirmation.
-		Session::set('FORM', $params);
+	public static function cart_add($params) {
+		Session::start();
+
+		$id = Request::input('variant') ?? $params['id'];
+
+		$units = Request::input('units');
+		$cart  = Session::get(self::CART) ?? [];
+
+		if (!array_key_exists($id, $cart)) {
+			$cart[$id] = 0;
+		}
+
+		$cart[$id] += intval($units);
+
+		Session::set(self::CART, $cart);
+
+		return Response::location("/{$params['lang']}/shop/cart");
+	}
+
+	public static function cart_clear($params) {
+		Session::start();
+		Session::set(self::CART, []);
+
+		return Response::location("/{$params['lang']}/shop");
+	}
+
+	public static function cart_show($params) {
+		Session::start();
+
+		$cart = Session::get(self::CART);
+		if (!$cart) {
+			return Response::location("/{$params['lang']}/shop", $params);
+		}
+
+		// TODO: REMOVE
+		$articles = Articles::all();
+
+		$params['articles'] = $articles;
+		$params['cart'] = $cart;
+
+		$total = 0;
+		$data = [];
+
+		foreach ($cart as $id => $value) {
+			$article = Articles::find($articles, $id);
+			$parent = Articles::parent($articles, $article);
+			$data[] = [
+				'id'      => $article['id'],
+				'url'     => $article['url'] ?? $parent['url'],
+				'title'   => $parent['title'] ?? $article['title'],
+				'variant' => $parent ? $article['title'] : NULL,
+				'price'   => $article['price'],
+				'units'   => $value,
+				'picture' => Articles::preview($article)
+			];
+			$total += $value * $article['price'];
+		}
+
+		$params['data'] = $data;
+		$params['total'] = $total;
+
+		return Response::view('shop/cart', $params);
+	}
+
+	private static function cart_update($cart) {
+		// Remove articles at 0 units.
+		foreach ($cart as $id => $units) {
+			if ($units == 0) {
+				unset($cart[$id]);
+			}
+		}
+
+		Session::start();
+		Session::set(self::CART, $cart);
+	}
+
+	public static function index($params) {
+		$articles = Articles::all();
+
+		// Filter unavailable articles.
+		$params['articles'] = array_filter($articles, function ($a) {
+			return !$a['parent_id'] && $a['state'] != 3;
+		});
+
+		return Response::view('shop/index', $params);
+	}
+
+	public static function show($params) {
+		$articles = Articles::all();
+		$article  = Articles::findByURL($articles, $params['url']);
+
+		if ($article) {
+			// TODO: Change.
+			if ($article['parent_id'])
+				$article = Articles::parent($articles, $article);
+
+			$variants = Articles::variants($articles, $article);
+
+			$params['article']  = $article;
+			$params['variants'] = $variants;
+
+			return Response::view('shop/product', $params);
+		}
+
+		return Response::location("/{$params['lang']}/shop");
+	}
+
+	/**
+	 * User gives identity, shipping and payment method.
+	 */
+	public static function checkout($params) {
+		Session::start();
+
+		$cart = Session::get(self::CART);
+		if (!$cart) {
+			$lang = $params['lang'];
+			return Response::location("/$lang/shop", $params);
+		}
+
+
+		if (Request::is_post()) {
+			$form = Request::inputs();
+
+			Session::set(self::FORM, $form);
+
+			$success = self::validate($form, $errors);
+
+			if ($success) {
+				$lang = $params['lang'];
+				return Response::location("/$lang/shop/review", $params);
+			}
+
+			$params['errors'] = $errors;
+		}
+
+		// Default values.
+		$params['countries'] = ['CH'];
+		$params['country']   = 'CH';
+		$params['payment']   = 'direct';
+		$params['shipping']  = 'post';
+
+		// Replace form in session.
+		$form = Session::get(self::FORM, []);
+		$params = array_merge($params, $form);
+
+		// Fix form.
+
+		$payment = $params['payment'];
+		$params['payment.direct'] = $payment == 'direct';
+		$params['payment.twint']  = $payment == 'twint';
+		$params['payment.paypal'] = $payment == 'paypal';
+
+		$shipping = $params['shipping'];
+		$params['shipping.local']  = $shipping == 'local';
+		$params['shipping.pickup'] = $shipping == 'pickup';
+		$params['shipping.post']   = $shipping == 'post';
 
 		return Response::view('shop/checkout', $params);
 	}
@@ -189,16 +357,15 @@ class Shop {
 	public static function confirm($params) {
 		Session::start();
 
-		// Redirect user to shop if session cache is removed
-		// (order already processed).
-		if (!Session::has('FORM')) {
-			return Response::location('/' . $params['lang'] . '/shop');
+		$order = Session::get(self::ORDER);
+		if (!$order) {
+			return Response::location("/{$params['lang']}/shop", $params);
 		}
 
-		$params = array_merge($params, Session::get('FORM'));
+		$params = array_merge($params, $order);
 
 		// Confirm payment to PayPal.
-		if ($params['payment'] == 'paypal') {
+		if ($order['payment'] == 'paypal') {
 			$order_id = Session::get('paypal_order_id');
 			$response = PayPal::capture($order_id);
 			// PayPal may change the payment prices if the user pays by
@@ -211,23 +378,64 @@ class Shop {
 		$params['order_id'] = self::register_order($params);
 
 		// Send email.
-		$email['host']       = env('mail_host');
-		$email['user']       = env('mail_user');
-		$email['password']   = env('mail_password');
-		$email['from']       = env('mail_noreply');
-		$email['from_title'] = env('title');
-		$email['to']         = [$params['email']];
-		$email['bcc']        = env('agents');
-		$email['html']       = true;
-		$email['subject']    = __(['email.confirmation', 'subject'], $params);
-		$email['body']       = Layout::render('emails/confirmation', $params);
-		Mail::send($email);
+		Mail::send([
+			'host'       => env('mail_host'),
+			'user'       => env('mail_user'),
+			'password'   => env('mail_password'),
+			'from'       => env('mail_noreply'),
+			'from_title' => env('title'),
+			'to'         => [$params['email']],
+			'bcc'        => env('agents'),
+			'html'       => true,
+			'subject'    => __(['email.confirmation', 'subject'], $params),
+			'body'       => Layout::render('emails/order', $params),
+		]);
 
 		// Remove the session cache when order is processed.
 		// This prevents the user to send the order multiple times.
-		Session::remove('FORM');
+		Session::remove(self::CART);
+		Session::remove(self::ORDER);
 
 		return Response::view('shop/confirm', $params);
+	}
+
+	/**
+	 * User is reviewing its order before paying.
+	 */
+	public static function review($params) {
+		Session::start();
+		$form = Session::get(self::FORM);
+		$params = array_merge($form, $params);
+
+		$cart = Session::get(self::CART);
+
+		$articles = Articles::all();
+		$data = [];
+		$total = 0;
+		foreach ($cart as $id => $value) {
+			$article = Articles::find($articles, $id);
+			$parent = Articles::parent($articles, $article);
+			$price = $value * $article['price'];
+			$data[] = [
+				'title'   => $parent['title'] ?? $article['title'],
+				'variant' => $parent ? $article['title'] : NULL,
+				'price'   => $price,
+				'units'   => $value,
+			];
+			$total += $price;
+		}
+
+		$params['articles'] = $data;
+		$params = array_merge($params, self::get_prices(
+			$cart,
+			$total,
+			$form['payment'],
+			$form['shipping']
+		));
+
+		Session::set(self::ORDER, $params);
+
+		return Response::view('shop/review', $params);
 	}
 
 	/**
@@ -235,7 +443,7 @@ class Shop {
 	 */
 	public static function pay($params) {
 		Session::start();
-		$params = array_merge($params, Session::get('FORM'));
+		$params = array_merge($params, Session::get(self::ORDER));
 
 		// Process the payment.
 		switch($params['payment']) {
@@ -254,40 +462,6 @@ class Shop {
 			default:
 				die('This was not supposed to happen...');
 		}
-	}
-
-	/**
-	 * Show the shop.
-	 */
-	public static function show($params) {
-		// Default values.
-		$params['countries'] = ['CH'];
-		$params['email']     = '';
-		$params['payment']   = 'direct';
-		$params['shipping']  = 'post';
-		$params['units']     = 1;
-
-		// Restore form if available.
-		Session::start();
-		if (Session::has('FORM')) {
-			$params = array_merge($params, Session::get('FORM'));
-		}
-
-		// Fix form.
-
-		$checked = 'checked';
-
-		$payment = $params['payment'];
-		$params['payment.direct'] = $payment == 'direct' ? $checked : '';
-		$params['payment.twint']  = $payment == 'twint'  ? $checked : '';
-		$params['payment.paypal'] = $payment == 'paypal' ? $checked : '';
-
-		$shipping = $params['shipping'];
-		$params['shipping.local']  = $shipping == 'local'  ? $checked : '';
-		$params['shipping.pickup'] = $shipping == 'pickup' ? $checked : '';
-		$params['shipping.post']   = $shipping == 'post'   ? $checked : '';
-
-		return Response::view('shop/shop', $params);
 	}
 }
 ?>

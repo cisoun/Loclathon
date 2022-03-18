@@ -1,4 +1,9 @@
 <?php
+//
+// Unused for now / to keep for the future.
+// Just add a /api/... routing in index.php to use this script.
+//
+
 #ini_set('display_errors', 1);
 #error_reporting(E_ALL);
 

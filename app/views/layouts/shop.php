@@ -14,7 +14,18 @@
 <script src="/static/js/shop.js" type="module" defer></script>
 </block>
 
-<block css><? css ?></block>
+<block css>
+<? css ?>
+</block>
+
+<block ogd>
+<? ogd ?>
+</block>
+
+<block subnav>
+<? subnav ?>
+</block>
+
 
 <block content>
 <main id="shop" class="container padded dark">

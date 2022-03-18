@@ -1,8 +1,3 @@
-nav > ul {
-	background-color: var(--background);
-	display: none;
-	padding-bottom: 2rem;
-}
 /* Show menu on mouse over when no JS. */
 nav.nojs:hover > ul,
 nav.toggled > ul { display: block; }
@@ -25,14 +20,34 @@ nav .trigger .outline {
 nav .trigger:hover .outline { stroke: var(--foreground); }
 
 /* Links in menu. */
-nav > ul > li a {
+nav a {
 	display: block;
 	padding: 1rem 5rem;
 	text-align: left;
 }
-/* Hide current language. */
-nav > ul > li#langs > a { display: none; }
-nav > ul > li#langs > hr { display: block; }
+nav > ul {
+	background-color: var(--background);
+	display: none;
+	padding-bottom: 2rem;
+}
+/* Submenu */
+nav > ul > li > ul {
+	border-radius: var(--border-radius);
+	height: 0;
+	margin: 0 2rem;
+	overflow: hidden;
+	padding-left: -5rem;
+	position: unset;
+	transition: height var(--transition);
+}
+/* nav > ul > li:hover > ul { height: calc(2rem + var(--line-height)); } */
+nav > ul > li:hover > ul { height: auto; }
+/* Submenu item */
+nav > ul > li > ul > li { background-color: var(--gray-150); }
+/* Submenu item link */
+nav > ul > li > ul > li > a { margin-bottom: 1px; padding: 1rem 3rem; }
+
+
 
 footer > div > div:not(div:first-child) { margin-top: 2rem; }
 footer a { border-top: 1px solid var(--gray-150); padding: 1rem 0; }

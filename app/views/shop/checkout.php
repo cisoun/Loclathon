@@ -1,82 +1,204 @@
 <?php
-$country = $params['country'];
-$payment = $params['payment'];
-$shipping = $params['shipping'];
+$countries = $params['countries'];
+$selected_country = $params['country'] ?? $params['countries'][0];
+$errors = $params['errors'] ?? [];
+
+$inputs = __('shop.inputs');
+$payments = __('shop.payments');
+$payments_infos = __('shop.payments.infos');
+$shippings = __('shop.shippings');
+$shippings_infos = __('shop.shippings.infos');
+
+
+$form = [
+	'firstName'      => ['name' => 'first_name', 'type' => 'text',     'value' => '{{first_name}}', 'required' => true, 'placeholder' => $inputs['first_name']],
+	'lastName'       => ['name' => 'last_name',  'type' => 'text',     'value' => '{{last_name}}',  'required' => true, 'placeholder' => $inputs['last_name']],
+	'street'         => ['name' => 'street',     'type' => 'text',     'value' => '{{street}}',     'required' => true, 'placeholder' => $inputs['street']],
+	'city'           => ['name' => 'city',       'type' => 'text',     'value' => '{{city}}',       'required' => true, 'placeholder' => $inputs['city']],
+	'npa'            => ['name' => 'npa',        'type' => 'number',   'value' => '{{npa}}',        'required' => true, 'placeholder' => "1000", 'min' => 1000],
+	'email'          => ['name' => 'email',      'type' => 'email',    'value' => '{{email}}',      'required' => true, 'placeholder' => $inputs['email']],
+	'phone'          => ['name' => 'phone',      'type' => 'tel',      'value' => '{{phone}}',      'placeholder' => $inputs['phone']],
+	'age'            => ['name' => 'age',        'type' => 'checkbox', 'checked' => $params['age']],
+	'shippingLocal'  => ['name' => 'shipping',   'type' => 'radio',    'value' => 'local',  'checked' => $params['shipping.local']],
+	'shippingPickUp' => ['name' => 'shipping',   'type' => 'radio',    'value' => 'pickup', 'checked' => $params['shipping.pickup']],
+	'shippingByPost' => ['name' => 'shipping',   'type' => 'radio',    'value' => 'post',   'checked' => $params['shipping.post']],
+	'payIBAN'        => ['name' => 'payment',    'type' => 'radio',    'value' => 'direct', 'checked' => $params['payment.direct']],
+	'payTwint'       => ['name' => 'payment',    'type' => 'radio',    'value' => 'twint',  'checked' => $params['payment.twint']],
+	'payPaypal'      => ['name' => 'payment',    'type' => 'radio',    'value' => 'paypal', 'checked' => $params['payment.paypal']],
+];
+$input = function($id) use ($form, $params) {
+	$attrs = ["id=\"$id\""];
+	foreach ($form[$id] as $key => $value) {
+		switch($key) {
+			case 'checked': if ($value) { $attrs[] = 'checked'; } break;
+			case 'required': if ($value) { $attrs[] = 'required'; } break;
+			default: $attrs[] = "$key=\"$value\"";
+		}
+	}
+	return '<input ' . join(' ', $attrs) . '/>';
+}
 ?>
+
 <extend>layouts/shop</extend>
-<block css>
-#shop table {
-	width: 100%;
-}
-#shop tr {
-	background-color: var(--input-background);
-}
-#shop table tr:last-child {
-	font-size: 1.4rem;
-	font-weight: bold;
-}
 
-h3 {
-	font-size: 1.4rem;
-	font-weight: normal;
-	margin-top: 3rem;
-}
+<block title><?= __('menu.shop') ?></block>
 
-#pay > a.button {
-	width: 100%;
-}
-
-#shop table tr td:first-child { font-weight: bold; text-align: left; }
-#shop table tr td:last-child { text-align: right; }
+<block preload>
+<link rel="preload" href="/static/js/layout.js" as="script">
+<link rel="preload" href="/static/js/fetch.js" as="script">
+<link rel="preload" href="/static/js/shop.js" as="script">
 </block>
-<block content>
-<h1><?= __('shop.order_summary') ?></h1>
 
-<div class="dual spaced">
-	<div>
-		<h3><?= __('shop.address') ?></h3>
-		<p>
-			{{ first_name }} {{ last_name }}<br>
-			{{ street }}<br>
-			{{ npa }} {{ city }}<br>
-			<?= __('shop.countries')[$country] ?>
-		</p>
-		<p>
-		<b>
-			<?= __('shop.confirmation_to') ?></b>:<br/>
-			{{ email }}
-		</p>
-		<p><a href="/{{lang}}/shop"><?= __('shop.change_address') ?></a></p>
+<block footer>
+<script src="/static/js/layout.js" type="module"></script>
+<script src="/static/js/fetch.js" type="module"></script>
+<script src="/static/js/shop.js" type="module"></script>
+</block>
+
+<block css>
+form h1 { font-size: 1.4rem; }
+
+hr {
+	margin: 2rem 0;
+	padding: 0;
+}
+
+.radio label { font-weight: bold; }
+.radio label small { font-weight: normal; }
+
+#shipping { font-size: 1rem; padding-bottom: 1rem; white-space: nowrap; }
+#shipping div:last-child { font-weight: bold; text-align: right; }
+
+#price { font-size: 1.4rem; padding-bottom: 1rem; white-space: nowrap; }
+#price div:first-child { line-height: 2rem; }
+#price div:last-child { font-size: 1.6rem; font-weight: bold; text-align: right; }
+
+#payByPaypal, #payByInvoice { display: block; margin-top: 1rem; width: 100%; }
+#pay .outline.dark { margin-right: 0.5rem; stroke: white; }
+</block>
+
+<block content>
+<?php if ($errors): ?>
+<div class="alert error">
+	<ul>
+	<?php foreach ($errors as $error): ?>
+		<li><?= __('shop.errors')[$error] ?></li>
+	<?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>
+
+<form action="/{{lang}}/shop/checkout" method="post" autocomplete="on">
+	<div class="dual spaced">
+
+		<!-- First column -->
+		<div>
+
+			<h1><?= __('shop.contact') ?></h1>
+
+			<fieldset class="dual">
+				<div class="group">
+					<label for="firstName"><?= $inputs['first_name'] ?>:</label>
+					<?= $input('firstName') ?>
+				</div>
+				<div class="group">
+					<label for="lastName"><?= $inputs['last_name'] ?>:</label>
+					<?= $input('lastName') ?>
+				</div>
+			</fieldset>
+			<fieldset>
+				<label for="street"><?= $inputs['street'] ?>:</label>
+				<?= $input('street') ?>
+			</fieldset>
+			<fieldset class="tria">
+				<div class="group">
+					<label for="city"><?= $inputs['city'] ?>:</label>
+					<?= $input('city') ?>
+				</div>
+				<div class="group">
+					<label for="npa"><?= $inputs['npa'] ?>:</label>
+					<?= $input('npa') ?>
+				</div>
+				<div class="group dropdown">
+					<label for="country"><?= $inputs['country'] ?>:</label>
+					<select name="country" id="country" required>
+						<?php foreach ($countries as $country) { ?>
+							<option value="<?= $country ?>" <?= $country == $selected_country ? 'selected' : ''; ?>><?= __('shop.countries')[$country] ?></option>
+						<?php } ?>
+					</select>
+				</div>
+			</fieldset>
+			<fieldset class="group">
+				<label for="email"><?= $inputs['email'] ?>:</label>
+				<?= $input('email') ?>
+			</fieldset>
+			<fieldset class="group">
+				<label for="phone"><?= $inputs['phone'] ?>:</label>
+				<?= $input('phone') ?>
+			</fieldset>
+
+			<div class="group checkbox">
+				<?= $input('age') ?>
+				<label for="age"><?= $inputs['age'] ?></label>
+			</div>
+
+		</div>
+
+		<!-- Second column -->
+		<div>
+
+			<h1><?= __('shop.shipping') ?></h1>
+
+			<fieldset class="group radio with-check">
+				<?= $input('shippingLocal') ?>
+				<label for="shippingLocal" id="shippingLocalLabel">
+					<?= $shippings['local'] ?>
+					<span class="label green"><?= __('shop.free') ?></span><br>
+					<small><?= $shippings_infos['local'] ?></small>
+				</label>
+				<?= $input('shippingPickUp') ?>
+				<label for="shippingPickUp">
+					<?= $shippings['pickup'] ?>
+					<span class="label green"><?= __('shop.free') ?></span><br>
+					<small><?= $shippings_infos['pickup'] ?></small>
+				</label>
+				<?= $input('shippingByPost') ?>
+				<label for="shippingByPost">
+					<?= $shippings['post'] ?><br>
+					<small><?= $shippings_infos['post'] ?></small>
+				</label>
+			</fieldset>
+
+			<h1><?= __('shop.payment') ?></h1>
+
+			<div class="group radio with-check">
+				<?= $input('payIBAN') ?>
+				<label for="payIBAN">
+					<?= $payments['direct'] ?>
+					<span class="label green"><?= __('shop.free') ?></span><br>
+					<small><?= $payments_infos['direct'] ?></small>
+				</label>
+				<!-- <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>
+				<label for="payTwint">
+					<?= $payments['twint'] ?><br>
+					<small><?= $payments_infos['twint'] ?></small>
+				</label> -->
+				<?= $input('payPaypal') ?>
+				<label for="payPaypal">
+					<?= $payments['paypal'] ?><br>
+					<small><?= $payments_infos['paypal'] ?></small>
+				</label>
+			</div>
+
+			<hr />
+
+			<div id="pay">
+				<button id="payByInvoice" type="submit" class="white"><?= __('shop.checkout') ?></button>
+				<div id="payByPaypal"></div>
+			</div>
+
+		</div>
+
 	</div>
-	<div id="pay">
-		<h3><?= __('shop.payment') ?></h3>
-		<table>
-			<tr>
-				<td>{{ units }} x La Locloise</td>
-				<td>{{ price }} CHF</td>
-			</tr>
-			<tr>
-				<td>
-					<?= __('shop.shippings')[$shipping] ?><br>
-					<small><?= __('shop.shipping') ?></small>
-				</td>
-				<td>{{ shipping_fees }} CHF</td>
-			</tr>
-			<tr>
-				<td>
-					<?= __('shop.payments')[$payment] ?><br>
-					<small><?= __('shop.payment') ?></small>
-				</td>
-				<td>{{ payment_fees }} CHF</td>
-			</tr>
-			<tr>
-				<td>Total</td>
-				<td>{{ total }} CHF</td>
-			</tr>
-		</table>
-		<p><a href="/{{lang}}/shop"><?= __('shop.change_order') ?></a></p>
-		<h3><?= __('shop.shipping') ?></h3>
-		<a href="/{{lang}}/shop/pay" class="button"><svg class="outline"><use href="../static/img/icons.svg#card"/></svg><?= __('shop.pay') ?></a>
-	</div>
-<div>
+</form>
 </block>

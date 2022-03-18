@@ -5,7 +5,7 @@ $locales        = Lang::locales();
 $current_locale = Lang::locale();
 ?>
 <!doctype html>
-<html lang="<?= $current_locale ?>">
+<html lang="<?= $current_locale ?>" class="dark">
 <head>
 	<title>Le Loclathon | <? title ?></title>
 
@@ -49,16 +49,17 @@ $current_locale = Lang::locale();
 			<li><a href="/{{lang}}/shop"><?= __('menu.shop') ?></a></li>
 			<li><a href="/{{lang}}/contact"><?= __('menu.contact') ?></a></li>
 			<li id="langs">
-				<a href="/{{lang}}"><span><img src="/static/img/lang.<?= $current_locale ?>.svg"/> <?= $current_locale ?></span></a>
-				<div>
+				<a><span><img src="/static/img/lang.<?= $current_locale ?>.svg"/> <?= $current_locale ?></span></a>
+				<ul>
 					<?php foreach ($locales as $locale): ?>
 					<?php if ($locale !== $current_locale): ?>
-					<a href="/<?= $locale . $page ?>"><img src="/static/img/lang.<?= $locale ?>.svg"/><?= LANG_NAMES[$locale] ?></a>
+					<li><a href="/<?= $locale . $page ?>"><img src="/static/img/lang.<?= $locale ?>.svg"/><?= LANG_NAMES[$locale] ?></a></li>
 					<?php endif; ?>
 					<?php endforeach; ?>
-				</div>
+				</ul>
 			</li>
 		</ul>
+		<? subnav ?>
 	</nav>
 	<? content ?>
 	<footer>

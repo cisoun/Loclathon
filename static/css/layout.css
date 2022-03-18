@@ -20,6 +20,7 @@
 :root {
 	--gray-100: #111;
 	--gray-150: #222;
+	--gray-200: #333;
 	--gray-300: #444;
 	--gray-500: #777;
 	--gray-700: #aaa;
@@ -82,19 +83,100 @@
 	--blue-200: #00115b;
 	--blue-100: #000833;
 
+
+
+
+	--rose-100:rgb(70, 0, 34);
+	--red-100:rgb(73, 0, 19);
+	--orange-100:rgb(72, 1, 0);
+	--yellow-100:rgb(50, 30, 0);
+	--lime-100:rgb(0, 44, 0);
+	--green-100:rgb(0, 48, 35);
+	--blue-100:rgb(14, 24, 86);
+	--purple-100:rgb(47, 9, 75);
+	--rose-200:rgb(119, 0, 59);
+	--red-200:rgb(129, 0, 38);
+	--orange-200:rgb(135, 26, 0);
+	--yellow-200:rgb(103, 67, 0);
+	--lime-200:rgb(1, 89, 0);
+	--green-200:rgb(0, 85, 61);
+	--blue-200:rgb(21, 41, 138);
+	--purple-200:rgb(75, 16, 123);
+	--rose-300:rgb(167, 0, 82);
+	--red-300:rgb(181, 0, 57);
+	--orange-300:rgb(193, 58, 0);
+	--yellow-300:rgb(154, 104, 0);
+	--lime-300:rgb(41, 131, 0);
+	--green-300:rgb(0, 122, 85);
+	--blue-300:rgb(26, 63, 187);
+	--purple-300:rgb(103, 33, 169);
+	--rose-400:rgb(209, 21, 105);
+	--red-400:rgb(227, 40, 77);
+	--orange-400:rgb(241, 93, 0);
+	--yellow-400:rgb(200, 138, 0);
+	--lime-400:rgb(80, 169, 0);
+	--green-400:rgb(0, 156, 108);
+	--blue-400:rgb(33, 91, 229);
+	--purple-400:rgb(128, 59, 210);
+	--rose-500:rgb(245, 66, 127);
+	--red-500:rgb(255, 81, 100);
+	--orange-500:rgb(255, 129, 0);
+	--yellow-500:rgb(237, 169, 0);
+	--lime-500:rgb(119, 200, 0);
+	--green-500:rgb(0, 187, 131);
+	--blue-500:rgb(50, 123, 255);
+	--purple-500:rgb(151, 92, 244);
+	--rose-600:rgb(255, 108, 152);
+	--red-600:rgb(255, 122, 126);
+	--orange-600:rgb(255, 165, 28);
+	--yellow-600:rgb(255, 196, 0);
+	--lime-600:rgb(157, 225, 65);
+	--green-600:rgb(0, 213, 155);
+	--blue-600:rgb(79, 157, 255);
+	--purple-600:rgb(173, 129, 255);
+	--rose-700:rgb(255, 151, 178);
+	--red-700:rgb(255, 163, 158);
+	--orange-700:rgb(255, 198, 106);
+	--yellow-700:rgb(255, 220, 81);
+	--lime-700:rgb(192, 244, 121);
+	--green-700:rgb(46, 235, 181);
+	--blue-700:rgb(120, 190, 255);
+	--purple-700:rgb(196, 167, 255);
+	--rose-800:rgb(255, 195, 208);
+	--red-800:rgb(255, 203, 194);
+	--orange-800:rgb(255, 226, 165);
+	--yellow-800:rgb(255, 239, 156);
+	--lime-800:rgb(222, 255, 173);
+	--green-800:rgb(151, 251, 210);
+	--blue-800:rgb(170, 223, 255);
+	--purple-800:rgb(220, 206, 255);
+	--rose-900:rgb(255, 237, 241);
+	--red-900:rgb(255, 240, 233);
+	--orange-900:rgb(255, 247, 219);
+	--yellow-900:rgb(255, 251, 216);
+	--lime-900:rgb(246, 255, 223);
+	--green-900:rgb(221, 255, 242);
+	--blue-900:rgb(227, 252, 255);
+	--purple-900:rgb(248, 245, 255);
+
+
 	--dark: var(--gray-100);
 	--light: white;
 
-	--primary-dark: var(--green-300);
-	--primary: var(--green-400);
-	--primary-light: var(--green-600);
+	--text-light: var(--gray-300);
+
+	--primary-dark: var(--blue-300);
+	--primary: var(--blue-400);
+	--primary-light: var(--green-500);
 	--secondary: #e54a4a;
 
-	--background: white;
+	--background: var(--gray-900);
 	--foreground: var(--gray-100);
 
 	--link-color: var(--gray-700);
 	--link-color-hover: var(--foreground);
+
+	--line-height: 1.6rem;
 
 	--alert-shadow: 0 0.5rem 2rem;
 	--border-radius: 0.3rem;
@@ -113,14 +195,17 @@
 	--icon-size: 1.4rem;
 
 	--input-background-disabled: var(--background);
-	--input-background-highlight: var(--foreground);
-	--input-background-invalid: var(--background);
-	--input-background: var(--background);
+	--input-background-highlight: var(--gray-800);
+	--input-background-invalid: var(--red-900);
+	--input-background: var(--gray-850);
+	--input-border-disabled: 1px solid var(--gray-800);
 	--input-border-invalid: 1px solid var(--red-700);
-	--input-border: 1px solid var(--gray-800);
-	--input-color-disabled: var(--gray-800);
-	--input-color-highlight: var(--background);
-	--input-padding: 0.5rem 1rem;
+	--input-border: 1px solid var(--background);
+	--input-color-disabled: var(--gray-600);
+	--input-color-highlight: var(--foreground);
+	--input-height: 2.6rem;
+	--input-padding-y: 0.8rem;
+	--input-padding: var(--input-padding-y) 1rem;
 	--input-shadow-focus: 0 0 0 var(--input-shadow-size) var(--gray-850);
 	--input-shadow-invalid: 0 0 0 var(--input-shadow-size) var(--red-850);
 	--input-shadow-size: 0.2rem;
@@ -133,11 +218,15 @@
 	--separator: 1px solid var(--gray-800);
 
 	--transition: 0.3s;
+
+	font-size: 16px;
 }
 
 .dark {
 	--background: var(--gray-100);
-	--foreground: var(--light);
+	--foreground: var(--gray-900);
+
+	--text-light: var(--gray-700);
 
 	--alert-error-background: var(--red-100);
 	--alert-error-border: var(--red-300);
@@ -151,11 +240,13 @@
 	--input-background-invalid: var(--red-200);
 	--input-background: var(--gray-150);
 	--input-border: 1px solid var(--background);
+	--input-border-disabled: 1px solid var(--gray-800);
+	--input-border-invalid: 1px solid var(--red-500);
 	--input-color-disabled: var(--gray-300);
 	--input-color-highlight: var(--foreground);
 	--input-color: var(--gray-700);
 	--input-shadow-focus: 0 0 0 var(--input-shadow-size) var(--gray-300);
-	--input-shadow-invalid: 0 0 0 var(--input-shadow-size) var(--red-600);
+	--input-shadow-invalid: 0 0 0 var(--input-shadow-size) var(--red-400);
 
 	--radio-check-inside-color: var(--background);
 	--radio-check-outside-color: var(--foreground);
@@ -167,15 +258,17 @@
 
 * { box-sizing: border-box; }
 
-/* div { border: 1px solid white; } */
-
-html { height: 100%; }
+html {
+	height: 100%;
+	scrollbar-color: var(--foreground) var(--background);
+}
 
 html,
 body {
 	background-color: var(--background);
 	border: 0;
 	color: var(--foreground);
+	line-height: var(--line-height);
 	margin: 0;
 	min-height: 100%;
 	padding: 0;
@@ -212,8 +305,10 @@ div.dark { background-color: var(--dark); color: var(--light); }
 .block { display: block; }
 .padded { padding: 0 2rem; }
 
+.light { color: var(--text-light); }
 .text-bold { font-weight: bold; }
 .text-center { text-align: center; }
+.text-justify { text-align: justify; }
 .w-50 { display: inline-block; width: 50% !important; }
 .w-100 { width: 100% !important; }
 
@@ -226,6 +321,8 @@ div.dark { background-color: var(--dark); color: var(--light); }
 }
 .label.green { background-color: var(--green-900); color: var(--green-300); }
 .dark .label.green { background-color: var(--green-200); color: var(--green-850); }
+.label.red { background-color: var(--red-900); color: var(--red-300); }
+.dark .label.red { background-color: var(--red-300); color: var(--red-900); }
 
 table {
 	border-collapse: separate;
@@ -250,7 +347,9 @@ input[type="submit"] {
 	cursor: pointer;
 	display: inline-block;
 	font-weight: 700;
-	padding: 1rem;
+	height: calc(1rem + 2 * var(--input-padding-y));
+	line-height: 1rem;
+	padding: var(--input-padding);
 	outline: unset !important;
 	text-align: center;
 	text-decoration: none;
@@ -261,26 +360,30 @@ input[type="submit"] {
 button:hover,
 input[type="submit"]:hover {
 	background-color: var(--gray-300);
-	color: var(--foreground);
 }
 
 .button.big,
 button.big,
 input[type="submit"].big {
 	font-size: 1rem;
+	height: unset;
 	padding: 2rem;
 }
 
 .button.primary,       button.primary       { background-color: var(--primary); }
 .button.primary:hover, button:hover.primary { background-color: var(--primary-light); }
-.button.blue,          button.blue          { background-color: var(--blue-400); }
-.button.blue:hover,    button:hover.blue    { background-color: var(--blue-500); }
-.button.green,         button.green         { background-color: var(--green-400); }
-.button.green:hover,   button:hover.green   { background-color: var(--green-500); }
-.button.lime,          button.lime          { background-color: var(--lime-400); }
-.button.lime:hover,    button:hover.lime    { background-color: var(--lime-500); }
-.button.white,         button.white         { background-color: var(--gray-900); color: var(--dark); }
-.button.white:hover,   button:hover.white   { background-color: var(--gray-800); }
+.button.blue,          button.blue          { background-color: var(--blue-500); }
+.button.blue:hover,    button:hover.blue    { background-color: var(--blue-600); }
+.button.green,         button.green         { background-color: var(--green-500); }
+.button.green:hover,   button:hover.green   { background-color: var(--green-600); }
+.button.lime,          button.lime          { background-color: var(--lime-500); }
+.button.lime:hover,    button:hover.lime    { background-color: var(--lime-600); }
+.button.red,           button.red           { background-color: var(--red-500); }
+.button.red:hover,     button:hover.red     { background-color: var(--red-600); }
+.button.yellow,        button.yellow        { background-color: var(--yellow-500); }
+.button.yellow:hover,  button:hover.yellow  { background-color: var(--yellow-600); }
+.button.white,         button.white         { background-color: var(--gray-850); color: var(--dark); }
+.button.white:hover,   button:hover.white   { background-color: var(--gray-700); }
 
 .button > svg.outline, button > svg.outline { margin-right: 0.5rem; }
 svg.outline {
@@ -299,7 +402,15 @@ svg.outline.dark { stroke: var(--dark); }
  * Forms
  */
 
-form div.group { padding: 0.5rem 0; }
+fieldset, .group {
+	border: 0;
+}
+fieldset {
+	border: 0;
+	margin: 1rem 0;
+	padding: 0;
+}
+
 form label {
 	display: block;
 	font-weight: 500;
@@ -312,10 +423,12 @@ form input[type="email"],
 form input[type="number"],
 form input[type="tel"],
 form input[type="text"] {
+	appearance: none;
 	background: var(--input-background);
 	border: var(--input-border);
 	border-radius: var(--border-radius);
 	color: var(--input-color);
+	line-height: 1;
 	overflow: hidden;
 	outline: none;
 	padding: var(--input-padding);
@@ -324,21 +437,28 @@ form input[type="text"] {
 }
 
 /* Focused/active input */
-form textarea:active,
-form textarea:focus,
 form input:active,
-form input:focus {
+form input:focus,
+form textarea:active,
+form textarea:focus {
 	box-shadow: var(--input-shadow-focus);
 	color: var(--foreground);
 }
 /* Invalid inputs */
+form input:focus:invalid,
 form input.invalid,
-form textarea.invalid,
 form textarea:focus:invalid,
-form input:focus:invalid {
+form textarea.invalid {
 	background: var(--input-background-invalid);
 	border: var(--input-border-invalid);
 	box-shadow: var(--input-shadow-invalid);
+}
+
+form input:disabled,
+form textarea:disabled {
+	background: var(--input-background-disabled);
+	border: var(--input-border-disabled);
+	color: var(--input-color-disabled);
 }
 
 /*
@@ -351,26 +471,27 @@ form input:focus:invalid {
 	overflow: clip;
 	padding: 0;
 } */
-form div.group.number > div { padding: 0; position: relative; }
+form .group.number > div { padding: 0; position: relative; }
 
-form div.group.number button {
+form .group.number button {
 	background: var(--input-background);
 	border-radius: var(--border-radius);
 	border: var(--input-border);
 	color: unset;
-	font-weight: 500;
+	font-size: 2em;
+	font-weight: normal;
 	height: 100%;
 	padding: 0;
 	position: absolute;
 	top: 0;
 	width: var(--input-control-width);
 }
-form div.group.number button:first-of-type {
+form .group.number button:first-of-type {
 	border-top-right-radius: unset;
 	border-bottom-right-radius: unset;
 	left: 0;
 }
-form div.group.number button:last-of-type {
+form .group.number button:last-of-type {
 	border-top-left-radius: unset;
 	border-bottom-left-radius: unset;
 	right: 0;
@@ -379,11 +500,11 @@ form div.group.number button:last-of-type {
 form div.group.number > div > input:focus ~ button {
 	border: var(--input-border-focus);
 } */
-form div.group.number > div > input:invalid + button,
-form div.group.number > div > input:invalid ~ button {
+form .group.number > div > input:invalid + button,
+form .group.number > div > input:invalid ~ button {
 	border: var(--input-border-invalid);
 }
-form div.group.number button:hover {
+form .group.number button:hover {
 	background-color: var(--input-background-highlight);
 	color: var(--input-color-highlight);
 }
@@ -392,7 +513,7 @@ form div.group.number button:hover {
 	flex: 1;
 } */
 
-form div.group.number > div > input.hide-controls {
+form .group.number > div > input.hide-controls {
 	-moz-appearance: textfield;
 	-webkit-appearance: none;
 	appearance: textfield;
@@ -437,42 +558,42 @@ form div.group.dropdown > div {
  * Form - Radio
  */
 
-form div.group.radio input[type="radio"] {
-	position: absolute;
-	opacity: 0;
+form .group.radio input[type="radio"] {
 	cursor: pointer;
 	height: 0;
+	opacity: 0;
+	position: absolute;
 	width: 0;
 }
-form div.group.radio {
+form .group.radio {
 	border: var(--input-border);
 	border-radius: var(--border-radius);
 	overflow: hidden;
 	padding: 0;
 }
-form div.group.radio label {
+form .group.radio label {
 	background-color: var(--input-background);
 	border-bottom: var(--input-border);
 	cursor: pointer;
 	display: block;
-	height: 100%;
+	line-height: 1rem;
 	margin: 0;
-	padding: var(--input-padding);
+	padding: 0.5rem 1rem;
 	position: relative;
 	transition: all var(--transition);
 	width: 100%;
 }
-form div.group.radio input[type="radio"]:checked + label {
+form .group.radio input[type="radio"]:checked + label {
 	background-color: var(--input-background-highlight);
 	color: var(--input-color-highlight);
 }
-form div.group.radio input[type="radio"]:disabled + label {
+form .group.radio input[type="radio"]:disabled + label {
 	background-color: var(--input-background-disabled);
 	color: var(--input-color-disabled);
 }
-form div.group.radio label:last-of-type { border: 0; }
-form div.group.radio.with-check label { padding-left: 3rem; }
-form div.group.radio.with-check label::before {
+form .group.radio label:last-of-type { border: 0; }
+form .group.radio.with-check label { padding-left: 3rem; }
+form .group.radio.with-check label::before {
 	background: white;
 	border-radius: 100%;
 	border: 1px solid var(--gray-850);
@@ -491,7 +612,7 @@ form div.group.radio.with-check label::before {
 	border-color: var(--green-400);
 	box-shadow: inset 0 0 0 0.2rem var(--green-400);
 } */
-form div.group.radio.with-check input:checked + label::before {
+form .group.radio.with-check input:checked + label::before {
 	background: var(--radio-check-inside-color);
 	border-color: var(--radio-check-outside-color);
 	box-shadow: inset 0 0 0 0.2rem var(--radio-check-outside-color);
@@ -548,6 +669,15 @@ form div.group.radio.with-check input:checked + label::before {
 .alert.error .outline { stroke: var(--alert-error-color); }
 .alert.error > div { border-left-color: var(--alert-error-color); }
 
+.badge {
+	background-color: var(--foreground);
+	border-radius: 1em;
+	color: var(--background);
+	font-weight: bold;
+	line-height: 140%;
+	padding: 0 0.5rem;
+}
+
 .separator {
 	border-top: var(--separator);
 	color: var(--foreground);
@@ -585,12 +715,12 @@ form div.group.radio.with-check input:checked + label::before {
 	.quad > * { width: 25%; }
 
 	/* Forms */
-	form .dual > div,
-	form .tria > div { padding-left: 0.5rem; padding-right: 0.5rem; }
-	form .dual > div:first-child,
-	form .tria > div:first-child { padding-left: 0; }
-	form .dual > div:last-child,
-	form .tria > div:last-child { padding-right: 0; }
+	form .dual > *,
+	form .tria > * { padding-left: 0.5rem; padding-right: 0.5rem; }
+	form .dual > *:first-child,
+	form .tria > *:first-child { padding-left: 0; }
+	form .dual > *:last-child,
+	form .tria > *:last-child { padding-right: 0; }
 
 	.dual.spaced > div,
 	.tria.spaced > div,
