@@ -15,7 +15,7 @@ class Request {
 		return array_key_exists($key, $_POST);
 	}
 
-	public static function input($key, $fallback = '') {
+	public static function input($key, $fallback = NULL) {
 		return $_REQUEST[$key] ?? $fallback;
 	}
 
