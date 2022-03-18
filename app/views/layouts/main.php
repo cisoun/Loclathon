@@ -68,7 +68,7 @@ $current_locale = Lang::locale();
 				<div class="logo"></div>
 				<small>
 					Association du Loclathon<br/>
-					2400 Le Locle<br/>
+					Le Locle, Switzerland<br/>
 					&copy; 2019 - ∞
 				</small>
 			</div>
