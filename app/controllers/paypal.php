@@ -41,7 +41,7 @@ class PayPal
 		$clientSecret = env('paypal_secret');
 		if (env('debug'))
 			return new SandboxEnvironment($clientId, $clientSecret);
-		return new LiveEnvironment($clientId, $clientSecret);
+		return new ProductionEnvironment($clientId, $clientSecret);
 	}
 
 	public static function get_approve_url($response) {
