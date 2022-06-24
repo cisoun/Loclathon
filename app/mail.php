@@ -30,7 +30,7 @@ class Mail {
 	public static function send($params)
 	{
 		// Instantiation and passing `true` enables exceptions.
-		$mail = new PHPMailer(true);
+		$mail = new PHPMailer(env('debug'));
 
 		// Server settings
 		$mail->isSMTP();
