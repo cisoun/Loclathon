@@ -7,7 +7,7 @@ class Contact {
 	}
 
 	private static function message($name, $mail, $message) {
-		return "$message\n\n$name ($mail)";
+		return "$message\n\n$name\n$mail";
 	}
 
 	public static function post($params) {
@@ -33,8 +33,8 @@ class Contact {
 				'subject'    => 'Message de ' . $name,
 				'body'       => self::message($name, $mail, $message),
 				'from'       => env('mail_user'),
-				'from_title' => $name,
-				'to'         => [],
+				'from_title' => env('title'),
+				'to'         => [env('mail_user')],
 				'bcc'        => env('agents'),
 				'html'       => false,
 			]);
