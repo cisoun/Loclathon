@@ -51,10 +51,9 @@ nav > ul > li > ul {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	line-height: 0;
 	overflow: hidden;
-	padding-top: 12rem;
 	text-align: center;
+	height: 800px;
 }
 #loclathon .fade {
 	background: linear-gradient(#000, transparent);
@@ -63,6 +62,13 @@ nav > ul > li > ul {
 	left: 0;
 	width: 100%;
 	height: 10rem;
+}
+#loclathon #bottom {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	pointer-events: none;
 }
 #loclathon > #logo {
 	display: block;
@@ -77,8 +83,6 @@ nav > ul > li > ul {
 	color: var(--gray-900);
 	display: inline-block;
 	font-weight: bold;
-	line-height: 2rem;
-	padding: 1rem 2rem;
 	text-decoration: none;
 	transition: all var(--transition);
 }

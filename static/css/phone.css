@@ -52,4 +52,4 @@ nav > ul > li > ul > li > a { margin-bottom: 1px; padding: 1rem 3rem; }
 footer > div > div:not(div:first-child) { margin-top: 2rem; }
 footer a { border-top: 1px solid var(--gray-150); padding: 1rem 0; }
 
-#loclathon .button { margin: 5rem; }
+#loclathon #learn_more { margin: 5rem; }

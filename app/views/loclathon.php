@@ -8,7 +8,6 @@ $next = __('loclathon.next');
 #loclathon > div > img { width: 100%; }
 .bigger { font-size: 1.2rem; }
 #tour_warning { font-weight: bold; }
-#bottom { width: 100%; }
 @keyframes clouds {
   from {transform: translateX(0px);}
   to {transform: translateX(10px);}
@@ -39,8 +38,10 @@ $next = __('loclathon.next');
 <block content>
 <main id="loclathon">
 	<div class="fade"></div>
+	
 	<img id="logo" class="container" src="/static/img/home.{{lang}}.svg" alt="Le Loclathon" width="100%" height="100%"/>
-	<a href="#about" class="button big"><?= __('loclathon.learn_more') ?> <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
+	<a id="learn_more" href="#about" class="button big"><?= __('loclathon.learn_more') ?> <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
+
 	<svg id="bottom" version="1.1" viewBox="0 0 158.75 26.458" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 		<defs>
 			<linearGradient id="gradient" x1="158.75" x2="158.75" y1="26.458" y2="14.784" gradientUnits="userSpaceOnUse">
