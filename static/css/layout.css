@@ -689,7 +689,7 @@ form .group.radio.with-check input:checked + label::before {
 .separator > span {
 	background-color: var(--background);
 	display: inline-block;
-	margin-top: -1rem;
+	margin-top: -2rem;
 	padding: 0 1rem;
 	vertical-align: middle;
 }
