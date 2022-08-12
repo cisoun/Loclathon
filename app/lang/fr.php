@@ -135,6 +135,11 @@ return [
 		'local'             => 'Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).',
 		'pickup'            => 'Vous venez cherchez vos articles au dépôt.<br>Les instructions vous seront transmises par mail.',
 		'post'              => 'Livraison par la Poste Suisse.'
-	]
+	],
+	'tracker.current'       => 'Étape actuelle',
+	'tracker.next'          => 'Prochaine étape',
+	'tracker.where'         => "C'est où ?",
+	'tracker.warning'       => 'Attention',
+	'tracker.warning_info'  => 'La position est approximative et non calculée en temps-réel. Dans le doute, venir à la prochaine fontaine 20 minutes avant notre arrivée. ',
 ];
 ?>

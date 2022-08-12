@@ -12,7 +12,8 @@ a:hover { color: var(--gray-900); }
 #photos,
 #shop,
 #contact,
-#covid { padding-top: 10rem; }
+#covid,
+#tracker { padding-top: 10rem; }
 footer { margin-top: 10rem; }
 
 nav {

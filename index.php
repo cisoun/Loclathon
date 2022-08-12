@@ -22,6 +22,7 @@ switch (method()) {
 		route('/:lang/shop/confirm',      with_lang(call('Shop::confirm')));
 		route('/:lang/contact',           with_lang(call('Contact::show')));
 		// route('/:lang/inscription',  with_lang(view_cached('covid')));
+		route('/:lang/tracker',           with_lang(view('tracker')));
 		break;
 	case 'POST':
 		route('/:lang/contact',           with_lang(call('Contact::post')));

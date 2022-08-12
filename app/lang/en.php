@@ -90,7 +90,7 @@ return [
 		'CH'                => 'Switzerland',
 		'FR'                => 'France'
 	],
-	'shop.errors'            => [
+	'shop.errors'           => [
 		"<b>Oops!</b> The form is incomplete.",
 		'<b>Oops!</b> The mail addresses are not valid.',
 		'<b>Oops!</b> The mail addresses do not match.',
@@ -136,6 +136,11 @@ return [
 		'local'             => 'Only for Le Locle and La Chaux-de-Fonds (Switzerland).',
 		'pickup'            => 'You come at our warehouse to get your articles.<br>Instructions will be sent by mail.',
 		'post'              => 'Delivery by the Swiss Post.'
-	]
+	],
+	'tracker.current'       => 'Current step',
+	'tracker.next'          => 'Next step',
+	'tracker.where'         => 'Where is it?',
+	'tracker.warning'       => 'Warning',
+	'tracker.warning_info'  => 'The position is approximate and not calculated in real time. We advise to come to the next fountain 20 minutes before our arrival.',
 ];
 ?>

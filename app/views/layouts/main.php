@@ -109,6 +109,8 @@ $current_locale = Lang::locale();
 		navTrigger.onclick = () => {
 			nav.classList.toggle('toggled');
 		}
+
+		<? js ?>
 	</script>
 </body>
 </html>
