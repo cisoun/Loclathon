@@ -10,6 +10,7 @@ switch (method()) {
 	case 'GET':
 		route('/',                        redirect('/' . Lang::user()));
 		route('/locloise',                redirect('/' . Lang::user() . '/locloise'));
+		route('/tracker',                 redirect('/' . Lang::user() . '/tracker'));
 		route('/:lang',                   with_lang(view_cached('loclathon')));
 		route('/:lang/locloise',          with_lang(view_cached('locloise')));
 		route('/:lang/photos',            with_lang(view_cached('albums')));
