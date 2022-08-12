@@ -27,7 +27,7 @@ switch (method()) {
 	case 'POST':
 		route('/:lang/contact',           with_lang(call('Contact::post')));
 		route('/:lang/shop',              with_trim(with_lang(call('Shop::checkout'))));
-		route('/:lang/inscription',       with_lang(view('covid')));
+		// route('/:lang/inscription',       with_lang(view('covid')));
 		route('/:lang/shop/cart/add/:id', call('Shop::cart_add'));
 		route('/:lang/shop/cart',         with_lang(call('Shop::cart')));
 		route('/:lang/shop/checkout',     with_lang(call('Shop::checkout')));
