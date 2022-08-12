@@ -367,7 +367,7 @@ button.big,
 input[type="submit"].big {
 	font-size: 1rem;
 	height: unset;
-	padding: 2rem;
+	padding: 1.5rem 2rem;
 }
 
 .button.primary,       button.primary       { background-color: var(--primary); }
@@ -385,7 +385,6 @@ input[type="submit"].big {
 .button.white,         button.white         { background-color: var(--gray-850); color: var(--dark); }
 .button.white:hover,   button:hover.white   { background-color: var(--gray-700); }
 
-.button > svg.outline, button > svg.outline { margin-right: 0.5rem; }
 svg.outline {
 	--outline-fill: none;
 	height: var(--icon-size);

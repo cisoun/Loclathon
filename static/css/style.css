@@ -52,8 +52,8 @@ nav > ul > li > ul {
 	background-repeat: no-repeat;
 	background-size: cover;
 	overflow: hidden;
+	padding-top: 12rem;
 	text-align: center;
-	height: 800px;
 }
 #loclathon .fade {
 	background: linear-gradient(#000, transparent);
@@ -64,19 +64,26 @@ nav > ul > li > ul {
 	height: 10rem;
 }
 #loclathon #bottom {
-	width: 100%;
-	position: absolute;
 	bottom: 0;
+	height: 300px;
 	left: 0;
 	pointer-events: none;
+	position: relative;
+	width: 100%;
+}
+#loclathon #bottom svg {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	width: 100%;
 }
 #loclathon > #logo {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
-#loclathon .button {
-	background-color: var(--red-500);
+#loclathon #learn_more {
+	background-color: var(--red-400);
 	border-radius: unset;
 	border: 0;
 	box-shadow: 0 1rem 3rem var(--gray-100);
@@ -86,13 +93,13 @@ nav > ul > li > ul {
 	text-decoration: none;
 	transition: all var(--transition);
 }
-#loclathon .button:hover {
+#loclathon #learn_more:hover {
 	background-color: var(--foreground);
 	color: var(--background);
 	transform: scale(1.1) skewY(-3deg);
 }
-#loclathon .button svg { transition: var(--transition); }
-#loclathon .button:hover svg { stroke: var(--background); }
+#loclathon #learn_more svg { transition: var(--transition); }
+#loclathon #learn_more:hover svg { stroke: var(--background); }
 #about { padding-top: 6rem; }
 #about > div:first-child { text-align: justify; }
 

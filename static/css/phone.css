@@ -47,9 +47,5 @@ nav > ul > li > ul > li { background-color: var(--gray-150); }
 /* Submenu item link */
 nav > ul > li > ul > li > a { margin-bottom: 1px; padding: 1rem 3rem; }
 
-
-
 footer > div > div:not(div:first-child) { margin-top: 2rem; }
 footer a { border-top: 1px solid var(--gray-150); padding: 1rem 0; }
-
-#loclathon #learn_more { margin: 5rem; }
