@@ -1,5 +1,11 @@
 <?php
 class Response {
+	public static function json($data, $code = 200) {
+		header('Content-Type: application/json; charset=utf-8');
+		http_response_code($code);
+		echo json_encode($data);
+	}
+
 	public static function location($url) {
 		header('Location: ' . $url);
 	}
