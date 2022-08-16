@@ -67,10 +67,10 @@ if (now > '20.08.2022 09:00' && now < '20.08.2022 21:00') {
 
 <block content>
 <div id="modal" class="modal">
-	<h1>Ça a commencé !</h1>
+	<h1><?= __('loclathon.modal.title') ?></h1>
 	<div>
-		<a href="/{{lang}}/tracker" class="button">Voir où nous sommes</a>
-		<a href="#" class="button white" data-dismiss>Ignorer</a>
+		<a href="/{{lang}}/tracker" class="button"><?= __('loclathon.modal.see') ?></a>
+		<a href="#" class="button white" data-dismiss><?= __('loclathon.modal.hide') ?></a>
 	</div>	
 </div>
 <main id="loclathon">

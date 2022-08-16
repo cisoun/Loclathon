@@ -37,6 +37,9 @@ return [
 		'Nous vous demandons également de prendre des masques et du gel hydroalcoolique. Merci pour votre compréhension!'
 	],
 	'loclathon.learn_more'  => 'En savoir plus',
+	'loclathon.modal.title' => 'Ça a commencé !',
+	'loclathon.modal.see'   => 'Voir où nous sommes',
+	'loclathon.modal.hide'  => 'Ignorer',
 	'loclathon.next'        => [
 		'Date : <b>20 août 2022</b>',
 		'Rendez-vous : <b>gare du Locle, 09h00 - 09h15</b>',

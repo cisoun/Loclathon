@@ -37,6 +37,9 @@ return [
 		'We also ask you to take masks and hydroalcoholic gel. Thank you for your understanding!'
 	],
 	'loclathon.learn_more'  => 'Learn more',
+	'loclathon.modal.title' => 'It started!',
+	'loclathon.modal.see'   => 'See where we are',
+	'loclathon.modal.hide'  => 'Ignore',
 	'loclathon.next'        => [
 		'When: <b>20 August 2022</b>',
 		'Where: <b>Le Locle train station, 09:00 - 09:15</b>',
