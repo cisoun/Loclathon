@@ -203,6 +203,14 @@ class Shop {
 			$cart[$id] = 0;
 		}
 
+		$articles = Articles::all();
+		$article  = Articles::find($articles, $id);
+		$state = $article['state'];
+		if ($state == self::STATE_SOLDOUT ||
+			$state == self::STATE_UNAVAILABLE) {
+			return Response::json(['error' => 'Unauthorized'], 403);
+		}
+
 		$cart[$id] += intval($units);
 
 		Session::set(self::CART, $cart);
@@ -256,10 +264,22 @@ class Shop {
 	}
 
 	private static function cart_update($cart) {
-		// Remove articles at 0 units.
+		$articles = Articles::all();
+
 		foreach ($cart as $id => $units) {
+			// Remove articles at 0 units.
 			if ($units == 0) {
 				unset($cart[$id]);
+				continue;
+			}
+
+			// Remove articles that are unavailable.
+			$article = Articles::find($articles, $id);
+			$state = $article['state'];
+			if ($state == self::STATE_SOLDOUT ||
+				$state == self::STATE_UNAVAILABLE) {
+				unset($cart[$id]);
+				continue;
 			}
 		}
 
