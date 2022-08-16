@@ -2,8 +2,11 @@
 $bubbles = __('loclathon.bubbles');
 $next = __('loclathon.next');
 ?>
+
 <extend>layouts/main</extend>
+
 <block title>La tournée des fontaines</block>
+
 <block css>
 #loclathon > div > img { width: 100%; }
 .bigger { font-size: 1.2rem; }
@@ -27,6 +30,33 @@ $next = __('loclathon.next');
 	color: white;
 	display: block;
 }
+
+.modal {
+	display: none;
+	text-align: center;
+}
+.modal div {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+}
+.modal div a { width: 100%; }
+@media only screen and (max-width: 992px) {
+	.modal div {
+		flex-wrap: wrap;
+	}
+}
+</block>
+
+<block js>
+const now = new Date().toLocaleString('ch');
+if (now > '20.08.2022 09:00' && now < '20.08.2022 21:00') {
+	const modal = document.getElementById('modal');
+	modal.style.display = 'unset';
+	modal.querySelector('[data-dismiss]').addEventListener('click', e => {
+		modal.style.display = 'none';
+	});
+}
 </block>
 
 <block ogd>
@@ -36,9 +66,16 @@ $next = __('loclathon.next');
 </block>
 
 <block content>
+<div id="modal" class="modal">
+	<h1>Ça a commencé !</h1>
+	<div>
+		<a href="/{{lang}}/tracker" class="button">Voir où nous sommes</a>
+		<a href="#" class="button white" data-dismiss>Ignorer</a>
+	</div>	
+</div>
 <main id="loclathon">
 	<div class="fade"></div>
-	
+
 	<img id="logo" class="container" src="/static/img/home.{{lang}}.svg" alt="Le Loclathon" width="100%" height="100%"/>
 	<a id="learn_more" href="#about" class="button big"><?= __('loclathon.learn_more') ?> <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
 	

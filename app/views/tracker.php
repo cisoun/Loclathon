@@ -94,15 +94,15 @@
 <block content>
 <main id="tracker" class="dual container spaced padded">
 <div>
-	<div class="info">
+	<div id="current" class="info">
 		<b><?= __('tracker.current') ?></b>
-		<h1 id="current"></h1>
+		<h1 id="current_name"></h1>
 		<h3 id="current_time"></h3>
 		<a id="current_location" target="_blank" class="button"><?= __('tracker.where') ?></a>
 	</div>
-	<div class="info">
+	<div id="next" class="info">
 		<b><?= __('tracker.next') ?></b>
-		<h1 id="next"></h1>
+		<h1 id="next_name"></h1>
 		<h3 id="next_time"></h3>
 		<a id="next_location"target="_blank" class="button"><?= __('tracker.where') ?></a>
 	</div>
@@ -164,17 +164,23 @@ const FOUNTAINS = data.length;
 const HEIGHT    = 200;
 const STEPS_TOP = 43;
 
+let currentIndex    = -1;
+let currentFountain = data[0];
+let nextFountain    = data[1];
+
 const $ = (id) => document.getElementById(id);
 
 const ui = {
 	container:        $('container'),
 	current:          $('current'),
 	current_location: $('current_location'),
+	current_name:     $('current_name'),
 	current_time:     $('current_time'),
 	dark:             $('progress_total'),
 	done:             $('progress_done'),
 	next:             $('next'),
 	next_location:    $('next_location'),
+	next_name:        $('next_name'),
 	next_time:        $('next_time'),
 	point:            $('progress_point'),
 	progress:         $('progress'),
@@ -211,12 +217,13 @@ function deactivate (id) {
 }
 
 function getCurrentFountainIndex (currentTime) {
-	for (let i = 0; i < data.length - 1; i++) {
+	for (let i = 0; i < FOUNTAINS - 1; i++) {
 		const time = data[i + 1][4];
 		if (time >= currentTime) {
 			return i;
 		}
 	}
+	return FOUNTAINS - 1;
 }
 
 function getTime (time) {
@@ -226,32 +233,64 @@ function getTime (time) {
 	return h * 3600 + m * 60 + s;
 }
 
+function setPosition(y) {
+	ui.done.y2.baseVal.value  = 
+	ui.point.cy.baseVal.value = y + STEPS_TOP;
+}
+
+let now = Date.now();
+
+function getCurrentTime () {
+	return getTime(new Date().toTimeString().slice(0, 8));
+	// DEBUG:
+	// return 20 * 3600 + (Date.now() - now) / 1000 * 720;
+}
+
 function update () {
-	const currentTime = getTime(new Date().toTimeString().slice(0, 8));
+	const currentTime = getCurrentTime();
 	const index = getCurrentFountainIndex(currentTime);
 
-	// Deactivate done fountains.
-	for (let i = 0; i < index + 1; i++) {
-		deactivate(i);
+	if (index > currentIndex) {
+		currentIndex = index;
+		if (index < 27) {
+			deactivate(index);
+		}
+
+		currentFountain = data[index];
+		nextFountain    = data[index + 1] || null;
+
+		updateLocation(currentFountain, nextFountain);
 	}
 
-	const currentFountain = data[index];
-	const nextFountain    = data[index + 1];
+	// Ignore when out of timeframe.
+	if (index < 0)          return setPosition(0);
+	if (index >= FOUNTAINS) return setPosition(27 * HEIGHT);
 
-	const a = nextFountain[4]; 
+	if (!nextFountain) return;
+	
+	const a = nextFountain[4];
 	const b = currentFountain[4];
-	const delta = (currentTime - b) / (a - b);
-	const y = STEPS_TOP + (HEIGHT * index) + (HEIGHT * delta);
+	const delta = Math.max((currentTime - b) / (a - b), 0);
+	const y = (HEIGHT * index) + (HEIGHT * delta);
 
-	ui.done.y2.baseVal.value  = 
-	ui.point.cy.baseVal.value = Math.max(y, STEPS_TOP);
+	setPosition(y);
+}
 
-	ui.current.innerHTML      = currentFountain[0];
-	ui.current_location.href  = url(currentFountain);
-	ui.current_time.innerHTML = currentFountain[3];
-	ui.next.innerHTML         = nextFountain[0];
-	ui.next_location.href     = url(nextFountain);
-	ui.next_time.innerHTML    = nextFountain[3];
+function updateLocation (current, next) {
+	ui.current.style.display = current !== null ? 'block' : 'none';
+	ui.next.style.display = next !== null ? 'block' : 'none';
+
+	if (current) {
+		ui.current_location.href  = url(currentFountain);
+		ui.current_name.innerHTML = currentFountain[0];
+		ui.current_time.innerHTML = currentFountain[3];
+	}
+
+	if (next) {
+		ui.next_location.href  = url(nextFountain);
+		ui.next_name.innerHTML = nextFountain[0];
+		ui.next_time.innerHTML = nextFountain[3];
+	}
 }
 
 function url (fountain) {
@@ -266,8 +305,14 @@ ui.dark.y2.baseVal.value           = HEIGHT * (FOUNTAINS - 1) + STEPS_TOP;
 ui.progress.viewBox.baseVal.height = HEIGHT * FOUNTAINS;
 ui.progress.style.height           = ui.progress.viewBox.baseVal.height + 'px';
 
+setPosition(0);
+const index = getCurrentFountainIndex(getCurrentTime());
+for (let i = 0; i < index; i++) {
+	deactivate(i);
+}
+
 update();
 
-setInterval(() => update(), 1000);
+setInterval(() => update(), 200);
 
 </block>

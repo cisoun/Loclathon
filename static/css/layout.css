@@ -693,6 +693,20 @@ form .group.radio.with-check input:checked + label::before {
 	vertical-align: middle;
 }
 
+.modal {
+	background-color: var(--foreground);
+	border-radius: var(--border-radius);
+	box-shadow: 0 10px 30px;
+	color: var(--background);
+	left: 0;
+	margin: 1rem;
+	padding: 2rem;
+	position: absolute;
+	top: 5rem;
+	width: calc(100% - 2rem);
+	z-index: 100;
+}
+
 /* Phones */
 @media screen and (max-width: 600px) {
 	.container { width: 100%; }
@@ -732,6 +746,12 @@ form .group.radio.with-check input:checked + label::before {
 	.dual.spaced > div:last-child,
 	.tria.spaced > div:last-child,
 	.quad.spaced > div:last-child { padding-right: 0; }
+
+	.modal {
+		left: calc(50% - 300px);
+		max-width: 600px;
+		top: 8rem;
+	}
 }
 
 /* Extra small devices (phones, 600px and down) */
