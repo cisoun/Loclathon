@@ -43,7 +43,7 @@ $max = rand(1, 5);
 $_SESSION['check'] = strval($min + $max);
 ?>
 
-<extend>layouts/main</extend>
+<extend layouts/main>
 
 <block title>Inscription</block>
 

@@ -1,4 +1,4 @@
-<extend>layouts/shop</extend>
+<extend layouts/shop>
 <block css>
 #shop { padding: 5rem; text-align: center; }
 </block>

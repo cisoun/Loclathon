@@ -1,4 +1,4 @@
-<extend>layouts/main</extend>
+<extend layouts/main>
 
 <block title><?= __('menu.shop') ?></block>
 
@@ -26,9 +26,8 @@
 <? subnav ?>
 </block>
 
-
 <block content>
 <main id="shop" class="container padded dark">
-	<? content ?>
+<? content ?>
 </main>
 </block>

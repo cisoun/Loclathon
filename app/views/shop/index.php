@@ -14,7 +14,7 @@ $articles_count = array_sum(array_values($cart));
 ?>
 
 ?>
-<extend>layouts/shop</extend>
+<extend layouts/shop>
 
 <block css>
 .article {

@@ -44,7 +44,7 @@ class Layout {
 	}
 
 	private static function search_extend($content) {
-		if (preg_match('/^<extend>(.*)?(?=<\/extend>)/im', $content, $matches))
+		if (preg_match('/^<extend\s+(.*)?(?=>)/im', $content, $matches))
 			return $matches[1];
 		return false;
 	}

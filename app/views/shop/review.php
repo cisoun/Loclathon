@@ -5,7 +5,7 @@ $shipping = $params['shipping'];
 $articles = $params['articles'];
 $total = $params['total'];
 ?>
-<extend>layouts/shop</extend>
+<extend layouts/shop>
 <block css>
 #shop table {
 	width: 100%;

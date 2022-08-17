@@ -18,7 +18,7 @@ function variant($variant) {
 }
 ?>
 
-<extend>layouts/shop</extend>
+<extend layouts/shop>
 
 <block css>
 #picture { width: 100%; }

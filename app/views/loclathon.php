@@ -3,7 +3,7 @@ $bubbles = __('loclathon.bubbles');
 $next = __('loclathon.next');
 ?>
 
-<extend>layouts/main</extend>
+<extend layouts/main>
 
 <block title>La tournée des fontaines</block>
 
@@ -105,8 +105,10 @@ if (now > '20.08.2022 09:00' && now < '20.08.2022 21:00') {
 	<div>
 		<h1><?= __('loclathon.next.title') ?></h1>
 		<p class="bigger"><?= $next[0] ?><br><?= $next[1] ?></p>
-		<!-- <p><?= $next[2] ?></p> -->
-		<!-- <p id="tour_warning"><?= $next[3] ?></p> -->
+		<p><?= $next[2] ?></p>
+		<?php if ($covid): ?>
+		<p id="tour_warning"><?= $next[3] ?></p>
+		<?php endif ?>
 		<h1><?= __('loclathon.about.title') ?></h1>
 		<?php foreach (__('loclathon.about') as $line): ?>
 		<p><?= $line ?></p>
@@ -123,7 +125,9 @@ if (now > '20.08.2022 09:00' && now < '20.08.2022 21:00') {
 			<div class="right"><span class="bubble"><?= $bubbles[5] ?></span><span class="logo"></span></div>
 			<div class="left"><span class="bubble"><?= $bubbles[6] ?></span></div>
 			<div class="right"><span class="bubble"><?= $bubbles[7] ?></span><span class="logo"></span></div>
-			<!-- <div class="right"><span class="bubble text-bold"><?= $bubbles[8] ?></span><span class="logo"></span></div> -->
+			<?php if ($covid): ?>
+			<div class="right"><span class="bubble text-bold"><?= $bubbles[8] ?></span><span class="logo"></span></div>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

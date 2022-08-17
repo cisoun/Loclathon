@@ -1,4 +1,4 @@
-<extend>layouts/main</extend>
+<extend layouts/main>
 
 <block title>Tracker</block>
 

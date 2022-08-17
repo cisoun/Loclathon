@@ -39,7 +39,7 @@ $input = function($id) use ($form, $params) {
 }
 ?>
 
-<extend>layouts/shop</extend>
+<extend layouts/shop>
 
 <block title><?= __('menu.shop') ?></block>
 

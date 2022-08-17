@@ -1,5 +1,6 @@
-<extend>layouts/main</extend>
 <block title>Albums</block>
+<extend layouts/main>
+
 
 <block css>
 .photos { text-align: center; }

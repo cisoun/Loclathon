@@ -1,4 +1,4 @@
-<extend>layouts/shop</extend>
+<extend layouts/shop>
 <block css>
 #shop { text-align: center; }
 </block>

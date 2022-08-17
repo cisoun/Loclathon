@@ -6,7 +6,8 @@ $date = [
 ];
 ?>
 
-<extend>layouts/photos</extend>
+<extend layouts/photos>
+
 <block title>{{ year }}</block>
 
 <block css>

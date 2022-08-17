@@ -2,7 +2,7 @@
 $cart = $params['data'];
 ?>
 
-<extend>layouts/shop</extend>
+<extend layouts/shop>
 
 <block css>
 .article {

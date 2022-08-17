@@ -8,7 +8,7 @@ $min     = $params['min'];
 $max     = $params['max'];
 ?>
 
-<extend>layouts/main</extend>
+<extend layouts/main>
 
 <block title>Contact</block>
 

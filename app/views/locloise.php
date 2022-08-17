@@ -2,8 +2,11 @@
 $description = __('locloise.description');
 $details = __('locloise.details');
 ?>
-<extend>layouts/main</extend>
+
+<extend layouts/main>
+
 <block title>La Locloise</block>
+
 <block css>
 ul.breadcrumb {
 	background-color: var(--gray-100);
@@ -46,6 +49,7 @@ ul.breadcrumb li:not(:last-child) {
 	opacity: 1;
 }
 </block>
+
 <block content>
 <main id="locloise" class="dual dark">
 	<div>
