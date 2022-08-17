@@ -1,6 +1,6 @@
-<block title>Albums</block>
 <extend layouts/main>
 
+<block title>Albums <? title ?></block>
 
 <block css>
 .photos { text-align: center; }
