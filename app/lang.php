@@ -61,7 +61,7 @@ class Lang {
 	 * Return the user's locale.
 	 */
 	public static function user() {
-		return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+		return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? env('locale'), 0, 2);
 	}
 
 	/**
