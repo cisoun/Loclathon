@@ -7,7 +7,7 @@ $payments = __('shop.payments');
 $shippings = __('shop.shippings');
 ?>
 
-<extend>layouts/email</extend>
+<extend layouts/email>
 
 <block css>
 h3 { margin-top: 2em; }
