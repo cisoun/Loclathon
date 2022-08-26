@@ -428,6 +428,9 @@ class Shop {
 		$params = array_merge($form, $params);
 
 		$cart = Session::get(self::CART);
+		if (!$cart) {
+			return Response::location("/{$params['lang']}/shop", $params);
+		}
 
 		$articles = Articles::all();
 		$data = [];
