@@ -103,7 +103,6 @@ h3 { margin-top: 2em; }
 </p>
 <p>
 	<b><?= $m['bank_account'] ?></b><br>
-	RUBI MATHIEU<br>
 	ASSOCIATION DU LOCLATHON<br>
 	CH27 0900 0000 1544 2657 0
 </p>
