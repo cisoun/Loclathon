@@ -313,6 +313,6 @@ for (let i = 0; i < index; i++) {
 
 update();
 
-setInterval(() => update(), 200);
+setInterval(() => update(), 2000);
 
 </block>
