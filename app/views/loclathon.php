@@ -1,11 +1,18 @@
 <?php
 $bubbles = __('loclathon.bubbles');
 $next = __('loclathon.next');
+$highlights = __('loclathon.highlights');
 ?>
 
 <extend layouts/main>
 
 <block title>La tournée des fontaines</block>
+
+<block preload>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</block>
 
 <block css>
 #loclathon > div > img { width: 100%; }
@@ -46,6 +53,37 @@ $next = __('loclathon.next');
 		flex-wrap: wrap;
 	}
 }
+:root {
+	--highlights-gap: 0.5rem;
+}
+#highlights {
+	display: flex;
+	flex-direction: column;
+	gap: var(--highlights-gap);
+	margin: auto;
+	margin-bottom: 6rem;
+	margin-top: -6rem;
+	max-width: 880px;
+	transform: skewY(-3deg);
+	width: 100%;
+}
+#highlights > div {
+	display: flex;
+	gap: var(--highlights-gap);
+}
+#highlights span {
+	background-color: black;
+	color: white;
+	flex-grow: 1;
+	font-family: 'Bebas Neue', impact, sans-serif;
+	font-size: 2.4rem;
+	padding: 1rem 0;
+}
+@media only screen and (max-width: 992px) {
+	#highlights { margin-top: -5vw; }
+	#highlights > div { flex-direction: column; padding: 0 2rem; }
+	#highlights span { font-size: 1.6rem; padding: 1rem 2rem; }
+}
 </block>
 
 <block js>
@@ -76,9 +114,13 @@ if (now > '20.08.2022 09:00' && now < '20.08.2022 21:00') {
 <main id="loclathon">
 	<div class="fade"></div>
 
-	<img id="logo" class="container" src="/static/img/home.{{lang}}.svg" alt="Le Loclathon" width="100%" height="100%"/>
+	<img id="logo" class="container" src="/static/img/home.svg" alt="Le Loclathon" width="100%" height="100%"/>
+	<div id="highlights">
+		<div><span><?= $highlights[0] ?></span><span><?= $highlights[1] ?></span><span><?= $highlights[2] ?></span></div>
+		<div><span><?= $highlights[3] ?></span><span><?= $highlights[4] ?></span></div>
+	</div>
 	<a id="learn_more" href="#about" class="button big"><?= __('loclathon.learn_more') ?> <svg class="outline"><use xlink:href="static/img/icons.svg#circle-plus"/></svg></a>
-	
+
 	<div id="bottom">
 		<svg version="1.1" viewBox="0 0 158.75 26.458" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<defs>

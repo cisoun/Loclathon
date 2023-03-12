@@ -36,6 +36,7 @@ return [
 		'Boisson de votre choix, un verre et de bonnes chaussures. De quoi manger éventuellement. Vous pouvez également acheter à manger lors de la pause de midi au centre-ville.',
 		'Nous vous demandons également de prendre des masques et du gel hydroalcoolique. Merci pour votre compréhension!'
 	],
+	'loclathon.highlights'  => ['27 fontaines', '12 heures de bonne ambiance', '25 kilomètres', '10e tournée le 19 août 2023', '26 août en cas de mauvais temps'],
 	'loclathon.learn_more'  => 'En savoir plus',
 	'loclathon.modal.title' => 'Ça a commencé !',
 	'loclathon.modal.see'   => 'Voir où nous sommes',

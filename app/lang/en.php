@@ -36,6 +36,7 @@ return [
 		'Drink of your choice, a glass and a good pair of shoes. Something to eat eventually. You can also buy food at noon when we arrive at the city center.',
 		'We also ask you to take masks and hydroalcoholic gel. Thank you for your understanding!'
 	],
+	'loclathon.highlights'  => ['27 fountains', '12 hours of walk and fun', '25 kilometers', '10th tour the 19 August 2023', '26 August in case of bad weather'],
 	'loclathon.learn_more'  => 'Learn more',
 	'loclathon.modal.title' => 'It started!',
 	'loclathon.modal.see'   => 'See where we are',
