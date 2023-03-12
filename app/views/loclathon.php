@@ -87,8 +87,8 @@ $highlights = __('loclathon.highlights');
 </block>
 
 <block js>
-const now = new Date().toLocaleString('ch');
-if (now > '20.08.2022 09:00' && now < '20.08.2022 21:00') {
+const now = new Date().toISOString();
+if (now > '2023-08-19T09:00' && now < '2023-08-19T21:00') {
 	const modal = document.getElementById('modal');
 	modal.style.display = 'unset';
 	modal.querySelector('[data-dismiss]').addEventListener('click', e => {
