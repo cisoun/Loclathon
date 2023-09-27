@@ -76,6 +76,23 @@ ul.breadcrumb li:not(:last-child) {
 			<svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg>
 			<?= __('locloise.buy') ?>
 		</a>
+		<div class="separator"></div>
+		<h2><?= __('locloise.resellers') ?></h2>
+		<div class="dual">
+			<div>
+				<h3>Le Locle</h3>
+				<ul>
+					<li><a href="https://www.facebook.com/profile.php?id=100063500294476">L'épicerie de Marie</a></li>
+					<li><a href="https://apero-clock.ch/">L'ApérO'clock</a></li>
+				</ul>
+			</div>
+			<div>
+				<h3>Peseux</h3>
+				<ul>
+					<li><a href="https://linsolite.ch">L'INSOLITE</a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </main>
 </block>

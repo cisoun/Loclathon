@@ -61,6 +61,7 @@ return [
 		'Alcohol: <b>54 %</b>',
 		'Taste: <b>minty, fresh</b>'
 	],
+	'locloise.resellers'    => 'Resellers',
 	'menu.contact'          => 'Contact',
 	'menu.photos'           => 'Photos',
 	'menu.shop'             => 'Shop',

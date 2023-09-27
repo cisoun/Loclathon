@@ -61,6 +61,7 @@ return [
 		'Alcool : <b>54 %</b>',
 		'Goût : <b>mentholé, frais</b>'
 	],
+	'locloise.resellers'    => 'Revendeurs',
 	'menu.contact'          => 'Contact',
 	'menu.photos'           => 'Photos',
 	'menu.shop'             => 'Magasin',
