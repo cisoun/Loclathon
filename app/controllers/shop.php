@@ -391,7 +391,7 @@ class Shop {
 			// PayPal may change the payment prices if the user pays by
 			// credit card. Update the prices.
 			$params['paypal_order_id'] = $order_id;
-			$params['payment_fees']   += PayPal::get_taxes_amount($response);
+			$params['payment_fees']    = PayPal::get_taxes_amount($response);
 			$params['total']           = PayPal::get_total_amount($response);
 		}
 
