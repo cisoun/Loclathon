@@ -55,6 +55,7 @@ $classes = [
 	// Core classes.
 	// DO NOT EDIT!
 	'Cache'      => 'cache',
+	'Helpers'    => 'helpers',
 	'HTML'       => 'html',
 	'Lang'       => 'lang',
 	'Layout'     => 'layout',
@@ -63,6 +64,7 @@ $classes = [
 	'Response'   => 'response',
 	'Router'     => 'router',
 	'Session'    => 'session',
+	'Statics'    => 'statics',
 	'Validation' => 'validation',
 
 	// Controller classes.

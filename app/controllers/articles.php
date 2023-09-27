@@ -48,9 +48,9 @@ class Articles {
 	public static function preview($article) {
 		$parent_id = $article['parent_id'];
 		if ($parent_id) {
-			return '/static/img/shop/' . $parent_id . '.png';
+			return Statics::images('shop/small/' . $parent_id . '.png');
 		}
-		return '/static/img/shop/' . $article['id'] . '.png';
+		return Statics::images('shop/small/' . $article['id'] . '.png');
 	}
 
 	public static function pictures($article) {
