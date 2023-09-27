@@ -1,5 +1,6 @@
 <?php
-$date = [
+$dates = [
+	'2023' => '19 août 2023',
 	'2022' => '20 août 2022',
 	'2021' => '21 août 2021',
 	'2020' => '5 septembre 2020',
@@ -17,7 +18,7 @@ $date = [
 
 <block header>
 <h1>{{ year }}</h1>
-Tournée du <?php echo $date[$params['year']]; ?>.
+Tournée du <?php echo $dates[$params['year']]; ?>.
 </block>
 
 <block grid>
@@ -30,6 +31,6 @@ Tournée du <?php echo $date[$params['year']]; ?>.
 	});
 	foreach ($files as $file):
 ?>
-<a href="/static/photos/{{ year }}/<?php echo $file; ?>" target="_blank"><img src="/static/photos/{{ year }}/min/<?php echo $file; ?>"/></a>
+<a href="/static/photos/{{ year }}/<?php echo $file; ?>" target="_blank"><img src="/static/photos/{{ year }}/min/<?= $file; ?>"/></a>
 <?php endforeach; ?>
 </block>

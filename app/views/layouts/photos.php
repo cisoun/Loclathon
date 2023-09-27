@@ -8,8 +8,8 @@
 #photos h1 { margin-bottom: 0; }
 #grid {
 	display: grid;
-	grid-gap: 0;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap: 5px;
+	grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
 	grid-auto-rows: 1fr;
 	margin: 6rem 0;
 }
@@ -29,26 +29,27 @@
 	grid-row: 1 / 1;
 	grid-column: 1 / 1;
 }
-#grid > div,
-#grid > a {
+#grid > div {
 	background-repeat: no-repeat;
 	background-size: cover;
-	border: 2px solid transparent;
+	border-radius: var(--border-radius);
+	overflow: hidden;
 	transition: border var(--transition);
 }
-#grid > div:hover, #grid > a:hover { border: 2px solid var(--foreground); }
 #grid > div > a {
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0.7);
 	display: flex;
 	height: 100%;
 	justify-content: center;
-	transition: background var(--transition);
+	transition: all var(--transition);
 	width: 100%;
 }
-#grid > div:hover > a { background-color: rgba(0, 0, 0, 0.9); }
+#grid > div:hover > a {
+	background-color: #ffffff99;
+	color: var(--background);
+}
 #grid > div > a > div { font-size: 2rem; }
-
 <? css ?>
 </block>
 
