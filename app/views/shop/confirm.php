@@ -1,7 +1,9 @@
 <extend layouts/shop>
+
 <block css>
-#shop { padding: 5rem; text-align: center; }
+#shop { text-align: center; }
 </block>
+
 <block content>
 <h1><?= __('shop.confirm.title') ?></h1>
 <p><?= __('shop.confirm.message') ?>
