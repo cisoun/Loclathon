@@ -2,24 +2,22 @@
 define('ARTICLES', require_once('_store.php'));
 
 class Articles {
-	private static array $STORE = [];
-
 	public static function all() {
 		return ARTICLES;
 	}
 
 	public static function get($articles, $id) {
-		$article = Articles::find($articles, $id);
+		$article   = Articles::find($articles, $id);
 		$parent_id = $article['parent_id'];
 		if ($parent_id) {
 			$parent = Articles::find($articles, $parent_id);
-			$article['variant'] = $article['title'];
-			$article['title']   = $parent['title'];
+			$article['variant']  = $article['title'];
+			$article['title']    = $parent['title'];
 			$article['preview']  = self::preview($parent);
 			$article['pictures'] = self::pictures($article);
 			$article['description'] = $article['description'] ?? $parent['description'];
 		} else {
-			$article['variant'] = NULL;
+			$article['variant']  = NULL;
 			$article['preview']  = self::preview($article);
 			$article['pictures'] = self::pictures($article);
 		}

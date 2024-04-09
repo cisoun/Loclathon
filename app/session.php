@@ -6,7 +6,7 @@
  *   defined by `session.save_path` in `php.ini` (by default `/tmp`).
  *
  *   A good practice is to ensure the sessions path points to a tmpfs
- *   mounted directory, which is uually the case.
+ *   mounted directory, which is usually the case.
  */
 
 // Comment the following line to store sessions in the default directory.
