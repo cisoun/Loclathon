@@ -18,7 +18,7 @@ $form = [
 	'npa'            => ['name' => 'npa',        'type' => 'number',   'value' => '{{npa}}',        'required' => true, 'placeholder' => "1000", 'min' => 1000],
 	'email'          => ['name' => 'email',      'type' => 'email',    'value' => '{{email}}',      'required' => true, 'placeholder' => $inputs['email']],
 	'phone'          => ['name' => 'phone',      'type' => 'tel',      'value' => '{{phone}}',      'placeholder' => $inputs['phone']],
-	'age'            => ['name' => 'age',        'type' => 'checkbox', 'checked' => $params['age']],
+	'age'            => ['name' => 'age',        'type' => 'checkbox', 'checked' => $params['age'] ?? ''],
 	'shippingLocal'  => ['name' => 'shipping',   'type' => 'radio',    'value' => 'local',  'checked' => $params['shipping.local']],
 	'shippingPickUp' => ['name' => 'shipping',   'type' => 'radio',    'value' => 'pickup', 'checked' => $params['shipping.pickup']],
 	'shippingByPost' => ['name' => 'shipping',   'type' => 'radio',    'value' => 'post',   'checked' => $params['shipping.post']],
