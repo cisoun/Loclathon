@@ -43,11 +43,11 @@ $current_locale = Lang::locale();
 	<nav id="menu" class="nojs">
 		<a href="javascript:void(0);" class="trigger"><svg class="outline"><use xlink:href="/static/img/icons.svg#circle-menu"/></svg> Le Loclathon</a>
 		<ul>
-			<li><a href="/{{lang}}">Le Loclathon</a></li>
-			<li><a href="/{{lang}}/locloise">La Locloise</a></li>
-			<li><a href="/{{lang}}/photos"><?= __('menu.photos') ?></a></li>
-			<li><a href="/{{lang}}/shop"><?= __('menu.shop') ?></a></li>
-			<li><a href="/{{lang}}/contact"><?= __('menu.contact') ?></a></li>
+			<li><router to="/{{lang}}/loclathon">Le Loclathon</router></li>
+			<li><router to="/{{lang}}/locloise">La Locloise</router></li>
+			<li><router to="/{{lang}}/photos"><?= __('menu.photos') ?></router></li>
+			<li><router to="/{{lang}}/shop"><?= __('menu.shop') ?></router></li>
+			<li><router to="/{{lang}}/contact"><?= __('menu.contact') ?></router></li>
 			<li id="langs">
 				<a><span><img src="/static/img/lang.<?= $current_locale ?>.svg"/> <?= $current_locale ?></span></a>
 				<ul>
