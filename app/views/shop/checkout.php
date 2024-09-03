@@ -174,8 +174,7 @@ hr {
 			<div class="group radio with-check">
 				<?= $input('payIBAN') ?>
 				<label for="payIBAN">
-					<?= $payments['direct'] ?>
-					<span class="label green"><?= __('shop.free') ?></span><br>
+					<?= $payments['direct'] ?><br>
 					<small><?= $payments_infos['direct'] ?></small>
 				</label>
 				<!-- <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>

@@ -19,30 +19,35 @@ return [
 	'footer.resources.map'  => 'Map of the route',
 	'footer.social'         => 'Social',
 	'loclathon.about'       => [
-		"Le Loclathon is an annual event created in 2015, organized by longtime friends, who, since 2020, have founded an eponymous non-profit association around this project. It brings together all absinthe lovers for a 12 hours and 25 kilometers trip through the watchmaking city of Le Locle in order to rally all of its 27 official fountains.",
+		"Le Loclathon is an annual event created in 2015, organized by longtime friends, who, since 2020, have founded an eponymous non-profit association around this project. It brings together all hiking lovers for a 12 hours and 25 kilometers trip through the watchmaking city of Le Locle in order to rally all of its 27 official fountains.",
 		"A glass is savoured by all at each fountain to share a good time between friends, all by visiting the city of Le Locle.",
-		"Are you an amateur of absinthe? So join us to our trip!"
+		"Are you ready to live an experience? So join us to our trip!"
 	],
 	'loclathon.about.title' => 'What is this?',
 	'loclathon.bubbles'     => [
 		'To whom is the event open?',
 		'To everyone.',
 		'Do I have to sign up to participate?',
-		'No. Except if the current situation due to the COVID-19 disease requires it.',
-		//'No, the event is public.',
+		//'No. Except if the current situation due to the COVID-19 disease requires it.',
+		'No, the event is public.',
 		"So it's free?",
 		'Totally!',
 		'What should I bring with me?',
 		'Drink of your choice, a glass and a good pair of shoes. Something to eat eventually. You can also buy food at noon when we arrive at the city center.',
 		'We also ask you to take masks and hydroalcoholic gel. Thank you for your understanding!'
 	],
-	'loclathon.highlights'  => ['27 fountains', '12 hours of walk and fun', '25 kilometers', '10th tour the 19 August 2023', '26 August in case of bad weather'],
-	'loclathon.learn_more'  => 'Learn more',
-	'loclathon.modal.title' => 'It started!',
+	'loclathon.highlights'  => [
+		'27 fountains',
+		'12 hours of walk and fun',
+		'25 kilometers',
+		'11th tour the 24 August 2024',
+		'26 August in case of bad weather'
+	],
+	'loclathon.modal.title' => 'It has started!',
 	'loclathon.modal.see'   => 'See where we are',
 	'loclathon.modal.hide'  => 'Ignore',
 	'loclathon.next'        => [
-		'When: <b>20 August 2022</b>',
+		'When: <b>24 August 2024</b>',
 		'Where: <b>Le Locle train station, 09:00 - 09:15</b>',
 		'Reported to the <b>27 August 2022</b> in case of bad weather. The definitive date will be announced via this page or social networks the week before the tour.',
 		'COVID-19: a participation registration is mandatory due to the sanitary measures imposed by the authorities.'
@@ -81,6 +86,8 @@ return [
 	],
 	'shop.address'          => 'Address',
 	'shop.cart'             => 'Cart',
+	'shop.cart_empty'       => 'Cart is empty',
+	'shop.clear'            => 'Clear',
 	'shop.closed'           => 'Shop is closed...',
 	'shop.closed_message'   => 'Please come back later!',
 	'shop.change_address'   => 'Change my address',
@@ -120,7 +127,7 @@ return [
 	'shop.large_orders'     => 'For more than 6 bottles, please contact us or split your order.',
 	'shop.order_summary'    => 'Order summary',
 	'shop.pay'              => 'Proceed to payment',
-	'shop.payment'          => 'Payment',
+	'shop.payment'          => 'Payment fees',
 	'shop.payments'         => [
 		'direct'            => 'Bank transfert',
 		'paypal'            => 'PayPal',
@@ -131,7 +138,9 @@ return [
 		'paypal'            => 'PayPal or credit cart.',
 		'twint'             => 'Twint or credit cart.'
 	],
+	'shop.remove'           => 'remove',
 	'shop.shipping'         => 'Shipping',
+	'shop.shipping_fees'    => 'Shipping fees',
 	'shop.shippings'        => [
 		'local'             => 'Local shipping',
 		'pickup'            => 'Local pickup',
@@ -139,9 +148,11 @@ return [
 	],
 	'shop.shippings.infos'  => [
 		'local'             => 'Only for Le Locle and La Chaux-de-Fonds (Switzerland).',
-		'pickup'            => 'You come at our warehouse to get your articles.<br>Instructions will be sent by mail.',
+		'pickup'            => 'You come at our warehouse in Le Locle to get your articles.<br>Instructions will be sent by mail.',
 		'post'              => 'Delivery by the Swiss Post.'
 	],
+	'shop.update'           => 'Update',
+	'shop.to_checkout'      => 'Go to checkout',
 	'tracker.current'       => 'Current step',
 	'tracker.next'          => 'Next step',
 	'tracker.where'         => 'Where is it?',

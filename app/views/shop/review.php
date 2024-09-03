@@ -91,14 +91,14 @@ h3 {
 			<div>
 				<span>
 					<?= __('shop.shippings')[$shipping] ?><br>
-					<small><?= __('shop.shipping') ?></small>
+					<small class="text-light"><?= __('shop.shipping_fees') ?></small>
 				</span>
 				<span>{{ shipping_fees }} CHF</span>
 			</div>
 			<div>
 				<span>
 					<?= __('shop.payments')[$payment] ?><br>
-					<small><?= __('shop.payment') ?></small>
+					<small class="text-light"><?= __('shop.payment_fees') ?></small>
 				</span>
 				<span>{{ payment_fees }} CHF</span>
 			</div>

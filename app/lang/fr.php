@@ -19,30 +19,33 @@ return [
 	'footer.resources.map'  => 'Plan du parcours',
 	'footer.social'         => 'Social',
 	'loclathon.about'       => [
-		"Le Loclathon est un événement annuel créé en 2015, organisé par trois comparses, qui depuis 2020, ont fondé une association éponyme à but non-lucratif autour de ce projet. Il réunit les amateurs d'absinthe pour une marche de 12 heures sur 25 kilomètres à travers la ville du Locle afin de rallier les 27 fontaines officielles de la cité horlogère.",
-		"Un verre est dégusté par chacun autour de chaque fontaine afin de passer un agréable moment entre amis tout en visitant la ville du Locle.",
-		"Êtes-vous amatrice ou amateur d'absinthe ? Alors rejoingnez-nous !"
+		"Le Loclathon est un événement annuel qui réunit les amateurs de randonnée pour une marche de 12 heures sur 25 kilomètres à travers la ville du Locle afin de rallier les 27 fontaines officielles de la Cité Horlogère. Un verre est dégusté par chacun autour de chaque fontaine afin de passer un agréable moment entre amis tout en visitant la ville du Locle.",
+		"Créé à l'origine par trois comparses comme marche des fontaines en 2014, Le Loclathon évolue en 2019 en association à but non-lucratif pour développer l'événement puis se voit en 2021 s'agrandir à cinq membres, tous ambitieux de réaliser de nouveaux projets autour du Locle.",
+		"Êtes-vous prêts à découvrir une expérience ? Alors rejoignez-nous !"
 	],
 	'loclathon.about.title' => "Qu'est-ce que c'est ?",
 	'loclathon.bubbles'     => [
 		"À qui est ouvert l'événement ?",
 		'À tout le monde.',
 		"Dois-je m'inscrire quelque part ?",
-		'Non. Sauf si les restrictions sanitaires dûes à la COVID-19 nous imposent cela.',
-		//"Non. L'événement est libre d'accès.",
+		//'Non. Sauf si les restrictions sanitaires dûes à la COVID-19 nous imposent cela.',
+		"Non. L'événement est libre d'accès.",
 		"C'est donc gratuit ?",
 		'Carrément !',
 		'Que dois-je prendre avec moi ?',
 		'Boisson de votre choix, un verre et de bonnes chaussures. De quoi manger éventuellement. Vous pouvez également acheter à manger lors de la pause de midi au centre-ville.',
 		'Nous vous demandons également de prendre des masques et du gel hydroalcoolique. Merci pour votre compréhension!'
 	],
-	'loclathon.highlights'  => ['27 fontaines', '12 heures de bonne ambiance', '25 kilomètres', '10e tournée le 19 août 2023', '26 août en cas de mauvais temps'],
-	'loclathon.learn_more'  => 'En savoir plus',
+	'loclathon.highlights'  => [
+		'27 fontaines',
+		'12 heures de bonne ambiance',
+		'25 kilomètres',
+		'11e tournée le 24 août 2024', ''],
 	'loclathon.modal.title' => 'Ça a commencé !',
 	'loclathon.modal.see'   => 'Voir où nous sommes',
 	'loclathon.modal.hide'  => 'Ignorer',
 	'loclathon.next'        => [
-		'Date : <b>20 août 2022</b>',
+		'Date : <b>24 août 2024</b>',
 		'Rendez-vous : <b>gare du Locle, 09h00 - 09h15</b>',
 		'Reportée au <b>27 août 2022</b> en cas de mauvais temps. La date définitive sera annoncée via cette page ou les réseaux sociaux dans la semaine avant la tournée.',
 		'COVID-19 : une inscription de participation est nécessaire en raison des mesures santaires imposées par les autorités.'
@@ -81,6 +84,8 @@ return [
 	],
 	'shop.address'          => 'Adresse',
 	'shop.cart'             => 'Panier',
+	'shop.cart_empty'       => 'Le panier est vide.',
+	'shop.clear'            => 'Vider',
 	'shop.closed'           => 'Magasin fermé...',
 	'shop.closed_message'   => 'Merci de repasser plus tard.',
 	'shop.change_address'   => 'Changer mon adresse',
@@ -120,6 +125,7 @@ return [
 	'shop.order_summary'    => 'Résumé de la commande',
 	'shop.pay'              => 'Procéder au paiement',
 	'shop.payment'          => 'Paiement',
+	'shop.payment_fees'     => 'Frais de paiement',
 	'shop.payments'         => [
 		'direct'            => 'Virement bancaire',
 		'paypal'            => 'PayPal',
@@ -130,7 +136,9 @@ return [
 		'paypal'            => 'PayPal ou carte de crédit.',
 		'twint'             => 'Twint ou carte de crédit.'
 	],
+	'shop.remove'           => 'supprimer',
 	'shop.shipping'         => 'Livraison',
+	'shop.shipping_fees'    => 'Frais de livraison',
 	'shop.shippings'        => [
 		'local'             => 'Livraison locale',
 		'pickup'            => 'Sur place',
@@ -138,9 +146,11 @@ return [
 	],
 	'shop.shippings.infos'  => [
 		'local'             => 'Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).',
-		'pickup'            => 'Vous venez cherchez vos articles au dépôt.<br>Les instructions vous seront transmises par mail.',
+		'pickup'            => 'Vous venez chercher vos articles à notre dépôt au Locle.<br>Les instructions vous seront transmises par mail.',
 		'post'              => 'Livraison par la Poste Suisse.'
 	],
+	'shop.update'           => 'Actualiser',
+	'shop.to_checkout'      => 'Passer à la caisse',
 	'tracker.current'       => 'Étape actuelle',
 	'tracker.next'          => 'Prochaine étape',
 	'tracker.where'         => "C'est où ?",
