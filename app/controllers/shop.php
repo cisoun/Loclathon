@@ -22,7 +22,7 @@ class Shop {
 	private static function get_payment_fees($price, $payment) {
 		switch ($payment) {
 			# SEE: https://www.paypal.com/businesswallet/classic-fees
-			case 'paypal': return 0.55 + $price * 0.034;
+			case 'paypal': return $price * 0.034 + 0.55;
 			# SEE: https://www.twint.ch/content/uploads/2017/03/Payment-Vertrag-Portal-FR.pdf
 			case 'twint':  return $price * 0.013;
 			default:       return 0;
@@ -437,9 +437,9 @@ class Shop {
 		$total = 0;
 		foreach ($cart as $id => $value) {
 			$article = Articles::find($articles, $id);
-			$parent = Articles::parent($articles, $article);
-			$price = $value * $article['price'];
-			$data[] = [
+			$parent  = Articles::parent($articles, $article);
+			$price   = $value * $article['price'];
+			$data[]  = [
 				'title'   => $parent['title'] ?? $article['title'],
 				'variant' => $parent ? $article['title'] : NULL,
 				'price'   => $price,
