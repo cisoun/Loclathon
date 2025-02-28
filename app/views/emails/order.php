@@ -103,8 +103,8 @@ h3 { margin-top: 2em; }
 </p>
 <p>
 	<b><?= $m['bank_account'] ?></b><br>
-	ASSOCIATION DU LOCLATHON<br>
-	CH27 0900 0000 1544 2657 0
+	Association du Loclathon<br>
+	CH08 0076 6000 1041 3700 3
 </p>
 <p><b><?= $m['reference'] ?></b><br>ORDRE#{{order_id}}</p>
 <p><b><?= $m['amount'] ?></b><br>{{ total }} CHF</p>
