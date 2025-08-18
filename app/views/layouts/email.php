@@ -88,7 +88,7 @@
 					<a href="https://loclathon.ch">loclathon.ch</a> |
 					<a href="https://instagram.com/loclathon">Instagram</a> |
 					<a href="https://facebook.com/Loclathon">Facebook</a> |
-					<a href="https://loclathon.ch/fr/contact"><?= __('email.contact') ?></a>
+					<a href="https://loclathon.ch/contact"><?= __('email.contact') ?></a>
 				</small>
 				</td>
 			</tr>
