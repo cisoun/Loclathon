@@ -23,13 +23,11 @@ switch (method()) {
 		route('/:lang/shop/review',       with_lang(call('Shop::review')));
 		route('/:lang/shop/confirm',      with_lang(call('Shop::confirm')));
 		route('/:lang/contact',           with_lang(call('Contact::show')));
-		// route('/:lang/inscription',  with_lang(view_cached('covid')));
 		route('/:lang/tracker',           with_lang(view('tracker')));
 		break;
 	case 'POST':
 		route('/:lang/contact',           with_lang(call('Contact::post')));
 		route('/:lang/shop',              with_trim(with_lang(call('Shop::checkout'))));
-		// route('/:lang/inscription',       with_lang(view('covid')));
 		route('/:lang/shop/cart/add/:id', call('Shop::cart_add'));
 		route('/:lang/shop/cart',         with_lang(call('Shop::cart')));
 		route('/:lang/shop/checkout',     with_lang(call('Shop::checkout')));

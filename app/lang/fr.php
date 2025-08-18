@@ -28,7 +28,6 @@ return [
 		"À qui est ouvert l'événement ?",
 		'À tout le monde.',
 		"Dois-je m'inscrire quelque part ?",
-		//'Non. Sauf si les restrictions sanitaires dûes à la COVID-19 nous imposent cela.',
 		"Non. L'événement est libre d'accès.",
 		"C'est donc gratuit ?",
 		'Carrément !',
@@ -48,7 +47,6 @@ return [
 		'Date : <b>23 août 2025</b>',
 		'Rendez-vous : <b>gare du Locle, 09h00 - 09h15</b>',
 		'Reportée au <b>27 août 2022</b> en cas de mauvais temps. La date définitive sera annoncée via cette page ou les réseaux sociaux dans la semaine avant la tournée.',
-		'COVID-19 : une inscription de participation est nécessaire en raison des mesures santaires imposées par les autorités.'
 	],
 	'loclathon.next.title'  => 'Prochaine tournée',
 	'loclathon.subscribe1'  => "S'inscrire",
