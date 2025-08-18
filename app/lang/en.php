@@ -19,7 +19,7 @@ return [
 	'footer.resources.map'  => 'Map of the route',
 	'footer.social'         => 'Social',
 	'loclathon.about'       => [
-		"Le Loclathon is an annual event created in 2015, organized by longtime friends, who, since 2020, have founded an eponymous non-profit association around this project. It brings together all hiking lovers for a 12 hours and 25 kilometers trip through the watchmaking city of Le Locle in order to rally all of its 27 official fountains.",
+		"Le Loclathon is an annual event created in 2014, organized by longtime friends, who, since 2019, have founded an eponymous non-profit association around this project. It brings together all hiking lovers for a 12 hours and 25 kilometers trip through the watchmaking city of Le Locle in order to rally all of its 27 official fountains.",
 		"A glass is savoured by all at each fountain to share a good time between friends, all by visiting the city of Le Locle.",
 		"Are you ready to live an experience? So join us to our trip!"
 	],
