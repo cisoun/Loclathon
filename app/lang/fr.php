@@ -40,12 +40,12 @@ return [
 		'27 fontaines',
 		'12 heures de bonne ambiance',
 		'25 kilomètres',
-		'11e tournée le 24 août 2024', ''],
+		'12e tournée le 23 août 2025', ''],
 	'loclathon.modal.title' => 'Ça a commencé !',
 	'loclathon.modal.see'   => 'Voir où nous sommes',
 	'loclathon.modal.hide'  => 'Ignorer',
 	'loclathon.next'        => [
-		'Date : <b>24 août 2024</b>',
+		'Date : <b>23 août 2025</b>',
 		'Rendez-vous : <b>gare du Locle, 09h00 - 09h15</b>',
 		'Reportée au <b>27 août 2022</b> en cas de mauvais temps. La date définitive sera annoncée via cette page ou les réseaux sociaux dans la semaine avant la tournée.',
 		'COVID-19 : une inscription de participation est nécessaire en raison des mesures santaires imposées par les autorités.'

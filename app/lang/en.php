@@ -40,14 +40,14 @@ return [
 		'27 fountains',
 		'12 hours of walk and fun',
 		'25 kilometers',
-		'11th tour the 24 August 2024',
+		'12th tour the 23 August 2025',
 		'26 August in case of bad weather'
 	],
 	'loclathon.modal.title' => 'It has started!',
 	'loclathon.modal.see'   => 'See where we are',
 	'loclathon.modal.hide'  => 'Ignore',
 	'loclathon.next'        => [
-		'When: <b>24 August 2024</b>',
+		'When: <b>23 August 2025</b>',
 		'Where: <b>Le Locle train station, 09:00 - 09:15</b>',
 		'Reported to the <b>27 August 2022</b> in case of bad weather. The definitive date will be announced via this page or social networks the week before the tour.',
 		'COVID-19: a participation registration is mandatory due to the sanitary measures imposed by the authorities.'
