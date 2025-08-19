@@ -160,6 +160,12 @@ const data = [
 	['Place du Marché',      '47.05769394803361',  '6.7483497010947255', '21:06', 75960],
 ];
 
+// Compute seconds since 00:00 for each fountain.
+data.forEach((f) => {
+	const [ hours, minutes ] = f[3].split(':').map(Number);
+	f.push(hours * 3600 + minutes * 60);
+});
+
 const FOUNTAINS = data.length;
 const HEIGHT    = 200;
 const STEPS_TOP = 43;
