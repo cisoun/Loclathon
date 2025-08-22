@@ -1,7 +1,11 @@
 <?php
-$bubbles = __('loclathon.bubbles');
-$next = __('loclathon.next');
+require('config.php');
+
+$bubbles    = __('loclathon.bubbles');
+$next       = __('loclathon.next');
 $highlights = __('loclathon.highlights');
+
+$date       = $CONFIG['date'];
 ?>
 
 <extend layouts/main>
@@ -47,7 +51,7 @@ $highlights = __('loclathon.highlights');
 
 <block js>
 const now = new Date().toISOString();
-if (now > '2023-08-19T09:00' && now < '2023-08-19T21:00') {
+if (now > '<?= $date ?>T07:15' && now < '<?= $date ?>T19:30') {
 	const modal = document.getElementById('modal');
 	modal.style.display = 'unset';
 	modal.querySelector('[data-dismiss]').addEventListener('click', e => {
