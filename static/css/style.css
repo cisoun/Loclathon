@@ -1,42 +1,111 @@
 :root {
-	--bubble-left: var(--green-200);
-	--bubble-left-color: var(--green-700);
-	--bubble-right: var(--green-700);
-	--bubble-right-color: var(--green-200);
+	--bubble-left:        var(--primary-4);
+	--bubble-left-color:  var(--primary-8);
+	--bubble-right:       var(--primary-8);
+	--bubble-right-color: var(--primary-4);
 }
 
-section { clear: both; }
-a { color: var(--gray-700); text-decoration: none; }
-a:hover { color: var(--gray-900); }
+/* Page fade in at loading. */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
 
-#photos,
-#shop,
-#contact,
-#covid,
-#tracker { padding-top: 10rem; }
-footer { margin-top: 10rem; }
+@keyframes slidein {
+  from { transform: translateY(-1rem); }
+  to   { transform: translateY(0); }
+}
 
-nav {
-	background-color: var(--background);
-	box-shadow: 0 0 3rem 1rem var(--background);
+body {
+	padding-bottom: 1rem;
+}
+
+main {
+	animation: fadein 0.5s;
+}
+
+main > h1:first-child {
+	padding: 3rem 0;
+}
+
+body {
+	font-family:         "Rubik", sans-serif;
+	font-optical-sizing: auto;
+	font-size:           14px;
+	font-style:          normal;
+	font-weight:         400;
+	text-wrap:           balance;
+}
+
+footer {
+	background-color: var(--dark-2);
+	background-image: url('../img/footer.jpg');
+	background-size:  cover;
+	border-radius:    var(--border-radius-xl);
+	margin:           var(--gap);
+}
+footer h1 {
+	padding: 0 0 1rem 0;
+}
+footer .logo {
+	height:        2rem;
+	margin-bottom: 1rem;
+	width:         2rem;
+}
+footer .outline {
+	height:       1.4rem;
+	margin-left:  -2.2rem;
+	margin-top:   0.1rem;
+	position:     absolute;
+	stroke-width: 1.4;
+	width:        1.4rem;
+	fill:         none;
+}
+footer h1 {
+	font-size:   1rem;
 	font-weight: bold;
-	position: fixed;
-	text-align: center;
-	top: 0;
-	transition: background-color var(--transition);
-	width: 100%;
-	z-index: 100;
+	margin:      0;
 }
-nav.transparent {
-	background-color: transparent;
-	box-shadow: unset;
+footer a {
+	display:    block;
+	padding:    0.2rem 0;
+	transition: padding var(--transition);
 }
-nav ul { list-style-type: none; margin: 0; padding: 0; }
+footer a:hover {
+	padding-left: 0.5rem;
+}
 
-nav > ul > li > ul {
-	background-color: var(--background);
-	position: absolute;
-	text-align: left;
+footer > #footer-content {
+	padding: 3rem 2rem;
+}
+
+a {
+	color:           var(--gray-700);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--gray-900);
+}
+
+nav ul {
+	margin: 0;
+}
+
+nav li {
+	list-style: none;
+}
+
+ul {
+	list-style-type: '— ';
+}
+
+#content {
+	animation: fadein 0.5s;
+}
+
+/*#contact, #photos, #shop, #tracker { padding-top: 3rem; }*/
+
 #shop > h1,
 #contact > h1 {
 	text-align: center;
@@ -50,13 +119,18 @@ nav > ul > li > ul {
 
 #loclathon {
 	background-attachment: fixed;
-	background-image: url('../img/photo_2022.jpg');
+	background-image: url('../img/photo_2025.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	overflow: hidden;
-	padding-top: 12rem;
+	padding-bottom: 10rem;
+	padding-top: 4rem;
 	text-align: center;
+}
+#loclathon > * {
+	max-width: 880px;
+	width: 100%;
 }
 #loclathon .fade {
 	background: linear-gradient(#000, transparent);
@@ -80,31 +154,53 @@ nav > ul > li > ul {
 	position: absolute;
 	width: 100%;
 }
-#loclathon > #logo {
+#loclathon #logo {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
+#loclathon #highlights {
+	display: flex;
+	flex-direction: column;
+	gap: var(--highlights-gap);
+	margin: auto;
+	margin-top: -1vw;
+	text-transform: uppercase;
+	transform: skewY(-3deg);
+}
+#loclathon #highlights > div {
+	display: flex;
+	gap: var(--highlights-gap);
+}
+#loclathon #highlights span {
+	background-color: black;
+	border-radius: 1rem;
+	color: white;
+	flex-grow: 1;
+	font-family: 'Bebas Neue', impact, sans-serif;
+	font-size: 2.4rem;
+	padding: 1rem 0;
+}
+#loclathon #highlights div:last-child span {
+	font-size: 5rem;
+	line-height: 5rem;
+}
 #loclathon #learn_more {
-	background-color: var(--red-400);
-	border-radius: unset;
-	border: 0;
-	box-shadow: 0 1rem 3rem var(--gray-100);
-	color: var(--gray-900);
-	display: inline-block;
-	font-weight: bold;
-	text-decoration: none;
-	transition: all var(--transition);
+	background-color: var(--foreground);
+	color: var(--background);
+	border-radius: 2rem;
+	padding: 1rem 2rem;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 }
 #loclathon #learn_more:hover {
 	background-color: var(--foreground);
 	color: var(--background);
-	transform: scale(1.1) skewY(-3deg);
+	padding: 1rem 2rem;
+	box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.8);
+	transform: scale(1.1);
 }
 #loclathon #learn_more svg { transition: var(--transition); }
 #loclathon #learn_more:hover svg { stroke: var(--background); }
-#about { padding-top: 6rem; }
-#about > div:first-child { text-align: justify; }
 
 #locloise > div:first-child img { width: 100%; }
 #locloise #buy { margin-top: 3rem; padding: 1rem 2rem; }
@@ -112,35 +208,12 @@ nav > ul > li > ul {
 #locloise #status {
 	font-size: 2rem;
 	margin-bottom: 3rem;
-	/* margin-top: -2rem; */
 }
 
 #faq { margin-left: auto; margin-right: auto; }
 #faq div span { vertical-align: middle; }
 #faq > .right { text-align: right; }
 #faq .logo { display: inline-block; }
-
-footer {
-	border-top: 1px dotted var(--gray-300);
-	padding: 3rem 0;
-}
-footer .logo {
-	height: 2rem;
-	margin-bottom: 1rem;
-	width: 2rem;
-}
-footer .outline {
-	float: left;
-	height: 1.4rem;
-	margin-left: -2.2rem;
-	margin-top: 0.8rem;
-	stroke-width: 1.4;
-	width: 1.4rem;
-}
-footer h1 { font-size: 1rem; font-weight: bold; margin: 0; }
-footer a { display: block; padding: 0.2rem 0; transition: padding var(--transition); }
-footer a:hover { padding-left: 0.5rem; }
-footer > div > div { padding-left: 2rem; }
 
 .logo {
 	background-image: url('../img/logo-outline.svg');
@@ -149,13 +222,13 @@ footer > div > div { padding-left: 2rem; }
 
 .bubble {
 	border-radius: 0.2rem;
-	position: relative;
-	display: inline-block;
-	font-weight: bold;
-	margin: 0.5rem;
-	max-width: calc(100% - 4rem);
-	padding: 1rem 2rem;
-	transition: transform var(--transition);
+	position:      relative;
+	display:       inline-block;
+	font-weight:   500;
+	margin:        0.5rem;
+	max-width:     calc(100% - 4rem);
+	padding:       1rem 2rem;
+	transition:    transform var(--transition);
 }
 .bubble:hover {
 	transform: scale(1.05);
@@ -163,39 +236,39 @@ footer > div > div { padding-left: 2rem; }
 .left > .bubble {
 	background: var(--bubble-left);
 	color: var(--bubble-left-color);
-	font-weight: bold;
 }
 .left > .bubble:after {
-	right: 100%;
-	top: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-color: tranparent;
+	border:             solid transparent;
+	border-color:       tranparent;
 	border-right-color: var(--bubble-left);
-	border-width: 10px;
-	margin-top: -10px;
+	border-style: 		solid;
+	border-width:       10px;
+	content:            " ";
+	height:             0;
+	margin-top:         -10px;
+	pointer-events:     none;
+	position:           absolute;
+	right:              100%;
+	top:                50%;
+	width:              0;
 }
 .right > .bubble {
 	background: var(--bubble-right);
 	color: var(--bubble-right-color);
 }
 .right > .bubble:after {
-	left: 100%;
-	top: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
+	border-style: solid;
 	border-color: transparent;
 	border-left-color: var(--bubble-right);
 	border-width: 10px;
+	content: " ";
+	height: 0;
+	left: 100%;
 	margin-top: -10px;
+	pointer-events: none;
+	position: absolute;
+	top: 50%;
+	width: 0;
 }
 .right > .logo {
 	margin-left: 1rem;
