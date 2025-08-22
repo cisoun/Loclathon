@@ -78,18 +78,18 @@ $cart = $params['data'];
 		</div>
 		<div>
 			<h3>Total</h3><h2><?= $params['total'] ?> CHF</h2>
+			<fieldset id="actions">
+				<button name="update" class="w-100"><?= __('shop.update') ?></button>
+				<button name="clear" class="w-100"><?= __('shop.clear') ?></button>
+			</fieldset>
+			<div class="separator">
+				<span><?= __('shop.cart') ?></span>
+			</div>
 			<fieldset>
 				<button name="checkout" class="white w-100">
 					<svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg>
 					<?= __('shop.to_checkout') ?>
 				</button>
-			</fieldset>
-			<div class="separator">
-				<span><?= __('shop.cart') ?></span>
-			</div>
-			<fieldset id="actions">
-				<button name="update" class="w-100"><?= __('shop.update') ?></button>
-				<button name="clear" class="w-100"><?= __('shop.clear') ?></button>
 			</fieldset>
 		</div>
 	</form>
