@@ -84,6 +84,10 @@ ul.breadcrumb li:not(:last-child) {
 			<ul>
 				<li><a href="https://linsolite.ch" target="_blank">L'INSOLITE</a></li>
 			</ul>
+			<h3>Fleurier</h3>
+			<ul>
+				<li><a href="https://shop.stillerie.ch/products/la-locloise" target="_blank">Distillerie Stillerie</a></li>
+			</ul>
 		</div>
 	</div>
 </main>
