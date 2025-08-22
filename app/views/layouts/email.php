@@ -57,8 +57,8 @@
 	<tr>
 		<td></td>
 		<td class="center">
-		<br><br>
-		<img id="logo" src="https://dev.loclathon.ch/static/img/email/logo.png" alt="Logo" height="120"/>
+			<br><br>
+			<img id="logo" src="https://loclathon.ch/static/img/email/logo.png" alt="Logo" height="120"/>
 		</td>
 		<td></td>
 	</tr>
