@@ -22,9 +22,6 @@
 <? ogd ?>
 </block>
 
-<block subnav>
-</block>
-
 <block content>
 <main id="shop" class="content">
 <? content ?>
