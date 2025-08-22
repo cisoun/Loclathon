@@ -4,19 +4,29 @@
 
 <block css>
 :root {
-	--tracker-active: var(--foreground);
-	--tracker-inactive: var(--gray-500);
+	--tracker-active:     var(--dark-7);
+	--tracker-inactive:   var(--dark-4);
+	--tracker-point:      var(--red-7);
+	--tracker-point-glow: var(--red-4);
+}
+
+#tracker {
+	max-width: 800px;
 }
 
 #tracker .info h1,
 #tracker .info h3 { margin: 0; }
-#tracker .info h1 { font-size: 2rem; line-height: 2rem; }
+#tracker .info h1 {
+	font-size:   2rem;
+	line-height: 2rem;
+}
 #tracker .info {
-	background-color: var(--foreground);
-	border-radius: var(--border-radius);
-	color: var(--background);
-	margin-bottom: 1rem;
-	padding: 1rem;
+	background-color: var(--primary-7);
+	border-radius:    var(--border-radius);
+	color:            var(--primary-2);
+	margin-bottom:    1rem;
+	max-width:        400px;
+	padding:          1rem;
 }
 #tracker .info b {
 	border-bottom: 1px dashed var(--background);
@@ -29,38 +39,52 @@
 	margin-top: 1rem;
 }
 #tracker #warning {
-	background: var(--yellow-500);
+	background: var(--secondary-7);
+	color: var(--secondary-2);
 }
 
 #container {
 	height: 100%;
-	max-width: 400px;
-	width: 100%;
 }
+
 #progress { position: absolute; }
 #progress line {
 	stroke-dasharray: 3;
 	stroke-width: 2px;
 }
-#progress_done { stroke: var(--tracker-inactive); }
-#progress_total { stroke: var(--tracker-active); }
-#progress_point {
-	fill: var(--red-500);
-	stroke: var(--red-200);
+#progress-done  { stroke: var(--tracker-inactive); }
+#progress-total { stroke: var(--tracker-active); }
+#progress-point {
+	animation: pulse 3s infinite;
+	fill: var(--tracker-point);
+	stroke: var(--tracker-point-glow);
 	stroke-width: 5px;
 }
-#progress .progress_step {
-	stroke: var(--gray-500);
+
+@keyframes pulse {
+	from {
+		stroke-opacity: 1;
+		stroke-width: 2px;
+	}
+	to {
+		stroke-opacity: 0;
+		stroke-width: 30px;
+	}
+}
+
+#progress .progress-step {
+	stroke: var(--tracker-inactive);
 	stroke-width: 2px;
 	transition: stroke 1s;
 }
-#progress .progress_step[data-active] {
+#progress .progress-step[data-active] {
 	stroke: var(--tracker-active);
 }
+
 .fountain {
 	color:  var(--tracker-inactive);
 	height: 200px;
-	padding: 30px 0 0 45px;
+	padding: 30px 0 0 60px;
 	transition: color 1s;
 	width: 100%;
 }
@@ -92,39 +116,39 @@
 </block>
 
 <block content>
-<main id="tracker" class="dual container spaced padded">
-<div>
-	<div id="current" class="info">
-		<b><?= __('tracker.current') ?></b>
-		<h1 id="current_name"></h1>
-		<h3 id="current_time"></h3>
-		<a id="current_location" target="_blank" class="button"><?= __('tracker.where') ?></a>
-	</div>
-	<div id="next" class="info">
-		<b><?= __('tracker.next') ?></b>
-		<h1 id="next_name"></h1>
-		<h3 id="next_time"></h3>
-		<a id="next_location"target="_blank" class="button"><?= __('tracker.where') ?></a>
-	</div>
-	<div id="warning" class="info">
-		<b><?= __('tracker.warning') ?></b>
-		<?= __('tracker.warning_info') ?>
-	</div>
-</div>
-<div id="container">
-	<template id="fountain">
-		<div class="fountain" data-active>
-			<h1></h1>
-			<h3></h3>
-			<a target="_blank" class="button"><?= __('tracker.where') ?></a>
+<main id="tracker" class="flex">
+	<div>
+		<div id="current" class="info">
+			<b><?= __('tracker.current') ?></b>
+			<h1 id="current-name"></h1>
+			<h3 id="current-time"></h3>
+			<a id="current-location" target="_blank" class="button primary"><?= __('tracker.where') ?></a>
 		</div>
-	</template>
-	<svg id="progress" viewBox="0 0 30 8000" xmlns="http://www.w3.org/2000/svg">
-		<line id="progress_total" x1="15" y1="43" x2="15" y2="1000" />
-		<line id="progress_done" x1="15" y1="43" x2="15" y2="1000" />
-		<circle id="progress_point" cx="15" cy="0" r="6" />
-	</svg>
-</div>
+		<div id="next" class="info">
+			<b><?= __('tracker.next') ?></b>
+			<h1 id="next-name"></h1>
+			<h3 id="next-time"></h3>
+			<a id="next-location"target="_blank" class="button primary"><?= __('tracker.where') ?></a>
+		</div>
+		<div id="warning" class="info">
+			<b><?= __('tracker.warning') ?></b>
+			<?= __('tracker.warning_info') ?>
+		</div>
+	</div>
+	<div id="container">
+		<template id="fountain">
+			<div class="fountain" data-active>
+				<h1></h1>
+				<h3></h3>
+				<a target="_blank" class="button white"><?= __('tracker.where') ?></a>
+			</div>
+		</template>
+		<svg id="progress" viewBox="0 0 50 8000" xmlns="http://www.w3.org/2000/svg">
+			<line id="progress-total" x1="25" y1="43" x2="25" y2="1000" />
+			<line id="progress-done" x1="25" y1="43" x2="25" y2="1000" />
+			<circle id="progress-point" cx="25" cy="0" r="10" />
+		</svg>
+	</div>
 </main>
 </block>
 
@@ -160,12 +184,6 @@ const data = [
 	['Place du Marché',      '47.05769394803361',  '6.7483497010947255', '21:06', 75960],
 ];
 
-// Compute seconds since 00:00 for each fountain.
-data.forEach((f) => {
-	const [ hours, minutes ] = f[3].split(':').map(Number);
-	f.push(hours * 3600 + minutes * 60);
-});
-
 const FOUNTAINS = data.length;
 const HEIGHT    = 200;
 const STEPS_TOP = 43;
@@ -177,23 +195,23 @@ let nextFountain    = data[1];
 const $ = (id) => document.getElementById(id);
 
 const ui = {
-	container:        $('container'),
-	current:          $('current'),
-	current_location: $('current_location'),
-	current_name:     $('current_name'),
-	current_time:     $('current_time'),
-	dark:             $('progress_total'),
-	done:             $('progress_done'),
-	next:             $('next'),
-	next_location:    $('next_location'),
-	next_name:        $('next_name'),
-	next_time:        $('next_time'),
-	point:            $('progress_point'),
-	progress:         $('progress'),
-	template:         $('fountain'),
+	container:       $('container'),
+	current:         $('current'),
+	currentLocation: $('current-location'),
+	currentName:     $('current-name'),
+	currentTime:     $('current-time'),
+	next:            $('next'),
+	nextLocation:    $('next-location'),
+	nextName:        $('next-name'),
+	nextTime:        $('next-time'),
+	progress:        $('progress'),
+	progressDone:    $('progress-done'),
+	progressPoint:   $('progress-point'),
+	progressTotal:   $('progress-total'),
+	template:        $('fountain'),
 
-	fountains:        [],
-	steps:            []
+	fountains:       [],
+	steps:           []
 }
 
 function add (fountain) {
@@ -205,8 +223,8 @@ function add (fountain) {
 
     // Steps
 	const step = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-	step.classList.add('progress_step');
-	step.setAttribute('cx', 15);
+	step.classList.add('progress-step');
+	step.setAttribute('cx', 25);
 	step.setAttribute('cy', ui.fountains.length * HEIGHT + STEPS_TOP);
 	step.setAttribute('r', 10);
 	step.setAttribute('data-active', '');
@@ -240,8 +258,8 @@ function getTime (time) {
 }
 
 function setPosition(y) {
-	ui.done.y2.baseVal.value  = 
-	ui.point.cy.baseVal.value = y + STEPS_TOP;
+	ui.progressDone.y2.baseVal.value  =
+	ui.progressPoint.cy.baseVal.value = y + STEPS_TOP;
 }
 
 let now = Date.now();
@@ -287,15 +305,15 @@ function updateLocation (current, next) {
 	ui.next.style.display = next !== null ? 'block' : 'none';
 
 	if (current) {
-		ui.current_location.href  = url(currentFountain);
-		ui.current_name.innerHTML = currentFountain[0];
-		ui.current_time.innerHTML = currentFountain[3];
+		ui.currentLocation.href  = url(currentFountain);
+		ui.currentName.innerHTML = currentFountain[0];
+		ui.currentTime.innerHTML = currentFountain[3];
 	}
 
 	if (next) {
-		ui.next_location.href  = url(nextFountain);
-		ui.next_name.innerHTML = nextFountain[0];
-		ui.next_time.innerHTML = nextFountain[3];
+		ui.nextLocation.href  = url(nextFountain);
+		ui.nextName.innerHTML = nextFountain[0];
+		ui.nextTime.innerHTML = nextFountain[3];
 	}
 }
 
@@ -304,10 +322,17 @@ function url (fountain) {
 	const latitude = fountain[2];
 	return `https://www.google.com/maps/search/?api=1&query=${longitude}%2C${latitude}`;
 }
+data.forEach((f) => {
+	console.log(f);
+	// Compute seconds since 00:00 for each fountain.
+	const [ hours, minutes ] = f[3].split(':').map(Number);
+	f.push(hours * 3600 + minutes * 60);
 
-data.map(f => add(f));
+	// Add to tracker.
+	add(f);
+});
 
-ui.dark.y2.baseVal.value           = HEIGHT * (FOUNTAINS - 1) + STEPS_TOP;
+ui.progressTotal.y2.baseVal.value  = HEIGHT * (FOUNTAINS - 1) + STEPS_TOP;
 ui.progress.viewBox.baseVal.height = HEIGHT * FOUNTAINS;
 ui.progress.style.height           = ui.progress.viewBox.baseVal.height + 'px';
 
