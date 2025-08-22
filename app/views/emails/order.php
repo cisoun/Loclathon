@@ -1,10 +1,10 @@
 <?php
-$m = __('email.confirmation');
+$m         = __('email.confirmation');
 $countries = __('shop.countries');
-$payment = $params['payment'];
-$shipping = $params['shipping'];
-$articles = $params['articles'];
-$payments = __('shop.payments');
+$payment   = $params['payment'];
+$shipping  = $params['shipping'];
+$articles  = $params['articles'];
+$payments  = __('shop.payments');
 $shippings = __('shop.shippings');
 ?>
 

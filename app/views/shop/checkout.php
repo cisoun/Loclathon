@@ -7,6 +7,7 @@ $inputs = __('shop.inputs');
 $payments = __('shop.payments');
 $payments_infos = __('shop.payments.infos');
 $shippings = __('shop.shippings');
+$payments_infos  = __('shop.payments.infos');
 $shippings_infos = __('shop.shippings.infos');
 
 
@@ -49,10 +50,8 @@ $input = function($id) use ($form, $params) {
 <link rel="preload" href="/static/js/shop.js" as="script">
 </block>
 
-<block footer>
-<script src="/static/js/layout.js" type="module"></script>
-<script src="/static/js/fetch.js" type="module"></script>
-<script src="/static/js/shop.js" type="module"></script>
+<block head>
+<script src="/static/js/shop.js" type="module" defer></script>
 </block>
 
 <block css>

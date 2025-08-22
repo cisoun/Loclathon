@@ -97,7 +97,6 @@ function variant($variant) {
 				<fieldset>
 					<button class="white w-100"><svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg> Dans le panier</button>
 				</fieldset>
-
 			</form>
 			<?php endif; ?>
 		</div>

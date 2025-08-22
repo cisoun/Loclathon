@@ -1,11 +1,13 @@
 <?php
-$country = $params['country'];
-$payment = $params['payment'];
+$country  = $params['country'];
+$payment  = $params['payment'];
 $shipping = $params['shipping'];
 $articles = $params['articles'];
-$total = $params['total'];
+$total    = $params['total'];
 ?>
+
 <extend layouts/shop>
+
 <block css>
 #shop table {
 	width: 100%;
@@ -68,10 +70,10 @@ h3 {
 			<?= __('shop.countries')[$country] ?>
 		</address>
 		<div class="panel">
-			<b><?= __('shop.confirmation_to') ?></b>:<br/>
+			<b><?= __('shop.confirmation_to') ?></b>:<br>
 			{{ email }}
 		</div>
-		<a href="/{{lang}}/shop/checkout">↻ <?= __('shop.change_address') ?></a></p>
+		<a href="/{{lang}}/shop/checkout">↻ <?= __('shop.change_address') ?></a>
 	</div>
 	<div id="pay">
 		<h3><?= __('shop.payment') ?></h3>
@@ -108,6 +110,7 @@ h3 {
 				<svg class="outline dark"><use href="../static/img/icons.svg#card"/></svg>
 				<?= __('shop.pay') ?>
 			</button>
+		</form>
 	</div>
-<div>
+</div>
 </block>
