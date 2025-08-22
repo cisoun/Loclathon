@@ -166,6 +166,8 @@ if (now > '2023-08-19T09:00' && now < '2023-08-19T21:00') {
 			<div class="right"><span class="bubble"><?= $bubbles[5] ?></span><span class="logo"></span></div>
 			<div class="left"><span class="bubble"><?= $bubbles[6] ?></span></div>
 			<div class="right"><span class="bubble"><?= $bubbles[7] ?></span><span class="logo"></span></div>
+			<div class="left"><span class="bubble"><?= $bubbles[8] ?></span></div>
+			<div class="right"><span class="bubble"><?= $bubbles[9] ?></span><span class="logo"></span></div>
 		</div>
 	</div>
 </section>
