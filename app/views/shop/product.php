@@ -21,14 +21,22 @@ function variant($variant) {
 <extend layouts/shop>
 
 <block css>
-#picture { width: 100%; }
+#picture {
+	border-radius: 10px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-height: 400px;
+	max-width: 100%;
+}
 #pictures {
-	margin: 3em 0;
+	margin: 3em auto;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 1em;
+	grid-gap: 10px;
+	max-width: 400px;
 }
-#picture,
+#pictures a { line-height: 0; }
 #pictures img {
 	border-radius: 5px;
 	width: 100%;
@@ -47,7 +55,7 @@ function variant($variant) {
 </block>
 
 <block content>
-	<div class="dual spaced">
+	<div class="flex">
 		<div>
 			<img id="picture" src="/static/img/shop/<?= $article['id'] ?>.png"/>
 			<div id="pictures">
@@ -56,7 +64,7 @@ function variant($variant) {
 				<?php endforeach; ?>
 			</div>
 		</div>
-		<div class="uni">
+		<div id="form">
 			<h1><?= $article['title'] ?></h1>
 			<h2><?= $article['price'] ?> CHF</h2>
 

@@ -37,6 +37,9 @@ nav > ul > li > ul {
 	background-color: var(--background);
 	position: absolute;
 	text-align: left;
+#shop > h1,
+#contact > h1 {
+	text-align: center;
 }
 
 #langs > a { text-transform: uppercase; }

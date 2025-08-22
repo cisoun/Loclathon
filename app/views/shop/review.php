@@ -28,13 +28,8 @@ h3 {
 	width: 100%;
 }
 
-
-#pay small {
-	color: var(--gray-700);
-}
-
 .panel {
-	background-color: var(--gray-150);
+	background-color: var(--dark-2);
 	border-radius: var(--border-radius);
 	margin: 0.5rem 0;
 	overflow: hidden;
@@ -48,7 +43,7 @@ h3 {
 
 .panel.splitted div {
 	align-items: center;
-	background-color: var(--gray-150);
+	background-color: var(--dark-2);
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 1px;
@@ -63,8 +58,7 @@ h3 {
 </block>
 <block content>
 <h1><?= __('shop.order_summary') ?></h1>
-
-<div class="dual spaced">
+<div class="flex">
 	<div>
 		<h3><?= __('shop.address') ?></h3>
 		<address class="panel">

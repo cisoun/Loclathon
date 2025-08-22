@@ -89,7 +89,7 @@ hr {
 <?php endif; ?>
 
 <form action="/{{lang}}/shop/checkout" method="post" autocomplete="on">
-	<div class="dual spaced">
+	<div class="flex">
 
 		<!-- First column -->
 		<div>

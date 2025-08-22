@@ -1,10 +1,17 @@
+/*h1 { font-size: 2rem; }*/
+
 /* Show menu on mouse over when no JS. */
 nav.nojs:hover > ul,
-nav.toggled > ul { display: block; }
+nav.toggled > ul {
+	display: block;
+	margin-bottom: 1rem;
+}
 
 /* Darken menu when hovered. */
 nav:hover > .trigger,
-nav.toggled > .trigger { background-color: var(--background); }
+nav.toggled > .trigger {
+/*	background-color: var(--dark-3);*/
+}
 
 nav > .trigger {
 	display: block;
@@ -15,30 +22,32 @@ nav > .trigger {
 nav .trigger .outline {
 	display: inline-block;
 	margin-right: 1.375rem;
-	stroke: var(--gray-700);
+	stroke: var(--foreground);
 }
-nav .trigger:hover .outline { stroke: var(--foreground); }
-
+nav .trigger:hover .outline {
+	stroke: var(--foreground);
+}
 /* Links in menu. */
 nav a {
-	display: block;
-	padding: 1rem 5rem;
+	display:    block;
+	padding:    1rem 5rem;
 	text-align: left;
 }
 nav > ul {
-	background-color: var(--background);
+	background-color: var(--dark-2);
 	display: none;
-	padding-bottom: 2rem;
+	padding: 0;
 }
 /* Submenu */
 nav > ul > li > ul {
-	border-radius: var(--border-radius);
-	height: 0;
-	margin: 0 2rem;
-	overflow: hidden;
-	padding-left: -5rem;
-	position: unset;
-	transition: height var(--transition);
+	background-color: var(--dark-2);
+	border-radius: var(--border-radius-l);
+	height:        0;
+	margin:        0 2rem;
+	overflow:      hidden;
+	padding-left:  -5rem;
+	position:      unset;
+	transition:    height var(--tr ansition);
 }
 /* nav > ul > li:hover > ul { height: calc(2rem + var(--line-height)); } */
 nav > ul > li:hover > ul { height: auto; }
@@ -47,5 +56,14 @@ nav > ul > li > ul > li { background-color: var(--gray-150); }
 /* Submenu item link */
 nav > ul > li > ul > li > a { margin-bottom: 1px; padding: 1rem 3rem; }
 
-footer > div > div:not(div:first-child) { margin-top: 2rem; }
-footer a { border-top: 1px solid var(--gray-150); padding: 1rem 0; }
+footer > div > div:not(div:first-child) {
+	margin-top: 2rem;
+}
+
+footer > div > div {
+	padding-inline: 2rem;
+}
+footer a {
+	border-top: 1px dashed var(--dark-5);
+	padding: 0.5rem 0;
+}

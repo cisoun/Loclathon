@@ -14,7 +14,6 @@ $max     = $params['max'];
 
 <block css>
 #contact { max-width: 700px; }
-#contact h1 { text-align: center; }
 #confirm { padding: 5rem 0; }
 </block>
 

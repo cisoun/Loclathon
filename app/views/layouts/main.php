@@ -11,6 +11,10 @@ $current_locale = Lang::locale();
 
 	<link rel="icon" type="image/svg" href="/static/img/favicon.svg">
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="description" content="Site officiel du Loclathon et de l'absinthe La Locloise.">
@@ -19,7 +23,9 @@ $current_locale = Lang::locale();
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Open Graph data -->
-	<? ogd ?>
+	<meta property="og:description" content="Site officiel du Loclathon et de l'absinthe La Locloise.">
+	<meta property="og:image" content="/static/img/preview.jpg">
+	<meta property="og:title" content="Le Loclathon | <? title ?>">
 
 	<!-- CSS -->
 	<link rel="preload" href="/static/css/layout.css" as="style" crossorigin>
@@ -32,7 +38,9 @@ $current_locale = Lang::locale();
 	<link rel="stylesheet" href="/static/css/style.css">
 	<link rel="stylesheet" href="/static/css/phone.css" media="screen and (max-width: 992px)">
 	<link rel="stylesheet" href="/static/css/desktop.css" media="screen and (min-width: 992px)">
-	<!--? stylesheets ?-->
+
+	<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
 
 	<style type="text/css">
 	<? css ?>
@@ -63,7 +71,7 @@ $current_locale = Lang::locale();
 	</nav>
 	<? content ?>
 	<footer>
-		<div class="quad container padded">
+		<div id="footer-content" class="flex centered">
 			<div>
 				<div class="logo"></div>
 				<small>

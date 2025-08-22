@@ -76,7 +76,7 @@ $cart = $params['data'];
 				<?= __('shop.cart_empty'); ?>
 			<?php endif; ?>
 		</div>
-		<div class="uni">
+		<div>
 			<h3>Total</h3><h2><?= $params['total'] ?> CHF</h2>
 			<fieldset>
 				<button name="checkout" class="white w-100">

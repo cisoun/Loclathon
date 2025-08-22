@@ -27,7 +27,7 @@
 </block>
 
 <block content>
-<main id="shop" class="container padded dark">
+<main id="shop" class="content">
 <? content ?>
 </main>
 </block>
