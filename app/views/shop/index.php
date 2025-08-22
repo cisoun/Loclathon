@@ -1,11 +1,6 @@
 <?php
 $articles = $params['articles'];
-
-$states = [
-	'PRECOMMANDE',
-	'ÉPUISÉ',
-	'SOLDE'
-];
+$states   = __('shop.states');
 ?>
 
 ?>

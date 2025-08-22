@@ -151,6 +151,11 @@ return [
 		'pickup'            => 'You come at our warehouse in Le Locle to get your articles.<br>Instructions will be sent by mail.',
 		'post'              => 'Delivery by the Swiss Post.'
 	],
+	'shop.states'           => [
+		'PREORDER',
+		'SOLD OUT',
+		'SALES'
+	],
 	'shop.update'           => 'Update',
 	'shop.to_checkout'      => 'Go to checkout',
 	'tracker.current'       => 'Current step',

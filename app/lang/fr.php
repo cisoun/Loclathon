@@ -148,6 +148,11 @@ return [
 		'pickup'            => 'Vous venez chercher vos articles à notre dépôt au Locle.<br>Les instructions vous seront transmises par mail.',
 		'post'              => 'Livraison par la Poste Suisse.'
 	],
+	'shop.states'           => [
+		'PRECOMMANDE',
+		'ÉPUISÉ',
+		'SOLDE'
+	],
 	'shop.update'           => 'Actualiser',
 	'shop.to_checkout'      => 'Passer à la caisse',
 	'tracker.current'       => 'Étape actuelle',
