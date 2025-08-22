@@ -121,22 +121,15 @@ $cart = Session::get('cart');
 	</footer>
 	<? footer ?>
 	<script type="text/javascript">
-		const nav = document.getElementById('menu');
+		const nav        = document.getElementById('menu');
+		const navTrigger = document.querySelector('nav > .trigger');
+
 		nav.classList.remove('nojs');
 		nav.classList.add('transparent');
 
-		window.onscroll = () => {
-			if (window.pageYOffset < 50) {
-				nav.classList.add('transparent');
-			} else {
-				nav.classList.remove('transparent');
-			}
-		};
-
-		const navTrigger = document.querySelector('nav > .trigger');
-		navTrigger.onclick = () => {
-			nav.classList.toggle('toggled');
-		}
+		// Make navbar transparent or not.
+		// window.onscroll    = () => nav.classList.toggle('transparent', window.scrollY < 50);
+		navTrigger.onclick = () => nav.classList.toggle('toggled');
 
 		<? js ?>
 	</script>
