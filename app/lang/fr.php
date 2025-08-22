@@ -33,7 +33,6 @@ return [
 		'Carrément !',
 		'Que dois-je prendre avec moi ?',
 		'Boisson de votre choix, un verre et de bonnes chaussures. De quoi manger éventuellement. Vous pouvez également acheter à manger lors de la pause de midi au centre-ville.',
-		'Nous vous demandons également de prendre des masques et du gel hydroalcoolique. Merci pour votre compréhension!'
 	],
 	'loclathon.highlights'  => [
 		'27 fontaines',

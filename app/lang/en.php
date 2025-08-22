@@ -33,7 +33,6 @@ return [
 		'Totally!',
 		'What should I bring with me?',
 		'Drink of your choice, a glass and a good pair of shoes. Something to eat eventually. You can also buy food at noon when we arrive at the city center.',
-		'We also ask you to take masks and hydroalcoholic gel. Thank you for your understanding!'
 	],
 	'loclathon.highlights'  => [
 		'27 fountains',

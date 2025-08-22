@@ -146,11 +146,10 @@ if (now > '2023-08-19T09:00' && now < '2023-08-19T21:00') {
 <section id="about" class="dual padded spaced">
 	<div>
 		<h1><?= __('loclathon.next.title') ?></h1>
-		<p class="bigger"><?= $next[0] ?><br><?= $next[1] ?></p>
-		<p><?= $next[2] ?></p>
-		<?php if ($covid): ?>
-		<p id="tour_warning"><?= $next[3] ?></p>
-		<?php endif ?>
+		<p class="bigger">
+			<?= $next[0] ?><br>
+			<?= $next[1] ?>
+		</p>
 		<h1><?= __('loclathon.about.title') ?></h1>
 		<?php foreach (__('loclathon.about') as $line): ?>
 		<p><?= $line ?></p>
@@ -162,14 +161,11 @@ if (now > '2023-08-19T09:00' && now < '2023-08-19T21:00') {
 			<div class="left"><span class="bubble"><?= $bubbles[0] ?></span></div>
 			<div class="right"><span class="bubble"><?= $bubbles[1] ?></span><span class="logo"></span></div>
 			<div class="left"><span class="bubble"><?= $bubbles[2] ?></span></div>
-			<div class="right"><span class="bubble"><?= $bubbles[3] ?></span><!--br/><br/><a id="subscribe" href="/{{lang}}/inscription">→ <?= __('loclathon.subscribe1') ?></a></span--><span class="logo"></span></div>
+			<div class="right"><span class="bubble"><?= $bubbles[3] ?></span><span class="logo"></span></div>
 			<div class="left"><span class="bubble"><?= $bubbles[4] ?></span></div>
 			<div class="right"><span class="bubble"><?= $bubbles[5] ?></span><span class="logo"></span></div>
 			<div class="left"><span class="bubble"><?= $bubbles[6] ?></span></div>
 			<div class="right"><span class="bubble"><?= $bubbles[7] ?></span><span class="logo"></span></div>
-			<?php if ($covid): ?>
-			<div class="right"><span class="bubble text-bold"><?= $bubbles[8] ?></span><span class="logo"></span></div>
-			<?php endif; ?>
 		</div>
 	</div>
 </section>
