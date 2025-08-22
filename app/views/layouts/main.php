@@ -3,6 +3,9 @@ $uri            = Request::uri();
 $page           = substr($uri, 3);
 $locales        = Lang::locales();
 $current_locale = Lang::locale();
+
+Session::start();
+$cart = Session::get('cart');
 ?>
 <!doctype html>
 <html lang="<?= $current_locale ?>" class="dark">
@@ -45,11 +48,13 @@ $current_locale = Lang::locale();
 	<style type="text/css">
 	<? css ?>
 	</style>
+
+	<? head ?>
 </head>
 <body>
 	<!-- Header -->
-	<nav id="menu" class="nojs">
-		<a href="javascript:void(0);" class="trigger"><svg class="outline"><use xlink:href="/static/img/icons.svg#circle-menu"/></svg> Le Loclathon</a>
+	<nav id="menu">
+		<a href="#" class="trigger"><svg class="outline"><use xlink:href="/static/img/icons.svg#circle-menu"/></svg> Le Loclathon</a>
 		<ul>
 			<li><router to="/{{lang}}/loclathon">Le Loclathon</router></li>
 			<li><router to="/{{lang}}/locloise">La Locloise</router></li>
@@ -66,10 +71,25 @@ $current_locale = Lang::locale();
 					<?php endforeach; ?>
 				</ul>
 			</li>
+			<?php if ($cart): ?>
+			<a href="/{{lang}}/shop/cart" class="button only-desktop">
+				<svg class="outline icon"><use xlink:href="/static/img/icons.svg#cart"/></svg>
+				<?= array_sum($cart) ?>
+			</a>
+			<?php endif ?>
 		</ul>
-		<? subnav ?>
 	</nav>
+	<div id="content" class="container flex vertical">
+		<?php if ($cart): ?>
+		<div class="only-mobile flex">
+			<a href="/{{lang}}/shop/cart" class="button white">
+				<svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg>
+				<?= array_sum($cart) ?> articles dans le panier
+			</a>
+		</div>
+		<?php endif; ?>
 	<? content ?>
+	</div>
 	<footer>
 		<div id="footer-content" class="flex centered">
 			<div>

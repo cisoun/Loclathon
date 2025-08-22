@@ -6,11 +6,6 @@ $states = [
 	'ÉPUISÉ',
 	'SOLDE'
 ];
-
-Session::start();
-$cart = Session::get('cart') ?? [];
-
-$articles_count = array_sum(array_values($cart));
 ?>
 
 ?>
@@ -103,22 +98,8 @@ $articles_count = array_sum(array_values($cart));
 }
 </block>
 
-<block subnav>
-<?php if ($articles_count > 0): ?>
-<div id="subnav">
-	<?= $articles_count ?> articles dans le panier
-	<a href="/{{lang}}/shop/cart" class="button white">
-		<svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg>
-		Consulter
-	</a>
-</div>
-<?php endif; ?>
-</block>
-
 <block content>
-
 <h1><?= __('menu.shop') ?></h1>
-
 <div id="grid" class="centered">
 <?php foreach ($articles as $article): ?>
 <a class="article" href="/{{lang}}/shop/product/<?= $article['url'] ?>" data-state="<?= $article['state'] ?>">
@@ -131,5 +112,4 @@ $articles_count = array_sum(array_values($cart));
 </a>
 <?php endforeach ?>
 </div>
-
 </block>
