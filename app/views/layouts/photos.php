@@ -2,6 +2,10 @@
 
 <block title>Albums <? title ?></block>
 
+<block head>
+<script src="/static/js/photos.js" type="module" defer></script>
+</block>
+
 <block css>
 .photos { text-align: center; }
 #photos { max-width: 800px; text-align: center; }

@@ -1,5 +1,6 @@
 ._*
 .DS_Store
+node_modules/
 config.php
 database.db
 static/files/

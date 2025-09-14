@@ -37,6 +37,6 @@ h1 { margin-bottom: 0; }
 	});
 	foreach ($files as $file):
 ?>
-<a href="/static/photos/{{ year }}/<?php echo $file; ?>" target="_blank"><img src="/static/photos/{{ year }}/min/<?= $file; ?>"/></a>
+<img src="/static/photos/{{ year }}/min/<?= $file; ?>" data-ds-target="/static/photos/{{ year }}/<?php echo $file; ?>"/>
 <?php endforeach; ?>
 </block>

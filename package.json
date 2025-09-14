@@ -1,0 +1,29 @@
+{
+	"name": "loclathon",
+	"version": "1.0.0",
+	"description": "Website of Le Loclathon",
+	"homepage": "https://github.com/cisoun/Loclathon#readme",
+	"bugs": {
+		"url": "https://github.com/cisoun/Loclathon/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cisoun/Loclathon.git"
+	},
+	"license": "ISC",
+	"author": "",
+	"type": "module",
+	"main": "index.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"build": "esbuild app/statics/photos.js --bundle --minify --watch --outdir=static/js"
+	},
+	"devDependencies": {
+		"esbuild": "^0.25.9"
+	},
+	"dependencies": {
+		"darkslide": "github:cisoun/darkslide"
+	}
+}
