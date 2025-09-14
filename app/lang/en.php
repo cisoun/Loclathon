@@ -1,5 +1,19 @@
 <?php
 return [
+	'contact.check'         => 'Verification',
+	'contact.confirmation'  => 'Confirmation',
+	'contact.mail'          => 'Mail',
+	'contact.message'       => 'Message',
+	'contact.name'          => 'First and last name',
+	'contact.reply'         => 'We will try to answer as fast as we can!',
+	'contact.send'          => 'Send',
+	'contact.thanks'        => 'Thank you!',
+	'contact.title'         => 'Contact form',
+	'contact.error'         => [
+		"This mail address is not valid.",
+		'The message is empty.',
+		'The verification is incorrect. Please try again.'
+	],
 	'email.confirmation'    => [
 		'amount'            => 'Amount',
 		'bank_account'      => 'Bank account',
@@ -70,19 +84,9 @@ return [
 	'menu.contact'          => 'Contact',
 	'menu.photos'           => 'Photos',
 	'menu.shop'             => 'Shop',
-	'contact.check'         => 'Verification',
-	'contact.confirmation'  => 'Confirmation',
-	'contact.mail'          => 'Mail',
-	'contact.message'       => 'Message',
-	'contact.name'          => 'First and last name',
-	'contact.reply'         => 'We will try to answer as fast as we can!',
-	'contact.send'          => 'Send',
-	'contact.thanks'        => 'Thank you!',
-	'contact.title'         => 'Contact form',
-	'contact.error'         => [
-		"This mail address is not valid.",
-		'The message is empty.',
-		'The verification is incorrect. Please try again.'
+	'months'                => [
+		'august'            => 'August',
+		'september'         => 'September'
 	],
 	'shop.address'          => 'Address',
 	'shop.cart'             => 'Cart',

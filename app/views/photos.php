@@ -1,11 +1,16 @@
 <?php
+$months = __('months');
+$august = $months['august'];
+$september = $months['september'];
+
 $dates = [
-	'2024' => '24 août 2024',
-	'2023' => '19 août 2023',
-	'2022' => '20 août 2022',
-	'2021' => '21 août 2021',
-	'2020' => '5 septembre 2020',
-	'2019' => '24 août 2019'
+	'2025' => "23 $august 2025",
+	'2024' => "24 $august 2024",
+	'2023' => "19 $august 2023",
+	'2022' => "20 $august 2022",
+	'2021' => "21 $august 2021",
+	'2020' => "5 $september 2020",
+	'2019' => "24 $august 2019"
 ];
 ?>
 
@@ -14,12 +19,12 @@ $dates = [
 <block title>{{ year }}</block>
 
 <block css>
-#grid > a > img { height: 100%; width: 100%; }
+h1 { margin-bottom: 0; }
+#grid > img { height: 100%; width: 100%; }
 </block>
 
 <block header>
-<h1>{{ year }}</h1>
-Tournée du <?php echo $dates[$params['year']]; ?>.
+<h1><?= $dates[$params['year']]; ?></h1>
 </block>
 
 <block grid>

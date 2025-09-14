@@ -1,5 +1,19 @@
 <?php
 return [
+	'contact.check'         => 'Vérification',
+	'contact.confirmation'  => 'Confirmation',
+	'contact.mail'          => 'E-mail',
+	'contact.message'       => 'Message',
+	'contact.name'          => 'Prénom et nom',
+	'contact.reply'         => 'Nous essayerons de te répondre au plus vite !',
+	'contact.send'          => 'Envoyer',
+	'contact.thanks'        => 'Merci !',
+	'contact.title'         => 'Formulaire de contact',
+	'contact.error'         => [
+		"L'adresse e-mail n'est pas valide.",
+		'Le message est vide.',
+		'La vérification est éronnée. Merci de réessayer.'
+	],
 	'email.confirmation'    => [
 		'amount'            => 'Montant',
 		'bank_account'      => 'Compte bancaire',
@@ -67,19 +81,9 @@ return [
 	'menu.contact'          => 'Contact',
 	'menu.photos'           => 'Photos',
 	'menu.shop'             => 'Magasin',
-	'contact.check'         => 'Vérification',
-	'contact.confirmation'  => 'Confirmation',
-	'contact.mail'          => 'E-mail',
-	'contact.message'       => 'Message',
-	'contact.name'          => 'Prénom et nom',
-	'contact.reply'         => 'Nous essayerons de te répondre au plus vite !',
-	'contact.send'          => 'Envoyer',
-	'contact.thanks'        => 'Merci !',
-	'contact.title'         => 'Formulaire de contact',
-	'contact.error'         => [
-		"L'adresse e-mail n'est pas valide.",
-		'Le message est vide.',
-		'La vérification est éronnée. Merci de réessayer.'
+	'months'                => [
+		'august'            => 'août',
+		'september'         => 'septembre'
 	],
 	'shop.address'          => 'Adresse',
 	'shop.cart'             => 'Panier',
