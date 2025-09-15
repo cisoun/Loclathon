@@ -1,4 +1,5 @@
 <?php
+// Month translations.
 $months = __('months');
 $august = $months['august'];
 $september = $months['september'];
@@ -12,6 +13,14 @@ $dates = [
 	'2020' => "5 $september 2020",
 	'2019' => "24 $august 2019"
 ];
+
+// Fetch JPEG files from folder of provided year.
+$year = $params['year'];
+$root = getcwd() . "/static/photos/$year";
+$files = scandir($root);
+$files = array_filter($files, function ($file) use ($root) {
+	return str_ends_with($file, '.jpg');
+});
 ?>
 
 <extend layouts/photos>
@@ -19,8 +28,10 @@ $dates = [
 <block title>{{ year }}</block>
 
 <block css>
-h1 { margin-bottom: 0; }
-#grid > img { height: 100%; width: 100%; }
+#grid > img {
+	aspect-ratio: 1;
+	width: 100%;
+}
 </block>
 
 <block header>
@@ -28,15 +39,7 @@ h1 { margin-bottom: 0; }
 </block>
 
 <block grid>
-<?php
-	$year = $params['year'];
-	$root = getcwd() . "/static/photos/$year";
-	$files = scandir($root);
-	$files = array_filter($files, function ($file) use ($root) {
-		return !is_dir($root . "/$file");
-	});
-	foreach ($files as $file):
-?>
+<?php foreach ($files as $file): ?>
 <img src="/static/photos/{{ year }}/min/<?= $file; ?>" data-ds-target="/static/photos/{{ year }}/<?php echo $file; ?>"/>
 <?php endforeach; ?>
 </block>
