@@ -7,7 +7,8 @@ $pictures = $article['pictures'];
 
 $referer = $_SERVER['HTTP_REFERER'] ?? "/{{lang}}/shop";
 
-function variant($variant) {
+// Generate option for variant of product.
+function render_variant($variant) {
 	$title = $variant['title'];
 	$attrs = ['value' => $variant['id']];
 	if ($variant['state'] == Shop::STATE_SOLDOUT) {
@@ -86,7 +87,7 @@ function variant($variant) {
 					<label for="variant">Variante:</label>
 					<select id="variant" name="variant">
 						<?php foreach ($variants as $variant): ?>
-						<?= variant($variant) ?>
+						<?= render_variant($variant) ?>
 						<?php endforeach; ?>
 					</select>
 				</fieldset>

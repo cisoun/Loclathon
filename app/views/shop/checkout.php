@@ -3,11 +3,10 @@ $countries = $params['countries'];
 $selected_country = $params['country'] ?? $params['countries'][0];
 $errors = $params['errors'] ?? [];
 
-$inputs = __('shop.inputs');
-$payments = __('shop.payments');
-$payments_infos = __('shop.payments.infos');
-$shippings = __('shop.shippings');
+$inputs          = __('shop.inputs');
+$payments        = __('shop.payments');
 $payments_infos  = __('shop.payments.infos');
+$shippings       = __('shop.shippings');
 $shippings_infos = __('shop.shippings.infos');
 
 
