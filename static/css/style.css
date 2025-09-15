@@ -17,7 +17,24 @@
 }
 
 body {
+	font-family: "Rubik", sans-serif;
+	font-optical-sizing: auto;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	overflow: hidden;
 	padding-bottom: 1rem;
+	text-wrap: balance;
+}
+
+/* Container */
+body > div {
+	height: 100%;
+	left: 0;
+	overflow-y: scroll;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 
 main {
@@ -25,16 +42,8 @@ main {
 }
 
 main > h1:first-child {
-	padding: 3rem 0;
-}
-
-body {
-	font-family:         "Rubik", sans-serif;
-	font-optical-sizing: auto;
-	font-size:           14px;
-	font-style:          normal;
-	font-weight:         400;
-	text-wrap:           balance;
+	margin: 0 0 2rem 0;
+	padding: 2rem 0;
 }
 
 footer {
