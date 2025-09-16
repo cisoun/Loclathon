@@ -110,8 +110,8 @@ $cart = Session::get('cart');
 				<div>
 					<svg class="outline fill"><use xlink:href="<?= statics('img/icons.svg#grid') ?>"/></svg>
 					<h1><?= __('footer.resources') ?></h1>
-					<a href="/static/files/tour.jpg"><?= __('footer.resources.map') ?></a>
-					<a href="/static/img/logo.svg"><?= __('footer.resources.logo') ?></a>
+					<a href="<?= statics('files/tour.jpg') ?>"><?= __('footer.resources.map') ?></a>
+					<a href="<?= statics('img/logo.svg') ?>"><?= __('footer.resources.logo') ?></a>
 				</div>
 				<div>
 					<svg class="outline fill"><use xlink:href="<?= statics('img/icons.svg#mail') ?>"/></svg>
