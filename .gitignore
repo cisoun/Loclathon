@@ -3,8 +3,8 @@
 node_modules/
 config.php
 database.db
-static/files/
-static/fonts/
-static/img/
-static/photos/
+statics/files/
+statics/fonts/
+statics/img/
+statics/photos/
 vendor

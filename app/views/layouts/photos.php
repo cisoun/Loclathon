@@ -3,7 +3,7 @@
 <block title>Albums <? title ?></block>
 
 <block head>
-<script src="/static/js/photos.js" type="module" defer></script>
+<script src="<?= statics('js/photos.js') ?>" type="module" defer></script>
 </block>
 
 <block css>

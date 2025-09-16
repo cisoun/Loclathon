@@ -51,8 +51,8 @@ ul.breadcrumb li:not(:last-child) {
 	<div>
 		<picture>
 			<!-- <source srcset="/static/img/locloise.webp" type="image/webp"> -->
-			<source srcset="/static/img/locloisenew.jpg" type="image/jpeg">
-			<img src="/static/img/locloisenew.jpg" alt="La Locloise"  class="rounded">
+			<source srcset="<?= statics("img/locloisenew.jpg") ?>" type="image/jpeg">
+			<img src="<?= statics("img/locloisenew.jpg") ?>" alt="La Locloise"  class="rounded">
 		</picture>
 	</div>
 	<div id="description" class="flex vertical">
@@ -70,7 +70,7 @@ ul.breadcrumb li:not(:last-child) {
 				</ul>
 			</p>
 			<a id="buy" class="button big responsive white" href="/{{lang}}/shop/product/la-locloise-05l">
-				<svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg>
+				<svg class="outline dark"><use xlink:href="<?= statics("img/icons.svg#cart") ?>"/></svg>
 				<?= __('locloise.buy') ?>
 			</a>
 		</div>

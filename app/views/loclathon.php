@@ -70,7 +70,7 @@ if (now > '<?= $date ?>T07:15' && now < '<?= $date ?>T19:30') {
 </div>
 <section class="flex">
 	<div id="loclathon" class="card">
-		<img id="logo" class="container" src="/static/img/home_2025.svg" alt="Le Loclathon"/>
+		<img id="logo" class="container" src="<?= statics('img/home_2025.svg') ?>" alt="Le Loclathon"/>
 		<div id="highlights">
 			<div><span><?= $highlights[0] ?></span><span><?= $highlights[1] ?></span><span><?= $highlights[2] ?></span></div>
 			<div><span><?= $highlights[3] ?></span></div>

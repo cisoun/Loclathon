@@ -51,17 +51,17 @@ function render_variant($variant) {
 
 <block ogd>
 <meta property="og:description" content="<?= strip_tags($article['description']) ?>">
-<meta property="og:image" content="https://<?= $_SERVER['HTTP_HOST'] ?>/static/img/shop/<?= $article['id'] ?>.png">
+<meta property="og:image" content="https://<?= $_SERVER['HTTP_HOST'] . statics("img/shop/$id.png") ?>">
 <meta property="og:title" content="Le Loclathon | <?= $article['title'] ?>">
 </block>
 
 <block content>
 	<div class="flex">
 		<div>
-			<img id="picture" src="/static/img/shop/<?= $article['id'] ?>.png"/>
+			<img id="picture" src="<?= statics("img/shop/$id.png") ?>"/>
 			<div id="pictures">
 				<?php foreach ($pictures as $picture): ?>
-				<a href="/static/img/shop/<?= $picture ?>" target="_blank"><img src="/static/img/shop/<?= $picture ?>" alt="" /></a>
+				<a href="<?= statics("img/shop/$picture") ?>" target="_blank"><img src="<?= statics("img/shop/$picture") ?>" alt="" /></a>
 				<?php endforeach; ?>
 			</div>
 		</div>
@@ -96,7 +96,7 @@ function render_variant($variant) {
 				<div class="separator"></div>
 
 				<fieldset>
-					<button class="white w-100"><svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg> Dans le panier</button>
+					<button class="white w-100"><svg class="outline dark"><use xlink:href="<?= statics("img/icons.svg#cart") ?>"/></svg> Dans le panier</button>
 				</fieldset>
 			</form>
 			<?php endif; ?>

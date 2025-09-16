@@ -87,7 +87,7 @@ $cart = $params['data'];
 			</div>
 			<fieldset>
 				<button name="checkout" class="white w-100">
-					<svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg>
+					<svg class="outline dark"><use xlink:href="<?= statics("img/icons.svg#cart") ?>"/></svg>
 					<?= __('shop.to_checkout') ?>
 				</button>
 			</fieldset>

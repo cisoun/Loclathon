@@ -24,7 +24,7 @@ $albums = [
 
 <block grid>
 <?php foreach ($albums as $year => $file): ?>
-	<div style="background-image: url('/static/photos/<?= $year ?>/min/<?= $file ?>.jpg')">
+	<div style="background-image: url('<?= statics("photos/$year/min/$file.jpg") ?>')">
 	<a href="/{{lang}}/photos/<?= $year ?>"><div><?= $year ?></div></a>
 	</div>
 <?php endforeach; ?>

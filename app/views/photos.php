@@ -16,7 +16,7 @@ $dates = [
 
 // Fetch JPEG files from folder of provided year.
 $year = $params['year'];
-$root = getcwd() . "/static/photos/$year";
+$root = getcwd() . statics("photos/$year");
 $files = scandir($root);
 $files = array_filter($files, function ($file) use ($root) {
 	return str_ends_with($file, '.jpg');
@@ -40,6 +40,6 @@ $files = array_filter($files, function ($file) use ($root) {
 
 <block grid>
 <?php foreach ($files as $file): ?>
-<img src="/static/photos/{{ year }}/min/<?= $file; ?>" data-ds-target="/static/photos/{{ year }}/<?php echo $file; ?>"/>
+<img src="<?= statics("photos/$year/min/$file") ?>" data-ds-target="<?= statics("photos/$year/$file") ?>"/>
 <?php endforeach; ?>
 </block>

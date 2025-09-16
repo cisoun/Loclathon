@@ -5,7 +5,7 @@
 	font-weight: 400;
 	src: local('Raleway'),
 		 url(../fonts/Raleway-Regular.woff2) format('woff2'),
-		 url(../fonts/raleway/static/Raleway-Regular.ttf) format('truetype');
+		 url(../fonts/raleway/statics/Raleway-Regular.ttf) format('truetype');
 }
 @font-face {
 	font-display: swap;
@@ -14,7 +14,7 @@
 	font-weight: 600;
 	src: local('Raleway'),
 		 url(../fonts/Raleway-SemiBold.woff2) format('woff2'),
-		 url(../fonts/raleway/static/Raleway-SemiBold.ttf) format('truetype');
+		 url(../fonts/raleway/statics/Raleway-SemiBold.ttf) format('truetype');
 }
 
 :root {

@@ -21,7 +21,8 @@ function env($key, $fallback = false) {
 function extension($extensions) { return Request::has_extension($extensions); }
 function method()				{ return Request::method(); }
 function redirect($url)			{ return Router::redirect($url); }
-function route($uri, $callback)	{ return Router::route($uri, $callback); };
+function route($uri, $callback)	{ return Router::route($uri, $callback); }
+function statics($path)         { return Statics::get($path); }
 function view($path)			{ return Router::view($path); }
 if (env('debug')) {
 	function view_cached($path)	{ return Router::view($path); }

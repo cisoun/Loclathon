@@ -107,7 +107,7 @@ h3 {
 		<h3><?= __('shop.shipping') ?></h3>
 		<form action="/{{lang}}/shop/pay" method="post">
 			<button type="submit" class="white w-100">
-				<svg class="outline dark"><use href="../static/img/icons.svg#card"/></svg>
+				<svg class="outline dark"><use href="<?= statics('img/icons.svg#card') ?>"/></svg>
 				<?= __('shop.pay') ?>
 			</button>
 		</form>

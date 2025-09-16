@@ -12,7 +12,7 @@ $cart = Session::get('cart');
 <head>
 	<title>Le Loclathon | <? title ?></title>
 
-	<link rel="icon" type="image/svg" href="/static/img/favicon.svg">
+	<link rel="icon" type="image/svg" href="<?= statics('img/favicon.svg') ?>">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,20 +27,20 @@ $cart = Session::get('cart');
 
 	<!-- Open Graph data -->
 	<meta property="og:description" content="Site officiel du Loclathon et de l'absinthe La Locloise.">
-	<meta property="og:image" content="/static/img/preview.jpg">
+	<meta property="og:image" content="<?= statics('img/preview.jpg') ?>">
 	<meta property="og:title" content="Le Loclathon | <? title ?>">
 
 	<!-- CSS -->
-	<link rel="preload" href="/static/css/layout.css" as="style" crossorigin>
-	<link rel="preload" href="/static/css/style.css" as="style" crossorigin>
-	<link rel="preload" href="/static/css/phone.css" as="style" crossorigin>
-	<link rel="preload" href="/static/css/desktop.css" as="style" crossorigin>
+	<link rel="preload" href="<?= statics('css/layout.css') ?>" as="style" crossorigin>
+	<link rel="preload" href="<?= statics('css/style.css') ?>" as="style" crossorigin>
+	<link rel="preload" href="<?= statics('css/phone.css') ?>" as="style" crossorigin>
+	<link rel="preload" href="<?= statics('css/desktop.css') ?>" as="style" crossorigin>
 	<? preload ?>
 
-	<link rel="stylesheet" href="/static/css/layout.css">
-	<link rel="stylesheet" href="/static/css/style.css">
-	<link rel="stylesheet" href="/static/css/phone.css" media="screen and (max-width: 992px)">
-	<link rel="stylesheet" href="/static/css/desktop.css" media="screen and (min-width: 992px)">
+	<link rel="stylesheet" href="<?= statics('css/layout.css') ?>">
+	<link rel="stylesheet" href="<?= statics('css/style.css') ?>">
+	<link rel="stylesheet" href="<?= statics('css/phone.css') ?>" media="screen and (max-width: 992px)">
+	<link rel="stylesheet" href="<?= statics('css/desktop.css') ?>" media="screen and (min-width: 992px)">
 
 	<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
@@ -63,18 +63,18 @@ $cart = Session::get('cart');
 				<li><router to="/{{lang}}/shop"><?= __('menu.shop') ?></router></li>
 				<li><router to="/{{lang}}/contact"><?= __('menu.contact') ?></router></li>
 				<li id="langs">
-					<a><span><img src="/static/img/lang.<?= $current_locale ?>.svg"/> <?= $current_locale ?></span></a>
+					<a><span><img src="<?= statics("img/lang.$current_locale.svg") ?>"/> <?= $current_locale ?></span></a>
 					<ul>
 						<?php foreach ($locales as $locale): ?>
 						<?php if ($locale !== $current_locale): ?>
-						<li><a href="/<?= $locale . $page ?>"><img src="/static/img/lang.<?= $locale ?>.svg"/><?= LANG_NAMES[$locale] ?></a></li>
+						<li><a href="/<?= $locale . $page ?>"><img src="<?= statics("img/lang.$locale.svg") ?>"/><?= LANG_NAMES[$locale] ?></a></li>
 						<?php endif; ?>
 						<?php endforeach; ?>
 					</ul>
 				</li>
 				<?php if ($cart): ?>
 				<a href="/{{lang}}/shop/cart" class="button only-desktop">
-					<svg class="outline icon"><use xlink:href="/static/img/icons.svg#cart"/></svg>
+					<svg class="outline icon"><use xlink:href="<?= statics('img/icons.svg#cart') ?>"/></svg>
 					<?= array_sum($cart) ?>
 				</a>
 				<?php endif ?>
@@ -84,7 +84,7 @@ $cart = Session::get('cart');
 			<?php if ($cart): ?>
 			<div class="only-mobile flex">
 				<a href="/{{lang}}/shop/cart" class="button white">
-					<svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg>
+					<svg class="outline dark"><use xlink:href="<?= statics('img/icons.svg#cart') ?>"/></svg>
 					<?= array_sum($cart) ?> articles dans le panier
 				</a>
 			</div>
@@ -102,19 +102,19 @@ $cart = Session::get('cart');
 					</small>
 				</div>
 				<div>
-					<svg class="outline fill"><use xlink:href="/static/img/icons.svg#user"/></svg>
+					<svg class="outline fill"><use xlink:href="<?= statics('img/icons.svg#user') ?>"/></svg>
 					<h1>Social</h1>
 					<a href="https://instagram.com/loclathon">Instagram</a>
 					<a href="https://fb.com/loclathon">Facebook</a>
 				</div>
 				<div>
-					<svg class="outline fill"><use xlink:href="/static/img/icons.svg#grid"/></svg>
+					<svg class="outline fill"><use xlink:href="<?= statics('img/icons.svg#grid') ?>"/></svg>
 					<h1><?= __('footer.resources') ?></h1>
 					<a href="/static/files/tour.jpg"><?= __('footer.resources.map') ?></a>
 					<a href="/static/img/logo.svg"><?= __('footer.resources.logo') ?></a>
 				</div>
 				<div>
-					<svg class="outline fill"><use xlink:href="/static/img/icons.svg#mail"/></svg>
+					<svg class="outline fill"><use xlink:href="<?= statics('img/icons.svg#mail') ?>"/></svg>
 					<h1><?= __('footer.contact') ?></h1>
 					<a href="/{{lang}}/contact"><?= __('footer.contact.write') ?></a>
 				</div>
