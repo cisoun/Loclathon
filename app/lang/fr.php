@@ -86,6 +86,7 @@ return [
 		'september'         => 'septembre'
 	],
 	'shop.address'          => 'Adresse',
+	'shop.amount'           => 'Quantité',
 	'shop.cart'             => 'Panier',
 	'shop.cart_empty'       => 'Le panier est vide.',
 	'shop.clear'            => 'Vider',
@@ -139,6 +140,7 @@ return [
 		'paypal'            => 'PayPal ou carte de crédit.',
 		'twint'             => 'Twint ou carte de crédit.'
 	],
+	'shop.put_in_cart'      => 'Dans le panier',
 	'shop.remove'           => 'supprimer',
 	'shop.shipping'         => 'Livraison',
 	'shop.shipping_fees'    => 'Frais de livraison',
@@ -158,6 +160,7 @@ return [
 		'SOLDE'
 	],
 	'shop.update'           => 'Actualiser',
+	'shop.variant'          => 'Variante',
 	'shop.to_checkout'      => 'Passer à la caisse',
 	'tracker.current'       => 'Étape actuelle',
 	'tracker.next'          => 'Prochaine étape',

@@ -89,6 +89,7 @@ return [
 		'september'         => 'September'
 	],
 	'shop.address'          => 'Address',
+	'shop.amount'           => 'Amount',
 	'shop.cart'             => 'Cart',
 	'shop.cart_empty'       => 'Cart is empty',
 	'shop.clear'            => 'Clear',
@@ -131,7 +132,8 @@ return [
 	'shop.large_orders'     => 'For more than 6 bottles, please contact us or split your order.',
 	'shop.order_summary'    => 'Order summary',
 	'shop.pay'              => 'Proceed to payment',
-	'shop.payment'          => 'Payment fees',
+	'shop.payment'          => 'Payment',
+	'shop.payment_fees'     => 'Payment fees',
 	'shop.payments'         => [
 		'direct'            => 'Bank transfert',
 		'paypal'            => 'PayPal',
@@ -142,6 +144,7 @@ return [
 		'paypal'            => 'PayPal or credit cart.',
 		'twint'             => 'Twint or credit cart.'
 	],
+	'shop.put_in_cart'      => 'Put in cart',
 	'shop.remove'           => 'remove',
 	'shop.shipping'         => 'Shipping',
 	'shop.shipping_fees'    => 'Shipping fees',
@@ -161,6 +164,7 @@ return [
 		'SALES'
 	],
 	'shop.update'           => 'Update',
+	'shop.variant'          => 'Variant',
 	'shop.to_checkout'      => 'Go to checkout',
 	'tracker.current'       => 'Current step',
 	'tracker.next'          => 'Next step',

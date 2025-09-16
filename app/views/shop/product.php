@@ -74,7 +74,7 @@ function render_variant($variant) {
 			<?php if ($article['state'] < 2): ?>
 			<form action="/{{lang}}/shop/cart/add/<?= $article['id'] ?>" method="post">
 				<fieldset class="group number">
-					<label for="units">Nombre:</label>
+					<label for="units"><?= __('shop.amount') ?></label>
 					<div>
 						<input id="units" name="units" type="number" value=1 min=1 max=100 class="hide-controls" required>
 						<button type="button" class="">-</button>
@@ -84,7 +84,7 @@ function render_variant($variant) {
 
 				<?php if ($variants): ?>
 				<fieldset>
-					<label for="variant">Variante:</label>
+					<label for="variant"><?= __('shop.variant') ?></label>
 					<select id="variant" name="variant">
 						<?php foreach ($variants as $variant): ?>
 						<?= render_variant($variant) ?>
@@ -96,7 +96,7 @@ function render_variant($variant) {
 				<div class="separator"></div>
 
 				<fieldset>
-					<button class="white w-100"><svg class="outline dark"><use xlink:href="<?= statics("img/icons.svg#cart") ?>"/></svg> Dans le panier</button>
+					<button class="white w-100"><svg class="outline dark"><use xlink:href="<?= statics("img/icons.svg#cart") ?>"/></svg> <?= __('shop.put_in_cart') ?></button>
 				</fieldset>
 			</form>
 			<?php endif; ?>
