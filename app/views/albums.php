@@ -1,5 +1,7 @@
 <?php
 $albums = [
+	'2025' => '_DSC7941',
+	'2024' => '_DSC7706',
 	'2023' => '_DSC6733',
 	'2022' => '_DSC5557',
 	'2021' => '_DSC5036',
@@ -22,8 +24,8 @@ $albums = [
 
 <block grid>
 <?php foreach ($albums as $year => $file): ?>
-	<div style="background-image: url('/static/photos/<?php echo $year ?>/min/<?php echo $file ?>.jpg')">
-	<a href="/{{lang}}/photos/<?php echo $year ?>"><div><?php echo $year ?></div></a>
+	<div style="background-image: url('<?= statics("photos/$year/min/$file.jpg") ?>')">
+	<a href="/{{lang}}/photos/<?= $year ?>"><div><?= $year ?></div></a>
 	</div>
 <?php endforeach; ?>
 </block>

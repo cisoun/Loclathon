@@ -3,15 +3,15 @@
 <block title><?= __('menu.shop') ?></block>
 
 <block preload>
-<link rel="preload" href="/static/js/layout.js" as="script">
-<link rel="preload" href="/static/js/fetch.js" as="script">
-<link rel="preload" href="/static/js/shop.js" as="script">
+<link rel="preload" href="<?= statics('js/layout.js') ?>" as="script">
+<link rel="preload" href="<?= statics('js/fetch.js') ?>" as="script">
+<link rel="preload" href="<?= statics('js/shop.js') ?>" as="script">
 </block>
 
-<block footer>
-<script src="/static/js/layout.js" type="module" defer></script>
-<script src="/static/js/fetch.js" type="module" defer></script>
-<script src="/static/js/shop.js" type="module" defer></script>
+<block head>
+<script src="<?= statics('js/layout.js') ?>" type="module" defer></script>
+<script src="<?= statics('js/fetch.js') ?>" type="module" defer></script>
+<? head ?>
 </block>
 
 <block css>
@@ -22,12 +22,8 @@
 <? ogd ?>
 </block>
 
-<block subnav>
-<? subnav ?>
-</block>
-
 <block content>
-<main id="shop" class="container padded dark">
+<main id="shop" class="content">
 <? content ?>
 </main>
 </block>

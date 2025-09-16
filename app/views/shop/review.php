@@ -1,11 +1,13 @@
 <?php
-$country = $params['country'];
-$payment = $params['payment'];
+$country  = $params['country'];
+$payment  = $params['payment'];
 $shipping = $params['shipping'];
 $articles = $params['articles'];
-$total = $params['total'];
+$total    = $params['total'];
 ?>
+
 <extend layouts/shop>
+
 <block css>
 #shop table {
 	width: 100%;
@@ -28,13 +30,8 @@ h3 {
 	width: 100%;
 }
 
-
-#pay small {
-	color: var(--gray-700);
-}
-
 .panel {
-	background-color: var(--gray-150);
+	background-color: var(--dark-2);
 	border-radius: var(--border-radius);
 	margin: 0.5rem 0;
 	overflow: hidden;
@@ -48,7 +45,7 @@ h3 {
 
 .panel.splitted div {
 	align-items: center;
-	background-color: var(--gray-150);
+	background-color: var(--dark-2);
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 1px;
@@ -63,8 +60,7 @@ h3 {
 </block>
 <block content>
 <h1><?= __('shop.order_summary') ?></h1>
-
-<div class="dual spaced">
+<div class="flex">
 	<div>
 		<h3><?= __('shop.address') ?></h3>
 		<address class="panel">
@@ -74,10 +70,10 @@ h3 {
 			<?= __('shop.countries')[$country] ?>
 		</address>
 		<div class="panel">
-			<b><?= __('shop.confirmation_to') ?></b>:<br/>
+			<b><?= __('shop.confirmation_to') ?></b>:<br>
 			{{ email }}
 		</div>
-		<a href="/{{lang}}/shop/checkout">↻ <?= __('shop.change_address') ?></a></p>
+		<a href="/{{lang}}/shop/checkout">↻ <?= __('shop.change_address') ?></a>
 	</div>
 	<div id="pay">
 		<h3><?= __('shop.payment') ?></h3>
@@ -91,14 +87,14 @@ h3 {
 			<div>
 				<span>
 					<?= __('shop.shippings')[$shipping] ?><br>
-					<small><?= __('shop.shipping') ?></small>
+					<small class="text-light"><?= __('shop.shipping_fees') ?></small>
 				</span>
 				<span>{{ shipping_fees }} CHF</span>
 			</div>
 			<div>
 				<span>
 					<?= __('shop.payments')[$payment] ?><br>
-					<small><?= __('shop.payment') ?></small>
+					<small class="text-light"><?= __('shop.payment_fees') ?></small>
 				</span>
 				<span>{{ payment_fees }} CHF</span>
 			</div>
@@ -111,9 +107,10 @@ h3 {
 		<h3><?= __('shop.shipping') ?></h3>
 		<form action="/{{lang}}/shop/pay" method="post">
 			<button type="submit" class="white w-100">
-				<svg class="outline dark"><use href="../static/img/icons.svg#card"/></svg>
+				<svg class="outline dark"><use href="<?= statics('img/icons.svg#card') ?>"/></svg>
 				<?= __('shop.pay') ?>
 			</button>
+		</form>
 	</div>
-<div>
+</div>
 </block>

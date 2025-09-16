@@ -20,7 +20,9 @@ class Layout {
 			$content = self::replace_blocks($content, $blocks);
 		}
 
-		return self::replace_params($content, $params);
+		$content = self::replace_params($content, $params);
+		$content = self::replace_routers($content);
+		return $content;
 	}
 
 	private static function replace_blocks($content, $blocks, $fallback = '') {
@@ -38,6 +40,21 @@ class Layout {
 			'/\{\{\s*(' . self::BLOCK_PATTERN . ')(\s*\|\s*\"(.*)\")?\s*\}\}/',
 			function ($match) use ($params) {
 				return $params[$match[1]] ?? $match[3] ?? '';
+			},
+			$content
+		);
+	}
+
+	private static function replace_routers($content) {
+		$path = Request::path();
+		return preg_replace_callback(
+			'/<router\s+to="([^"]+)">(.*)<\/router>/',
+			function ($match) use ($path) {
+				if (str_starts_with($path, $match[1])) {
+					return "<a href=\"$match[1]\" data-active>$match[2]</a>";
+				} else {
+					return "<a href=\"$match[1]\">$match[2]</a>";
+				}
 			},
 			$content
 		);

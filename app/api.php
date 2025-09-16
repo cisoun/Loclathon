@@ -12,8 +12,9 @@ require_once('app.php');
 # Get request's body (JSON).
 $data = array();
 $input = file_get_contents('php://input');
-if ($input !== false)
-    $data = json_decode($input, true);
+if ($input !== false) {
+	$data = json_decode($input, true);
+}
 
 # Route.
 $url = substr($_SERVER['REQUEST_URI'], 5); # Remove '/api/' from URL.'

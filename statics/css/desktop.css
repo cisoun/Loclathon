@@ -1,0 +1,75 @@
+body {
+	padding-top: 8rem;
+}
+
+footer > div {
+	max-width: 996px;
+}
+
+nav > .trigger { display: none; }
+
+nav {
+	background:      linear-gradient(to bottom, var(--background), transparent);
+	display:         flex;
+	justify-content: center;
+	left:            0;
+	position:        sticky;
+	right:           0;
+	top:             0;
+	width:           100%;
+	z-index:         1;
+}
+
+nav > ul {
+	background-color: var(--background);
+	border-radius:    1rem;
+	display:          flex;
+	flex-direction:   row;
+	gap:              0.5rem;
+	margin:           1.5rem 0;
+	padding:          1rem;
+}
+
+nav > ul > li > a {
+	background-color: var(--background);
+	border-radius:    0.5rem;
+	display:          block;
+	padding:          0.5rem 1rem;
+	text-align:       center;
+	width:            130px;
+}
+
+nav > ul > li:hover > a {
+	background-color: var(--dark-2);
+}
+
+nav > ul > li > a[data-active] {
+	background-color: var(--foreground);
+	color:            var(--background);
+}
+
+nav > ul > li > ul {
+	background-color: var(--dark-2);
+	border: 0.2rem solid var(--background);
+	border-radius:    0.5rem;
+	display:          none;
+	gap:              0.2rem;
+	padding:          0.2rem;
+}
+
+nav > ul > li:hover > ul {
+	display:  flex;
+	flex-direction: column;
+	position: absolute;
+}
+
+nav > ul > li > ul a {
+/*	background-color: var(--dark-3);*/
+	border-radius:    0.3rem;
+	display:          block;
+	padding:          0.3rem 1rem;
+}
+nav > ul > li > ul a:hover {
+	background-color: var(--foreground);
+	color: var(--background);
+}

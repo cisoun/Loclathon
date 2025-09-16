@@ -57,8 +57,8 @@
 	<tr>
 		<td></td>
 		<td class="center">
-		<br><br>
-		<img id="logo" src="https://dev.loclathon.ch/static/img/email/logo.png" alt="Logo" height="120"/>
+			<br><br>
+			<img id="logo" src="https://loclathon.ch/statics/img/email/logo.png" alt="Logo" height="120"/>
 		</td>
 		<td></td>
 	</tr>
@@ -88,7 +88,7 @@
 					<a href="https://loclathon.ch">loclathon.ch</a> |
 					<a href="https://instagram.com/loclathon">Instagram</a> |
 					<a href="https://facebook.com/Loclathon">Facebook</a> |
-					<a href="https://loclathon.ch/fr/contact"><?= __('email.contact') ?></a>
+					<a href="https://loclathon.ch/contact"><?= __('email.contact') ?></a>
 				</small>
 				</td>
 			</tr>

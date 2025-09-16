@@ -32,10 +32,6 @@ ul.breadcrumb li:not(:last-child) {
 		border-right: unset;
 	}
 }
-@media only screen and (min-width: 992px) {
-	#description { padding-top: 3rem; }
-}
-
 #buy { overflow: hidden; transition: var(--transition); }
 #buy .outline {
 	margin-left: -3.4rem; /* -Icon size - button padding */
@@ -51,47 +47,47 @@ ul.breadcrumb li:not(:last-child) {
 </block>
 
 <block content>
-<main id="locloise" class="dual dark">
+<main id="locloise" class="flex dark">
 	<div>
 		<picture>
-			<source srcset="/static/img/locloise.webp" type="image/webp">
-			<source srcset="/static/img/locloise.jpg" type="image/jpeg">
-			<img src="/static/img/locloise.jpg" alt="La Locloise">
+			<!-- <source srcset="/static/img/locloise.webp" type="image/webp"> -->
+			<source srcset="<?= statics("img/locloisenew.jpg") ?>" type="image/jpeg">
+			<img src="<?= statics("img/locloisenew.jpg") ?>" alt="La Locloise"  class="rounded">
 		</picture>
 	</div>
-	<div id="description" class="padded">
-		<h1>La Locloise</h1>
-		<div id="status"><span id="price">38</span> CHF</div>
-		<p><?= $description[0] ?></p>
-		<p><?= $description[1] ?></p>
-		<p><?= $description[2] ?></p>
-		<p>
-			<ul class="breadcrumb">
-				<li><?= $details[0] ?></li>
-				<li><?= $details[1] ?></li>
-				<li><?= $details[2] ?></li>
+	<div id="description" class="flex vertical">
+		<div class="card">
+			<h1>La Locloise</h1>
+			<div id="status"><span id="price">38</span> CHF</div>
+			<p><?= $description[0] ?></p>
+			<p><?= $description[1] ?></p>
+			<p><?= $description[2] ?></p>
+			<p>
+				<ul class="breadcrumb">
+					<li><?= $details[0] ?></li>
+					<li><?= $details[1] ?></li>
+					<li><?= $details[2] ?></li>
+				</ul>
+			</p>
+			<a id="buy" class="button big responsive white" href="/{{lang}}/shop/product/la-locloise-05l">
+				<svg class="outline dark"><use xlink:href="<?= statics("img/icons.svg#cart") ?>"/></svg>
+				<?= __('locloise.buy') ?>
+			</a>
+		</div>
+		<div class="card">
+			<h1><?= __('locloise.resellers') ?></h1>
+			<h3>Le Locle</h3>
+			<ul>
+				<li><a href="https://www.facebook.com/profile.php?id=100063500294476" target="_blank">L'épicerie de Marie</a></li>
 			</ul>
-		</p>
-		<a id="buy" class="button big responsive white" href="/{{lang}}/shop/product/la-locloise-05l">
-			<svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg>
-			<?= __('locloise.buy') ?>
-		</a>
-		<div class="separator"></div>
-		<h2><?= __('locloise.resellers') ?></h2>
-		<div class="dual">
-			<div>
-				<h3>Le Locle</h3>
-				<ul>
-					<li><a href="https://www.facebook.com/profile.php?id=100063500294476">L'épicerie de Marie</a></li>
-					<li><a href="https://apero-clock.ch/">L'ApérO'clock</a></li>
-				</ul>
-			</div>
-			<div>
-				<h3>Peseux</h3>
-				<ul>
-					<li><a href="https://linsolite.ch">L'INSOLITE</a></li>
-				</ul>
-			</div>
+			<h3>Peseux</h3>
+			<ul>
+				<li><a href="https://linsolite.ch" target="_blank">L'INSOLITE</a></li>
+			</ul>
+			<h3>Fleurier</h3>
+			<ul>
+				<li><a href="https://shop.stillerie.ch/products/la-locloise" target="_blank">Distillerie Stillerie</a></li>
+			</ul>
 		</div>
 	</div>
 </main>

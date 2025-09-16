@@ -3,10 +3,10 @@ $countries = $params['countries'];
 $selected_country = $params['country'] ?? $params['countries'][0];
 $errors = $params['errors'] ?? [];
 
-$inputs = __('shop.inputs');
-$payments = __('shop.payments');
-$payments_infos = __('shop.payments.infos');
-$shippings = __('shop.shippings');
+$inputs          = __('shop.inputs');
+$payments        = __('shop.payments');
+$payments_infos  = __('shop.payments.infos');
+$shippings       = __('shop.shippings');
 $shippings_infos = __('shop.shippings.infos');
 
 
@@ -44,15 +44,13 @@ $input = function($id) use ($form, $params) {
 <block title><?= __('menu.shop') ?></block>
 
 <block preload>
-<link rel="preload" href="/static/js/layout.js" as="script">
-<link rel="preload" href="/static/js/fetch.js" as="script">
-<link rel="preload" href="/static/js/shop.js" as="script">
+<link rel="preload" href="<?= statics("js/layout.js") ?>" as="script">
+<link rel="preload" href="<?= statics("js/fetch.js") ?>" as="script">
+<link rel="preload" href="<?= statics("js/shop.js") ?>" as="script">
 </block>
 
-<block footer>
-<script src="/static/js/layout.js" type="module"></script>
-<script src="/static/js/fetch.js" type="module"></script>
-<script src="/static/js/shop.js" type="module"></script>
+<block head>
+<script src="<?= statics("js/shop.js") ?>" type="module" defer></script>
 </block>
 
 <block css>
@@ -89,7 +87,7 @@ hr {
 <?php endif; ?>
 
 <form action="/{{lang}}/shop/checkout" method="post" autocomplete="on">
-	<div class="dual spaced">
+	<div class="flex">
 
 		<!-- First column -->
 		<div>
@@ -174,8 +172,7 @@ hr {
 			<div class="group radio with-check">
 				<?= $input('payIBAN') ?>
 				<label for="payIBAN">
-					<?= $payments['direct'] ?>
-					<span class="label green"><?= __('shop.free') ?></span><br>
+					<?= $payments['direct'] ?><br>
 					<small><?= $payments_infos['direct'] ?></small>
 				</label>
 				<!-- <input type="radio" name="payment" id="payTwint" value="twint" {{ payment.twint }}/>

@@ -8,11 +8,11 @@ if (extension('png|jpg|webp|ttf|css|js|svg|pdf|ico')) {
 
 switch (method()) {
 	case 'GET':
-		route('/',                        redirect('/' . Lang::user()));
+		route('/',                        redirect('/' . Lang::user() . '/loclathon'));
 		route('/locloise',                redirect('/' . Lang::user() . '/locloise'));
 		route('/shop',                    redirect('/' . Lang::user() . '/shop'));
 		route('/tracker',                 redirect('/' . Lang::user() . '/tracker'));
-		route('/:lang',                   with_lang(view_cached('loclathon')));
+		route('/:lang/loclathon',         with_lang(view_cached('loclathon')));
 		route('/:lang/locloise',          with_lang(view_cached('locloise')));
 		route('/:lang/photos',            with_lang(view_cached('albums')));
 		route('/:lang/photos/:year',      with_lang(view_cached('photos')));
@@ -23,13 +23,11 @@ switch (method()) {
 		route('/:lang/shop/review',       with_lang(call('Shop::review')));
 		route('/:lang/shop/confirm',      with_lang(call('Shop::confirm')));
 		route('/:lang/contact',           with_lang(call('Contact::show')));
-		// route('/:lang/inscription',  with_lang(view_cached('covid')));
 		route('/:lang/tracker',           with_lang(view('tracker')));
 		break;
 	case 'POST':
 		route('/:lang/contact',           with_lang(call('Contact::post')));
 		route('/:lang/shop',              with_trim(with_lang(call('Shop::checkout'))));
-		// route('/:lang/inscription',       with_lang(view('covid')));
 		route('/:lang/shop/cart/add/:id', call('Shop::cart_add'));
 		route('/:lang/shop/cart',         with_lang(call('Shop::cart')));
 		route('/:lang/shop/checkout',     with_lang(call('Shop::checkout')));

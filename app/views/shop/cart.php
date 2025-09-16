@@ -41,8 +41,8 @@ $cart = $params['data'];
 </block>
 
 <block content>
-	<h1>Panier</h1>
-	<form method="post" action="/{{lang}}/shop/cart" class="dual spaced">
+	<h1><?= __('shop.cart') ?></h1>
+	<form method="post" action="/{{lang}}/shop/cart" class="flex">
 		<div>
 			<?php foreach ($cart as $key => $article): ?>
 			<div class="article">
@@ -67,29 +67,29 @@ $cart = $params['data'];
 								<button type="button" class="">+</button>
 							</div>
 						</div>
-						<button name="delete" value=<?= $article['id'] ?> class="red">supprimer</button>
+						<button name="delete" value=<?= $article['id'] ?> class="red"><?= __('shop.remove') ?></button>
 					</div>
 				</div>
 			</div>
 			<?php endforeach ?>
 			<?php if (!$cart): ?>
-				Le panier est vide.
+				<?= __('shop.cart_empty'); ?>
 			<?php endif; ?>
 		</div>
-		<div class="uni">
+		<div>
 			<h3>Total</h3><h2><?= $params['total'] ?> CHF</h2>
-			<fieldset>
-				<button name="checkout" class="white w-100">
-					<svg class="outline dark"><use xlink:href="/static/img/icons.svg#cart"/></svg>
-					Passer à la caisse
-				</button>
+			<fieldset id="actions">
+				<button name="update" class="w-100"><?= __('shop.update') ?></button>
+				<button name="clear" class="w-100"><?= __('shop.clear') ?></button>
 			</fieldset>
 			<div class="separator">
-				<span>Panier</span>
+				<span><?= __('shop.cart') ?></span>
 			</div>
-			<fieldset id="actions">
-				<button name="update" class="w-100">Actualiser</button>
-				<button name="clear" class="w-100">Vider</button>
+			<fieldset>
+				<button name="checkout" class="white w-100">
+					<svg class="outline dark"><use xlink:href="<?= statics("img/icons.svg#cart") ?>"/></svg>
+					<?= __('shop.to_checkout') ?>
+				</button>
 			</fieldset>
 		</div>
 	</form>
