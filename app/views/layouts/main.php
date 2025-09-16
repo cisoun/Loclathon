@@ -55,7 +55,7 @@ $cart = Session::get('cart');
 	<div>
 		<!-- Header -->
 		<nav id="menu">
-			<a href="#" class="trigger"><svg class="outline"><use xlink:href="/static/img/icons.svg#circle-menu"/></svg> Le Loclathon</a>
+			<a href="#" class="trigger"><svg class="outline"><use xlink:href="<?= statics('img/icons.svg#circle-menu') ?>"/></svg> Le Loclathon</a>
 			<ul>
 				<li><router to="/{{lang}}/loclathon">Le Loclathon</router></li>
 				<li><router to="/{{lang}}/locloise">La Locloise</router></li>
