@@ -1,3 +1,5 @@
+dev: serve
+
 previews:
 	cd ./static/img/shop
 	for i in *; do
