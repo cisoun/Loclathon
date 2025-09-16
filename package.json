@@ -18,7 +18,7 @@
 		"test": "test"
 	},
 	"scripts": {
-		"build": "esbuild app/statics/photos.js --bundle --minify --watch --outdir=static/js"
+		"build": "esbuild app/statics/photos.js --bundle --minify --watch --outdir=statics/js"
 	},
 	"devDependencies": {
 		"esbuild": "^0.25.9"
