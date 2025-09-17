@@ -71,6 +71,10 @@
 <? css ?>
 </block>
 
+<block js>
+<? js ?>
+</block>
+
 <block content>
 <main id="photos" class="container">
 	<? header ?>

@@ -28,18 +28,29 @@ $files = array_filter($files, function ($file) use ($root) {
 <block title>{{ year }}</block>
 
 <block css>
-#grid > img {
+#grid > a,
+#grid > img,
+#grid > a > img {
 	aspect-ratio: 1;
+	display: block;
 	width: 100%;
 }
 </block>
 
+<block js>
+// Replace link of photos by their own picture if JavaScript is enabled so
+// Darkslide can takeover.
+document.querySelectorAll('#grid > a').forEach((link) => {
+	link.outerHTML = link.innerHTML;
+});
+</block>
+
 <block header>
-<h1><?= $dates[$params['year']]; ?></h1>
+<h1><?= $dates[$year] ?></h1>
 </block>
 
 <block grid>
 <?php foreach ($files as $file): ?>
-<img src="<?= statics("photos/$year/min/$file") ?>" data-ds-target="<?= statics("photos/$year/$file") ?>"/>
+<a href="<?= statics("photos/$year/$file") ?>" target="_blank"><img src="<?= statics("photos/$year/min/$file") ?>" data-ds-target="<?= statics("photos/$year/$file") ?>"/></a>
 <?php endforeach; ?>
 </block>
