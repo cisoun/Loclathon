@@ -30,6 +30,7 @@ and the JS usage is very limited in order to be supported by no-JS browsers.
 
 - Apache >=2
 - Composer
+- GraphicsMagick
 - PHP >=7
 - SQLite3
 
@@ -39,33 +40,26 @@ Modules:
 
 ## Installation
 
-From the project directory:
-
 ```sh
-# Install PHP modules.
-composer install
-# Create database for orders.
-cat static/database.sql | sqlite3 database.db
-# Configure the project.
-cp config.example.php config.php
+# Initialize project.
+./ctl init
+
+# Configure project.
 $EDITOR config.php
-# Secure files permissions.
-chmod -R 770 .
-chmod 660 config.php database.db
 ```
 
 ### Tweaks
 
 - Add a cron job to remove old order caches.
-- Mount the `cache` and `static` folders in *tmpfs* to speed up data transfers.
-  Consider at least 100 Mb for `cache`.
+- Mount the `cache` and `statics` folders in *tmpfs* to speed up data transfers.
+  - Consider at least 100 Mb for `cache`.
 
 ## Development
 
 Use the PHP internal server:
 
 ```sh
-php -S 127.0.0.1:8000 index.php
+./ctl serve
 ```
 
 ## Roadmap
@@ -74,7 +68,5 @@ Please refer to [TODO.md](TODO.md).
 
 ## Contact
 
-Please, don't hesitate to open an issue, or pull request, if you have found a
-bug.  
-For feedbacks or questions, you'll find my email address on my
-[website](https://drowned.ch).
+For feedbacks or questions, please open a ticket or find my email address
+on https://drowned.ch.
