@@ -7,8 +7,6 @@ init () {
 	init-db
 	# Configure the project.
 	init-cfg
-	# Fix permissions.
-	permissions
 }
 
 init-cfg () {
@@ -32,7 +30,6 @@ permissions () {
 		echo "error: you need to be root"
 		exit 1
 	fi
-	chown -R http:http .
 	chmod -R 770 .
 	chmod 660 config.php database.db
 }
