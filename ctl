@@ -38,7 +38,8 @@ permissions () {
 }
 
 serve () {
-	php -S 127.0.0.1:3000 index.php
+	port=${2:-3000}
+	php -S "127.0.0.1:$port" index.php
 }
 
 photos_previews () {
@@ -94,7 +95,7 @@ case ${1:-"usage"} in
 	"init-db")         init-db ;;
 	"init-fs")         init-fs ;;
 	"permissions")     permissions ;;
-	"serve")           serve ;;
+	"serve")           serve $@;;
 	"photos-previews") photos_previews ;;
 	"shop-previews")   show_previews ;;
 	*)                 usage ;;
