@@ -70,7 +70,7 @@ return [
 	'loclathon.subscribe2'  => 'Für die Tour anmelden',
 	'locloise.buy'          => 'Bestellen',
 	'locloise.description'  => [
-		"La Locloise ist ein speziell für den Loclathon kreiertes Absinth.<br>Ihr mentholhaltiger und milder Geschmack erzeugt ein erfrischendes Aroma, welches jede Person erfreut, die dies auf ihrem Spaziergang mitnehmen möchte.",
+		"La Locloise ist ein 2019 geschaffener Absinth, eigens komponiert, um die Loclathon-Tournee zu feiern.<br>Ihr mentholhaltiger und milder Geschmack erzeugt ein erfrischendes Aroma, welches jede Person erfreut, die dies auf ihrem Spaziergang mitnehmen möchte.",
 		"Die Gewinne werden für die Produktion weiterer Chargen und zur Erstellung von Merchandising-Artikel mit dem Emblem des Loclathons verwendet. Vielen Dank für Ihre Unterstützung!",
 		"Destilliert in Môtiers im Val-de-Travers, Schweiz.",
 	],

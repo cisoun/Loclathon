@@ -68,7 +68,7 @@ return [
 	'loclathon.subscribe2'  => "S'inscrire à la marche",
 	'locloise.buy'          => 'Commander',
 	'locloise.description'  => [
-		"La Locloise est une absinthe conçue spécialement à l'occasion du Loclathon.<br>Son goût mentholé et doux procure une sensation rafraîchissante qui réjouira toute personne motivée à l'emporter avec elle lors de sa marche.",
+		"La Locloise est une absinthe créée en 2019 et conçue spécialement à l'occasion de la tournée du Loclathon.<br>Son goût mentholé et doux procure une sensation rafraîchissante qui réjouira toute personne motivée à l'emporter avec elle lors de sa marche.",
 		"Les bénéfices seront réutilisés pour la réalisation d'autres cuvées ainsi qu'à la création de marchandises à l'effigie du Loclathon. Merci pour votre soutien !",
 		"Distillée à Môtiers dans le Val-de-Travers.",
 	],

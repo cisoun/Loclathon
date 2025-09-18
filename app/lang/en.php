@@ -71,7 +71,7 @@ return [
 	'loclathon.subscribe2'  => 'Subscribe to the tour',
 	'locloise.buy'          => "Order",
 	'locloise.description'  => [
-		"La Locloise is an absinthe specially designed for the Loclathon.<br>Its mentholated and mild taste provides a refreshing sensation that will delight any person motivated to take it with them on their walk.",
+		"La Locloise is an absinthe created in 2019 and specially designed for the Loclathon tour.<br>Its mentholated and mild taste provides a refreshing sensation that will delight any person motivated to take it with them on their walk.",
 		"The profits will be reused for the production of other batches and for the creation of merchandise bearing the Loclathon's effigy as well. Thank you for your support! ",
 		"Distilled at Môtiers in the Val-de-Travers, Switzerland.",
 	],
