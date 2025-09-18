@@ -54,6 +54,6 @@ const Layout = {
   }
 };
 
-window.onload = function () {
-  Layout.initialize();
-}
+document.addEventListener('DOMContentLoaded', (e) => {
+	Layout.initialize();
+});
