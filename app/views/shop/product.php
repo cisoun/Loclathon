@@ -55,11 +55,15 @@ function render_variant($variant) {
 <meta property="og:title" content="Le Loclathon | <?= $article['title'] ?>">
 </block>
 
+<block head>
+<script src="<?= statics('js/darkslide.js') ?>" type="text/javascript" defer></script>
+</block>
+
 <block content>
 	<div class="flex">
 		<div>
 			<img id="picture" src="<?= statics("img/shop/$id.png") ?>"/>
-			<div id="pictures">
+			<div id="pictures" data-darkslide>
 				<?php foreach ($pictures as $picture): ?>
 				<a href="<?= statics("img/shop/$picture") ?>" target="_blank"><img src="<?= statics("img/shop/$picture") ?>" alt="" /></a>
 				<?php endforeach; ?>
@@ -102,5 +106,4 @@ function render_variant($variant) {
 			<?php endif; ?>
 		</div>
 	</div>
-
 </block>

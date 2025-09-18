@@ -3,7 +3,7 @@
 <block title>Albums <? title ?></block>
 
 <block head>
-<script src="<?= statics('js/photos.js') ?>" type="module" defer></script>
+<? head ?>
 </block>
 
 <block css>
@@ -78,7 +78,7 @@
 <block content>
 <main id="photos" class="container">
 	<? header ?>
-	<div id="grid">
+	<div id="grid" data-darkslide>
 	<? grid ?>
 	</div>
 </main>

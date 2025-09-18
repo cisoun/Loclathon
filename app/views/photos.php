@@ -27,6 +27,10 @@ $files = array_filter($files, function ($file) use ($root) {
 
 <block title>{{ year }}</block>
 
+<block head>
+<script src="<?= statics('js/darkslide.js') ?>" type="text/javascript" defer></script>
+</block>
+
 <block css>
 #grid > a,
 #grid > img,
@@ -35,14 +39,6 @@ $files = array_filter($files, function ($file) use ($root) {
 	display: block;
 	width: 100%;
 }
-</block>
-
-<block js>
-// Replace link of photos by their own picture if JavaScript is enabled so
-// Darkslide can takeover.
-document.querySelectorAll('#grid > a').forEach((link) => {
-	link.outerHTML = link.innerHTML;
-});
 </block>
 
 <block header>
