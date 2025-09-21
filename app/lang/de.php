@@ -89,6 +89,7 @@ return [
 	],
 	'shop.address'          => 'Adresse',
 	'shop.amount'           => 'Menge',
+	'shop.articles_in_cart' => '%d Artikel im Warenkorb',
 	'shop.cart'             => 'Warenkorb',
 	'shop.cart_empty'       => 'Warenkorb ist leer',
 	'shop.clear'            => 'Leeren',

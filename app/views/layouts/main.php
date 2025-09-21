@@ -85,7 +85,7 @@ $cart = Session::get('cart');
 			<div class="only-mobile flex">
 				<a href="/{{lang}}/shop/cart" class="button white">
 					<svg class="outline dark"><use xlink:href="<?= statics('img/icons.svg#cart') ?>"/></svg>
-					<?= array_sum($cart) ?> articles dans le panier
+					<?= sprintf(__('shop.articles_in_cart'), array_sum($cart)) ?>
 				</a>
 			</div>
 			<?php endif; ?>

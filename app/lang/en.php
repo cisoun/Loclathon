@@ -90,6 +90,7 @@ return [
 	],
 	'shop.address'          => 'Address',
 	'shop.amount'           => 'Amount',
+	'shop.articles_in_cart' => '%d articles in cart',
 	'shop.cart'             => 'Cart',
 	'shop.cart_empty'       => 'Cart is empty',
 	'shop.clear'            => 'Clear',

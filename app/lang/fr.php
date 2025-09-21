@@ -87,6 +87,7 @@ return [
 	],
 	'shop.address'          => 'Adresse',
 	'shop.amount'           => 'Quantité',
+	'shop.articles_in_cart' => '%d articles dans le panier',
 	'shop.cart'             => 'Panier',
 	'shop.cart_empty'       => 'Le panier est vide.',
 	'shop.clear'            => 'Vider',
