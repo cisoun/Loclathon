@@ -54,8 +54,8 @@ $cart = Session::get('cart');
 <body>
 	<div>
 		<!-- Header -->
-		<nav id="menu">
-			<a href="#" class="trigger"><svg class="outline"><use xlink:href="<?= statics('img/icons.svg#circle-menu') ?>"/></svg> Le Loclathon</a>
+		<nav id="menu" class="nojs">
+			<a href="#" class="only-mobile"><svg class="outline"><use xlink:href="<?= statics('img/icons.svg#circle-menu') ?>"/></svg> Le Loclathon</a>
 			<ul>
 				<li><router to="/{{lang}}/loclathon">Le Loclathon</router></li>
 				<li><router to="/{{lang}}/locloise">La Locloise</router></li>
@@ -124,7 +124,7 @@ $cart = Session::get('cart');
 	<? footer ?>
 	<script type="text/javascript">
 		const nav        = document.getElementById('menu');
-		const navTrigger = document.querySelector('nav > .trigger');
+		const navTrigger = document.querySelector('nav > a');
 
 		nav.classList.remove('nojs');
 		nav.classList.add('transparent');

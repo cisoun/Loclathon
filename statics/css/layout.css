@@ -18,6 +18,9 @@
 }
 
 :root {
+	--size-mobile: 600px;
+	--size-desktop: 996px;
+
 	--green-0: #002b10;
 	--green-1: #005024;
 	--green-2: #007838;
@@ -108,6 +111,7 @@
 	--turquoide-9:  #b4d6cb;
 
 	--color-dark-hue: 50;
+
 	--color-dark-0: oklch(0.14 calc(0.015 * 1.5) calc(var(--color-dark-hue) - 0));
 	--color-dark-1: oklch(0.20 calc(0.020 * 1.5) calc(var(--color-dark-hue) - 10));
 	--color-dark-2: oklch(0.25 calc(0.025 * 1.5) calc(var(--color-dark-hue) - 20));
@@ -120,6 +124,7 @@
 	--color-dark-9: oklch(0.96 calc(0.010 * 1.5) calc(var(--color-dark-hue) - 0));
 
 	--color-orange-hue: 80;
+
 	--color-orange-0: oklch(0.14 calc(0.15 * 0.2) calc(var(--color-orange-hue) - 0));
 	--color-orange-1: oklch(0.20 calc(0.20 * 0.2) calc(var(--color-orange-hue) - 10));
 	--color-orange-2: oklch(0.23 calc(0.25 * 0.2) calc(var(--color-orange-hue) - 20));
@@ -132,6 +137,7 @@
 	--color-orange-9: oklch(0.96 calc(0.10 * 0.2) calc(var(--color-orange-hue) - 0));
 
 	--color-turquoide-hue: 160;
+
 	--color-turquoide-0: oklch(0.14 calc(0.15 * 0.2) calc(var(--color-turquoide-hue) - 0));
 	--color-turquoide-1: oklch(0.20 calc(0.20 * 0.2) calc(var(--color-turquoide-hue) - 10));
 	--color-turquoide-2: oklch(0.23 calc(0.25 * 0.2) calc(var(--color-turquoide-hue) - 20));
