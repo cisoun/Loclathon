@@ -12,10 +12,10 @@ switch (method()) {
 		route('/locloise',                redirect('/' . Lang::user() . '/locloise'));
 		route('/shop',                    redirect('/' . Lang::user() . '/shop'));
 		route('/tracker',                 redirect('/' . Lang::user() . '/tracker'));
-		route('/:lang/loclathon',         with_lang(view_cached('loclathon')));
-		route('/:lang/locloise',          with_lang(view_cached('locloise')));
-		route('/:lang/photos',            with_lang(view_cached('photos/albums')));
-		route('/:lang/photos/:year',      with_lang(view_cached('photos/photos')));
+		route('/:lang/loclathon',         with_lang(view('loclathon')));
+		route('/:lang/locloise',          with_lang(view('locloise')));
+		route('/:lang/photos',            with_lang(view('photos/albums')));
+		route('/:lang/photos/:year',      with_lang(view('photos/photos')));
 		route('/:lang/shop',              with_lang(call('Shop::index')));
 		route('/:lang/shop/cart',         with_lang(call('Shop::cart_show')));
 		route('/:lang/shop/checkout',     with_lang(call('Shop::checkout')));
