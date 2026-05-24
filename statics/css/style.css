@@ -24,7 +24,6 @@ body {
 	font-weight: 400;
 	overflow: hidden;
 	padding-bottom: 1rem;
-	text-wrap: balance;
 }
 
 /* Container */
@@ -237,6 +236,7 @@ ul {
 	margin:        0.5rem;
 	max-width:     calc(100% - 4rem);
 	padding:       1rem 2rem;
+	text-wrap:     balance;
 	transition:    transform var(--transition);
 }
 .bubble:hover {
