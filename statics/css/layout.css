@@ -791,20 +791,24 @@ form .group.radio.with-check input:checked + label::before {
 	padding: 0 0.5rem;
 }
 
-.separator {
-	border-top: var(--separator);
-	color: var(--foreground);
-	height: 0;
-	margin: 2rem 0;
-	text-align: center;
+.message {
+	background-color: var(--primary-7);
+	border-radius:    var(--border-radius);
+	color:            var(--primary-2);
+	margin-bottom:    1rem;
+	padding:          1rem;
+}
+.message span {
+	border-bottom: 1px dashed var(--background);
+	display:       block;
+	font-weight:   500;
+	margin:        -1rem -1rem 1rem -1rem;
+	padding:       0.2rem 1rem;
 }
 
-.separator > span {
-	background-color: var(--background);
-	display: inline-block;
-	margin-top: -2rem;
-	padding: 0 1rem;
-	vertical-align: middle;
+.message.warning {
+	background: var(--secondary-7);
+	color: var(--secondary-2);
 }
 
 .modal {
@@ -819,6 +823,22 @@ form .group.radio.with-check input:checked + label::before {
 	top:              5rem;
 	width:            calc(100% - 2rem);
 	z-index:          100;
+}
+
+.separator {
+	border-top: var(--separator);
+	color: var(--foreground);
+	height: 0;
+	margin: 2rem 0;
+	text-align: center;
+}
+
+.separator > span {
+	background-color: var(--background);
+	display: inline-block;
+	margin-top: -2rem;
+	padding: 0 1rem;
+	vertical-align: middle;
 }
 
 /* Phones */
