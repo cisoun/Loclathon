@@ -148,6 +148,10 @@ return [
 	],
 	'shop.put_in_cart'      => 'In den Warenkorb',
 	'shop.remove'           => 'entfernen',
+	'shop.restrictions'     => [
+		'SWISS_POST_NO_INT' => "Aufgrund von Einschränkungen bei der Schweizer Post können wir diesen Artikel nicht außerhalb der Schweiz versenden. Bitte kontaktieren Sie uns, wenn Sie diesen Artikel kaufen möchten.",
+	],
+	'shop.restrictions.title' => 'Einschränkungen',
 	'shop.shipping'         => 'Versand',
 	'shop.shipping_fees'    => 'Versandgebühren',
 	'shop.shippings'        => [

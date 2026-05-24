@@ -145,6 +145,10 @@ return [
 	],
 	'shop.put_in_cart'      => 'Dans le panier',
 	'shop.remove'           => 'supprimer',
+	'shop.restrictions'     => [
+		'SWISS_POST_NO_INT' => "Dû à des restrictions de la Poste Suisse, nous ne pouvons livrer cet article hors de la Suisse. Merci de nous contacter pour un arrangement.",
+	],
+	'shop.restrictions.title' => 'Restrictions',
 	'shop.shipping'         => 'Livraison',
 	'shop.shipping_fees'    => 'Frais de livraison',
 	'shop.shippings'        => [

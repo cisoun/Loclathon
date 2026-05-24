@@ -4,6 +4,7 @@ $article = $params['article'];
 $id = $article['id'];
 $variants = $params['variants'];
 $pictures = $article['pictures'];
+$restrictions = $article['restrictions'];
 
 $referer = $_SERVER['HTTP_REFERER'] ?? "/{{lang}}/shop";
 
@@ -74,6 +75,13 @@ function render_variant($variant) {
 			<h2><?= $article['price'] ?> CHF</h2>
 
 			<div id="description" class="text-justify"><?= $article['description'] ?></div>
+
+			<?php foreach ($restrictions as $restriction): ?>
+			<div class="message">
+				<span><?= __('shop.restrictions.title') ?></span>
+				<?= __('shop.restrictions')[$restriction] ?>
+			</div>
+			<?php endforeach; ?>
 
 			<?php if ($article['state'] < 2): ?>
 			<form action="/{{lang}}/shop/cart/add/<?= $article['id'] ?>" method="post">

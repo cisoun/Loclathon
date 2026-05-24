@@ -149,6 +149,10 @@ return [
 	],
 	'shop.put_in_cart'      => 'Put in cart',
 	'shop.remove'           => 'remove',
+	'shop.restrictions'     => [
+		'SWISS_POST_NO_INT' => "Due to restrictions with the Swiss Post, we can't ship this item outside Switzerland. Please contact us if you wish to buy this article.",
+	],
+	'shop.restrictions.title' => 'Restrictions',
 	'shop.shipping'         => 'Shipping',
 	'shop.shipping_fees'    => 'Shipping fees',
 	'shop.shippings'        => [
