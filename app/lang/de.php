@@ -33,9 +33,9 @@ return [
 	'footer.resources.map'  => 'Streckenkarte',
 	'footer.social'         => 'Soziales',
 	'loclathon.about'       => [
-		"Le Loclathon ist eine jährlich seit 2014 stattfindende Veranstaltung, die von langjährigen Freunden organisiert wird, die seit 2019 einen gemeinnützigen Verein rund um dieses Projekt gegründet haben. Es versammelt alle Wanderliebhaber zu einer 12-stündigen und 25 Kilometer langen Tour durch die Uhrmacherstadt Le Locle, um alle ihre 27 offiziellen Brunnen anzulaufen.",
-		"An jedem Brunnen wird ein Glas genossen, um eine gute Zeit unter Freunden zu verbringen und dabei die Stadt Le Locle zu besichtigen.",
-		"Bereit für ein Erlebnis? Dann kommen Sie mit auf unsere Tour!"
+		"Der Loclathon ist ein jährliches Event, das Wanderbegeisterte zu einem 12-stündigen Marsch über 25 Kilometer durch die Stadt Le Locle zusammenbringt, um die 27 offiziellen Brunnen der Uhrmacherstadt zu erreichen. An jedem Brunnen wird ein Glas frisches Wasser getrunken, um gemeinsam mit Freunden eine angenehme Zeit zu verbringen und dabei die Stadt Le Locle zu erkunden.",
+		"Ursprünglich 2014 von drei Freunden als Brunnenwanderung ins Leben gerufen, entwickelte sich der Loclathon 2019 zu einem gemeinnützigen Verein, um das Event weiterzuentwickeln. Dieser wuchs 2021 auf fünf Mitglieder an und 2025 auf sechs, unterstützt von zahlreichen Freiwilligen, die alle ehrgeizig neue Projekte rund um Le Locle verwirklichen möchten.",
+		"Sind Sie bereit, ein besonderes Erlebnis zu entdecken? Dann kommen Sie zu uns!"
 	],
 	'loclathon.about.title' => 'Was ist das?',
 	'loclathon.bubbles'     => [
@@ -72,9 +72,9 @@ return [
 	'loclathon.subscribe2'  => 'Für die Tour anmelden',
 	'locloise.buy'          => 'Bestellen',
 	'locloise.description'  => [
-		"La Locloise ist ein 2019 geschaffener Absinth, eigens komponiert, um die Loclathon-Tournee zu feiern.<br>Ihr mentholhaltiger und milder Geschmack erzeugt ein erfrischendes Aroma, welches jede Person erfreut, die dies auf ihrem Spaziergang mitnehmen möchte.",
-		"Die Gewinne werden für die Produktion weiterer Chargen und zur Erstellung von Merchandising-Artikel mit dem Emblem des Loclathons verwendet. Vielen Dank für Ihre Unterstützung!",
-		"Destilliert in Môtiers im Val-de-Travers, Schweiz.",
+		'La Locloise ist ein Absinth, der 2019 kreiert und als Hommage an die Tournee des Loclathon gestaltet wurde. Überraschend in seiner Farbe, vermittelt er ein frisches und mentholiges Gefühl, das perfekt ausgewogen ist für einen sonnigen Tag.',
+		'Die Einnahmen werden für die Organisation von Veranstaltungen sowie für die Entwicklung von Zubehör im Stil des Loclathon verwendet. Vielen Dank für Ihre Unterstützung!',
+		'Destilliert in Môtiers im Val-de-Travers, Schweiz.',
 	],
 	'locloise.details'      => [
 		'Volumen: <b>0.5 L</b>',

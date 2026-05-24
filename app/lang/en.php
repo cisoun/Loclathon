@@ -33,9 +33,9 @@ return [
 	'footer.resources.map'  => 'Map of the route',
 	'footer.social'         => 'Social',
 	'loclathon.about'       => [
-		"Le Loclathon is an annual event created in 2014, organized by longtime friends, who, since 2019, have founded an eponymous non-profit association around this project. It brings together all hiking lovers for a 12 hours and 25 kilometers trip through the watchmaking city of Le Locle in order to rally all of its 27 official fountains.",
-		"A glass is savoured by all at each fountain to share a good time between friends, all by visiting the city of Le Locle.",
-		"Are you ready to live an experience? So join us to our trip!"
+		"The Loclathon is an annual event that brings together hiking enthusiasts for a 12-hour walk covering 25 kilometres through the town of Le Locle, visiting its 27 official fountains in the Watchmaking City. A glass of fresh water is savoured at each fountain, making for a pleasant moment shared with friends while exploring the town of Le Locle.",
+		"Originally created in 2014 by three companions as a fountain walk, the Loclathon evolved in 2019 into a non-profit association to further develop the event. In 2021, the association grew to five members, then six in 2025, supported by numerous volunteers, all driven by the ambition to carry out new projects centred around Le Locle.",
+		"Are you ready to discover a one-of-a-kind experience? Then come and join us!",
 	],
 	'loclathon.about.title' => 'What is this?',
 	'loclathon.bubbles'     => [
@@ -73,9 +73,9 @@ return [
 	'loclathon.subscribe2'  => 'Subscribe to the tour',
 	'locloise.buy'          => "Order",
 	'locloise.description'  => [
-		"La Locloise is an absinthe created in 2019 and specially designed for the Loclathon tour.<br>Its mentholated and mild taste provides a refreshing sensation that will delight any person motivated to take it with them on their walk.",
-		"The profits will be reused for the production of other batches and for the creation of merchandise bearing the Loclathon's effigy as well. Thank you for your support! ",
-		"Distilled at Môtiers in the Val-de-Travers, Switzerland.",
+		'La Locloise is an absinthe created in 2019 and designed in homage to the Loclathon tour. Surprising in its colour, it delivers a fresh and mentholated sensation, perfectly balanced for a sunny day.',
+		'The proceeds will be reinvested in the organisation of events as well as in the creation of accessories in the spirit of the Loclathon. Thank you for your support!',
+		'Distilled at Môtiers in the Val-de-Travers, Switzerland.'
 	],
 	'locloise.details'      => [
 		'Volume: <b>0.5 L</b>',

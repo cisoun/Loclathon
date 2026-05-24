@@ -33,8 +33,8 @@ return [
 	'footer.resources.map'  => 'Plan du parcours',
 	'footer.social'         => 'Social',
 	'loclathon.about'       => [
-		"Le Loclathon est un événement annuel qui réunit les amateurs de randonnée pour une marche de 12 heures sur 25 kilomètres à travers la ville du Locle afin de rallier les 27 fontaines officielles de la Cité Horlogère. Un verre est dégusté par chacun autour de chaque fontaine afin de passer un agréable moment entre amis tout en visitant la ville du Locle.",
-		"Créé à l'origine par trois comparses comme marche des fontaines en 2014, Le Loclathon évolue en 2019 en association à but non-lucratif pour développer l'événement puis se voit en 2021 s'agrandir à cinq membres, tous ambitieux de réaliser de nouveaux projets autour du Locle.",
+		"Le Loclathon est un événement annuel qui réunit les amateurs de randonnée pour une marche de 12 heures sur 25 kilomètres à travers la ville du Locle afin de rallier les 27 fontaines officielles de la Cité Horlogère. Un verre d'eau fraîche est dégusté à chaque fontaine afin de passer un agréable moment entre amis tout en visitant la ville du Locle.",
+		"Créé à l'origine par trois comparses comme marche des fontaines en 2014, Le Loclathon évolue en 2019 en association à but non-lucratif pour développer l'événement. Celle-ci se voit en 2021 s'agrandir à cinq membres puis six en 2025, supportés par de multiples bénévoles, tous ambitieux de réaliser de nouveaux projets autour du Locle.",
 		"Êtes-vous prêts à découvrir une expérience ? Alors rejoignez-nous !"
 	],
 	'loclathon.about.title' => "Qu'est-ce que c'est ?",
@@ -70,9 +70,9 @@ return [
 	'loclathon.subscribe2'  => "S'inscrire à la marche",
 	'locloise.buy'          => 'Commander',
 	'locloise.description'  => [
-		"La Locloise est une absinthe créée en 2019 et conçue spécialement à l'occasion de la tournée du Loclathon.<br>Son goût mentholé et doux procure une sensation rafraîchissante qui réjouira toute personne motivée à l'emporter avec elle lors de sa marche.",
-		"Les bénéfices seront réutilisés pour la réalisation d'autres cuvées ainsi qu'à la création de marchandises à l'effigie du Loclathon. Merci pour votre soutien !",
-		"Distillée à Môtiers dans le Val-de-Travers.",
+		"La Locloise est une absinthe créée en 2019 et conçue à l'effigie de la tournée du Loclathon. Suprenante par sa couleur, elle procure une sensation fraîche et mentholée, parfaitement équilibrée pour une journée ensoleilée.",
+		"Les bénéfices seront réutilisés dans l'organisation d'événements ainsi qu'à l'élaboration d'accessoires à l'image du Loclathon. Merci pour votre soutien !",
+		"Distillée à Môtiers dans le Val-de-Travers."
 	],
 	'locloise.details'      => [
 		'Volume : <b>0.5 L</b>',
