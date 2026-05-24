@@ -56,14 +56,14 @@ return [
 		'27 Brunnen',
 		'12 Stunden Wanderung und Spaß',
 		'25 Kilometer',
-		'12. Tour am 23. August 2025',
+		'13. Tour am 22. August 2026',
 		'26. August bei schlechtem Wetter'
 	],
 	'loclathon.modal.title' => 'Es hat begonnen!',
 	'loclathon.modal.see'   => 'Sehen Sie, wo wir sind',
 	'loclathon.modal.hide'  => 'Ignorieren',
 	'loclathon.next'        => [
-		'Wann: <b>23. August 2025</b>',
+		'Wann: <b>22. August 2026</b>',
 		'Wo: <b>Bahnhof Le Locle, 09:00 - 09:15</b>',
 		'Verschoben auf den <b>27. August 2022</b> bei schlechtem Wetter. Das endgültige Datum wird auf dieser Seite oder in sozialen Netzwerken eine Woche vor der Tour bekannt gegeben.',
 	],

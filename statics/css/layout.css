@@ -110,7 +110,7 @@
 	--turquoide-8:  #a0c7ba;
 	--turquoide-9:  #b4d6cb;
 
-	--color-dark-hue: 50;
+	--color-dark-hue: 190;
 
 	--color-dark-0: oklch(0.14 calc(0.015 * 1.5) calc(var(--color-dark-hue) - 0));
 	--color-dark-1: oklch(0.20 calc(0.020 * 1.5) calc(var(--color-dark-hue) - 10));

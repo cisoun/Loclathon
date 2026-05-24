@@ -46,7 +46,6 @@ main > h1:first-child {
 }
 
 footer {
-	background-color: var(--dark-2);
 	background-image: url('../img/footer.jpg');
 	background-size:  cover;
 	border-radius:    var(--border-radius-xl);
@@ -148,24 +147,11 @@ ul {
 	width: 100%;
 	height: 10rem;
 }
-#loclathon #bottom {
-	bottom: 0;
-	height: 300px;
-	left: 0;
-	pointer-events: none;
-	position: relative;
-	width: 100%;
-}
-#loclathon #bottom svg {
-	bottom: 0;
-	left: 0;
-	position: absolute;
-	width: 100%;
-}
 #loclathon #logo {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 6rem;
 }
 #loclathon #highlights {
 	display: flex;
@@ -187,7 +173,8 @@ ul {
 	flex-grow: 1;
 	font-family: 'Bebas Neue', impact, sans-serif;
 	font-size: 2.4rem;
-	padding: 1rem 0;
+	line-height: 2.8rem;
+	padding: 0.5rem 0;
 }
 #loclathon #highlights div:last-child span {
 	font-size: 5rem;
