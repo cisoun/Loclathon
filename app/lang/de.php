@@ -47,6 +47,8 @@ return [
 		'Völlig!',
 		'Was sollte ich mitbringen?',
 		'Getränk Ihrer Wahl, ein Glas und ein gutes Paar Schuhe. Eventuell etwas zu essen. Sie können auch Essen kaufen, wenn wir mittags im Stadtzentrum ankommen.',
+		'Verkaufen oder verteilen Sie Absinth Loclathon während der Veranstaltung?',
+		'Der Verein verkauft oder verteilt keinen Absinth während der Veranstaltung.',
 		'Sind Haustiere bei der Tour erlaubt?',
 		'Ja, aber stellen Sie sicher, dass sie sich in der Öffentlichkeit wohlfühlen und keine Gefahr darstellen. Wenn Sie Hunde haben, wären wir dankbar, wenn Sie sie an der Leine halten.'
 	],

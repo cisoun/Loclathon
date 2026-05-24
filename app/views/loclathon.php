@@ -104,6 +104,8 @@ if (now > '<?= $date ?>T07:15' && now < '<?= $date ?>T19:30') {
 			<div class="right"><span class="bubble"><?= $bubbles[7] ?></span><span class="logo"></span></div>
 			<div class="left"><span class="bubble"><?= $bubbles[8] ?></span></div>
 			<div class="right"><span class="bubble"><?= $bubbles[9] ?></span><span class="logo"></span></div>
+			<div class="left"><span class="bubble"><?= $bubbles[10] ?></span></div>
+			<div class="right"><span class="bubble"><?= $bubbles[11] ?></span><span class="logo"></span></div>
 		</div>
 	</div>
 </section>

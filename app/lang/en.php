@@ -47,6 +47,8 @@ return [
 		'Totally!',
 		'What should I bring with me?',
 		'Drink of your choice, a glass and a good pair of shoes. Something to eat eventually. You can also buy food at noon when we arrive at the city center.',
+		'Do you sell or distribute Loclathon absinthe during the event?',
+		'The Association does not sell or distribute any absinthe during the event.',
 		'Are pets accepted on the tour?',
 		'Yes, but make sure they feel comfortable amongst the public and they do not represent any danger. If you have dogs, we would be grateful if you could keep them on a leash.'
 

@@ -47,6 +47,8 @@ return [
 		'Carrément !',
 		'Que dois-je prendre avec moi ?',
 		'Boisson de votre choix, un verre et de bonnes chaussures. De quoi manger éventuellement. Vous pouvez également acheter à manger lors de la pause de midi au centre-ville.',
+		"Servez-vous, ou vendez-vous de l'absinthe Loclathon lors de la tournée ?",
+		"L'Association ne fait aucune vente, ni distribution d'absinthe lors de l'événement.",
 		'Les animaux de compagnie sont-ils acceptés ?',
 		"Oui, cependant il est de votre responsabilité de s'assurer qu'ils soient à l'aise avec le public et qu'ils ne représentent pas de danger pour les autres. Si vous avez des chiens, nous vous serions reconnaissants de les tenir en laisse."
 	],
