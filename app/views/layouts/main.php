@@ -63,11 +63,11 @@ $cart = Session::get('cart');
 				<li><router to="/{{lang}}/shop"><?= __('menu.shop') ?></router></li>
 				<li><router to="/{{lang}}/contact"><?= __('menu.contact') ?></router></li>
 				<li id="langs">
-					<a><span><img src="<?= statics("img/lang.$current_locale.svg") ?>"/> <?= $current_locale ?></span></a>
+					<a><span><img src="<?= statics("img/lang.$current_locale.svg") ?>" alt="<?= LANG_NAMES[$current_locale] ?>"/> <?= $current_locale ?></span></a>
 					<ul>
 						<?php foreach ($locales as $locale): ?>
 						<?php if ($locale !== $current_locale): ?>
-						<li><a href="/<?= $locale . $page ?>"><img src="<?= statics("img/lang.$locale.svg") ?>"/><?= LANG_NAMES[$locale] ?></a></li>
+						<li><a href="/<?= $locale . $page ?>"><img src="<?= statics("img/lang.$locale.svg") ?>" alt="<?= LANG_NAMES[$locale] ?>"/><?= LANG_NAMES[$locale] ?></a></li>
 						<?php endif; ?>
 						<?php endforeach; ?>
 					</ul>
