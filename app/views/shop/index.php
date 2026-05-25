@@ -1,6 +1,12 @@
 <?php
+function articles_sort ($a, $b) {
+	return $a['state'] < $b['state'] ? -1 : 1;
+}
+
 $articles = $params['articles'];
 $states   = __('shop.states');
+
+uasort($articles, 'articles_sort');
 ?>
 
 ?>
