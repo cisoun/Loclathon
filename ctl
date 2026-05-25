@@ -94,6 +94,6 @@ case ${1:-"usage"} in
 	"permissions")     permissions ;;
 	"serve")           serve $@;;
 	"photos-previews") photos_previews ;;
-	"shop-previews")   show_previews ;;
+	"shop-previews")   shop_previews ;;
 	*)                 usage ;;
 esac
