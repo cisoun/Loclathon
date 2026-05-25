@@ -45,10 +45,10 @@ class Articles {
 
 	public static function preview($article) {
 		$parent_id = $article['parent_id'];
-		if ($parent_id) {
-			return Statics::images('shop/small/' . $parent_id . '.png');
+		$pictures = $article['pictures'];
+		if (count($pictures) > 0) {
+			return Statics::images('shop/small/' . $pictures[0]);
 		}
-		return Statics::images('shop/small/' . $article['id'] . '.png');
 	}
 
 	public static function pictures($article) {

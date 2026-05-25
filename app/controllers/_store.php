@@ -14,7 +14,7 @@ return [
 		'price'        => 38,
 		'state'        => 0,
 		'description'  => "L'absinthe officielle du Loclathon. Goût mentholé et doux.<br>54% vol. d'alcool.",
-		'pictures'     => ['1a.jpg', '1b.jpg', '1c.jpg'],
+		'pictures'     => ['1.png', '1a.jpg', '1b.jpg', '1c.jpg'],
 		'restrictions' => ['SWISS_POST_NO_INT'],
 		'parent_id'    => NULL,
 	], [
@@ -24,7 +24,7 @@ return [
 		'price'        => 38,
 		'state'        => 0,
 		'description'  => NULL,
-		'pictures'     => [],
+		'pictures'     => ['2.png'],
 		'restrictions' => [],
 		'parent_id'    => 1,
 	], [
@@ -34,7 +34,7 @@ return [
 		'price'        => 55,
 		'state'        => 2,
 		'description'  => "L'absinthe de la Commanderie des Anysetiers du canton de Neuchâtel.",
-		'pictures'     => ['3a.jpg', '3b.jpg', '3c.jpg'],
+		'pictures'     => ['3.png', '3a.jpg', '3b.jpg', '3c.jpg'],
 		'restrictions' => [],
 		'parent_id'    => NULL,
 	], [
@@ -113,7 +113,7 @@ return [
 		'price'        => 39,
 		'state'        => 2,
 		'description'  => "<b>Livraison estimée à début mai.</b><p>Soutenez Mathieu Rubi dans sa participation aux championnats du monde de semi-ironman aux États-unis grâce à cette casquette.</p>",
-		'pictures'     => [],
+		'pictures'     => ['10.png'],
 		'restrictions' => [],
 		'parent_id'    => NULL
 	]

@@ -63,9 +63,9 @@ function render_variant($variant) {
 <block content>
 	<div class="flex">
 		<div>
-			<img id="picture" src="<?= statics("img/shop/$id.png") ?>"/>
+			<img id="picture" src="<?= statics("img/shop/" . $pictures[0]) ?>"/>
 			<div id="pictures" data-darkslide>
-				<?php foreach ($pictures as $picture): ?>
+				<?php foreach (array_slice($pictures, 1) as $picture): ?>
 				<a href="<?= statics("img/shop/$picture") ?>" target="_blank"><img src="<?= statics("img/shop/$picture") ?>" alt="" /></a>
 				<?php endforeach; ?>
 			</div>
