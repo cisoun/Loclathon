@@ -116,6 +116,82 @@ return [
 		'pictures'     => ['10.png'],
 		'restrictions' => [],
 		'parent_id'    => NULL
+	], [
+		'id'           => 11,
+		'url'          => 'shirt-tournee',
+		'title'        => 'T-shirt "Tournée"',
+		'price'        => 24,
+		'state'        => 0,
+		'description'  => "
+			<b>Informations</b>
+			<ul>
+				<li>Blanc</li>
+				<li>Unisex</li>
+				<li>Lavage à 30 °</li>
+			</ul>",
+		'pictures'     => ['11.jpg', '11.jpg'],
+		'restrictions' => [],
+		'parent_id'    => NULL,
+	], [
+		'id'           => 12,
+		'url'          => 'shirt-tournee-xs',
+		'title'        => 'XS',
+		'price'        => 24,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 11
+	], [
+		'id'           => 13,
+		'url'          => 'shirt-tournee-s',
+		'title'        => 'S',
+		'price'        => 24,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 11
+	], [
+		'id'           => 14,
+		'url'          => 'shirt-tournee-m',
+		'title'        => 'M',
+		'price'        => 24,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 11
+	], [
+		'id'           => 15,
+		'url'          => 'shirt-tournee-l',
+		'title'        => 'L',
+		'price'        => 24,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 11
+	], [
+		'id'           => 16,
+		'url'          => 'shirt-tournee-xl',
+		'title'        => 'XL',
+		'price'        => 24,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 11
+	], [
+		'id'           => 17,
+		'url'          => 'shirt-tournee-xxl',
+		'title'        => 'XXL',
+		'price'        => 24,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 11
 	]
 ];
 
