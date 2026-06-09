@@ -203,8 +203,7 @@ class Shop {
 			$cart[$id] = 0;
 		}
 
-		$articles = Articles::all();
-		$article  = Articles::find($articles, $id);
+		$article  = Articles::find($id);
 		$state = $article['state'];
 		if ($state == self::STATE_SOLDOUT ||
 			$state == self::STATE_UNAVAILABLE) {
@@ -233,18 +232,12 @@ class Shop {
 			return Response::location("/{$params['lang']}/shop", $params);
 		}
 
-		// TODO: REMOVE
-		$articles = Articles::all();
-
-		$params['articles'] = $articles;
-		$params['cart'] = $cart;
-
 		$total = 0;
 		$data = [];
 
 		foreach ($cart as $id => $value) {
-			$article = Articles::find($articles, $id);
-			$parent = Articles::parent($articles, $article);
+			$article = Articles::find($id);
+			$parent = Articles::parent($article);
 			$data[] = [
 				'id'      => $article['id'],
 				'url'     => $article['url'] ?? $parent['url'],
@@ -257,6 +250,8 @@ class Shop {
 			$total += $value * $article['price'];
 		}
 
+		$params['articles'] = Articles::all();
+		$params['cart'] = $cart;
 		$params['data'] = $data;
 		$params['total'] = $total;
 
@@ -264,8 +259,6 @@ class Shop {
 	}
 
 	private static function cart_update($cart) {
-		$articles = Articles::all();
-
 		foreach ($cart as $id => $units) {
 			// Remove articles at 0 units.
 			if ($units == 0) {
@@ -274,7 +267,7 @@ class Shop {
 			}
 
 			// Remove articles that are unavailable.
-			$article = Articles::find($articles, $id);
+			$article = Articles::find($id);
 			$state = $article['state'];
 			if ($state == self::STATE_SOLDOUT ||
 				$state == self::STATE_UNAVAILABLE) {
@@ -298,24 +291,24 @@ class Shop {
 		return Response::view('shop/index', $params);
 	}
 
-	public static function show($params) {
-		$articles = Articles::all();
-		$article  = Articles::findByURL($articles, $params['url']);
+	public static function product_show($params) {
+		$article = Articles::findByURL($params['url']);
 
-		if ($article) {
-			// TODO: Change.
-			if ($article['parent_id'])
-				$article = Articles::parent($articles, $article);
-
-			$variants = Articles::variants($articles, $article);
-
-			$params['article']  = $article;
-			$params['variants'] = $variants;
-
-			return Response::view('shop/product', $params);
+		if (!$article) {
+			return Response::location("/{$params['lang']}/shop");
 		}
 
-		return Response::location("/{$params['lang']}/shop");
+		// Variant case: display parent.
+		if (Articles::hasParent($article)) {
+			$article = Articles::parent($article);
+		}
+
+		$variants = Articles::variants($article);
+
+		$params['article']  = $article;
+		$params['variants'] = $variants;
+
+		return Response::view('shop/product', $params);
 	}
 
 	/**
@@ -436,8 +429,8 @@ class Shop {
 		$data = [];
 		$total = 0;
 		foreach ($cart as $id => $value) {
-			$article = Articles::find($articles, $id);
-			$parent  = Articles::parent($articles, $article);
+			$article = Articles::find($id);
+			$parent  = Articles::parent($article);
 			$price   = $value * $article['price'];
 			$data[]  = [
 				'title'   => $parent['title'] ?? $article['title'],
