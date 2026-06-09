@@ -24,7 +24,7 @@ return [
 		'price'        => 38,
 		'state'        => 0,
 		'description'  => NULL,
-		'pictures'     => ['2.png'],
+		'pictures'     => [],
 		'restrictions' => [],
 		'parent_id'    => 1,
 	], [
