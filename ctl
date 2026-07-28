@@ -60,11 +60,12 @@ photos_previews () {
 }
 
 shop_previews () {
+	mkdir -p statics/img/shop/small
 	cd statics/img/shop
-	for i in *.jpg; do
+	for i in *.{jpg,png}; do
 		name=$(basename $i)
 		echo "Generating $name..."
-		gm convert -size 300x300 $i -resize 400x400 small/$name
+		gm convert -geometry 400x400^ -gravity Center -crop 400x400+0+0 $i small/$name
 	done
 	echo "Done."
 }
@@ -79,7 +80,7 @@ Commands:
   init-fs          Initialize folder structure.
   permissions      Fix the permissions of the folder.
 
-  serve            Serve the project.
+  serve [port]     Serve the project. Default port: 3000.
 
   photos-previews  Generate previews of photos.
   shop-previews    Generate previews of articles.
