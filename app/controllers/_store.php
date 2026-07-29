@@ -123,13 +123,18 @@ return [
 		'price'        => 24,
 		'state'        => 0,
 		'description'  => "
+			<p>
+				Le t-shirt à l'effigie de la tournée du Loclathon.<br>
+				Léger et clair, idéal pour les journées ensoleillées.
+			</p>
 			<b>Informations</b>
 			<ul>
 				<li>Blanc</li>
 				<li>Unisex</li>
 				<li>Lavage à 30 °</li>
+				<li>Impression en sérigraphie effectuée avec partenaire local</li>
 			</ul>",
-		'pictures'     => ['11.jpg', '11.jpg'],
+		'pictures'     => ['11a.jpg', '11a.jpg', '11b.jpg', '11c.jpg', '11d.jpg', '11.jpg'],
 		'restrictions' => [],
 		'parent_id'    => NULL,
 	], [
