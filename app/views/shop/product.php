@@ -1,5 +1,6 @@
 <?php
 $article = $params['article'];
+$url      = $params['url'];
 
 $id = $article['id'];
 $variants = $params['variants'];
@@ -9,12 +10,15 @@ $restrictions = $article['restrictions'];
 $referer = $_SERVER['HTTP_REFERER'] ?? "/{{lang}}/shop";
 
 // Generate option for variant of product.
-function render_variant($variant) {
+function render_variant($variant, $url) {
 	$title = $variant['title'];
-	$attrs = ['value' => $variant['id']];
+	$attrs = ['value' => $variant['id'], 'url' => $url];
 	if ($variant['state'] == Shop::STATE_SOLDOUT) {
 		$title = sprintf('%s (épuisé)', $title);
 		$attrs['disabled'] = NULL;
+	}
+	if ($variant['url'] == $url) {
+		$attrs['selected'] = null;
 	}
 	return HTML::option($title, $attrs);
 }
@@ -99,7 +103,7 @@ function render_variant($variant) {
 					<label for="variant"><?= __('shop.variant') ?></label>
 					<select id="variant" name="variant">
 						<?php foreach ($variants as $variant): ?>
-						<?= render_variant($variant) ?>
+						<?= render_variant($variant, $url) ?>
 						<?php endforeach; ?>
 					</select>
 				</fieldset>
