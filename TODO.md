@@ -13,6 +13,9 @@
 - [ ] Shop: add JS spinner when the PayPal order is being created.
 - [X] Add german translations.
 - [ ] [CANCELLED]Photos carousel in homepage.
+- [ ] Add missing translations.
+  - Description in albums.
+  - Page title (main layout).
 - [ ] Add GDPR clause / privacy policy.
 	- Customers must know that their session data are cached during the order
 		process.
