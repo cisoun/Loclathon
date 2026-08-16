@@ -154,11 +154,13 @@ return [
 	'shop.shippings'        => [
 		'local'             => 'Livraison locale',
 		'pickup'            => 'Sur place',
+		'loclathon'         => 'Lors du Loclathon',
 		'post'				=> 'Envoi postal',
 	],
 	'shop.shippings.infos'  => [
 		'local'             => 'Uniquement pour Le Locle et La Chaux-de-Fonds (Suisse).',
 		'pickup'            => 'Vous venez chercher vos articles à notre dépôt au Locle.<br>Les instructions vous seront transmises par mail.',
+		'loclathon'         => 'Nous vous livrons le matériel au début de la tournée du Loclathon.',
 		'post'              => 'Livraison par la Poste Suisse.'
 	],
 	'shop.states'           => [

@@ -158,11 +158,13 @@ return [
 	'shop.shippings'        => [
 		'local'             => 'Local shipping',
 		'pickup'            => 'Local pickup',
+		'loclathon'         => 'Pickup at Loclathon',
 		'post'				=> 'By Post',
 	],
 	'shop.shippings.infos'  => [
 		'local'             => 'Only for Le Locle and La Chaux-de-Fonds (Switzerland).',
 		'pickup'            => 'You come at our warehouse in Le Locle to get your articles.<br>Instructions will be sent by mail.',
+		'loclathon'         => 'You come pick up your articles at the beginning of the Loclathon.',
 		'post'              => 'Delivery by the Swiss Post.'
 	],
 	'shop.states'           => [

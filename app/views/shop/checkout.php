@@ -11,20 +11,21 @@ $shippings_infos = __('shop.shippings.infos');
 
 
 $form = [
-	'firstName'      => ['name' => 'first_name', 'type' => 'text',     'value' => '{{first_name}}', 'required' => true, 'placeholder' => $inputs['first_name']],
-	'lastName'       => ['name' => 'last_name',  'type' => 'text',     'value' => '{{last_name}}',  'required' => true, 'placeholder' => $inputs['last_name']],
-	'street'         => ['name' => 'street',     'type' => 'text',     'value' => '{{street}}',     'required' => true, 'placeholder' => $inputs['street']],
-	'city'           => ['name' => 'city',       'type' => 'text',     'value' => '{{city}}',       'required' => true, 'placeholder' => $inputs['city']],
-	'npa'            => ['name' => 'npa',        'type' => 'number',   'value' => '{{npa}}',        'required' => true, 'placeholder' => "1000", 'min' => 1000],
-	'email'          => ['name' => 'email',      'type' => 'email',    'value' => '{{email}}',      'required' => true, 'placeholder' => $inputs['email']],
-	'phone'          => ['name' => 'phone',      'type' => 'tel',      'value' => '{{phone}}',      'placeholder' => $inputs['phone']],
-	'age'            => ['name' => 'age',        'type' => 'checkbox', 'checked' => $params['age'] ?? ''],
-	'shippingLocal'  => ['name' => 'shipping',   'type' => 'radio',    'value' => 'local',  'checked' => $params['shipping.local']],
-	'shippingPickUp' => ['name' => 'shipping',   'type' => 'radio',    'value' => 'pickup', 'checked' => $params['shipping.pickup']],
-	'shippingByPost' => ['name' => 'shipping',   'type' => 'radio',    'value' => 'post',   'checked' => $params['shipping.post']],
-	'payIBAN'        => ['name' => 'payment',    'type' => 'radio',    'value' => 'direct', 'checked' => $params['payment.direct']],
-	'payTwint'       => ['name' => 'payment',    'type' => 'radio',    'value' => 'twint',  'checked' => $params['payment.twint']],
-	'payPaypal'      => ['name' => 'payment',    'type' => 'radio',    'value' => 'paypal', 'checked' => $params['payment.paypal']],
+	'firstName'         => ['name' => 'first_name', 'type' => 'text',     'value' => '{{first_name}}', 'required' => true, 'placeholder' => $inputs['first_name']],
+	'lastName'          => ['name' => 'last_name',  'type' => 'text',     'value' => '{{last_name}}',  'required' => true, 'placeholder' => $inputs['last_name']],
+	'street'            => ['name' => 'street',     'type' => 'text',     'value' => '{{street}}',     'required' => true, 'placeholder' => $inputs['street']],
+	'city'              => ['name' => 'city',       'type' => 'text',     'value' => '{{city}}',       'required' => true, 'placeholder' => $inputs['city']],
+	'npa'               => ['name' => 'npa',        'type' => 'number',   'value' => '{{npa}}',        'required' => true, 'placeholder' => "1000", 'min' => 1000],
+	'email'             => ['name' => 'email',      'type' => 'email',    'value' => '{{email}}',      'required' => true, 'placeholder' => $inputs['email']],
+	'phone'             => ['name' => 'phone',      'type' => 'tel',      'value' => '{{phone}}',      'placeholder' => $inputs['phone']],
+	'age'               => ['name' => 'age',        'type' => 'checkbox', 'checked' => $params['age'] ?? ''],
+	'shippingLocal'     => ['name' => 'shipping',   'type' => 'radio',    'value' => 'local',  'checked' => $params['shipping.local']],
+	'shippingPickUp'    => ['name' => 'shipping',   'type' => 'radio',    'value' => 'pickup', 'checked' => $params['shipping.pickup']],
+	'shippingLoclathon' => ['name' => 'shipping',   'type' => 'radio',    'value' => 'local',  'checked' => $params['shipping.loclathon']],
+	'shippingByPost'    => ['name' => 'shipping',   'type' => 'radio',    'value' => 'post',   'checked' => $params['shipping.post']],
+	'payIBAN'           => ['name' => 'payment',    'type' => 'radio',    'value' => 'direct', 'checked' => $params['payment.direct']],
+	'payTwint'          => ['name' => 'payment',    'type' => 'radio',    'value' => 'twint',  'checked' => $params['payment.twint']],
+	'payPaypal'         => ['name' => 'payment',    'type' => 'radio',    'value' => 'paypal', 'checked' => $params['payment.paypal']],
 ];
 $input = function($id) use ($form, $params) {
 	$attrs = ["id=\"$id\""];
@@ -159,6 +160,12 @@ hr {
 					<?= $shippings['pickup'] ?>
 					<span class="label green"><?= __('shop.free') ?></span><br>
 					<small><?= $shippings_infos['pickup'] ?></small>
+				</label>
+				<?= $input('shippingLoclathon') ?>
+				<label for="shippingLoclathon">
+					<?= $shippings['loclathon'] ?>
+					<span class="label green"><?= __('shop.free') ?></span><br>
+					<small><?= $shippings_infos['loclathon'] ?></small>
 				</label>
 				<?= $input('shippingByPost') ?>
 				<label for="shippingByPost">

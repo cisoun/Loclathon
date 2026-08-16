@@ -353,6 +353,7 @@ class Shop {
 		$shipping = $params['shipping'];
 		$params['shipping.local']  = $shipping == 'local';
 		$params['shipping.pickup'] = $shipping == 'pickup';
+		$params['shipping.loclathon'] = $shipping == 'loclathon';
 		$params['shipping.post']   = $shipping == 'post';
 
 		return Response::view('shop/checkout', $params);
