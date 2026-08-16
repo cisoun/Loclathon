@@ -19,7 +19,7 @@ switch (method()) {
 		route('/:lang/shop',              with_lang(call('Shop::index')));
 		route('/:lang/shop/cart',         with_lang(call('Shop::cart_show')));
 		route('/:lang/shop/checkout',     with_lang(call('Shop::checkout')));
-		route('/:lang/shop/product/:url', with_lang(call('Shop::show')));
+		route('/:lang/shop/product/:url', with_lang(call('Shop::product_show')));
 		route('/:lang/shop/review',       with_lang(call('Shop::review')));
 		route('/:lang/shop/confirm',      with_lang(call('Shop::confirm')));
 		route('/:lang/contact',           with_lang(call('Contact::show')));

@@ -135,12 +135,12 @@ return [
 	'shop.payment_fees'     => 'Frais de paiement',
 	'shop.payments'         => [
 		'direct'            => 'Virement bancaire',
-		'paypal'            => 'PayPal',
+		'paypal'            => 'Carte de crédit',
 		'twint'             => 'Twint',
 	],
 	'shop.payments.infos'	=> [
 		'direct'			=> 'Les données IBAN vous seront transmises par email.',
-		'paypal'            => 'PayPal ou carte de crédit.',
+		'paypal'            => 'Carte de crédit via PayPal.',
 		'twint'             => 'Twint ou carte de crédit.'
 	],
 	'shop.put_in_cart'      => 'Dans le panier',

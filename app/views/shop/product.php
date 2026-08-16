@@ -1,20 +1,24 @@
 <?php
-$article = $params['article'];
+$url      = $params['url'];
+$article  = $params['article'];
+$pictures = $params['pictures'];
 
-$id = $article['id'];
-$variants = $params['variants'];
-$pictures = $article['pictures'];
+$id           = $article['id'];
+$variants     = $params['variants'];
 $restrictions = $article['restrictions'];
 
 $referer = $_SERVER['HTTP_REFERER'] ?? "/{{lang}}/shop";
 
 // Generate option for variant of product.
-function render_variant($variant) {
+function render_variant($variant, $url) {
 	$title = $variant['title'];
-	$attrs = ['value' => $variant['id']];
+	$attrs = ['value' => $variant['id'], 'url' => $url];
 	if ($variant['state'] == Shop::STATE_SOLDOUT) {
 		$title = sprintf('%s (épuisé)', $title);
 		$attrs['disabled'] = NULL;
+	}
+	if ($variant['url'] == $url) {
+		$attrs['selected'] = null;
 	}
 	return HTML::option($title, $attrs);
 }
@@ -63,10 +67,12 @@ function render_variant($variant) {
 <block content>
 	<div class="flex">
 		<div>
-			<img id="picture" src="<?= statics("img/shop/" . $pictures[0]) ?>"/>
+			<img id="picture" src="<?= $pictures[0][0] ?>"/>
 			<div id="pictures" data-darkslide>
 				<?php foreach (array_slice($pictures, 1) as $picture): ?>
-				<a href="<?= statics("img/shop/$picture") ?>" target="_blank"><img src="<?= statics("img/shop/$picture") ?>" alt="" /></a>
+				<a href="<?= $picture[0] ?>" target="_blank">
+					<img src="<?= $picture[1] ?>" alt="<?= html($article['title']) ?>" data-ds-target="<?= $picture[0] ?>"/>
+				</a>
 				<?php endforeach; ?>
 			</div>
 		</div>
@@ -99,7 +105,7 @@ function render_variant($variant) {
 					<label for="variant"><?= __('shop.variant') ?></label>
 					<select id="variant" name="variant">
 						<?php foreach ($variants as $variant): ?>
-						<?= render_variant($variant) ?>
+						<?= render_variant($variant, $url) ?>
 						<?php endforeach; ?>
 					</select>
 				</fieldset>

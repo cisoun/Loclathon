@@ -6,7 +6,7 @@ class Statics {
 		return Helpers::path_join(STATICS_PATH, 'css', $path);
 	}
 
-	public static function images($path = '') {
+	public static function image($path = '') {
 		return Helpers::path_join(STATICS_PATH, 'img', $path);
 	}
 

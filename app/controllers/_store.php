@@ -123,13 +123,18 @@ return [
 		'price'        => 24,
 		'state'        => 0,
 		'description'  => "
+			<p>
+				Le t-shirt à l'effigie de la tournée du Loclathon.<br>
+				Léger et clair, idéal pour les journées ensoleillées.
+			</p>
 			<b>Informations</b>
 			<ul>
 				<li>Blanc</li>
 				<li>Unisex</li>
 				<li>Lavage à 30 °</li>
+				<li>Impression en sérigraphie effectuée avec partenaire local</li>
 			</ul>",
-		'pictures'     => ['11.jpg', '11.jpg'],
+		'pictures'     => ['11a.jpg', '11a.jpg', '11b.jpg', '11c.jpg', '11d.jpg', '11.jpg'],
 		'restrictions' => [],
 		'parent_id'    => NULL,
 	], [
@@ -192,6 +197,86 @@ return [
 		'pictures'     => [],
 		'restrictions' => [],
 		'parent_id'    => 11
+	], [
+		'id'           => 18,
+		'url'          => 'bundle-tournee',
+		'title'        => 'Bundle "Tournée"',
+		'price'        => 27,
+		'state'        => 0,
+		'description'  => "
+			<p>
+				Le t-shirt à l'effigie de la tournée du Loclathon avec le porte-gobelet et le gobelet gradué.<br>
+			</p>
+			<b>Informations</b>
+			<ul>
+				<li>Blanc</li>
+				<li>Unisex</li>
+				<li>Lavage à 30 °</li>
+				<li>Impression en sérigraphie effectuée avec partenaire local</li>
+			</ul>",
+		'pictures'     => ['18.png', '18a.jpg', '18b.jpg', '11b.jpg'],
+		'restrictions' => [],
+		'parent_id'    => NULL,
+	], [
+		'id'           => 19,
+		'url'          => 'bundle-tournee-xs',
+		'title'        => 'XS',
+		'price'        => 27,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 18
+	], [
+		'id'           => 13,
+		'url'          => 'bundle-tournee-s',
+		'title'        => 'S',
+		'price'        => 27,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 18
+	], [
+		'id'           => 14,
+		'url'          => 'bundle-tournee-m',
+		'title'        => 'M',
+		'price'        => 27,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 18
+	], [
+		'id'           => 15,
+		'url'          => 'bundle-tournee-l',
+		'title'        => 'L',
+		'price'        => 27,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 18
+	], [
+		'id'           => 16,
+		'url'          => 'bundle-tournee-xl',
+		'title'        => 'XL',
+		'price'        => 27,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 18
+	], [
+		'id'           => 17,
+		'url'          => 'bundle-tournee-xxl',
+		'title'        => 'XXL',
+		'price'        => 27,
+		'state'        => 0,
+		'description'  => NULL,
+		'pictures'     => [],
+		'restrictions' => [],
+		'parent_id'    => 18
 	]
 ];
 
