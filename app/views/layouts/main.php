@@ -91,6 +91,9 @@ $cart = Session::get('cart');
 			<?php endif; ?>
 		<? content ?>
 		</div>
+		<div id="partners" class="container">
+			<img src="<?= statics('img/partners.svg') ?>" alt="partners" class="flex centered"/>
+		</div>
 		<footer>
 			<div id="footer-content" class="flex centered">
 				<div>

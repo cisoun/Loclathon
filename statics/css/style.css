@@ -111,6 +111,13 @@ ul {
 	animation: fadein 0.5s;
 }
 
+#partners {
+	margin-top: var(--gap);
+}
+#partners img {
+	max-width: 100%;
+}
+
 /*#contact, #photos, #shop, #tracker { padding-top: 3rem; }*/
 
 #shop > h1,
