@@ -205,7 +205,7 @@ return [
 		'state'        => 0,
 		'description'  => "
 			<p>
-				Le t-shirt à l'effigie de la tournée du Loclathon avec le porte-gobelet et le gobelet.<br>
+				Le t-shirt à l'effigie de la tournée du Loclathon avec le porte-gobelet et le gobelet gradué.<br>
 			</p>
 			<b>Informations</b>
 			<ul>
