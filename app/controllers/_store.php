@@ -214,7 +214,7 @@ return [
 				<li>Lavage à 30 °</li>
 				<li>Impression en sérigraphie effectuée avec partenaire local</li>
 			</ul>",
-		'pictures'     => ['18.png'],
+		'pictures'     => ['18.png', '18a.jpg', '18b.jpg', '11b.jpg'],
 		'restrictions' => [],
 		'parent_id'    => NULL,
 	], [
