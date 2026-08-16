@@ -138,12 +138,12 @@ return [
 	'shop.payment_fees'     => 'Zahlungsgebühren',
 	'shop.payments'         => [
 		'direct'            => 'Banküberweisung',
-		'paypal'            => 'PayPal',
+		'paypal'            => 'Kreditkarte',
 		'twint'             => 'Twint',
 	],
 	'shop.payments.infos'	=> [
 		'direct'			=> 'Bankdaten werden per E-Mail versendet.',
-		'paypal'            => 'PayPal oder Kreditkarte.',
+		'paypal'            => 'Kreditkarte via PayPal.',
 		'twint'             => 'Twint oder Kreditkarte.'
 	],
 	'shop.put_in_cart'      => 'In den Warenkorb',

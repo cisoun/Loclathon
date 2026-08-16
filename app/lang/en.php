@@ -139,13 +139,13 @@ return [
 	'shop.payment_fees'     => 'Payment fees',
 	'shop.payments'         => [
 		'direct'            => 'Bank transfert',
-		'paypal'            => 'PayPal',
+		'paypal'            => 'Credit card',
 		'twint'             => 'Twint',
 	],
 	'shop.payments.infos'	=> [
 		'direct'			=> 'Bank details will be sent by mail.',
-		'paypal'            => 'PayPal or credit cart.',
-		'twint'             => 'Twint or credit cart.'
+		'paypal'            => 'Credit card via PayPal.',
+		'twint'             => 'Twint or credit card.'
 	],
 	'shop.put_in_cart'      => 'Put in cart',
 	'shop.remove'           => 'remove',
