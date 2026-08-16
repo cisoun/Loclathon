@@ -29,10 +29,24 @@ class Articles {
 		return self::find($article['parent_id']);
 	}
 
+	public static function pictures(&$article) {
+		$pictures = $article['pictures'];
+		if (count($pictures) > 0) {
+			return $pictures;
+		}
+		// Get picture from parent instead, if possible.
+		if (self::hasParent($article)) {
+			$parent = self::parent($article);
+			if ($parent) {
+				return self::pictures($parent);
+			}
+		}
+	}
+
 	public static function preview(&$article) {
 		$pictures = $article['pictures'];
 		if (count($pictures) > 0) {
-			return Statics::images('shop/small/' . $pictures[0]);
+			return Statics::image('shop/small/' . $pictures[0]);
 		}
 		// Get picture from parent instead, if possible.
 		if (self::hasParent($article)) {
@@ -41,10 +55,6 @@ class Articles {
 				return self::preview($parent);
 			}
 		}
-	}
-
-	public static function pictures(&$article) {
-		return $article['pictures'];
 	}
 
 	public static function variants(&$article) {

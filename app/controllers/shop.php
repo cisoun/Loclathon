@@ -12,6 +12,37 @@ class Shop {
 	public const STATE_SOLDOUT     = 2;
 	public const STATE_UNAVAILABLE = 3;
 
+	// Private functions
+
+	private static function cart_delete($id) {
+		Session::start();
+		$cart = Session::get(self::CART);
+		unset($cart[$id]);
+		Session::set(self::CART, $cart);
+	}
+
+	private static function cart_update($cart) {
+		foreach ($cart as $id => $units) {
+			// Remove articles at 0 units.
+			if ($units == 0) {
+				unset($cart[$id]);
+				continue;
+			}
+
+			// Remove articles that are unavailable.
+			$article = Articles::find($id);
+			$state = $article['state'];
+			if ($state == self::STATE_SOLDOUT ||
+				$state == self::STATE_UNAVAILABLE) {
+				unset($cart[$id]);
+				continue;
+			}
+		}
+
+		Session::start();
+		Session::set(self::CART, $cart);
+	}
+
 	private static function generate_id() {
 		$id = '';
 		for ($i = 0; $i < 6; $i++)
@@ -163,33 +194,7 @@ class Shop {
 		return $success;
 	}
 
-
-	public static function cart($params) {
-		$inputs = Request::inputs();
-		foreach ($inputs as $key => $value) {
-			switch ($key) {
-				case 'checkout':
-					$cart = Request::input('cart');
-					self::cart_update($cart);
-					$lang = $params['lang'];
-					return Response::location("/$lang/shop/checkout");
-				case 'clear':
-					return self::cart_clear($params);
-				case 'delete':
-					Session::start();
-					$cart = Session::get(self::CART);
-					unset($cart[$value]);
-					Session::set(self::CART, $cart);
-					break;
-				case 'update':
-					$cart = Request::input('cart');
-					self::cart_update($cart);
-					break;
-			}
-		}
-
-		return Response::location("/{$params['lang']}/shop/cart");
-	}
+	// Public functions
 
 	public static function cart_add($params) {
 		Session::start();
@@ -217,10 +222,39 @@ class Shop {
 		return Response::location("/{$params['lang']}/shop/cart");
 	}
 
+	/**
+	 * Handle operations from "cart" page.
+	 *
+	 * The page contains 4 buttons named to a specific operation. We handle
+	 * those operations below.
+	 */
+	public static function cart($params) {
+		$inputs = Request::inputs();
+		foreach ($inputs as $key => $value) {
+			switch ($key) {
+				case 'checkout':
+					$cart = Request::input('cart');
+					self::cart_update($cart);
+					return Response::location("/{$params['lang']}/shop/checkout");
+				case 'clear':
+					self::cart_clear($params);
+					break;
+				case 'delete':
+					self::cart_delete($value);
+					break;
+				case 'update':
+					$cart = Request::input('cart');
+					self::cart_update($cart);
+					break;
+			}
+		}
+
+		return Response::location("/{$params['lang']}/shop/cart");
+	}
+
 	public static function cart_clear($params) {
 		Session::start();
 		Session::set(self::CART, []);
-
 		return Response::location("/{$params['lang']}/shop");
 	}
 
@@ -228,6 +262,8 @@ class Shop {
 		Session::start();
 
 		$cart = Session::get(self::CART);
+
+		// No cart? Get back to shop.
 		if (!$cart) {
 			return Response::location("/{$params['lang']}/shop", $params);
 		}
@@ -258,57 +294,15 @@ class Shop {
 		return Response::view('shop/cart', $params);
 	}
 
-	private static function cart_update($cart) {
-		foreach ($cart as $id => $units) {
-			// Remove articles at 0 units.
-			if ($units == 0) {
-				unset($cart[$id]);
-				continue;
-			}
-
-			// Remove articles that are unavailable.
-			$article = Articles::find($id);
-			$state = $article['state'];
-			if ($state == self::STATE_SOLDOUT ||
-				$state == self::STATE_UNAVAILABLE) {
-				unset($cart[$id]);
-				continue;
-			}
-		}
-
-		Session::start();
-		Session::set(self::CART, $cart);
-	}
-
 	public static function index($params) {
 		$articles = Articles::all();
 
 		// Filter unavailable articles.
 		$params['articles'] = array_filter($articles, function ($a) {
-			return !$a['parent_id'] && $a['state'] != 3;
+			return !$a['parent_id'] && $a['state'] != self::STATE_UNAVAILABLE;
 		});
 
-		return Response::view('shop/index', $params);
-	}
-
-	public static function product_show($params) {
-		$article = Articles::findByURL($params['url']);
-
-		if (!$article) {
-			return Response::location("/{$params['lang']}/shop");
-		}
-
-		// Variant case: display parent.
-		if (Articles::hasParent($article)) {
-			$article = Articles::parent($article);
-		}
-
-		$variants = Articles::variants($article);
-
-		$params['article']  = $article;
-		$params['variants'] = $variants;
-
-		return Response::view('shop/product', $params);
+		return Response::view('shop/index', 	$params);
 	}
 
 	/**
@@ -473,11 +467,37 @@ class Shop {
 				Session::set('paypal_order_id', $order_id);
 				// Redirect user to order's approve link.
 				return Response::location($order_url);
-				break;
 			// case 'twint': break;
 			default:
 				die('This was not supposed to happen...');
 		}
+	}
+
+	public static function product_show($params) {
+		$article = Articles::findByURL($params['url']);
+
+		// Article not found: return to shop.
+		if (!$article) {
+			return Response::location("/{$params['lang']}/shop");
+		}
+
+		// Variant case: display parent.
+		if (Articles::hasParent($article)) {
+			$article = Articles::parent($article);
+		}
+
+		$params['article']  = $article;
+		$params['variants'] = Articles::variants($article);
+
+		$params['pictures'] = array_map(
+			fn($p) => [
+				Statics::image('shop/' . $p),
+				Statics::image('shop/small/' . $p)
+			],
+			Articles::pictures($article)
+		);
+
+		return Response::view('shop/product', $params);
 	}
 }
 ?>

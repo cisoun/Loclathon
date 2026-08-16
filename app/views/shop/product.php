@@ -1,10 +1,10 @@
 <?php
-$article = $params['article'];
 $url      = $params['url'];
+$article  = $params['article'];
+$pictures = $params['pictures'];
 
-$id = $article['id'];
-$variants = $params['variants'];
-$pictures = $article['pictures'];
+$id           = $article['id'];
+$variants     = $params['variants'];
 $restrictions = $article['restrictions'];
 
 $referer = $_SERVER['HTTP_REFERER'] ?? "/{{lang}}/shop";
@@ -67,10 +67,12 @@ function render_variant($variant, $url) {
 <block content>
 	<div class="flex">
 		<div>
-			<img id="picture" src="<?= statics("img/shop/" . $pictures[0]) ?>"/>
+			<img id="picture" src="<?= $pictures[0][0] ?>"/>
 			<div id="pictures" data-darkslide>
 				<?php foreach (array_slice($pictures, 1) as $picture): ?>
-				<a href="<?= statics("img/shop/$picture") ?>" target="_blank"><img src="<?= statics("img/shop/$picture") ?>" alt="" /></a>
+				<a href="<?= $picture[0] ?>" target="_blank">
+					<img src="<?= $picture[1] ?>" alt="<?= html($article['title']) ?>" data-ds-target="<?= $picture[0] ?>"/>
+				</a>
 				<?php endforeach; ?>
 			</div>
 		</div>

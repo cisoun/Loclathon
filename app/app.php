@@ -19,6 +19,7 @@ function env($key, $fallback = false) {
 	return $CONFIG[$key] ?? $fallback;
 }
 function extension($extensions) { return Request::has_extension($extensions); }
+function html($text)            { return htmlspecialchars($text); }
 function method()				{ return Request::method(); }
 function redirect($url)			{ return Router::redirect($url); }
 function route($uri, $callback)	{ return Router::route($uri, $callback); }
