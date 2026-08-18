@@ -304,7 +304,10 @@ class Shop {
 
 		// Order by state and ID (newests first).
 		uasort($params['articles'], function ($a, $b) {
-			return $a['state'] > $b['state'] || $a['id'] < $b['id'] ? 1 : -1;
+			if ($a['state'] == $b['state']) {
+				return $a['id'] < $b['id'] ? 1 : -1;
+			}
+			return $a['state'] > $b['state'] ? 1 : -1;
 		});
 
 		return Response::view('shop/index', $params);
