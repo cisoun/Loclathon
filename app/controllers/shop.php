@@ -302,7 +302,12 @@ class Shop {
 			return !$a['parent_id'] && $a['state'] != self::STATE_UNAVAILABLE;
 		});
 
-		return Response::view('shop/index', 	$params);
+		// Order by state and ID (newests first).
+		uasort($params['articles'], function ($a, $b) {
+			return $a['state'] > $b['state'] || $a['id'] < $b['id'] ? 1 : -1;
+		});
+
+		return Response::view('shop/index', $params);
 	}
 
 	/**

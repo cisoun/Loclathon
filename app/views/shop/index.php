@@ -1,13 +1,6 @@
 <?php
 $articles = $params['articles'];
 $states   = __('shop.states');
-
-// Should sort articles by state, then by ID.
-function articles_sort ($a, $b) {
-	return $a['state'] < $b['state'] ? -1 : 1;
-}
-
-uasort($articles, 'articles_sort');
 ?>
 
 ?>
