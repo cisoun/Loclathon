@@ -199,6 +199,16 @@ return [
 		'parent_id'    => 11
 	], [
 		'id'           => 18,
+		'url'          => 'porte-gobelet-verre-tournee',
+		'title'        => 'Porte-gobelet & verre "Tournée"',
+		'price'        => 5,
+		'state'        => 0,
+		'description'  => "<p>Le verre de la tournée du Loclathon avec son porte-gobelet. Idéal pour emporter avec soi lors de la marche.</p><b>Informations verre</b><ul><li>Volume: 33 cl</li><li>Avec graduations</li></ul>",
+		'pictures'     => ['18.png', '19a.jpg', '19b.jpg'],
+		'restrictions' => [],
+		'parent_id'    => NULL
+	], [
+		'id'           => 19,
 		'url'          => 'bundle-tournee',
 		'title'        => 'Bundle "Tournée"',
 		'price'        => 27,
@@ -214,11 +224,11 @@ return [
 				<li>Lavage à 30 °</li>
 				<li>Impression en sérigraphie effectuée avec partenaire local</li>
 			</ul>",
-		'pictures'     => ['18.png', '18a.jpg', '18b.jpg', '11b.jpg'],
+		'pictures'     => ['19.png', '19a.jpg', '19b.jpg', '11b.jpg'],
 		'restrictions' => [],
 		'parent_id'    => NULL,
 	], [
-		'id'           => 19,
+		'id'           => 20,
 		'url'          => 'bundle-tournee-xs',
 		'title'        => 'XS',
 		'price'        => 27,
@@ -226,9 +236,9 @@ return [
 		'description'  => NULL,
 		'pictures'     => [],
 		'restrictions' => [],
-		'parent_id'    => 18
+		'parent_id'    => 19
 	], [
-		'id'           => 13,
+		'id'           => 21,
 		'url'          => 'bundle-tournee-s',
 		'title'        => 'S',
 		'price'        => 27,
@@ -236,9 +246,9 @@ return [
 		'description'  => NULL,
 		'pictures'     => [],
 		'restrictions' => [],
-		'parent_id'    => 18
+		'parent_id'    => 19
 	], [
-		'id'           => 14,
+		'id'           => 22,
 		'url'          => 'bundle-tournee-m',
 		'title'        => 'M',
 		'price'        => 27,
@@ -246,9 +256,9 @@ return [
 		'description'  => NULL,
 		'pictures'     => [],
 		'restrictions' => [],
-		'parent_id'    => 18
+		'parent_id'    => 19
 	], [
-		'id'           => 15,
+		'id'           => 23,
 		'url'          => 'bundle-tournee-l',
 		'title'        => 'L',
 		'price'        => 27,
@@ -256,9 +266,9 @@ return [
 		'description'  => NULL,
 		'pictures'     => [],
 		'restrictions' => [],
-		'parent_id'    => 18
+		'parent_id'    => 19
 	], [
-		'id'           => 16,
+		'id'           => 24,
 		'url'          => 'bundle-tournee-xl',
 		'title'        => 'XL',
 		'price'        => 27,
@@ -266,9 +276,9 @@ return [
 		'description'  => NULL,
 		'pictures'     => [],
 		'restrictions' => [],
-		'parent_id'    => 18
+		'parent_id'    => 19
 	], [
-		'id'           => 17,
+		'id'           => 25,
 		'url'          => 'bundle-tournee-xxl',
 		'title'        => 'XXL',
 		'price'        => 27,
@@ -276,7 +286,7 @@ return [
 		'description'  => NULL,
 		'pictures'     => [],
 		'restrictions' => [],
-		'parent_id'    => 18
+		'parent_id'    => 19
 	]
 ];
 
